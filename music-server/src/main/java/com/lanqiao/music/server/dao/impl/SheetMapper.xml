@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanqiao.music.server.dao.SheetMapper">
+    <insert id="insertSheetUser" parameterType="com.lanqiao.music.server.pojo.SheetUser">
+        insert sheet_user(sname,uid,type) values (#{sname},#{uid},#{type})
+        <selectKey resultType="int" keyColumn="sid" keyProperty="sid" order="AFTER">
+            select @@identity
+        </selectKey>
+    </insert>
+    <insert id="insertSheet" parameterType="com.lanqiao.music.server.pojo.Sheet">
+        insert sheet(ssum,sname,scontext,sdate) values (0,#{sname},#{scontext},date(NOW()))
+        <selectKey resultType="int" keyColumn="sid" keyProperty="sid" order="AFTER">
+            select @@identity
+        </selectKey>
+    </insert>
+    <insert id="insertSheetMusic" parameterType="com.lanqiao.music.server.pojo.SheetMusic">
+        insert sheet_music(sid,mid) values (#{sid},#{mid})
+    </insert>
+    <update id="updateSheet" parameterType="com.lanqiao.music.server.pojo.Sheet">
+        update sheet_music set mid=#{mid} where sid=#{sid}
+    </update>
+    <delete id="deleteSheetUser" parameterType="int">
+        delete from sheet_user where uid=#{uid}
+    </delete>
+    <delete id="deleteSheetMusic" parameterType="com.lanqiao.music.server.pojo.SheetMusic">
+        delete from sheet_music where 1=1
+        <if test="sid !=null">
+            sid=#{sid}
+        </if>
+        <if test="mid !=null">
+            mid=#{mid}
+        </if>
+    </delete>
+    <delete id="deleteSheet" parameterType="string">
+        delete from  sheet where sname=#{sname}
+    </delete>
+    <select id="searchAll" resultType="com.lanqiao.music.server.pojo.Sheet">
+        select sid,ssum,sname,scontext,sdate from sheet
+    </select>
+    <select id="searchBytype" resultType="com.lanqiao.music.server.pojo.Sheet" parameterType="int">
+        select sid,ssum,sname,scontext,sdate from sheet s,sheet_user su
+        where s.sid=su.sid
+        and su.type =#{type}
+    </select>
+    <select id="searchByCondition" resultType="com.lanqiao.music.server.pojo.Sheet" parameterType="map">
+        select sid,ssum,sname,scontext,sdate from sheet
+        where 1=1
+        <if test="sname!=null">
+            sname like '%' #{sname} '%'
+        </if>
+        <if test="scontext">
+            scontext like '%'#{scontext} '%'
+        </if>
+        <if test="ssum!=0">
+            ssum =#{ssum}
+        </if>
+    </select>
+    <select id="searchBySum" resultType="com.lanqiao.music.server.pojo.Sheet" parameterType="map">
+        select sid,ssum,sname,scontext,sdate from sheet
+        where 1=1
+        <if test="maxSum!=0">
+            <if test="minSum!=0">
+                ssum between #{minSum} and #{maxSum}
+            </if>
+            <if test="minSum=0">
+                ssum between 0 and #{maxSum}
+            </if>
+        </if>
+        <if test="maxSum=0">
+            ssum between 0 and #{minSum}
+        </if>
+    </select>
+    <select id="searchByMusic" resultType="com.lanqiao.music.server.pojo.Sheet" parameterType="string">
+        select sid,ssum,sname,scontext,sdate from sheet s ,sheet_music sm
+        where s.sid= sm.sid
+        and mid in {
+        select mid from music
+        where mname =#{mname}
+        }
+    </select>
+    <select id="searchByUser" resultType="com.lanqiao.music.server.pojo.Sheet" parameterType="string">
+        select sid,ssum,sname,scontext,sdate from sheet s,sheet_user su
+        where s.sid=su.sid and
+        uid in {
+        select uid from user
+        where uname =#{uname}
+        }
+    </select>
+</mapper>
