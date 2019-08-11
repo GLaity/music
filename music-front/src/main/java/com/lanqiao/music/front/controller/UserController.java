@@ -4,6 +4,7 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.lanqiao.music.server.pojo.User;
 import com.lanqiao.music.server.service.IUserService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -18,9 +19,10 @@ public class UserController {
     }
 
     @RequestMapping("/login")
-    public String loginCheck(String uname, String upwd){
+    public String loginCheck(String uname, String upwd, Model model){
         User user = iUserService.login(uname,upwd);
-        if (user == null){
+        if (user != null){
+            model.addAttribute("user",user);
             return "index";
         } else {
             return "login";
