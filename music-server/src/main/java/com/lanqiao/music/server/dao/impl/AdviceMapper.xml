@@ -15,13 +15,13 @@
             select LAST_INSERT_ID()
         </selectKey>
     </insert>
-    <select id="selectAdviceByAid" parameterType="int" resultType="com.lanqiao.music.server.pojo.Advice">
+    <select id="selectAdviceByAid" parameterType="int" resultMap="adviceMap">
         select * from advice where aid = #{aid}
     </select>
-    <select id="selectAdviceByUser" parameterType="int" resultType="com.lanqiao.music.server.pojo.Advice">
+    <select id="selectAdviceByUser" parameterType="int" resultMap="adviceMap">
         select * from advice where uid = #{uid}
     </select>
-    <select id="selectAdviceByMusic" parameterType="int" resultType="com.lanqiao.music.server.pojo.Advice">
+    <select id="selectAdviceByMusic" parameterType="int" resultMap="adviceMap">
         select * from advice where mid = #{mid}
     </select>
 </mapper>
