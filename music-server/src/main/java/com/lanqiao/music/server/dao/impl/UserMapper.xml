@@ -49,7 +49,7 @@
         </set>
         where uid = #{uid}
     </update>
-    <select id="selectUserByUname" parameterType="string" resultType="com.lanqiao.music.server.pojo.User">
+    <select id="selectUserByUname" parameterType="string" resultMap="userMap">
         select * from user where uname = #{uname};
     </select>
     <select id="selectCollectionMusic" parameterType="int" resultType="com.lanqiao.music.server.pojo.Sheet">
@@ -72,7 +72,7 @@
             select sid from sheet_user where uid = #{uid} and type = 2
         );
     </select>
-    <select id="selectUserByUid" resultType="com.lanqiao.music.server.pojo.User">
+    <select id="selectUserByUid" resultMap="userMap">
         select * from user where uid = #{uid};
     </select>
 </mapper>

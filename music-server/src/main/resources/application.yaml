@@ -59,9 +59,5 @@ dubbo:
     address: zookeeper://123.57.52.37:2181
   scan:
     base-packages: com.lanqiao.music.server.service
-#  protocol:
-      #    host: 192.168.0.116
-    #    name: dubbo
-    #    id: dubbo
 server:
   port: 8001
