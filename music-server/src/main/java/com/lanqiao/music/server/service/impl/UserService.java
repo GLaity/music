@@ -7,6 +7,8 @@ import com.lanqiao.music.server.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+
 @Component
 @Service
 public class UserService implements IUserService {
@@ -21,10 +23,25 @@ public class UserService implements IUserService {
             return 2;
         } else {
             if (user.getUpwd().equals(upwd)){
-                return 0;
+
+                //登陆成功
+                Date nowDate = new Date();
+                if(user.getVdate()!=null){
+                    if(nowDate.getTime()<user.getVdate().getTime()){
+
+                        return 2;//会员身份
+                    }else {
+                        userMapper.updateUserVipByUId(user.getUid());
+
+                        return 0;//普通用户
+                    }
+                }else {
+                    return 0;
+                }
             } else {
                 return 1;
             }
         }
     }
+
 }

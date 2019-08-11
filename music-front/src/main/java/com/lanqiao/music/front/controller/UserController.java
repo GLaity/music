@@ -13,7 +13,7 @@ public class UserController {
 
     @RequestMapping("/")
     public String init(){
-        return "login";
+        return "musicplay";
     }
 
     @RequestMapping("/login")

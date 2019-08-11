@@ -15,7 +15,7 @@ public class MusicFrontApplicationTests {
     private IUserService iUserService;
     @Test
     public void contextLoads() {
-//        System.out.println(iUserService.login("张三","123456"));
+        System.out.println(iUserService.login("李四","123456"));
     }
 
 }

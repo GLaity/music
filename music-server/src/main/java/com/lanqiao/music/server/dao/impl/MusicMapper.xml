@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanqiao.music.server.dao.MusicMapper">
+    <sql id="base_sql">
+        mname,msinger,mcontext,malbum,mlevel,mtheme,mstyle,mlanguage,mprice,mprice,mloc,mdate
+    </sql>
+    <select id="selectMusicAll" parameterType="string" resultType="com.lanqiao.music.server.pojo.Music">
+        select
+         <include refid="base_sql"></include>
+         from music;
+    </select>
+    <select id="selectMusicByMId" parameterType="int" resultType="com.lanqiao.music.server.pojo.Music">
+        select
+        <include refid="base_sql"></include>
+        from music
+        where mid=#{mid}
+    </select>
+    <select id="selectMusicByLikeName" parameterType="string" resultType="com.lanqiao.music.server.pojo.Music">
+        select
+        <include refid="base_sql"></include>
+        from music
+        where mname like  '%' #{mname} '%'
+    </select>
+
+</mapper>
