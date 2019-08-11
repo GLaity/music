@@ -4,7 +4,6 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.lanqiao.music.server.service.IUserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -15,7 +14,8 @@ public class MusicFrontApplicationTests {
     private IUserService iUserService;
     @Test
     public void contextLoads() {
-//        System.out.println(iUserService.login("张三","123456"));
+        System.out.println(iUserService.findUserByUid(1));
+//        System.out.println(iUserService.login("张三","1"));
     }
 
 }

@@ -27,4 +27,9 @@ public class UserService implements IUserService {
             }
         }
     }
+
+    @Override
+    public User findUserByUid(Integer uid) {
+        return userMapper.selectUserByUid(uid);
+    }
 }
