@@ -60,7 +60,7 @@ dubbo:
   scan:
     base-packages: com.lanqiao.music.server.service
   protocol:
-    host: 192.168.0.116
+    host: 192.168.0.129
     name: dubbo
     id: dubbo
 server:
