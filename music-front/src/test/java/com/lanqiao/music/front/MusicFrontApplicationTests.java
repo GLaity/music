@@ -1,6 +1,7 @@
 package com.lanqiao.music.front;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.lanqiao.music.server.pojo.User;
 import com.lanqiao.music.server.service.IUserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,8 +15,12 @@ public class MusicFrontApplicationTests {
     private IUserService iUserService;
     @Test
     public void contextLoads() {
-        System.out.println(iUserService.findUserByUid(1));
-//        System.out.println(iUserService.login("张三","1"));
+//        System.out.println(iUserService.findUserByUid(1));
+//        System.out.println(iUserService.login("张三","123456"));
+        User user = new User();
+        user.setUid(1);
+        user.setUname("李四");
+        iUserService.modifyUser(user);
     }
 
 }
