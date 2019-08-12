@@ -54,7 +54,7 @@ spring:
         exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
 dubbo:
   application:
-    name: music_server
+    name: server
   registry:
     address: zookeeper://123.57.52.37:2181
   scan:

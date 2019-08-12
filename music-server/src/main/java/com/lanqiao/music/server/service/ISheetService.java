@@ -5,8 +5,7 @@ import com.lanqiao.music.server.pojo.*;
 import java.util.List;
 
 public interface ISheetService {
-     void initSheet(User user,String sname,String scontext,Integer type);
-     void initSheetMusic(User user,Sheet sheet,List<Music> musicList);
+     void initSheet(Sheet sheet,User user,Integer type);
      void deletSheet(User user,Sheet sheet);
      List<Sheet>seach(User user);
      List<Sheet> seachByCondition(String sname, int ssum, String scontext);

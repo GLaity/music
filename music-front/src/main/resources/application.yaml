@@ -1,6 +1,7 @@
 dubbo:
   application:
     name: front
+    qos-port: 33333
   registry:
     address: zookeeper://123.57.52.37:2181
   scan:

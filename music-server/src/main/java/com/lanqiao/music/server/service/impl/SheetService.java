@@ -16,35 +16,27 @@ public class SheetService implements ISheetService {
     @Autowired
     private SheetMapper sheetMapper;
     @Override
-    public void initSheet(User user,String sname,String scontext,Integer type) {
-        SheetUser sheetUser =new SheetUser();
-        Sheet sheet =new Sheet();
-        sheet.setSname(sname);
-        sheet.setScontext(scontext);
-        sheetMapper.insertSheet(sheet);
-        sheetUser.setSname(user.getUname());
-        sheetUser.setType(type);
-        sheetUser.setUid(user.getUid());
-       sheetMapper.insertSheetUser(sheetUser);
+    public void initSheet(Sheet sheet,User user,Integer type) {
+        if (sheet.getMusicList().size()==0){
+            sheetMapper.insertSheet(sheet);
+            sheetMapper.insertSheetUser(sheet.getSid(),user.getUid(),sheet.getSname(),type);
+        }else {
+            List<Music> musicList=sheet.getMusicList();
+            for (Music music :musicList){
+               sheetMapper.insertSheetMusic(sheet.getSid(),music.getMid());
+            }
+        }
     }
 
-    @Override
-    public void initSheetMusic(User user,Sheet sheet,List<Music> musicList) {
-        SheetMusic sheetMusic =new SheetMusic();
-        sheetMusic.setSid(sheet.getSid());
-        for (Music music :musicList){
-            sheetMusic.setMid(music.getMid());
-        }
-        sheetMapper.insertSheetMusic(sheetMusic);
-    }
 
     @Override
     public void deletSheet(User user,Sheet sheet) {
-        SheetMusic sm =new SheetMusic();
-        sm.setSid(sheet.getSid());
-        sheetMapper.deleteSheetMusic(sm);
-        sheetMapper.deleteSheet(sheet.getSname());
-        sheetMapper.deleteSheetUser(user.getUid());
+       sheetMapper.deleteSheetUser(user.getUid());
+       sheetMapper.deleteSheet(sheet.getSname());
+        List<Music> musicList=sheet.getMusicList();
+        for (Music music:musicList){
+            sheetMapper.deleteSheetMusic(sheet.getSid(),music.getMid());
+        }
     }
 
     @Override

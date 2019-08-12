@@ -1,28 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lanqiao.music.server.dao.SheetMapper">
-    <insert id="insertSheetUser" parameterType="com.lanqiao.music.server.pojo.SheetUser">
-        insert sheet_user(sname,uid,type) values (#{sname},#{uid},#{type})
-        <selectKey resultType="int" keyColumn="sid" keyProperty="sid" order="AFTER">
-            select @@identity
-        </selectKey>
-    </insert>
+    <resultMap id="sheetAndMusicMap" type="com.lanqiao.music.server.pojo.Sheet">
+        <id column="sid" jdbcType="INTEGER" property="sid" javaType="int"></id>
+        <result column="ssum" jdbcType="INTEGER" property="ssum" javaType="int"/>
+        <result column="sname" javaType="VARCHAR" property="sname" jdbcType="string"/>
+        <result column="scontext" javaType="VARCHAR" property="scontext" jdbcType="string"/>
+        <result column="sdate" javaType="DATE" property="sdate" jdbcType="date"/>
+        <association property="musicList" javaType="com.lanqiao.music.server.pojo.Music">
+            <id column="mid" jdbcType="INTEGER" property="mid" javaType="int"></id>
+            <result property="mname" column="mname" jdbcType="VARCHAR"/>
+        </association>
+    </resultMap>
     <insert id="insertSheet" parameterType="com.lanqiao.music.server.pojo.Sheet">
         insert sheet(ssum,sname,scontext,sdate) values (0,#{sname},#{scontext},date(NOW()))
         <selectKey resultType="int" keyColumn="sid" keyProperty="sid" order="AFTER">
             select @@identity
         </selectKey>
     </insert>
-    <insert id="insertSheetMusic" parameterType="com.lanqiao.music.server.pojo.SheetMusic">
+    <insert id="insertSheetUser" parameterType="map">
+        insert sheet_music (sid,sname,uid,type) values (#{sid},#{sname},#{uid},#{type})
+    </insert>
+    <insert id="insertSheetMusic" parameterType="map">
         insert sheet_music(sid,mid) values (#{sid},#{mid})
     </insert>
     <update id="updateSheet" parameterType="com.lanqiao.music.server.pojo.Sheet">
-        update sheet_music set mid=#{mid} where sid=#{sid}
+        update sheet set ssum=#{ssum},sname=#{sname},scontext=#{scontext} where sid=#{sid}
     </update>
     <delete id="deleteSheetUser" parameterType="int">
         delete from sheet_user where uid=#{uid}
     </delete>
-    <delete id="deleteSheetMusic" parameterType="com.lanqiao.music.server.pojo.SheetMusic">
+    <delete id="deleteSheetMusic" parameterType="map">
         delete from sheet_music where 1=1
         <if test="sid !=null">
             sid=#{sid}
