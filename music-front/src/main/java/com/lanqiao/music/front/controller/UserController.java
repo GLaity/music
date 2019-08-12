@@ -6,8 +6,10 @@ import com.lanqiao.music.server.service.IUserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
+@SessionAttributes(value = {"user"}, types = {User.class})
 public class UserController {
 
     @Reference

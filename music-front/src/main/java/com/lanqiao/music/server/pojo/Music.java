@@ -26,9 +26,9 @@ public class Music  implements Serializable {
     //流派
     private String mstyle;
     //语种
-    private Double mlanguage;
+    private String mlanguage;
     //音乐价格
-    private String mprice;
+    private Double mprice;
     //音乐路径
     private Date mloc;
     //发行时间

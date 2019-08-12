@@ -18,4 +18,5 @@ target/
 .DS_Store
 Thumbs.db
 *.yaml
+*.music-resources
 
