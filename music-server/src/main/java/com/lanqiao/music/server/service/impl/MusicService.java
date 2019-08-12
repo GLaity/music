@@ -19,4 +19,9 @@ public class MusicService implements IMusicService {
         List<Music> musicList = musicMapper.selectMusicAll();
         return musicList;
     }
+
+    @Override
+    public void addMusic(Music music) {
+        musicMapper.insertMusic(music);
+    }
 }

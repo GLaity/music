@@ -7,4 +7,6 @@ import java.util.List;
 public interface IMusicService {
 
     List<Music> getAllMusic();
+
+    void addMusic(Music music);
 }
