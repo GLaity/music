@@ -1,0 +1,9 @@
+server:
+  port: 8002
+dubbo:
+  application:
+    name: manager
+  registry:
+    address: zookeeper://123.57.52.37:2181
+  scan:
+    base-packages: com.lanqiao.music.server.service
