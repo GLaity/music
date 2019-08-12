@@ -1,7 +1,128 @@
 <?xml version="1.0" encoding="UTF-8"?>
         <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lanqiao.music.server.dao.UserMapper">
+    <sql id="sqlbase">
+        uid,uname,upwd,ubalance,udate,vdate,usex,utel
+    </sql>
+
     <select id="selectUserByUname" parameterType="string" resultType="com.lanqiao.music.server.pojo.User">
         select * from user where uname = #{uname};
     </select>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultType="com.lanqiao.music.server.pojo.User">
+        select
+        <include refid="sqlbase" />
+        from user
+        where uid = #{uid}
+    </select>
+    <select id="selectAll" resultType="com.lanqiao.music.server.pojo.User">
+        select
+        <include refid="sqlbase" />
+        from user
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user
+    where uid = #{uid}
+  </delete>
+    <insert id="insert" parameterType="com.lanqiao.music.server.pojo.User">
+    insert into user (uid,uname,upwd,ubalance,udate,vdate,usex,utel)
+    values (#{uid}, #{uname}, #{upwd},
+      #{ubalance}, #{udate}, #{vdate},
+      #{usex}, #{utel})
+    </insert>
+    <insert id="insertSelective" parameterType="com.lanqiao.music.server.pojo.User">
+        insert into user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="uid != null">
+                uid,
+            </if>
+            <if test="uname != null">
+                uname,
+            </if>
+            <if test="upwd != null">
+                upwd,
+            </if>
+            <if test="ubalance != null">
+                ubalance,
+            </if>
+            <if test="udate != null">
+                udate,
+            </if>
+            <if test="vdate != null">
+                vdate,
+            </if>
+            <if test="usex != null">
+                usex,
+            </if>
+            <if test="utel != null">
+                utel,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="uid != null">
+                #{uid},
+            </if>
+            <if test="uname != null">
+                #{uname},
+            </if>
+            <if test="upwd != null">
+                #{upwd},
+            </if>
+            <if test="ubalance != null">
+                #{ubalance},
+            </if>
+            <if test="udate != null">
+                #{udate},
+            </if>
+            <if test="vdate != null">
+                #{vdate},
+            </if>
+            <if test="usex != null">
+                #{usex},
+            </if>
+            <if test="utel != null">
+                #{utel},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.lanqiao.music.server.pojo.User">
+        update user
+        <set>
+            <if test="uname != null">
+                uname = #{uname},
+            </if>
+            <if test="upwd != null">
+                upwd = #{upwd},
+            </if>
+            <if test="ubalance != null">
+                ubalance = #{ubalance},
+            </if>
+            <if test="udate != null">
+                udate = #{udate},
+            </if>
+            <if test="vdate != null">
+                vdate = #{vdate},
+            </if>
+            <if test="usex != null">
+                usex = #{usex},
+            </if>
+            <if test="utel != null">
+                utel = #{utel},
+            </if>
+        </set>
+        where uid = #{uid}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.lanqiao.music.server.pojo.User">
+    update user
+    set uname = #{uname},
+      upwd = #{upwd},
+      ubalance = #{ubalance},
+      udate = #{udate},
+      vdate = #{vdate},
+      usex = #{usex},
+      utel = #{utel},
+    where uid = #{uid}
+  </update>
+
+
 </mapper>

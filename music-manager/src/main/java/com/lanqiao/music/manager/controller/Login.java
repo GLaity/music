@@ -11,14 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 @EnableAutoConfiguration
 public class Login {
-    @RequestMapping("/hello")
-    public String HelloWorld(Model model){
-        model.addAttribute("msg","Heloo woirld");
-        model.addAttribute("thtext","th:text <h1>你好</h1>");
-        model.addAttribute("thutext","th:utext <h1>你好</h1>");
-
-        return  "hello";
-    }
     @RequestMapping("/")
     public String init(){
         return "login";
@@ -31,7 +23,7 @@ public class Login {
             return "login";
         }
         if(username.equals("admin") && password.equals("123456") ){
-            return "redirect:/hello";
+            return "redirect:/user/list";
         }
         req.setAttribute("prompt","用户名或密码错误");
         return "login";
