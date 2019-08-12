@@ -21,12 +21,12 @@ public class UserManager {
     @Reference
     private IUserService iUserService;
     @RequestMapping("list")
-    public ModelAndView userList(HttpServletRequest request , HttpServletResponse resp){
+    public String  userList(Model model){
 
         List<User> users =iUserService.getAll();
         System.out.println(users);
-        ModelAndView mv = new ModelAndView("hello","users",users);
-        return  mv;
+        model.addAttribute("users",users);
+        return  "hello";
     }
 
 }
