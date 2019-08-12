@@ -4,4 +4,8 @@
     <select id="selectMusicAll" parameterType="string" resultType="com.lanqiao.music.server.pojo.Music">
         select * from music;
     </select>
+    <insert id="insertMusic" parameterType="map">
+        insert into music(mname,msinger,mcontext,malbum,mlevel,mtheme,mstyle,mlanguage,mprice,mloc,mdate)
+        values(#{mname},#{msinger},#{mcontext},#{malbum},#{mlevel},#{mtheme},#{mstyle},#{mlanguage},#{mprice},#{mloc},#{mdate})
+    </insert>
 </mapper>
