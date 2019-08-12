@@ -1,10 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>首页</title>
 </head>
 <body>
     <h1>Happy New Year</h1>
+    <h1 th:text="'当前用户：'+${user.uname}"></h1>
+    <h1 th:text="'当前余额：'+${user.ubalance}"></h1>
+    <h1 th:text="'当前会员到期日期'+${user.getVdate()}"></h1>
+
+    <input type="text" name="money"/>
+    <a href="/money">充值</a>
+
+    <input type="text" name="mouth"/>
+    <a href="/vip">充值会员</a>
+    <h1 th:text="${msg}"></h1>
 </body>
 </html>
