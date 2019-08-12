@@ -15,16 +15,26 @@ public class UserService implements IUserService {
     private UserMapper userMapper;
 
     @Override
-    public Integer login(String uname, String upwd) {
+    public User login(String uname, String upwd) {
         User user = userMapper.selectUserByUname(uname);
         if (user == null){
-            return 2;
+            return null;
         } else {
             if (user.getUpwd().equals(upwd)){
-                return 0;
+                return user;
             } else {
-                return 1;
+                return null;
             }
         }
+    }
+
+    @Override
+    public User findUserByUid(Integer uid) {
+        return userMapper.selectUserByUid(uid);
+    }
+
+    @Override
+    public void modifyUser(User user) {
+        userMapper.updateUser(user);
     }
 }

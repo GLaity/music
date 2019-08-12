@@ -1,11 +1,8 @@
 dubbo:
   application:
     name: front
+    qos-port: 33333
   registry:
     address: zookeeper://123.57.52.37:2181
   scan:
     base-packages: com.lanqiao.music.server.service
-  protocol:
-    host: 192.168.0.129
-    name: dubbo
-    id: dubbo

@@ -5,9 +5,9 @@ import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 import java.util.Date;
+
 @Data
 @Component
-//音乐信息表
 public class Music  implements Serializable {
     //音乐ID
     private Integer mid;

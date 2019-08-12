@@ -4,7 +4,7 @@ import lombok.Data;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
-//电台表
+
 @Data
 @Component
 public class Radio  implements Serializable {

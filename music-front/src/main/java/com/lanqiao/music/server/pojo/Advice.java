@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 import java.util.Date;
-//评论表类
+
 @Data
 @Component
 public class Advice  implements Serializable {
