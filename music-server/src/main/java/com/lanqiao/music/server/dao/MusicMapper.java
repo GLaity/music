@@ -18,7 +18,8 @@ public interface MusicMapper {
     //查询所有音乐
     List<Music> selectMusicAll();
     //根据id查询音乐
-    List<Music> selectMusicByMId(Integer mid);
-    //根据名字模糊查询音乐
+    Music selectMusicByMId(Integer mid);
+    //根据音乐名字模糊查询音乐
     List<Music> selectMusicByLikeName(String mname);
+
 }

@@ -3,12 +3,12 @@ package com.lanqiao.music.server.pojo;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
-
 import java.io.Serializable;
 import java.util.Date;
+
 @Data
 @Component
-public class Music  implements Serializable {
+public class Music implements Serializable {
     //音乐ID
     private Integer mid;
     //歌名

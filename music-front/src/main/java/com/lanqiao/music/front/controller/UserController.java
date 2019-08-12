@@ -11,10 +11,10 @@ public class UserController {
     @Reference
     private IUserService iUserService;
 
-    @RequestMapping("/")
-    public String init(){
-        return "musicplay";
-    }
+//    @RequestMapping("/")
+//    public String init(){
+//        return "musicplay";
+//    }
 
     @RequestMapping("/login")
     public String loginCheck(String uname, String upwd){

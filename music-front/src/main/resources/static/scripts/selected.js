@@ -54,7 +54,7 @@ Selected.prototype = {
     },
     play: function(songName) {
         var that = this;
-        this.audio.src = 'D:\\music\\' + songName + '\\music.mp3';
+        this.audio.src = './content/songs/'+songName+'.mp3';
         //reset the position of the lyric container
         this.lyricContainer.style.top = '130px';
         //empty the lyric
