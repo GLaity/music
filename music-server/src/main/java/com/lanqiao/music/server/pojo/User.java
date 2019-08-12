@@ -1,6 +1,8 @@
 package com.lanqiao.music.server.pojo;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.stereotype.Component;
 
 import java.sql.Date;
@@ -26,4 +28,96 @@ public class User {
 //
     private String utel;
     //TODO
+
+    public Integer getUid() {
+        return uid;
+    }
+
+    public void setUid(Integer uid) {
+        this.uid = uid;
+    }
+
+    public String getUname() {
+        return uname;
+    }
+
+    public void setUname(String uname) {
+        this.uname = uname;
+    }
+
+    public String getUpwd() {
+        return upwd;
+    }
+
+    public void setUpwd(String upwd) {
+        this.upwd = upwd;
+    }
+
+    public Double getUbalance() {
+        return ubalance;
+    }
+
+    public void setUbalance(Double ubalance) {
+        this.ubalance = ubalance;
+    }
+
+    public Date getUdate() {
+        return udate;
+    }
+
+    public void setUdate(Date udate) {
+        this.udate = udate;
+    }
+
+    public Date getVdate() {
+        return vdate;
+    }
+
+    public void setVdate(Date vdate) {
+        this.vdate = vdate;
+    }
+
+    public Integer getUsex() {
+        return usex;
+    }
+
+    public void setUsex(Integer usex) {
+        this.usex = usex;
+    }
+
+    public String getUtel() {
+        return utel;
+    }
+
+    public void setUtel(String utel) {
+        this.utel = utel;
+    }
+
+    public User() {
+    }
+
+    public User(Integer uid, String uname, String upwd, Double ubalance, Date udate, Date vdate, Integer usex, String utel) {
+        this.uid = uid;
+        this.uname = uname;
+        this.upwd = upwd;
+        this.ubalance = ubalance;
+        this.udate = udate;
+        this.vdate = vdate;
+        this.usex = usex;
+        this.utel = utel;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "uid=" + uid +
+                ", uname='" + uname + '\'' +
+                ", upwd='" + upwd + '\'' +
+                ", ubalance=" + ubalance +
+                ", udate=" + udate +
+                ", vdate=" + vdate +
+                ", usex=" + usex +
+                ", utel='" + utel + '\'' +
+                '}';
+    }
 }

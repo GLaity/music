@@ -7,6 +7,8 @@ import com.lanqiao.music.server.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @Service
 public class UserService implements IUserService {
@@ -27,4 +29,12 @@ public class UserService implements IUserService {
             }
         }
     }
+
+    @Override
+    public List<User> getAll() {
+        List<User> users =userMapper.selectAll();
+        return users;
+    }
+
+
 }

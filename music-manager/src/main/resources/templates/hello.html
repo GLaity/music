@@ -5,8 +5,9 @@
     <title>Title</title>
 </head>
 <body>
-<div style="color: red" th:text="${msg}" ></div>
-<div style="color: red" th:utext="${thtext}" > </div>
-<div style="color: red" th:utext="${thutext}" ></div>
+<ul th:each="user:${users}">
+    <li th:text="${user}"></li>
+</ul>
+
 </body>
 </html>
