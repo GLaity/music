@@ -3,9 +3,11 @@ package com.lanqiao.music.server.pojo;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
+
 @Data
 @Component
-public class Radio {
+public class Radio  implements Serializable {
     //电台ID
     private Integer rid;
     //电台播放量

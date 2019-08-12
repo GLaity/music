@@ -3,12 +3,13 @@ package com.lanqiao.music.server.pojo;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
 @Component
 //歌单
-public class Sheet {
+public class Sheet implements Serializable {
 //    歌单id
     private Integer sid;
 //    歌单播放量
