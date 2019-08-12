@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="sync lyric with HTML5 audio tag">
+        <meta name="author" content="Wayou">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>sync lyric with HTML5 audio tag</title>
+        <link rel="stylesheet" href="asserts/styles/style.css">
+    </head>
+    <body>
+        <div class="wrapper">
+            <div id="player">
+				 <!-- <audio controls id="audio" src="./D:/Work/HBuilderX/HBuilderXWorkSpace/Music/All.mp3">!Audio Not Support :(</audio> -->
+                <audio controls id="audio" src="./asserts/content/songs/2/music.mp3" autoplay>!Audio Not Support :(</audio>
+<!--                <audio controls id="audio" src="./asserts/../../../../../../../resources/2/music.mp3" autoplay>!Audio Not Support :(</audio>-->
+<!--                <audio controls id="audio" src="./1/music.mp3">!Audio Not Support :(</audio>-->
+            </div>
+            <div id="playlist">
+                <ol>
+                    <li th:each="songs,stat: ${songList}">
+<!--                        <a href="javascript:void(0);" th:id="data-name=${songs}" th:text="${stat.count}" ></a>-->
+                        <a href="javascript:void(0);" th:attr="data-name=${songs}">1</a>
+                    </li>
+<!--                    <li>-->
+<!--                        <a href="javascript:void(0);" data-name="1">1</a>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a href="javascript:void(0);" data-name="2">2</a>-->
+<!--                    </li>-->
+<!--					<li>-->
+<!--					    <a href="javascript:void(0);" data-name="3">3youdiantian</a>-->
+<!--					</li>-->
+                </ol>
+            </div>
+			<!-- 歌词滚动框 -->
+            <div id="lyricWrapper">
+                <div id="lyricContainer">
+                </div>
+            </div>
+        </div>
+        <script src="asserts/scripts/selected.js"></script>
+    </body>
+</html>
