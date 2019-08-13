@@ -3,11 +3,13 @@ package com.lanqiao.music.server.pojo;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
 import java.sql.Date;
+import java.util.Set;
 
 @Data
 @Component
-public class User {
+public class User implements Serializable {
 //    用户编号(自增)
     private Integer uid;
 //    用户名
@@ -23,7 +25,12 @@ public class User {
     private Date vdate;
 //    用户性别(0为女，1为男)
     private Integer usex;
-//
+//    用户联系方式
     private String utel;
-    //TODO
+//    用户歌单
+    private Sheet uCollectionMusic;
+    private Sheet uBuyMusic;
+    private Set<Sheet> uCreateSheet;
+    private Set<Sheet> uCollectionSheet;
+
 }
