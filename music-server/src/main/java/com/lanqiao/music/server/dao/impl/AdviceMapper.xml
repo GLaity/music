@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lanqiao.music.server.dao.AdviceMapper">
-
+    <resultMap id="adviceMap" type="com.lanqiao.music.server.pojo.Advice">
+        <id column="aid" property="aid"/>
+        <result column="uid" property="uid"/>
+        <result column="mid" property="mid"/>
+        <result column="atext" property="atext"/>
+        <result column="adate" property="adate"/>
+    </resultMap>
+    <insert id="insertAdvice" parameterType="com.lanqiao.music.server.pojo.Advice">
+        insert into advice (mid, uid, atext,adate)
+        values (#{mid}, #{uid}, #{atext}, #{adate})
+        <selectKey resultType="int" keyColumn="aid" keyProperty="aid" order="AFTER">
+            select LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+    <select id="selectAdviceByAid" parameterType="int" resultMap="adviceMap">
+        select * from advice where aid = #{aid}
+    </select>
+    <select id="selectAdviceByUser" parameterType="int" resultMap="adviceMap">
+        select * from advice where uid = #{uid}
+    </select>
+    <select id="selectAdviceByMusic" parameterType="int" resultMap="adviceMap">
+        select * from advice where mid = #{mid}
+    </select>
 </mapper>

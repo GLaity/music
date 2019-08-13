@@ -1,6 +1,5 @@
 package com.lanqiao.music.server.service;
 
-import com.lanqiao.music.server.pojo.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

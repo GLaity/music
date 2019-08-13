@@ -9,8 +9,6 @@ import java.util.List;
 @Repository
 @Mapper
 public interface UserMapper {
-    //用户登录
-    User selectUserByUname(String uname);
     //主键删除
     int deleteByPrimaryKey(Integer uid);
     //添加用户

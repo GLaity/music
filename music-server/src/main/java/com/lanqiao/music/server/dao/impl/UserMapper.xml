@@ -4,11 +4,20 @@
     <sql id="sqlbase">
         uid,uname,upwd,ubalance,udate,vdate,usex,utel
     </sql>
-
-    <select id="selectUserByUname" parameterType="string" resultType="com.lanqiao.music.server.pojo.User">
-        select * from user where uname = #{uname};
-    </select>
-
+    <resultMap id="userMap" type="com.lanqiao.music.server.pojo.User">
+        <id property="uid" column="uid"/>
+        <result property="uname" column="uname"/>
+        <result property="upwd" column="upwd"/>
+        <result property="ubalance" column="ubalance"/>
+        <result property="udate" column="udate"/>
+        <result property="vdate" column="vdate"/>
+        <result property="usex" column="usex"/>
+        <result property="utel" column="utel"/>
+        <association property="uCollectionMusic" javaType="com.lanqiao.music.server.pojo.Sheet" select="selectCollectionMusic" column="uid"/>
+        <association property="uBuyMusic" javaType="com.lanqiao.music.server.pojo.Sheet" select="selectBuyMusic" column="uid"/>
+        <collection property="uCreateSheet" ofType="com.lanqiao.music.server.pojo.Sheet" select="selectCreateSheet" column="uid"/>
+        <collection property="uCollectionSheet" ofType="com.lanqiao.music.server.pojo.Sheet" select="selectCollectionSheet" column="uid"/>
+    </resultMap>
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultType="com.lanqiao.music.server.pojo.User">
         select
         <include refid="sqlbase" />
