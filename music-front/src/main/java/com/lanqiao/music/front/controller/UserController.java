@@ -6,10 +6,7 @@ import com.lanqiao.music.server.service.IBoughtService;
 import com.lanqiao.music.server.service.IUserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @SessionAttributes(value = {"user"}, types = {User.class})
@@ -74,6 +71,11 @@ public class UserController {
         user.setUpwd(password);
         user.setUbalance(0.0);
         iUserService.register(user);
+        return "login";
+    }
+    @RequestMapping("/out")
+    public String out(){
+
         return "login";
     }
 
