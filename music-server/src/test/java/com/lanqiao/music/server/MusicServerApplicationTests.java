@@ -13,12 +13,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class MusicServerApplicationTests {
 
-    @Autowired
-    private IBoughtService iBoughtService;
+
     @Test
     public void contextLoads() {
 
-        iBoughtService.addBought(1,"充值",10.0);
     }
 
 }

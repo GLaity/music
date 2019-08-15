@@ -4,9 +4,6 @@
     <insert id="insertBought" parameterType="com.lanqiao.music.server.pojo.Bought">
         insert into bought (uid,service,bdate, bmoney)
         values(#{uid},#{service},NOW(),#{bmoney})
-        <selectKey resultType="int" keyColumn="bid" keyProperty="bid" order="AFTER">
-            select LAST_INSERT_ID()
-        </selectKey>
     </insert>
 
 </mapper>

@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 import java.util.Date;
-
 @Data
 @Component
 //购买记录表
