@@ -20,7 +20,6 @@ public class BoughtService implements IBoughtService {
         bought.setUid(uid);
         bought.setService(service);
         bought.setBmoney(money);
-        System.out.println(bought);
         boughtMapper.insertBought(bought);
     }
 }

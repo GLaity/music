@@ -5,11 +5,17 @@
     <title>首页</title>
 </head>
 <body>
-    <h1>Happy New Year</h1>
-    <h1 th:text="'当前用户：'+${user.uname}"></h1>
-    <h1 th:text="'是否为会员'+${user.isIsvip()}"></h1>
-    <h1 th:text="'当前余额：'+${user.ubalance}"></h1>
-    <h1 th:text="'当前会员到期日期'+${user.getVdate()}"></h1>
+    <h6 th:text="'当前用户：'+${user.uname}"></h6>
+    <h6 th:text="'是否为会员'+${user.isIsvip()}"></h6>
+    <h6 th:text="'当前余额：'+${user.ubalance}"></h6>
+    <h6 th:text="'当前会员到期日期'+${user.getVdate()}"></h6>
+    用户歌单
+    <table>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
 <form action="/money" method="post">
     <input type="text" name="money" value=""/>
     <input type="submit" value="充值"/>

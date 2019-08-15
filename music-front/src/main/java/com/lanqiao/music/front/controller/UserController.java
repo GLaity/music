@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
@@ -57,13 +58,14 @@ public class UserController {
         }
     }
     @RequestMapping("/check")
-    public void check(Model model,String username){
+    @ResponseBody
+    public String check(String username){
         User user = iUserService.findUserByName(username);
-        String msg1 = "";
+        String msg= "";
         if(user!=null){
-            msg1="0";
+            msg="0";
         }
-        model.addAttribute("msg1",msg1);
+        return msg;
     }
     @RequestMapping("/register")
     public String register(String username,String password){

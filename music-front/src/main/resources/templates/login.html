@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>登录</title>
@@ -14,30 +14,31 @@
     <form action="/register" method="post" onsubmit="return checkAgreement();">
             <h2>会员注册</h2>
             <ul>
-                <li class="user_icon">
-                    <input type="text" class="textbox" placeholder="用户名" name="username" id="username" value=""/>
+                <li>
+                    <input type="text" placeholder="用户名" name="username" id="username" value=""/>
                 </li>
                 <span id="namemsg"></span>
 
-                <li class="user_pwd">
-                    <input type="password" class="textbox" placeholder="设置密码" name="password" id="password" value=""/>
+                <li>
+                    <input type="password"placeholder="设置密码" name="password" id="password" value=""/>
                 </li>
                 <span id="pwdmsg"></span>
 
-                <li class="user_pwd">
-                    <input type="password" class="textbox" placeholder="确认密码"name="repassword" id="repassword" value=""/>
+                <li>
+                    <input type="password"placeholder="确认密码"name="repassword" id="repassword" value=""/>
                 </li>
                 <span id="repwdmsg"></span>
 
-                <li class="link_li">
+                <li>
                     <label><input type="checkbox" name="agree" id="readArgee"/><a>阅读注册协议</a></label>
-                    <a href="login.jsp" title="登录账号" class="fr">已有账号，立即登录？</a>
+                    <a href="login.jsp" title="登录账号">已有账号，立即登录？</a>
                 </li>
-                <li class="link_li">
-                    <input type="submit" value="立即注册" class="sbmt_btn" id="regbtn" disabled=""/>
+                <li>
+                    <input type="submit" value="立即注册" id="regbtn" disabled=""/>
                 </li>
             </ul>
     </form>
+
 </body>
 <script type="text/javascript">
     function checkAgreement() {
@@ -50,24 +51,24 @@
         return true;
     }
     $(function () {
-        // $("#username").mouseleave(function () {
-        //     var username = $("#username").val();
-        //     $.ajax({
-        //         type:"post",
-        //         url:"/check",
-        //         data:"username="+username,
-        //
-        //         success:function (data) {
-        //             if(data=="0"){
-        //                 $("#namemsg").text("用户名已被注册");
-        //                 $("#regbtn").attr("disable","disabled");
-        //             }else{
-        //                 $("#regbtn").removeAttr("disabled");
-        //                 $("#namemsg").text("");
-        //             }
-        //         }
-        //     })
-        // })
+        $("#username").mouseleave(function () {
+            var username = $("#username").val();
+            $.ajax({
+                type:"post",
+                url:"/check",
+                data:"username="+username,
+
+                success:function (data) {
+                    if(data=="0"){
+                        $("#namemsg").text("用户名已被注册");
+                        $("#regbtn").attr("disable","disabled");
+                    }else{
+                        $("#regbtn").removeAttr("disabled");
+                        $("#namemsg").text("");
+                    }
+                }
+            })
+        })
         $("#password").mouseleave(function () {
             if($("#repassword").val()!=$("#password").val()){
                 $("#pwdmsg").text("两次密码不一致，请重新输入");
