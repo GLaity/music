@@ -1,12 +1,16 @@
 package com.lanqiao.music.server.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
+import com.lanqiao.music.server.dao.BoughtMapper;
 import com.lanqiao.music.server.dao.UserMapper;
 import com.lanqiao.music.server.pojo.User;
 import com.lanqiao.music.server.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -46,6 +50,11 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public void register(User user) {
+        userMapper.insertUser(user);
+    }
+
+    @Override
     public User findUserByUid(Integer uid) {
         return userMapper.selectUserByUid(uid);
     }
@@ -55,35 +64,52 @@ public class UserService implements IUserService {
         userMapper.updateUser(user);
     }
 
-
-
-
-    //充值消费
     @Override
-    public void addBalance(User user,Double money) {
-        user.setUbalance(user.getUbalance()+money);
-        userMapper.updateUser(user);
+    public User findUserByName(String uname) {
+        User user = userMapper.selectUserByUname(uname);
+        return user;
     }
 
+
+    //充值金额
+    @Override
+    public void addBalance(User user,Double money) {
+        Double d = user.getUbalance()+money;
+        user.setUbalance(d);
+        userMapper.updateUser(user);
+    }
+    //减少余额
     @Override
     public void reduceBalance(User user,Double money) {
-        user.setUbalance(user.getUbalance()-money);
+        user.setUbalance((user.getUbalance()-money));
         userMapper.updateUser(user);
     }
     //充值会员
     @Override
     public void rechargeVip(User user, Integer mouth) {
-        Date d;
-        if(user.getVdate()==null){
-            d = new Date();
-        }else{
-            d = user.getVdate();
+        if(user.getVdate()!=null){
+            user.setVdate(subMonth(user.getVdate(),mouth));
+        }else {
+            user.setVdate(subMonth(new Date(),mouth));
         }
-        Calendar cd = Calendar.getInstance();
-        cd.setTime(d);
-        cd.add(Calendar.DAY_OF_MONTH,+mouth);
-        user.setVdate(cd.getTime());
+        user.setUbalance((user.getUbalance()-(mouth*10.0)));
         userMapper.updateUser(user);
     }
 
+    //增加一个月
+    public  Date subMonth(Date date,Integer mouth){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Calendar rightNow = Calendar.getInstance();
+        rightNow.setTime(date);
+        rightNow.add(Calendar.MONTH, mouth);
+        Date dt1 = rightNow.getTime();
+        String reStr = sdf.format(dt1);
+        Date d = null;
+        try {
+            d = sdf.parse(reStr);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return d;
+    }
 }
