@@ -1,6 +1,6 @@
 package com.lanqiao.music.server.dao;
 
-import com.lanqiao.music.server.pojo.Advice;
+import org.aopalliance.aop.Advice;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 

@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+
 public interface IMusicService {
     List<Music> queryAllMusic();
     Music queryMusicByMId(Integer mid);
