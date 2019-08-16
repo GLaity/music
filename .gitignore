@@ -14,9 +14,11 @@ target/
 *.diff
 *.patch
 *.tmp
+*.yaml
 #system ignore
 .DS_Store
 Thumbs.db
 *.yaml
 *.music-resources
+
 

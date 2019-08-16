@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="sync lyric with HTML5 audio tag">
+        <meta name="author" content="Wayou">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>sync lyric with HTML5 audio tag</title>
+        <link rel="stylesheet" href="styles/style.css">
+    </head>
+    <body>
+        <div class="wrapper">
+            <div id="player">
+                <audio controls id="audio" src="./content/songs/2/music.mp3">!Audio Not Support :(</audio>
+            </div>
+            <div id="playlist">
+                <ol>
+					<li th:each="songs:${musicList}">
+                        <a href="javascript:void(0);" th:attr="data-name=${songs.getMloc()}" th:text="${songs.getMname()}"></a>
+                    </li>
+<!--                    <li>-->
+<!--                        <a href="javascript:void(0);" data-name="abc" th:text="abc"></a>-->
+<!--                    </li>-->
+
+                </ol>
+            </div>
+            <div id="lyricWrapper">
+                <div id="lyricContainer">
+                </div>
+            </div>
+        </div>
+        <script src="scripts/selected.js"></script>
+    </body>
+</html>

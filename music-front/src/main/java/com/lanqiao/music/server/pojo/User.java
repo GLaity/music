@@ -27,6 +27,8 @@ public class User implements Serializable {
     private Integer usex;
 //    用户联系方式
     private String utel;
+    //是否为VIP
+    private boolean isvip;
 //    用户歌单
     private Sheet uCollectionMusic;
     private Sheet uBuyMusic;
