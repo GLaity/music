@@ -17,7 +17,7 @@
     </resultMap>
     <insert id="insertUser" parameterType="com.lanqiao.music.server.pojo.User">
         insert into user (uname, upwd, ubalance,udate)
-        values (#{uname}, #{uname}, #{ubalance}, #{udate})
+        values (#{uname}, #{upwd}, #{ubalance}, #{udate})
         <selectKey resultType="int" keyColumn="uid" keyProperty="uid" order="AFTER">
             select LAST_INSERT_ID()
         </selectKey>
