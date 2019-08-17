@@ -13,8 +13,9 @@ public class UserController {
 
     @RequestMapping("/")
     public String init(){
-        return "login";
+        return "index";
     }
+
 
     @RequestMapping("/login")
     public String loginCheck(String uname, String upwd){
@@ -26,4 +27,5 @@ public class UserController {
             return "login";
         }
     }
+
 }
