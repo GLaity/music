@@ -34,6 +34,11 @@ public class UserController {
         return "register";
     }
 
+    @RequestMapping("/topersonal")
+    public String topersonal(){
+        return "personal";
+    }
+
 
     @RequestMapping("/login")
     public String loginCheck(String uname, String upwd, Model model){
