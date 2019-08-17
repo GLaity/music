@@ -11,8 +11,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.sql.SQLException;
 import java.util.List;
-
-@MapperScan("com.lanqiao.music.server.dao")
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class MusicServerApplicationTests {

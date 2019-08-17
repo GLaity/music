@@ -14,5 +14,4 @@ public interface ISheetService {
      List<Sheet> searchAll();
      List<Sheet> searchBytype(Integer type);
      //随机从数据库里拿到20个
-
 }

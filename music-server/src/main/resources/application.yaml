@@ -8,49 +8,34 @@ spring:
   mvc:
     date-format: yyyy-MM-dd
   datasource:
-   url: jdbc:mysql://123.57.52.37:3306/music?serverTimezone=UTC
+    url: jdbc:mysql://123.57.52.37:3306/music
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: 'root'
-     password: 'Root@2019'
+    password: 'Root@2019'
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
-      # \u4E0B\u9762\u4E3A\u8FDE\u63A5\u6C60\u7684\u8865\u5145\u8BBE\u7F6E\uFF0C\u5E94\u7528\u5230\u4E0A\u9762\u6240\u6709\u6570\u636E\u6E90\u4E2D
-      # \u521D\u59CB\u5316\u5927\u5C0F\uFF0C\u6700\u5C0F\uFF0C\u6700\u5927
       initial-size: 5
       min-idle: 5
       max-active: 20
-      # \u914D\u7F6E\u83B7\u53D6\u8FDE\u63A5\u7B49\u5F85\u8D85\u65F6\u7684\u65F6\u95F4
       max-wait: 60000
-      # \u914D\u7F6E\u95F4\u9694\u591A\u4E45\u624D\u8FDB\u884C\u4E00\u6B21\u68C0\u6D4B\uFF0C\u68C0\u6D4B\u9700\u8981\u5173\u95ED\u7684\u7A7A\u95F2\u8FDE\u63A5\uFF0C\u5355\u4F4D\u662F\u6BEB\u79D2
       time-between-eviction-runs-millis: 60000
-      # \u914D\u7F6E\u4E00\u4E2A\u8FDE\u63A5\u5728\u6C60\u4E2D\u6700\u5C0F\u751F\u5B58\u7684\u65F6\u95F4\uFF0C\u5355\u4F4D\u662F\u6BEB\u79D2
       min-evictable-idle-time-millis: 300000
       validation-query: SELECT 1 FROM DUAL
       test-while-idle: true
       test-on-borrow: false
       test-on-return: false
-      # \u6253\u5F00PSCache\uFF0C\u5E76\u4E14\u6307\u5B9A\u6BCF\u4E2A\u8FDE\u63A5\u4E0APSCache\u7684\u5927\u5C0F
       pool-prepared-statements: true
-      #   \u914D\u7F6E\u76D1\u63A7\u7EDF\u8BA1\u62E6\u622A\u7684filters\uFF0C\u53BB\u6389\u540E\u76D1\u63A7\u754C\u9762sql\u65E0\u6CD5\u7EDF\u8BA1\uFF0C'wall'\u7528\u4E8E\u9632\u706B\u5899
       max-pool-prepared-statement-per-connection-size: 20
       filters: stat,wall,log4j
       use-global-data-source-stat: true
-      # \u901A\u8FC7connectProperties\u5C5E\u6027\u6765\u6253\u5F00mergeSql\u529F\u80FD\uFF1B\u6162SQL\u8BB0\u5F55
       connect-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
-      # \u914D\u7F6E\u76D1\u63A7\u670D\u52A1\u5668
       stat-view-servlet:
         login-username: admin
         login-password: 123456
         reset-enable: false
         url-pattern: /druid/*
-        # \u6DFB\u52A0IP\u767D\u540D\u5355
-        #allow:
-        # \u6DFB\u52A0IP\u9ED1\u540D\u5355\uFF0C\u5F53\u767D\u540D\u5355\u548C\u9ED1\u540D\u5355\u91CD\u590D\u65F6\uFF0C\u9ED1\u540D\u5355\u4F18\u5148\u7EA7\u66F4\u9AD8
-        #deny:
       web-stat-filter:
-        # \u6DFB\u52A0\u8FC7\u6EE4\u89C4\u5219
         url-pattern: /*
-        # \u5FFD\u7565\u8FC7\u6EE4\u683C\u5F0F
         exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
 dubbo:
   application:
@@ -59,7 +44,5 @@ dubbo:
     address: zookeeper://123.57.52.37:2181
   scan:
     base-packages: com.lanqiao.music.server.service
-  protocol:
-    host: 192.168.0.147
-    name: dubbo
-    id: dubbo
+server:
+  port: 8001
