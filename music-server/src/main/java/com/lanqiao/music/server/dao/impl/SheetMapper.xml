@@ -1,170 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lanqiao.music.server.dao.SheetMapper">
-  <resultMap id="sheetAndMusicMap" type="com.lanqiao.music.server.pojo.Sheet">
-    <id column="sid" jdbcType="INTEGER" property="sid" />
-    <result column="ssum" jdbcType="INTEGER" property="ssum" />
-    <result column="sname" jdbcType="VARCHAR" property="sname" />
-    <result column="scontext" jdbcType="VARCHAR" property="scontext" />
-    <result column="sdate" jdbcType="DATE" property="sdate" />
-<!--    <association javaType="com.lanqiao.music.server.pojo.Music" property="musicList">-->
-<!--      <id column="mid" javaType="int" jdbcType="INTEGER" property="mid" />-->
-<!--      <result column="mname" jdbcType="VARCHAR" property="mname" />-->
-<!--    </association>-->
-  </resultMap>
-  <sql id="Base_Column_List">
-    sid, ssum, sname, scontext, sdate
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="sheetAndMusicMap">
-    select 
-    <include refid="Base_Column_List" />
-    from sheet
-    where sid = #{sid,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from sheet
-    where sid = #{sid,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.lanqiao.music.server.pojo.Sheet">
-    insert into sheet (sid, ssum, sname, 
-      scontext, sdate)
-    values (#{sid,jdbcType=INTEGER}, #{ssum,jdbcType=INTEGER}, #{sname,jdbcType=VARCHAR}, 
-      #{scontext,jdbcType=VARCHAR}, #{sdate,jdbcType=DATE})
-  </insert>
-  <insert id="insertSelective" parameterType="com.lanqiao.music.server.pojo.Sheet">
-    insert into sheet
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="sid != null">
-        sid,
-      </if>
-      <if test="ssum != null">
-        ssum,
-      </if>
-      <if test="sname != null">
-        sname,
-      </if>
-      <if test="scontext != null">
-        scontext,
-      </if>
-      <if test="sdate != null">
-        sdate,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="sid != null">
-        #{sid,jdbcType=INTEGER},
-      </if>
-      <if test="ssum != null">
-        #{ssum,jdbcType=INTEGER},
-      </if>
-      <if test="sname != null">
-        #{sname,jdbcType=VARCHAR},
-      </if>
-      <if test="scontext != null">
-        #{scontext,jdbcType=VARCHAR},
-      </if>
-      <if test="sdate != null">
-        #{sdate,jdbcType=DATE},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.lanqiao.music.server.pojo.Sheet">
-    update sheet
-    <set>
-      <if test="ssum != null">
-        ssum = #{ssum,jdbcType=INTEGER},
-      </if>
-      <if test="sname != null">
-        sname = #{sname,jdbcType=VARCHAR},
-      </if>
-      <if test="scontext != null">
-        scontext = #{scontext,jdbcType=VARCHAR},
-      </if>
-      <if test="sdate != null">
-        sdate = #{sdate,jdbcType=DATE},
-      </if>
-    </set>
-    where sid = #{sid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.lanqiao.music.server.pojo.Sheet">
-    update sheet
-    set ssum = #{ssum,jdbcType=INTEGER},
-      sname = #{sname,jdbcType=VARCHAR},
-      scontext = #{scontext,jdbcType=VARCHAR},
-      sdate = #{sdate,jdbcType=DATE}
-    where sid = #{sid,jdbcType=INTEGER}
-  </update>
+    <select id="searchAll" resultType="com.lanqiao.music.server.pojo.Sheet">
+        select * from sheet
+    </select>
+    <select id="searchId" resultType="integer" parameterType="string">
+        select sid from sheet where sname=#{sname}
+    </select>
+    <insert id="insertSheet" parameterType="com.lanqiao.music.server.pojo.Sheet">
+        insert sheet(ssum,sname,scontext,sdate) values (0,#{sname},#{scontext},date(NOW()))
+        <selectKey resultType="int" keyColumn="sid" keyProperty="sid" order="AFTER">
+            select @@identity
+        </selectKey>
+    </insert>
     <insert id="insertSheetUser" parameterType="map">
         insert sheet_music (sid,sname,uid,type) values (#{sid},#{sname},#{uid},#{type})
     </insert>
     <insert id="insertSheetMusic" parameterType="map">
         insert sheet_music(sid,mid) values (#{sid},#{mid})
     </insert>
-<!--    <update id="updateSheet" parameterType="com.lanqiao.music.server.pojo.Sheet">-->
-<!--        update sheet set ssum=#{ssum},sname=#{sname},scontext=#{scontext} where sid=#{sid}-->
-<!--    </update>-->
-    <delete id="deleteSheetUser" parameterType="int">
-        delete from sheet_user where uid=#{uid}
-    </delete>
-    <delete id="deleteSheetMusic" parameterType="map">
-        delete from sheet_music where 1=1
-        <if test="sid !=null">
-            sid=#{sid}
-        </if>
-        <if test="mid !=null">
-            mid=#{mid}
-        </if>
-    </delete>
-    <delete id="deleteSheet" parameterType="string">
-        delete from  sheet where sname=#{sname}
-    </delete>
-    <select id="searchAll" resultType="com.lanqiao.music.server.pojo.Sheet">
-        select sid,ssum,sname,scontext,sdate from sheet
-    </select>
-    <select id="searchBytype" parameterType="int" resultType="com.lanqiao.music.server.pojo.Sheet">
-        select sid,ssum,sname,scontext,sdate from sheet s,sheet_user su
-        where s.sid=su.sid
-        and su.type =#{type}
-    </select>
-    <select id="searchByCondition" parameterType="map" resultType="com.lanqiao.music.server.pojo.Sheet">
-        select sid,ssum,sname,scontext,sdate from sheet
-        where 1=1
-        <if test="sname!=null">
-            sname like '%' #{sname} '%'
-        </if>
-        <if test="scontext">
-            scontext like '%'#{scontext} '%'
-        </if>
-        <if test="ssum!=0">
-            ssum =#{ssum}
-        </if>
-    </select>
-    <select id="searchBySum" parameterType="map" resultType="com.lanqiao.music.server.pojo.Sheet">
-        select sid,ssum,sname,scontext,sdate from sheet
-        where 1=1
-        <if test="maxSum!=0">
-            <if test="minSum!=0">
-                ssum between #{minSum} and #{maxSum}
-            </if>
-            <if test="minSum=0">
-                ssum between 0 and #{maxSum}
-            </if>
-        </if>
-        <if test="maxSum=0">
-            ssum between 0 and #{minSum}
-        </if>
-    </select>
-    <select id="searchByMusic" parameterType="string" resultType="com.lanqiao.music.server.pojo.Sheet">
-        select sid,ssum,sname,scontext,sdate from sheet s ,sheet_music sm
-        where s.sid= sm.sid
-        and mid in {
-        select mid from music
-        where mname =#{mname}
-        }
-    </select>
-    <select id="searchByUser" parameterType="integer" resultType="com.lanqiao.music.server.pojo.Sheet">
-        select sid,ssum,sname,scontext,sdate from sheet s,sheet_user su
-        where s.sid=su.sid and
-        uid =#{userId}
-    </select>
+    <update id="updateSheet" parameterType="com.lanqiao.music.server.pojo.Sheet">
+        update sheet set ssum=#{ssum},sname=#{sname},scontext=#{scontext} where sid=#{sid}
+    </update>
 </mapper>

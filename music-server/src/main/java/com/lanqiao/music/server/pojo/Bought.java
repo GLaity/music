@@ -15,7 +15,7 @@ public class Bought  implements Serializable {
 //    用户id
     private Integer uid;
 //    音乐id
-    private Integer mid;
+    private String service;
 //    购买时间
     private Date bdate;
 //    交易金额

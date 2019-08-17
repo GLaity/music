@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Data
 @Component
-public class Music  implements Serializable {
+public class Music implements Serializable {
     //音乐ID
     private Integer mid;
     //歌名
@@ -26,11 +26,11 @@ public class Music  implements Serializable {
     //流派
     private String mstyle;
     //语种
-    private Double mlanguage;
+    private String mlanguage;
     //音乐价格
-    private String mprice;
+    private Double mprice;
     //音乐路径
-    private Date mloc;
+    private String mloc;
     //发行时间
     private Date mdate;
 
