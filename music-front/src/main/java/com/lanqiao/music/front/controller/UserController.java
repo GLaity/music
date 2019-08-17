@@ -22,8 +22,13 @@ public class UserController {
 
     @RequestMapping("/")
     public String init(){
-        return "login";
+        return "index";
     }
+
+    @RequestMapping("/tologin")
+        public String toLogin(){
+        return "signin";
+        }
 
     @RequestMapping("/login")
     public String loginCheck(String uname, String upwd, Model model){
@@ -32,7 +37,7 @@ public class UserController {
             model.addAttribute("user",user);
             return "index";
         } else {
-            return "login";
+            return "singin";
         }
     }
 

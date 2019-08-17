@@ -2,6 +2,7 @@ package com.lanqiao.music.front;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.lanqiao.music.server.pojo.User;
+import com.lanqiao.music.server.service.ISheetService;
 import com.lanqiao.music.server.service.IUserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,10 +20,13 @@ import java.util.Date;
 public class MusicFrontApplicationTests {
     @Reference
     private IUserService iUserService;
+    @Reference
+    private ISheetService iSheetService;
     @Test
     public void contextLoads() {
 //        System.out.println();
 //        System.out.println(iUserService.login("李四","123456"));
+        System.out.println(iSheetService.searchAll("李四歌单"));
     }
     @Test
     public  void subMonth() throws ParseException {
