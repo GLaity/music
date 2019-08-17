@@ -14,8 +14,7 @@ public class MusicController {
     @Reference
     private IMusicService iMusicService;
 
-    @Reference
-    private ISheetService iSheetService;
+
     @RequestMapping("/music")
     public String findAllMusic(Model model){
         List<Music> musicList = iMusicService.queryAllMusic();

@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 @SessionAttributes(value = {"user"}, types = {User.class})
 public class UserController {
@@ -19,8 +21,19 @@ public class UserController {
 
     @RequestMapping("/")
     public String init(){
+        return "index";
+    }
+
+    @RequestMapping("/tologin")
+    public String tologin(){
         return "login";
     }
+
+    @RequestMapping("/toregister")
+    public String toregister(){
+        return "register";
+    }
+
 
     @RequestMapping("/login")
     public String loginCheck(String uname, String upwd, Model model){
@@ -74,8 +87,8 @@ public class UserController {
         return "login";
     }
     @RequestMapping("/out")
-    public String out(){
-
+    public String out(HttpSession session){
+            session.removeAttribute("user");
         return "login";
     }
 
