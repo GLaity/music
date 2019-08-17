@@ -11,9 +11,9 @@ import java.util.List;
 
 @Controller
 public class MusicController {
-//    @Reference
-//    private IMusicService iMusicService;
-//
+    @Reference
+    private IMusicService iMusicService;
+
 //
 //    @RequestMapping("/music")
 //    public String findAllMusic(Model model){

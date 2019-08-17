@@ -114,7 +114,7 @@
                                                     </div>
                                                     <div class="center text-center m-t-n">
                                                         <!--播放-->
-                                                        <a href="#"><i class="icon-control-play i-2x"></i></a>
+                                                        <a href="#" onclick="play('儿歌')"><i class="icon-control-play i-2x"></i></a>
                                                     </div>
                                                     <div class="bottom padder m-b-sm">
                                                         <!--加入歌单-->
@@ -726,7 +726,7 @@
                                                 <a class="jp-video-play-icon">play</a>
                                             </div>
                                             <div id="player">
-                                                <audio controls id="audio" src="./content/songs/na_ge.mp3"  >!Audio Not Support :(</audio>
+                                                <audio controls id="audio" src=""  >!Audio Not Support :(</audio>
                                             </div>
                                             <!-- <div class="jp-interface">
                                               <div class="jp-controls">
@@ -822,12 +822,25 @@
 <!-- Bootstrap -->
 <script src="asserts/js/bootstrap.js"></script>
 <!-- App -->
-<script src="asserts/js/app.js"></script>
-<script src="asserts/js/slimscroll/jquery.slimscroll.min.js"></script>
-<script src="asserts/js/app.plugin.js"></script>
-<script type="text/javascript" src="asserts/js/jPlayer/jquery.jplayer.min.js"></script>
-<script type="text/javascript" src="asserts/js/jPlayer/add-on/jplayer.playlist.min.js"></script>
-<script type="text/javascript" src="asserts/js/jPlayer/demo.js"></script>
-
+<!--<script src="asserts/js/app.js"></script>-->
+<!--<script src="asserts/js/slimscroll/jquery.slimscroll.min.js"></script>-->
+<!--<script src="asserts/js/app.plugin.js"></script>-->
+<!--<script type="text/javascript" src="asserts/js/jPlayer/jquery.jplayer.min.js"></script>-->
+<!--<script type="text/javascript" src="asserts/js/jPlayer/add-on/jplayer.playlist.min.js"></script>-->
+<!--<script type="text/javascript" src="asserts/js/jPlayer/demo.js"></script>-->
+<script type="text/javascript">
+    var audio = $("#audio");
+    function play(songName) {
+        audio[0].src = './content/songs/'+songName+'.mp3'
+        audio[0].play();
+        // $("#play_btn").addClass("hid");
+        // $("#pause_btn").removeClass("hid");
+    }
+    function pause() {
+        audio[0].pause();
+        // $("#play_btn").removeClass("hid");
+        // $("#pause_btn").addClass("hid");
+    }
+</script>
 </body>
 </html>
