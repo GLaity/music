@@ -11,16 +11,17 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.sql.SQLException;
 import java.util.List;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class MusicServerApplicationTests {
-    @Autowired
     private SheetMapper sheetMapper;
     @Test
     public void contextLoads() throws SQLException {
 //        System.out.println("-----------");
-        List<Sheet> sheets =sheetMapper.searchAll();
-        System.out.println(sheets);
+
+        Sheet sheet =sheetMapper.selectByPrimaryKey(1);
+        System.out.println(sheet);
     }
 
 }
