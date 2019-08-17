@@ -253,40 +253,23 @@
 														<a href="#" class="thumb-lg">
 															<img src="./asserts/images/a0.png" class="img-circle">
 														</a>
-														<div>
+														<div th:if="${user.isIsvip()}">
 															<div class="h3 m-t-xs m-b-xs"> <span th:text="${user.getUname()}"></span></div>
 
-															<small class="text-muted"><i class=" icon-diamond"></i> 会员</small><br />
+															<small class="text-muted"><i class=" icon-diamond"></i>会员</small><br />
 															<small class="text-muted" th:text="'当前会员到期日期'+${user.getVdate()}"></small>
-
 														</div>
+                                                        <div th:unless="${user.isIsvip()}">
+                                                            <div class="h3 m-t-xs m-b-xs"> <span th:text="${user.getUname()}"></span></div>
+                                                            <small class="text-muted"><i class=" icon-diamond"></i>普通用户</small><br />
+                                                        </div>
 													</div>
-													<!-- <div class="panel wrapper" style="width: 600px; margin: auto;">
-														<div class="row text-center">
-															<div class="col-xs-6">
-																<a href="#">
-																	<span class="m-b-xs h4 block">245</span>
-																	<small class="text-muted">Followers</small>
-																</a>
-															</div>
-															<div class="col-xs-6">
-																<a href="#">
-																	<span class="m-b-xs h4 block">55</span>
-																	<small class="text-muted">Following</small>
-																</a>
-															</div>
-														</div> -->
+
 													</div><br />
 													<div class="btn-group btn-group-justified m-b" style="width: 600px; margin: auto;">
 														<!-- <a class="btn btn-success btn-rounded" data-toggle="button"> -->
 														<a class="btn btn-success btn-rounded" href="member.html">
 															<i class="fa fa-eye"></i> 开通会员
-															<!-- <span class="text">
-																<i class="fa fa-eye"></i> 开通会员
-															</span> -->
-															<!-- <span class="text-active">
-																<i class="fa fa-eye"></i> Following
-															</span> -->
 														</a>
 														<a class="btn btn-primary btn-rounded" href="recharge.html">
 															<i class="icon-present"></i> 充值
@@ -296,23 +279,6 @@
 														</a>
 													</div><br />
 													<div style="text-align: center;">
-														<!-- <small class="h4 m-t-xs m-b-xs">用户注册时间</small>
-									  <p>Artist</p>
-									  <small class="h4 m-t-xs m-b-xs">手机号</small>
-									  <p>Artist</p>
-			                          <small class="h4 m-t-xs m-b-xs">性别</small>
-			                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat.</p>
-			                          <div class="line"></div>
-									  <small class="h4 m-t-xs m-b-xs">账户余额</small>
-									  <p>Artist</p>
-									  <small class="h4 m-t-xs m-b-xs">会员到期时间</small>
-									  <p>Artist</p>
-			                          <small class="text-uc text-xs text-muted">connection</small>
-			                          <p class="m-t-sm">
-			                            <a href="#" class="btn btn-rounded btn-twitter btn-icon"><i class="fa fa-twitter"></i></a>
-			                            <a href="#" class="btn btn-rounded btn-facebook btn-icon"><i class="fa fa-facebook"></i></a>
-			                            <a href="#" class="btn btn-rounded btn-gplus btn-icon"><i class="fa fa-google-plus"></i></a>
-			                          </p> -->
 
 													</div>
 												</div>
@@ -320,28 +286,24 @@
 													<table class="table table-hover">
 														<tr>
 															<td>手机号</td>
-															<td th:text="">15623569865</td>
+															<td></td>
 														</tr>
 														<tr>
 															<td>性别</td>
-															<td th:text="${user==0?'男':'女'}">男</td>
+															<td th:text="${user.getUsex()==1?'男':'女'}">男</td>
 														</tr>
 														<tr>
 															<td>账户余额</td>
-															<td th:text="">￥60 </td>
+															<td th:text="'￥'+ ${user.getUbalance()}"></td>
 														</tr>
 														<tr>
 															<td>用户注册时间</td>
-															<td th:text="">2019-06-30</td>
+															<td th:text="${user.getUdate()}"></td>
 														</tr>
 														<tr>
 															<td>会员到期时间</td>
-															<td th:text="">2018-08-31</td>
+															<td th:text="${user.getVdate()}"></td>
 														</tr>
-														
-														
-
-
 													</table>
 												</div>
 											</section>
