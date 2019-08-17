@@ -19,7 +19,7 @@ public class UserController {
 
     @RequestMapping("/")
     public String init(){
-        return "login";
+        return "index";
     }
 
     @RequestMapping("/login")

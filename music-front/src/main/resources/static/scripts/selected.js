@@ -12,8 +12,8 @@ window.onload = function() {
 };
 var Selected = function() {
     this.audio = document.getElementById('audio');
-    this.lyricContainer = document.getElementById('lyricContainer');
-    this.playlist = document.getElementById('playlist');
+    // this.lyricContainer = document.getElementById('lyricContainer');
+    // this.playlist = document.getElementById('playlist');
     this.currentIndex = 0;
     this.lyric = null;
 };
@@ -23,9 +23,10 @@ Selected.prototype = {
         var that = this,
             allSongs = this.playlist.children[0].children,
             currentSong, randomSong;
-        this.currentIndex = Math.floor(Math.random() * allSongs.length);
-        currentSong = allSongs[this.currentIndex];
-        randomSong = currentSong.children[0].getAttribute('data-name');
+        // this.currentIndex = Math.floor(Math.random() * allSongs.length);
+        // currentSong = allSongs[this.currentIndex];
+        // randomSong = currentSong.children[0].getAttribute('data-name');
+        randomSong = document.getElementById('song1');
         //handle playlist
         this.playlist.addEventListener('click', function(e) {
             if (e.target.nodeName.toLowerCase() !== 'a') {
@@ -56,12 +57,12 @@ Selected.prototype = {
         var that = this;
         this.audio.src = './content/songs/'+songName+'.mp3';
         //reset the position of the lyric container
-        this.lyricContainer.style.top = '130px';
+        // this.lyricContainer.style.top = '130px';
         //empty the lyric
-        this.lyric = null;
-        this.lyricContainer.textContent = 'loading...';
+        // this.lyric = null;
+        // this.lyricContainer.textContent = 'loading...';
         this.audio.oncanplay = function() {
-            that.getLyric(that.audio.src.replace('.mp3', '.lrc'));
+            // that.getLyric(that.audio.src.replace('.mp3', '.lrc'));
             this.play();
         };
         //sync the lyric
