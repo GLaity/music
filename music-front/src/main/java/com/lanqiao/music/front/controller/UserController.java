@@ -6,7 +6,10 @@ import com.lanqiao.music.server.service.IBoughtService;
 import com.lanqiao.music.server.service.IUserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 @SessionAttributes(value = {"user"}, types = {User.class})
@@ -22,6 +25,21 @@ public class UserController {
         return "index";
     }
 
+    @RequestMapping("/tologin")
+    public String tologin(){
+        return "login";    }
+
+    @RequestMapping("/toregister")
+    public String toregister(){
+        return "register";
+    }
+
+    @RequestMapping("/topersonal")
+    public String topersonal(){
+        return "personal";
+    }
+
+
     @RequestMapping("/login")
     public String loginCheck(String uname, String upwd, Model model){
         User user = iUserService.login(uname,upwd);
@@ -34,12 +52,10 @@ public class UserController {
     }
 
     @RequestMapping("/money")
-    public String rechargeMoney(@ModelAttribute("user") User user,Double money, Model model){
+    public String rechargeMoney(User user,Double money){
         iUserService.addBalance(user,money);
         iBoughtService.addBought(user.getUid(),"充值",money);
-        model.addAttribute("user",user);
-        model.addAttribute("msg","充值成功:"+money);
-        return "index";
+        return "personal";
     }
     @RequestMapping("/vip")
     public String vip(@ModelAttribute("user") User user, Integer mouth, Model model){
@@ -74,9 +90,15 @@ public class UserController {
         return "login";
     }
     @RequestMapping("/out")
-    public String out(){
-
+    public String out(HttpSession session){
+            session.removeAttribute("user");
         return "login";
+    }
+
+    @RequestMapping("/save")
+    public String save(User user){
+        iUserService.modifyUser(user);
+        return "personal";
     }
 
 }

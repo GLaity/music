@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" class="app" xmlns:th="http://www.thymeleaf.org">
+<head>  
+  <meta charset="utf-8" />
+  <title>Musik | Web Application</title>
+  <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" href="./asserts/js/jPlayer/jplayer.flat.css" type="text/css" />
+  <link rel="stylesheet" href="./asserts/css/bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="./asserts/css/animate.css" type="text/css" />
+  <link rel="stylesheet" href="./asserts/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="./asserts/css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="./asserts/css/font.css" type="text/css" />
+  <link rel="stylesheet" href="./asserts/css/app.css" type="text/css" />
+    <!--[if lt IE 9]>
+    <script src="./asserts/js/ie/html5shiv.js"></script>
+    <script src="./asserts/js/ie/respond.min.js"></script>
+    <script src="./asserts/js/ie/excanvas.js"></script>
+    <![endif]-->
+</head>
+<body class="">
+  <section class="vbox">
+      <div  th:replace="nav::top(activeUri='user')"></div>
+    <section>
+      <section class="hbox stretch">
+        <!-- .aside -->
+        <aside class="bg-black dk nav-xs aside hidden-print" id="nav">          
+          <section class="vbox">
+              <div  th:replace="nav::left(activeUri='user')"></div>
+			<!---->
+            
+            <footer class="footer hidden-xs no-padder text-center-nav-xs">
+              <div class="bg hidden-xs ">
+
+
+              </div>
+            </footer>
+          </section>
+        </aside>
+        <!-- /.aside -->
+					<section id="content">
+						<section class="vbox">
+							<section class="scrollable">
+								<section class="hbox stretch">
+									<aside class="aside-lg bg-light lter b-r">
+										<section class="vbox">
+											<section class="scrollable mar">
+												<div class="wrapper">
+													<div class="text-center m-b m-t">
+														<a href="#" class="thumb-lg">
+															<img src="./asserts/images/a0.png" class="img-circle">
+														</a>
+														<div th:if="${user.isIsvip()}">
+															<div class="h3 m-t-xs m-b-xs"> <span th:text="${user.getUname()}"></span></div>
+
+															<small class="text-muted"><i class=" icon-diamond"></i>会员</small><br />
+															<small class="text-muted" th:text="'当前会员到期日期'+${#dates.format(user.getVdate(),'yyyy-MM-dd')}"></small>
+														</div>
+                                                        <div th:unless="${user.isIsvip()}">
+                                                            <div class="h3 m-t-xs m-b-xs"> <span th:text="${user.getUname()}"></span></div>
+                                                            <small class="text-muted"><i class=" icon-diamond"></i>普通用户</small><br />
+                                                        </div>
+													</div>
+
+													</div><br />
+													<div class="btn-group btn-group-justified m-b" style="width: 600px; margin: auto;">
+														<!-- <a class="btn btn-success btn-rounded" data-toggle="button"> -->
+														<a class="btn btn-success btn-rounded" href="member.html">
+															<i class="fa fa-eye"></i> 开通会员
+														</a>
+														<a class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#recharge">
+															<i class="icon-present"></i> 充值
+														</a>
+														<a class="btn btn-dark btn-rounded" th:href="${'/user/'+user.getUid()}" data-toggle="modal" data-target="#update">
+															<i class="icon-user"></i>修改个人信息
+														</a>
+													</div><br />
+
+<!--                                                        弹出框   修改个人信息-->
+                                                <div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                <h4 class="modal-title" id="updateUser">修改个人信息</h4>
+                                                            </div>
+                                                            <div class="modal-body">
+
+                                                                <form th:action="@{'/save'}" method="post" role="form">
+
+                                                                    <input type="hidden" name="id" th:value="${user.getUid()}">
+                                                                    <div class="form-group">
+                                                                        <label>用户名</label>
+                                                                        <input name="uname" type="text" class="form-control" disabled="disabled" th:value="${user.getUname()}">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>手机号</label>
+                                                                        <input name="utel" type="text" class="form-control" placeholder="手机号" th:value="${user.getUtel()}">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>性别</label><br/>
+                                                                        <div class="form-check form-check-inline">
+                                                                            <input class="form-check-input" type="radio" name="usex" value="1" th:checked="${user.getUsex()==1}">
+                                                                            <label class="form-check-label">男</label>
+                                                                        </div>
+                                                                        <div class="form-check form-check-inline">
+                                                                            <input class="form-check-input" type="radio" name="usex" value="0" th:checked="${user.getUsex()==0}">
+                                                                            <label class="form-check-label">女</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <button type="submit" class="btn btn-primary">修改</button>
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                                                </form>
+                                                            </div>
+                                                        </div><!-- /.modal-content -->
+                                                    </div><!-- /.modal -->
+                                                </div>
+
+<!--                                                          充值页面-->
+
+                                                <div class="modal fade" id="recharge" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                <h4 class="modal-title" id="chongzhi">充值</h4>
+                                                            </div>
+                                                            <div class="modal-body">
+
+                                                                <form th:action="@{'/money'}" method="post" role="form">
+
+                                                                    <input type="hidden" name="id" th:value="${user.getUid()}">
+                                                                    <div class="form-group">
+                                                                        <label>您当前余额为：</label>
+                                                                        <input name="ubalance" type="text" class="form-control" disabled="disabled" th:value="${user.getUbalance()}">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>请输入充值金额：</label>
+                                                                        <input name="money" type="text" class="form-control">
+                                                                    </div>
+                                                                    <button type="submit" class="btn btn-primary">充值</button>
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                                                </form>
+                                                            </div>
+                                                        </div><!-- /.modal-content -->
+                                                    </div><!-- /.modal -->
+                                                </div>
+
+
+
+
+
+												</div>
+												<div style="text-align: center; width: 60%;margin: auto;">
+													<table class="table table-hover">
+														<tr>
+															<td>手机号</td>
+															<td th:text="${user.getUtel()}"></td>
+														</tr>
+														<tr>
+															<td>性别</td>
+															<td th:text="${user.getUsex()==1?'男':'女'}">男</td>
+														</tr>
+														<tr>
+															<td>账户余额</td>
+															<td th:text="'￥'+ ${user.getUbalance()}"></td>
+														</tr>
+														<tr>
+															<td>用户注册时间</td>
+															<td th:text="${#dates.format(user.getUdate(),'yyyy-MM-dd hh:mm:ss')}"></td>
+														</tr>
+														<tr>
+															<td>会员到期时间</td>
+															<td th:text="${#dates.format(user.getVdate(),'yyyy-MM-dd hh:mm:ss')}"></td>
+														</tr>
+													</table>
+												</div>
+											</section>
+
+										</section>
+
+									</aside>
+
+
+								</section>
+
+
+							</section>
+
+
+						</section>
+
+						<a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
+					</section>
+
+				</section>
+
+			</section>
+
+		</section>
+
+		<script src="./asserts/js/jquery.min.js"></script>
+		<!-- Bootstrap -->
+		<script src="./asserts/js/bootstrap.js"></script>
+		<!-- App -->
+		<script src="./asserts/js/app.js"></script>
+		<script src="./asserts/js/slimscroll/jquery.slimscroll.min.js"></script>
+		<script src="./asserts/js/charts/easypiechart/jquery.easy-pie-chart.js"></script>
+		<script src="./asserts/js/app.plugin.js"></script>
+		<script type="text/javascript" src="./asserts/js/jPlayer/jquery.jplayer.min.js"></script>
+		<script type="text/javascript" src="./asserts/js/jPlayer/add-on/jplayer.playlist.min.js"></script>
+		<script type="text/javascript" src="./asserts/js/jPlayer/demo.js"></script>
+
+	</body>
+</html>
