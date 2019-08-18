@@ -2,6 +2,7 @@ package com.lanqiao.music.server.service;
 
 import com.lanqiao.music.server.pojo.Music;
 import com.lanqiao.music.server.pojo.Sheet;
+import com.lanqiao.music.server.pojo.User;
 
 import java.util.List;
 
@@ -32,4 +33,8 @@ public interface ISheetService {
     List<Sheet> fingMyCollectionSheet(Integer uid);
     //查询所有歌单
     List<Sheet> findAllSheet();
+    //查询所有共有歌单
+    List<Sheet>findAllPublicSheet();
+    //根据歌单id查看uid
+    Integer findUser(Integer sid);
 }

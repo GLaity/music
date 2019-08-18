@@ -42,6 +42,15 @@
     <select id="selectAllSheet" resultMap="sheetMap">
         select * from sheet;
     </select>
+    <select id="selectBySid" parameterType="integer" resultType="integer">
+        select uid from  sheet_user where sid =#{sid}
+    </select>
+    <select id="selectSheetByType" parameterType="integer" resultMap="sheetMap">
+        select * from sheet where sid in (
+        select sid from sheet_user
+        where type = #{type}
+        )
+    </select>
     <select id="selectSheetByUserType" resultMap="sheetMap">
         select * from sheet
         where sid in (

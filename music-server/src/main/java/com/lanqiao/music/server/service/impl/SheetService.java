@@ -93,4 +93,15 @@ public class SheetService implements ISheetService {
     public List<Sheet> findAllSheet() {
         return sheetMapper.selectAllSheet();
     }
+
+    @Override
+    public List<Sheet> findAllPublicSheet() {
+        return sheetMapper.selectSheetByType(1);
+    }
+
+    @Override
+    public Integer findUser(Integer sid) {
+        return sheetMapper.selectBySid(sid);
+    }
+
 }
