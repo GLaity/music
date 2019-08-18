@@ -22,5 +22,9 @@ public class Sheet implements Serializable {
     //歌单创建时间
     private Date sdate;
     //歌单中歌曲列表
-//    private List<Music> musicList;
+    private List<Music> musicList;
+    //所属用户
+    private Integer uid;
+    //所属类型
+    private Integer type;
 }
