@@ -40,7 +40,15 @@ public class UserController {
         return "personal";
     }
 
+    @RequestMapping("/torecharge")
+    public String torecharge(){
+        return "recharge";
+    }
 
+    @RequestMapping("/tomoney")
+    public String tomoney(){
+        return "recharge";
+    }
     @RequestMapping("/login")
     public String loginCheck(String uname, String upwd, Model model){
         User user = iUserService.login(uname,upwd);

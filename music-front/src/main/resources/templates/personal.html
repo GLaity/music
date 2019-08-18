@@ -65,22 +65,20 @@
 													</div><br />
 													<div class="btn-group btn-group-justified m-b" style="width: 600px; margin: auto;">
 														<!-- <a class="btn btn-success btn-rounded" data-toggle="button"> -->
-                                                        <div th:if="${user.isIsvip()}">
-                                                            <a class="btn btn-success btn-rounded" href="member.html" data-toggle="modal" data-target="#xufeivip">
-                                                                <i class="fa fa-eye"></i> 续费会员
-                                                            </a>
-                                                        </div>
-                                                        <div th:unless="${user.isIsvip()}">
-                                                            <a class="btn btn-success btn-rounded" href="member.html" data-toggle="modal" data-target="#rechargevip">
-                                                                <i class="fa fa-eye"></i>充值会员
-                                                            </a>
-                                                        </div>
-														<a class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#recharge">
-															<i class="icon-present"></i> 充值
-														</a>
-														<a class="btn btn-dark btn-rounded" data-toggle="modal" data-target="#update">
-															<i class="icon-user"></i>修改个人信息
-														</a>
+
+                                                        <a class="btn btn-success btn-rounded" href="/torecharge" th:if="${user.isIsvip()}">
+                                                            <i class="fa fa-eye"></i> 续费会员
+                                                        </a>
+                                                        <a class="btn btn-success btn-rounded" href="/torecharge" th:unless="${user.isIsvip()}">
+                                                            <i class="fa fa-eye"></i>充值会员
+                                                        </a>
+                                                        <a class="btn btn-primary btn-rounded" href="/tomoney">
+                                                            <i class="icon-present"></i> 充值
+                                                        </a>
+                                                        <a class="btn btn-dark btn-rounded" data-target="#update">
+                                                            <i class="icon-user"></i> 修改个人信息
+                                                        </a>
+
 													</div><br />
 
 <!--                                                        弹出框   修改个人信息-->
@@ -123,73 +121,8 @@
                                                     </div><!-- /.modal -->
                                                 </div>
 
-<!--                                                          充值页面-->
-
-                                                <div class="modal fade" id="recharge" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                                <h4 class="modal-title" id="chongzhi">充值</h4>
-                                                            </div>
-                                                            <div class="modal-body">
-
-                                                                <form th:action="@{'/money'}" method="post" role="form">
-
-                                                                    <input type="hidden" name="id" th:value="${user.getUid()}">
-                                                                    <div class="form-group">
-                                                                        <label>您当前余额为：</label>
-                                                                        <input name="ubalance" type="text" class="form-control" disabled="disabled" th:value="${user.getUbalance()}">
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label>请输入充值金额：</label>
-                                                                        <input name="money" type="text" class="form-control">
-                                                                    </div>
-                                                                    <button type="submit" class="btn btn-primary">充值</button>
-                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                                                </form>
-                                                            </div>
-                                                        </div><!-- /.modal-content -->
-                                                    </div><!-- /.modal -->
-                                                </div>
-<!--                                                充值会员界面-->
-                                                <div class="modal fade" id="rechargevip" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                                <h4 class="modal-title" id="vip">会员服务</h4>
-                                                            </div>
-                                                            <div class="modal-body">
-
-                                                                <form th:action="@{'/vip'}" method="post" role="form">
-
-                                                                    <input type="hidden" name="id" th:value="${user.getUid()}">
-                                                                    <div class="form-group">
-                                                                        <label>您当前余额为：</label>
-                                                                        <input name="ubalance" type="text" class="form-control" disabled="disabled" th:value="${user.getUbalance()}">
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label>请选择您要充值的时长：</label>
-                                                                        <input name="mouth" type="text" class="form-control" disabled="disabled">
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label>应付金额：</label>
-                                                                        <input name="allmoney" type="text" class="form-control">
-                                                                    </div>
-                                                                    <button type="submit" class="btn btn-primary">确认付款</button>
-                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                                                </form>
-                                                            </div>
-                                                        </div><!-- /.modal-content -->
-                                                    </div><!-- /.modal -->
-                                                </div>
 
 
-
-
-
-												</div>
 												<div style="text-align: center; width: 60%;margin: auto;">
 													<table class="table table-hover">
 														<tr>
