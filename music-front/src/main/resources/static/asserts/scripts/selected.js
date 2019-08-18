@@ -54,8 +54,8 @@ Selected.prototype = {
     },
     play: function(songName) {
         var that = this;
-        // this.audio.src = './' + songName + '/music.mp3';
-        this.audio.src = './asserts/content/songs/' + songName + '/music.mp3';
+        // this.audio.src = './' + songName + '/songs.mp3';
+        this.audio.src = './asserts/content/songs/' + songName + '/songs.mp3';
         // this.audio.src = './asserts/content/songs/' + songName + '.mp3';
         // this.audio.src = './content/songs/' + songName + '.mp3';
         //reset the position of the lyric container

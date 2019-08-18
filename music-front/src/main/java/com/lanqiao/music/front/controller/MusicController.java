@@ -15,7 +15,7 @@ public class MusicController {
 //    private IMusicService iMusicService;
 //
 //
-//    @RequestMapping("/music")
+//    @RequestMapping("/songs")
 //    public String findAllMusic(Model model){
 //        List<Music> musicList = iMusicService.queryAllMusic();
 //        model.addAttribute("musicList",musicList);

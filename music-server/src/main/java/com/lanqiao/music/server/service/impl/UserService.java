@@ -88,12 +88,12 @@ public class UserService implements IUserService {
     //充值会员
     @Override
     public void rechargeVip(User user, Integer mouth) {
-        if(user.getVdate()!=null){
-            user.setVdate(subMonth(user.getVdate(),mouth));
-        }else {
-            user.setVdate(subMonth(new Date(),mouth));
-        }
-        user.setUbalance((user.getUbalance()-(mouth*10.0)));
+//        if(user.getVdate()!=null){
+////            user.setVdate(subMonth(user.getVdate(),mouth));
+////        }else {
+////            user.setVdate(subMonth(new Date(),mouth));
+////        }
+////        user.setUbalance((user.getUbalance()-(mouth*10.0)));
         userMapper.updateUser(user);
     }
 
