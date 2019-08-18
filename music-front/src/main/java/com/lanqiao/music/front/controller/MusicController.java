@@ -47,11 +47,13 @@ public class MusicController {
     public List<MusicJson> getMusic(HttpSession session){
         List<MusicJson> musicJsons = (List<MusicJson>) session.getAttribute("musicJsons");
         if (musicJsons == null) {
+
+            Music music = iMusicService.queryMusicByMId(3);
             MusicJson musicJson = new MusicJson();
-            musicJson.setTitle("儿歌");
-            musicJson.setArtist("老王");
-            musicJson.setMp3("./content/songs/儿歌.mp3");
-            musicJson.setPoster("./content/songs/儿歌.jpg");
+            musicJson.setTitle(music.getMname());
+            musicJson.setArtist(music.getMsinger());
+            musicJson.setMp3(music.getMloc());
+            musicJson.setPoster("");
 
             musicJsons = new LinkedList<>();
             musicJsons.add(musicJson);
@@ -73,7 +75,7 @@ public class MusicController {
             //添加元素到栈顶
             musicJsons.add(0,musicJson);
         }
-        session.setAttribute("musicJsonList",musicJsons);
+        session.setAttribute("musicJsons",musicJsons);
         return musicJsons;
     }
 }
