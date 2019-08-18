@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" class="app" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8" />
+		<title>Musik | Web Application</title>
+		<meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<link rel="stylesheet" th:href="@{./asserts/js/jPlayer/jplayer.flat.css}" type="text/css" />
+		<link rel="stylesheet" th:href="@{./asserts/css/bootstrap.css}" type="text/css" />
+		<link rel="stylesheet" th:href="@{./asserts/css/animate.css}" type="text/css" />
+		<link rel="stylesheet" th:href="@{./asserts/css/font-awesome.min.css}" type="text/css" />
+		<link rel="stylesheet" th:href="@{./asserts/css/simple-line-icons.css}" type="text/css" />
+		<link rel="stylesheet" th:href="@{./asserts/css/font.css}" type="text/css" />
+		<link rel="stylesheet" th:href="@{./asserts/css/app.css}" type="text/css" />
+		<!--[if lt IE 9]>
+		<script th:src="@{asserts/jjs/ie/html5shiv.js}" src="asserts/js/ie/html5shiv.js"></script>
+		<script th:src="@{asserts/js/ie/respond.min.js}" src="asserts/js/ie/respond.min.js"></script>
+		<script th:src="@{asserts/js/ie/excanvas.js}" src="asserts/js/ie/excanvas.js"></script>
+  <![endif]-->
+	</head>
+	<body class="">
+
+						<section class="vbox">
+							<section class="w-f-md">
+								<section class="hbox stretch bg-black dker">
+									<!-- / side content -->
+									<section class="col-sm-4 no-padder bg">
+										<section class="vbox">
+											<section class="scrollable hover">
+												<!-- <div class="m-t-n-xxs item pos-rlt" style="width: 500px;height: 250px; margin: auto;">
+					  	<div class="top text-right">
+					  	    <span class="musicbar animate bg-success bg-empty inline m-r-lg m-t" style="width:25px;height:30px">
+					  	      <span class="bar1 a3 lter"></span>
+					  	      <span class="bar2 a5 lt"></span>
+					  	      <span class="bar3 a1 bg"></span>
+					  	      <span class="bar4 a4 dk"></span>
+					  	      <span class="bar5 a2 dker"></span>
+					  	    </span>
+					  	  </div>
+					  	  <div class="bottom gd bg-info wrapper-lg">
+					  	    <span class="pull-right text-s">周杰伦</span>
+					  	    <span class="h2 font-thin">晴天</span><br />
+			
+					  	  </div>
+					  	  <img class="img-full" src="images/m43.jpg" alt="...">
+					  	</div>
+					  </div> --><br />
+												<div style=" text-align: center;">
+													<span class="h4 font-thin"> 晴天</span> <br />
+													<span class="h3 font-thin">周杰伦</span> <br />
+												</div>
+												<div class="row" style="padding-left: 20px;margin-bottom: 30px;">
+													<div class="col-md-12" style="padding: 0 30px;">
+														<h3 style="color: gray;">评论</h3>
+														<div style="background-color: gray;width: 100%;height: 2px;margin-bottom: 20px;"></div>
+														<div style=" margin: auto;" class="row">
+															<div class="col-md-1">
+																<img src="images/m0.jpg" alt="..." style="width: 70px;height: 70px;border: 1px;">
+																<!-- <input hidden="hidden" id="userName" th:value="${session.user.userName}" />
+                                          <input hidden="hidden" id="userCommentImage" th:value="${session.user.userImage}" /> -->
+															</div>
+															<div class="col-md-11">
+																<textarea style="width: 100%; background-color:#2E3941; resize:none;" rows="3" class="form-control"></textarea><br />
+																<button type="submit" class="btn btn-primary pull-right" style="color: gray;" />评论</button>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div>
+													<ul class="list-group list-group-lg no-bg auto m-b-none m-t-n-xxs">
+														<li class="list-group-item clearfix">
+
+															<a class="pull-left thumb-sm m-r">
+																<img src="images/m0.jpg" alt="...">
+															</a>
+															<a class="clear">
+																<!-- 用户名 -->
+																<span class="block text-ellipsis">王小明</span>
+																<!-- 评论 -->
+																<small class="text-muted">卡农是很神奇的一首曲子，我个人认为卡农的主旋律是很明显的，押尾桑很明显强化了低音部分，这让曲子听起来更有层次感，音色也更厚重，民谣吉他的声音像泉水一样，很难把握，能用民谣吉他把这个曲子弹得这么棒，很厉害！！</small>
+															</a>
+														</li>
+														<li class="list-group-item clearfix">
+
+															<a class="pull-left thumb-sm m-r">
+																<img src="images/m0.jpg" alt="...">
+															</a>
+															<a class="clear">
+																<!-- 用户名 -->
+																<span class="block text-ellipsis">周杰伦</span>
+																<!-- 评论 -->
+																<small class="text-muted">右手旋律左手委屈是什么意思</small>
+															</a>
+														</li>
+
+													</ul>
+												</div>
+											</section>
+										</section>
+										<footer class="footer bg-success dker">
+											<div id="jp_container_N">
+												<div class="jp-type-playlist">
+													<div id="jplayer_N" class="jp-jplayer hide"></div>
+													<div class="jp-gui">
+														<div class="jp-video-play hide">
+															<a class="jp-video-play-icon">play</a>
+														</div>
+														<div class="jp-interface">
+															<div class="jp-controls">
+																<div><a class="jp-previous"><i class="icon-control-rewind i-lg"></i></a></div>
+																<div>
+																	<a class="jp-play"><i class="icon-control-play i-2x"></i></a>
+																	<a class="jp-pause hid"><i class="icon-control-pause i-2x"></i></a>
+																</div>
+																<div><a class="jp-next"><i class="icon-control-forward i-lg"></i></a></div>
+																<div class="hide"><a class="jp-stop"><i class="fa fa-stop"></i></a></div>
+																<div><a class="" data-toggle="dropdown" data-target="#playlist"><i class="icon-list"></i></a></div>
+																<div class="jp-progress hidden-xs">
+																	<div class="jp-seek-bar dk">
+																		<div class="jp-play-bar bg">
+																		</div>
+																		<div class="jp-title text-lt">
+																			<ul>
+																				<li></li>
+																			</ul>
+																		</div>
+																	</div>
+																</div>
+																<div class="hidden-xs hidden-sm jp-current-time text-xs text-muted"></div>
+																<div class="hidden-xs hidden-sm jp-duration text-xs text-muted"></div>
+																<div class="hidden-xs hidden-sm">
+																	<a class="jp-mute" title="mute"><i class="icon-volume-2"></i></a>
+																	<a class="jp-unmute hid" title="unmute"><i class="icon-volume-off"></i></a>
+																</div>
+																<div class="hidden-xs hidden-sm jp-volume">
+																	<div class="jp-volume-bar dk">
+																		<div class="jp-volume-bar-value lter"></div>
+																	</div>
+																</div>
+																<div>
+																	<a class="jp-shuffle" title="shuffle"><i class="icon-shuffle text-muted"></i></a>
+																	<a class="jp-shuffle-off hid" title="shuffle off"><i class="icon-shuffle text-lt"></i></a>
+																</div>
+																<div>
+																	<a class="jp-repeat" title="repeat"><i class="icon-loop text-muted"></i></a>
+																	<a class="jp-repeat-off hid" title="repeat off"><i class="icon-loop text-lt"></i></a>
+																</div>
+																<div class="hide">
+																	<a class="jp-full-screen" title="full screen"><i class="fa fa-expand"></i></a>
+																	<a class="jp-restore-screen" title="restore screen"><i class="fa fa-compress text-lt"></i></a>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="jp-playlist dropup" id="playlist">
+														<ul class="dropdown-menu aside-xl dker">
+															<!-- The method Playlist.displayPlaylist() uses this unordered list -->
+															<li class="list-group-item"></li>
+														</ul>
+													</div>
+													<div class="jp-no-solution hide">
+														<span>Update Required</span>
+														To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/"
+														 target="_blank">Flash plugin</a>.
+													</div>
+												</div>
+											</div>
+										</footer>
+									</section>
+								</section>
+							</section>
+						</section>
+					</section>
+						<script th:src="@{asserts/js/jquery.min.js}"></script>
+						<!-- Bootstrap -->
+						<script th:src="@{asserts/js/bootstrap.js}"></script>
+						<!-- App -->
+						<script th:src="@{asserts/js/app.js}"></script>
+						<script th:src="@{asserts/js/slimscroll/jquery.slimscroll.min.js}"></script>
+						<script th:src="@{asserts/js/charts/easypiechart/jquery.easy-pie-chart.js}"></script>
+						<script th:src="@{asserts/js/app.plugin.js}"></script>
+
+	</body>
+</html>

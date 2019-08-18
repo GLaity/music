@@ -1,219 +1,158 @@
 <!DOCTYPE html>
 <html lang="en" class="app" xmlns:th="http://www.thymeleaf.org">
-<head>  
-  <meta charset="utf-8" />
-  <title>Musik | Web Application</title>
-  <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <link rel="stylesheet" href="./asserts/js/jPlayer/jplayer.flat.css" type="text/css" />
-  <link rel="stylesheet" href="./asserts/css/bootstrap.css" type="text/css" />
-  <link rel="stylesheet" href="./asserts/css/animate.css" type="text/css" />
-  <link rel="stylesheet" href="./asserts/css/font-awesome.min.css" type="text/css" />
-  <link rel="stylesheet" href="./asserts/css/simple-line-icons.css" type="text/css" />
-  <link rel="stylesheet" href="./asserts/css/font.css" type="text/css" />
-  <link rel="stylesheet" href="./asserts/css/app.css" type="text/css" />
-    <!--[if lt IE 9]>
-    <script src="./asserts/js/ie/html5shiv.js"></script>
-    <script src="./asserts/js/ie/respond.min.js"></script>
-    <script src="./asserts/js/ie/excanvas.js"></script>
-    <![endif]-->
-</head>
-<body class="">
-  <section class="vbox">
-      <div  th:replace="nav::top(activeUri='user')"></div>
-    <section>
-      <section class="hbox stretch">
-        <!-- .aside -->
-        <aside class="bg-black dk nav-xs aside hidden-print" id="nav">          
-          <section class="vbox">
-              <div  th:replace="nav::left(activeUri='user')"></div>
-			<!---->
-            
-            <footer class="footer hidden-xs no-padder text-center-nav-xs">
-              <div class="bg hidden-xs ">
-
-
-              </div>
-            </footer>
-          </section>
-        </aside>
-        <!-- /.aside -->
-					<section id="content">
+	<head>
+		<meta charset="utf-8" />
+		<title>Musik | Web Application</title>
+		<meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<link rel="stylesheet" th:href="@{./asserts/js/jPlayer/jplayer.flat.css}" type="text/css" />
+		<link rel="stylesheet" th:href="@{./asserts/css/bootstrap.css}" type="text/css" />
+		<link rel="stylesheet" th:href="@{./asserts/css/animate.css}" type="text/css" />
+		<link rel="stylesheet" th:href="@{./asserts/css/font-awesome.min.css}" type="text/css" />
+		<link rel="stylesheet" th:href="@{./asserts/css/simple-line-icons.css}" type="text/css" />
+		<link rel="stylesheet" th:href="@{./asserts/css/font.css}" type="text/css" />
+		<link rel="stylesheet" th:href="@{./asserts/css/app.css}" type="text/css" />
+		<style>
+			a{color: #EAF6F9;}
+	  a:hover{color: white;}
+	  table>tbody>tr>td{border: 0px;}
+  </style>
+		<!--[if lt IE 9]>
+    <script th:src="@{asserts/js/ie/html5shiv.js}"></script>
+    <script th:src="@{asserts/js/ie/respond.min.js}"></script>
+    <script th:src="@{asserts/js/ie/excanvas.js}"></script>
+  <![endif]-->
+	</head>
+	<body class="">
+		
 						<section class="vbox">
 							<section class="scrollable">
 								<section class="hbox stretch">
 									<aside class="aside-lg bg-light lter b-r">
 										<section class="vbox">
 											<section class="scrollable mar">
-												<div class="wrapper">
+												<div class="wrapper" style="background-image: url(/asserts/images/bg1.jpg) ; no-repeat 1px 1px">
 													<div class="text-center m-b m-t">
 														<a href="#" class="thumb-lg">
-															<img src="./asserts/images/a0.png" class="img-circle">
+															<img th:src="@{asserts/images/a0.png}" class="img-circle">
 														</a>
-														<div th:if="${user.isIsvip()}">
-															<div class="h3 m-t-xs m-b-xs"> <span th:text="${user.getUname()}"></span></div>
-
-															<small class="text-muted"><i class=" icon-diamond"></i>会员</small><br />
-															<small class="text-muted" th:text="'当前会员到期日期'+${#dates.format(user.getVdate(),'yyyy-MM-dd')}"></small>
+														<div>
+															<div class="h3 m-t-xs m-b-xs">John.Smith</div>
+															<small class="text-muted"><i class=" icon-diamond" style="color: seagreen;"></i> <a href="#">绿钻会员</a></small><br />
+															<small class="text-muted">会员到期时间: 2019-08-31</small><br />
+															<small class="text-muted"><i class="icon-heart"></i>&nbsp;<a href="#">我喜欢</a></small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+															<small class="text-muted"><i class="icon-music-tone-alt"></i>&nbsp;<a href="#">我的歌单</a></small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+															<small class="text-muted"><i class=" icon-basket"></i>&nbsp;<a href="#">已购歌曲</a></small>
 														</div>
-                                                        <div th:unless="${user.isIsvip()}">
-                                                            <div class="h3 m-t-xs m-b-xs"> <span th:text="${user.getUname()}"></span></div>
-                                                            <small class="text-muted"><i class=" icon-diamond"></i>普通用户</small><br />
-                                                        </div>
 													</div>
-
-													</div><br />
-													<div class="btn-group btn-group-justified m-b" style="width: 600px; margin: auto;">
-														<!-- <a class="btn btn-success btn-rounded" data-toggle="button"> -->
-                                                        <div th:if="${user.isIsvip()}">
-                                                            <a class="btn btn-success btn-rounded" href="member.html" data-toggle="modal" data-target="#xufeivip">
-                                                                <i class="fa fa-eye"></i> 续费会员
-                                                            </a>
-                                                        </div>
-                                                        <div th:unless="${user.isIsvip()}">
-                                                            <a class="btn btn-success btn-rounded" href="member.html" data-toggle="modal" data-target="#rechargevip">
-                                                                <i class="fa fa-eye"></i>充值会员
-                                                            </a>
-                                                        </div>
-														<a class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#recharge">
-															<i class="icon-present"></i> 充值
-														</a>
-														<a class="btn btn-dark btn-rounded" data-toggle="modal" data-target="#update">
-															<i class="icon-user"></i>修改个人信息
-														</a>
-													</div><br />
-
-<!--                                                        弹出框   修改个人信息-->
-                                                <div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                                <h4 class="modal-title" id="updateUser">修改个人信息</h4>
-                                                            </div>
-                                                            <div class="modal-body">
-
-                                                                <form th:action="@{'/save'}" method="post" role="form">
-
-                                                                    <input type="hidden" name="id" th:value="${user.getUid()}">
-                                                                    <div class="form-group">
-                                                                        <label>用户名</label>
-                                                                        <input name="uname" type="text" class="form-control" disabled="disabled" th:value="${user.getUname()}">
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label>手机号</label>
-                                                                        <input name="utel" type="text" class="form-control" placeholder="手机号" th:value="${user.getUtel()}">
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label>性别</label><br/>
-                                                                        <div class="form-check form-check-inline">
-                                                                            <input class="form-check-input" type="radio" name="usex" value="1" th:checked="${user.getUsex()==1}">
-                                                                            <label class="form-check-label">男</label>
-                                                                        </div>
-                                                                        <div class="form-check form-check-inline">
-                                                                            <input class="form-check-input" type="radio" name="usex" value="0" th:checked="${user.getUsex()==0}">
-                                                                            <label class="form-check-label">女</label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <button type="submit" class="btn btn-primary">修改</button>
-                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                                                </form>
-                                                            </div>
-                                                        </div><!-- /.modal-content -->
-                                                    </div><!-- /.modal -->
-                                                </div>
-
-<!--                                                          充值页面-->
-
-                                                <div class="modal fade" id="recharge" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                                <h4 class="modal-title" id="chongzhi">充值</h4>
-                                                            </div>
-                                                            <div class="modal-body">
-
-                                                                <form th:action="@{'/money'}" method="post" role="form">
-
-                                                                    <input type="hidden" name="id" th:value="${user.getUid()}">
-                                                                    <div class="form-group">
-                                                                        <label>您当前余额为：</label>
-                                                                        <input name="ubalance" type="text" class="form-control" disabled="disabled" th:value="${user.getUbalance()}">
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label>请输入充值金额：</label>
-                                                                        <input name="money" type="text" class="form-control">
-                                                                    </div>
-                                                                    <button type="submit" class="btn btn-primary">充值</button>
-                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                                                </form>
-                                                            </div>
-                                                        </div><!-- /.modal-content -->
-                                                    </div><!-- /.modal -->
-                                                </div>
-<!--                                                充值会员界面-->
-                                                <div class="modal fade" id="rechargevip" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                                <h4 class="modal-title" id="vip">会员服务</h4>
-                                                            </div>
-                                                            <div class="modal-body">
-
-                                                                <form th:action="@{'/vip'}" method="post" role="form">
-
-                                                                    <input type="hidden" name="id" th:value="${user.getUid()}">
-                                                                    <div class="form-group">
-                                                                        <label>您当前余额为：</label>
-                                                                        <input name="ubalance" type="text" class="form-control" disabled="disabled" th:value="${user.getUbalance()}">
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label>请选择您要充值的时长：</label>
-                                                                        <input name="mouth" type="text" class="form-control" disabled="disabled">
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label>应付金额：</label>
-                                                                        <input name="allmoney" type="text" class="form-control">
-                                                                    </div>
-                                                                    <button type="submit" class="btn btn-primary">确认付款</button>
-                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                                                </form>
-                                                            </div>
-                                                        </div><!-- /.modal-content -->
-                                                    </div><!-- /.modal -->
-                                                </div>
-
-
-
-
-
+													<!-- <div class="panel wrapper" style="width: 600px; margin: auto;">
+														<div class="row text-center">
+															<div class="col-xs-6">
+																<a href="#">
+																	<span class="m-b-xs h4 block">245</span>
+																	<small class="text-muted">Followers</small>
+																</a>
+															</div>
+															<div class="col-xs-6">
+																<a href="#">
+																	<span class="m-b-xs h4 block">55</span>
+																	<small class="text-muted">Following</small>
+																</a>
+															</div>
+														</div> -->
 												</div>
-												<div style="text-align: center; width: 60%;margin: auto;">
-													<table class="table table-hover">
-														<tr>
-															<td>手机号</td>
-															<td th:text="${user.getUtel()}"></td>
-														</tr>
-														<tr>
-															<td>性别</td>
-															<td th:text="${user.getUsex()==1?'男':'女'}">男</td>
-														</tr>
-														<tr>
-															<td>账户余额</td>
-															<td th:text="'￥'+ ${user.getUbalance()}"></td>
-														</tr>
-														<tr>
-															<td>用户注册时间</td>
-															<td th:text="${#dates.format(user.getUdate(),'yyyy-MM-dd hh:mm:ss')}"></td>
-														</tr>
-														<tr>
-															<td>会员到期时间</td>
-															<td th:text="${#dates.format(user.getVdate(),'yyyy-MM-dd hh:mm:ss')}"></td>
-														</tr>
-													</table>
+												<div>
+													<div style="float: initial;"><br />
+														<div class="btn-group btn-group-justified m-b" style="width: 600px; margin: auto;">
+															<!-- <a class="btn btn-success btn-rounded" data-toggle="button"> -->
+															<a class="btn btn-success btn-rounded" href="member.html">
+																<i class="fa fa-eye"></i> 开通会员
+																<!-- <span class="text">
+																<i class="fa fa-eye"></i> 开通会员
+															</span> -->
+																<!-- <span class="text-active">
+																<i class="fa fa-eye"></i> Following
+															</span> -->
+															</a>
+															<a class="btn btn-primary btn-rounded" href="recharge.html">
+																<i class="icon-present"></i> 充值
+															</a>
+															<a class="btn btn-dark btn-rounded" href="update-user.html">
+																<i class="icon-user"></i> 修改个人信息
+															</a>
+														</div><br />
+														<div style="text-align: center;">
+															<!-- <small class="h4 m-t-xs m-b-xs">用户注册时间</small>
+									  <p>Artist</p>
+									  <small class="h4 m-t-xs m-b-xs">手机号</small>
+									  <p>Artist</p>
+			                          <small class="h4 m-t-xs m-b-xs">性别</small>
+			                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat.</p>
+			                          <div class="line"></div>
+									  <small class="h4 m-t-xs m-b-xs">账户余额</small>
+									  <p>Artist</p>
+									  <small class="h4 m-t-xs m-b-xs">会员到期时间</small>
+									  <p>Artist</p>
+			                          <small class="text-uc text-xs text-muted">connection</small>
+			                          <p class="m-t-sm">
+			                            <a href="#" class="btn btn-rounded btn-twitter btn-icon"><i class="fa fa-twitter"></i></a>
+			                            <a href="#" class="btn btn-rounded btn-facebook btn-icon"><i class="fa fa-facebook"></i></a>
+			                            <a href="#" class="btn btn-rounded btn-gplus btn-icon"><i class="fa fa-google-plus"></i></a>
+			                          </p> -->
+
+														</div>
+													</div>
+													<div style="text-align: center; width: 60%;margin: auto;">
+														<table class="table table-hover " frame="void" >
+															<tbody>
+															<tr>
+																<td>手机号</td>
+																<td th:text="">15623569865</td>
+															</tr>
+															<tr>
+																<td>性别</td>
+																<td th:text="${emp.gender==0?'男':'女'}">男</td>
+															</tr>
+															<tr>
+																<td>账户余额</td>
+																<td th:text="">￥60 </td>
+															</tr>
+															<tr>
+																<td>用户注册时间</td>
+																<td th:text="">2019-06-30</td>
+															</tr>
+															<tr>
+																<td>会员到期时间</td>
+																<td th:text="">2018-08-31</td>
+															</tr>
+																</tbody>
+
+
+
+														</table>
+													</div>
 												</div>
+												<!-- Ajax刷新我喜欢 我的歌单 已购歌曲 -->
+												<div>
+													<ul class="list-group list-group-lg no-radius no-border bg-light m-t-n-xxs m-b-none auto ml-sm-auto" style="width: 1000px; margin: auto;">
+														<li class="list-group-item dk">
+															<div class="pull-right m-l">
+																<a href="#" class="m-r-sm"><i class="icon-cloud-download" style="color: #7D94A4;"></i></a>
+																<a href="#" class="m-r-sm"><i class="icon-plus" style="color: #7D94A4;"></i></a>
+																<a href="#"><i class="icon-close" style="color: #7D94A4;"></i></a>
+															</div>
+															<a href="#" class="jp-play-me m-r-sm pull-left">
+																<i class="icon-control-play text" style="color: #7D94A4;"></i>
+																<i class="icon-control-pause text-active" style="color: #7D94A4;"></i>
+															</a>
+															<div class="clear text-ellipsis">
+																<span>E.T.M</span>
+																<span class="text-muted"> -- 04:35</span>
+															</div>
+														</li>
+													</ul>
+												</div>
+
 											</section>
 
 										</section>
@@ -238,17 +177,15 @@
 
 		</section>
 
-		<script src="./asserts/js/jquery.min.js"></script>
+		<script th:src="@{asserts/js/jquery.min.js}"></script>
 		<!-- Bootstrap -->
-		<script src="./asserts/js/bootstrap.js"></script>
+		<script th:src="@{asserts/js/bootstrap.js}"></script>
 		<!-- App -->
-		<script src="./asserts/js/app.js"></script>
-		<script src="./asserts/js/slimscroll/jquery.slimscroll.min.js"></script>
-		<script src="./asserts/js/charts/easypiechart/jquery.easy-pie-chart.js"></script>
-		<script src="./asserts/js/app.plugin.js"></script>
-		<script type="text/javascript" src="./asserts/js/jPlayer/jquery.jplayer.min.js"></script>
-		<script type="text/javascript" src="./asserts/js/jPlayer/add-on/jplayer.playlist.min.js"></script>
-		<script type="text/javascript" src="./asserts/js/jPlayer/demo.js"></script>
+		<script th:src="@{asserts/js/app.js}"></script>
+		<script th:src="@{asserts/js/slimscroll/jquery.slimscroll.min.js}"></script>
+		<script th:src="@{asserts/js/charts/easypiechart/jquery.easy-pie-chart.js}"></script>
+		<script th:src="@{asserts/js/app.plugin.js}"></script>
+
 
 	</body>
 </html>
