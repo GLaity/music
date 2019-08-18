@@ -2,11 +2,10 @@ package com.lanqiao.music.front.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.lanqiao.music.server.pojo.User;
-import com.lanqiao.music.server.service.IBoughtService;
-import com.lanqiao.music.server.service.IUserService;
+import com.lanqiao.music.server.frontservice.IBoughtService;
+import com.lanqiao.music.server.frontservice.IUserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;

@@ -8,7 +8,7 @@ spring:
   mvc:
     date-format: yyyy-MM-dd
   datasource:
-    url: jdbc:mysql://123.57.52.37:3306/songs
+    url: jdbc:mysql://123.57.52.37:3306/music
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: 'root'
     password: 'Root@2019'
