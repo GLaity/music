@@ -13,7 +13,7 @@
     <link rel="stylesheet" th:href="@{./asserts/css/font.css}" type="text/css" />
     <link rel="stylesheet" th:href="@{./asserts/css/app.css}" type="text/css" />
 
-    <script th:src="@{asserts/jjs/ie/html5shiv.js}" src="asserts/js/ie/html5shiv.js"></script>
+    <script th:src="@{asserts/js/ie/html5shiv.js}" src="asserts/js/ie/html5shiv.js"></script>
     <script th:src="@{asserts/js/ie/respond.min.js}" src="asserts/js/ie/respond.min.js"></script>
     <script th:src="@{asserts/js/ie/excanvas.js}" src="asserts/js/ie/excanvas.js"></script>
      <!--src用于替换当前元素，href用于在当前文档和引用资源之间确立联系-->
@@ -31,7 +31,7 @@
             <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html">
                 <i class="icon-list"></i>
             </a>
-            <a href="javascript:;" onclick="myIndex();" class="navbar-brand text-lt">
+            <a href="#"  class="navbar-brand text-lt">
                 <!--myIndex()  $('#mainUI').attr('src',"/main");   onclick 属性由元素上的鼠标点击触发。-->
                 <i class="icon-earphones"></i>
                 <img th:src="@{asserts/imageslogo.png}" alt="." class="hide">
@@ -197,14 +197,15 @@
              
                              <!--music start-->
                              <!--<iframe id="UI" style="width: 100%;height: 100%;" frameborder="no" marginwidth="0" marginheight="0"></iframe>-->
-                             <div style="width: 100%;position: fixed;bottom: 0;height: 60px;">
-                                 <iframe id="musicUI" style="width: 95%;" frameborder="no"></iframe>
-                             </div>
-                
+
+                  <div style="width: 100%;position: fixed;bottom: 0;height: 60px;" >
+                      <iframe id="musicUI" style="width: 95%;" frameborder="no"></iframe>
+                  </div>
             
               </section>
+
             </section>
-           
+
           </section>
           <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
         </section>

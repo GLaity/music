@@ -24,151 +24,240 @@
   <![endif]-->
 	</head>
 	<body class="">
-		
-						<section class="vbox">
-							<section class="scrollable">
-								<section class="hbox stretch">
-									<aside class="aside-lg bg-light lter b-r">
-										<section class="vbox">
-											<section class="scrollable mar">
-												<div class="wrapper" style="background-image: url(/asserts/images/bg1.jpg) ; no-repeat 1px 1px">
-													<div class="text-center m-b m-t">
-														<a href="#" class="thumb-lg">
-															<img th:src="@{asserts/images/a0.png}" class="img-circle">
-														</a>
-														<div>
-															<div class="h3 m-t-xs m-b-xs">John.Smith</div>
-															<small class="text-muted"><i class=" icon-diamond" style="color: seagreen;"></i> <a href="#">绿钻会员</a></small><br />
-															<small class="text-muted">会员到期时间: 2019-08-31</small><br />
-															<small class="text-muted"><i class="icon-heart"></i>&nbsp;<a href="#">我喜欢</a></small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-															<small class="text-muted"><i class="icon-music-tone-alt"></i>&nbsp;<a href="#">我的歌单</a></small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-															<small class="text-muted"><i class=" icon-basket"></i>&nbsp;<a href="#">已购歌曲</a></small>
-														</div>
-													</div>
-													<!-- <div class="panel wrapper" style="width: 600px; margin: auto;">
-														<div class="row text-center">
-															<div class="col-xs-6">
-																<a href="#">
-																	<span class="m-b-xs h4 block">245</span>
-																	<small class="text-muted">Followers</small>
-																</a>
-															</div>
-															<div class="col-xs-6">
-																<a href="#">
-																	<span class="m-b-xs h4 block">55</span>
-																	<small class="text-muted">Following</small>
-																</a>
-															</div>
-														</div> -->
-												</div>
-												<div>
-													<div style="float: initial;"><br />
-														<div class="btn-group btn-group-justified m-b" style="width: 600px; margin: auto;">
-															<!-- <a class="btn btn-success btn-rounded" data-toggle="button"> -->
-															<a class="btn btn-success btn-rounded" href="member.html">
-																<i class="fa fa-eye"></i> 开通会员
-																<!-- <span class="text">
-																<i class="fa fa-eye"></i> 开通会员
-															</span> -->
-																<!-- <span class="text-active">
-																<i class="fa fa-eye"></i> Following
-															</span> -->
-															</a>
-															<a class="btn btn-primary btn-rounded" href="recharge.html">
-																<i class="icon-present"></i> 充值
-															</a>
-															<a class="btn btn-dark btn-rounded" href="update-user.html">
-																<i class="icon-user"></i> 修改个人信息
-															</a>
-														</div><br />
-														<div style="text-align: center;">
-															<!-- <small class="h4 m-t-xs m-b-xs">用户注册时间</small>
-									  <p>Artist</p>
-									  <small class="h4 m-t-xs m-b-xs">手机号</small>
-									  <p>Artist</p>
-			                          <small class="h4 m-t-xs m-b-xs">性别</small>
-			                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat.</p>
-			                          <div class="line"></div>
-									  <small class="h4 m-t-xs m-b-xs">账户余额</small>
-									  <p>Artist</p>
-									  <small class="h4 m-t-xs m-b-xs">会员到期时间</small>
-									  <p>Artist</p>
-			                          <small class="text-uc text-xs text-muted">connection</small>
-			                          <p class="m-t-sm">
-			                            <a href="#" class="btn btn-rounded btn-twitter btn-icon"><i class="fa fa-twitter"></i></a>
-			                            <a href="#" class="btn btn-rounded btn-facebook btn-icon"><i class="fa fa-facebook"></i></a>
-			                            <a href="#" class="btn btn-rounded btn-gplus btn-icon"><i class="fa fa-google-plus"></i></a>
-			                          </p> -->
 
-														</div>
-													</div>
-													<div style="text-align: center; width: 60%;margin: auto;">
-														<table class="table table-hover " frame="void" >
-															<tbody>
-															<tr>
-																<td>手机号</td>
-																<td th:text="">15623569865</td>
-															</tr>
-															<tr>
-																<td>性别</td>
-																<td th:text="${emp.gender==0?'男':'女'}">男</td>
-															</tr>
-															<tr>
-																<td>账户余额</td>
-																<td th:text="">￥60 </td>
-															</tr>
-															<tr>
-																<td>用户注册时间</td>
-																<td th:text="">2019-06-30</td>
-															</tr>
-															<tr>
-																<td>会员到期时间</td>
-																<td th:text="">2018-08-31</td>
-															</tr>
-																</tbody>
+	<section class="vbox">
+		<section class="scrollable">
+			<section class="hbox stretch">
+				<aside class="aside-lg bg-light lter b-r">
+					<section class="vbox">
+						<section class="scrollable mar">
+							<div class="wrapper" style="background-image: url(images/bg1.jpg) ; no-repeat 1px 1px">
+								<div class="text-center m-b m-t">
+									<a href="#" class="thumb-lg">
+										<img src="images/a0.png" class="img-circle">
+									</a>
+									<div>
+										<div class="h3 m-t-xs m-b-xs"><span style="color: whitesmoke;">John.Smith</span></div>
+										<small class="text-muted"><i class=" icon-diamond" style="color: seagreen;"></i> <a href="#">绿钻会员</a></small><br />
+										<small class="text-muted" style="color: whitesmoke;">会员到期时间: 2019-08-31</small><br />
+										<small class="text-muted"><i class="icon-heart"></i>&nbsp;<a href="#" id="love">我喜欢</a></small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<small class="text-muted"><i class="icon-music-tone-alt"></i>&nbsp;<a href="#" id="list">我的歌单</a></small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<small class="text-muted"><i class=" icon-basket"></i>&nbsp;<a href="#" id="buy">已购歌曲</a></small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<small class="text-muted"><i class="icon-user"></i>&nbsp;<a href="#" id="user">个人信息</a></small>
+									</div>
+								</div>
+								<!-- <div class="panel wrapper" style="width: 600px; margin: auto;">
+                                    <div class="row text-center">
+                                        <div class="col-xs-6">
+                                            <a href="#">
+                                                <span class="m-b-xs h4 block">245</span>
+                                                <small class="text-muted">Followers</small>
+                                            </a>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <a href="#">
+                                                <span class="m-b-xs h4 block">55</span>
+                                                <small class="text-muted">Following</small>
+                                            </a>
+                                        </div>
+                                    </div> -->
+							</div>
+							<div id="information" style="display: block">
+								<div style="float: initial;"><br />
+									<div class="btn-group btn-group-justified m-b" style="width: 600px; margin: auto;">
+										<!-- <a class="btn btn-success btn-rounded" data-toggle="button"> -->
+										<a class="btn btn-success btn-rounded" href="member.html">
+											<i class="fa fa-eye"></i> 开通会员
+											<!-- <span class="text">
+                                            <i class="fa fa-eye"></i> 开通会员
+                                        </span> -->
+											<!-- <span class="text-active">
+                                            <i class="fa fa-eye"></i> Following
+                                        </span> -->
+										</a>
+										<a class="btn btn-primary btn-rounded" href="recharge.html">
+											<i class="icon-present"></i> 充值
+										</a>
+										<a class="btn btn-dark btn-rounded" href="update-user.html">
+											<i class="icon-user"></i> 修改个人信息
+										</a>
+									</div><br />
+									<!-- 														<div style="text-align: center;">
+-->
+									<!-- <small class="h4 m-t-xs m-b-xs">用户注册时间</small>
+                  <p>Artist</p>
+                  <small class="h4 m-t-xs m-b-xs">手机号</small>
+                  <p>Artist</p>
+                  <small class="h4 m-t-xs m-b-xs">性别</small>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat.</p>
+                  <div class="line"></div>
+                  <small class="h4 m-t-xs m-b-xs">账户余额</small>
+                  <p>Artist</p>
+                  <small class="h4 m-t-xs m-b-xs">会员到期时间</small>
+                  <p>Artist</p>
+                  <small class="text-uc text-xs text-muted">connection</small>
+                  <p class="m-t-sm">
+                    <a href="#" class="btn btn-rounded btn-twitter btn-icon"><i class="fa fa-twitter"></i></a>
+                    <a href="#" class="btn btn-rounded btn-facebook btn-icon"><i class="fa fa-facebook"></i></a>
+                    <a href="#" class="btn btn-rounded btn-gplus btn-icon"><i class="fa fa-google-plus"></i></a>
+                  </p> -->
 
+								</div>
 
-
-														</table>
-													</div>
-												</div>
-												<!-- Ajax刷新我喜欢 我的歌单 已购歌曲 -->
-												<div>
-													<ul class="list-group list-group-lg no-radius no-border bg-light m-t-n-xxs m-b-none auto ml-sm-auto" style="width: 1000px; margin: auto;">
-														<li class="list-group-item dk">
-															<div class="pull-right m-l">
-																<a href="#" class="m-r-sm"><i class="icon-cloud-download" style="color: #7D94A4;"></i></a>
-																<a href="#" class="m-r-sm"><i class="icon-plus" style="color: #7D94A4;"></i></a>
-																<a href="#"><i class="icon-close" style="color: #7D94A4;"></i></a>
-															</div>
-															<a href="#" class="jp-play-me m-r-sm pull-left">
-																<i class="icon-control-play text" style="color: #7D94A4;"></i>
-																<i class="icon-control-pause text-active" style="color: #7D94A4;"></i>
-															</a>
-															<div class="clear text-ellipsis">
-																<span>E.T.M</span>
-																<span class="text-muted"> -- 04:35</span>
-															</div>
-														</li>
-													</ul>
-												</div>
-
-											</section>
-
-										</section>
-
-									</aside>
+								<div style="text-align: center; width: 60%;margin: auto;">
+									<table class="table table-hover " frame="void">
+										<tbody>
+										<tr>
+											<td>手机号</td>
+											<td th:text="">15623569865</td>
+										</tr>
+										<tr>
+											<td>性别</td>
+											<td th:text="${emp.gender==0?'男':'女'}">男</td>
+										</tr>
+										<tr>
+											<td>账户余额</td>
+											<td th:text="">￥60 </td>
+										</tr>
+										<tr>
+											<td>用户注册时间</td>
+											<td th:text="">2019-06-30</td>
+										</tr>
+										<tr>
+											<td>会员到期时间</td>
+											<td th:text="">2018-08-31</td>
+										</tr>
+										</tbody>
 
 
-								</section>
+
+									</table>
+								</div>
+							</div>
+							</div>
+							<!-- 我喜欢 --><br />
+							<div id="mylove" style="display: none; border: 1px;">
+								<ul class="list-group list-group-lg no-radius no-border bg-light m-t-n-xxs m-b-none auto ml-sm-auto" style="width: 1000px; margin: auto;">
+									<li class="list-group-item dk">
+										<div class="pull-right m-l">
+											<a href="#" class="m-r-sm"><i class="icon-cloud-download" style="color: #7D94A4;"></i></a>
+											<a href="#" class="m-r-sm"><i class="icon-plus" style="color: #7D94A4;"></i></a>
+											<a href="#"><i class="icon-close" style="color: #7D94A4;"></i></a>
+										</div>
+										<a href="#" class="jp-play-me m-r-sm pull-left">
+											<i class="icon-control-play text" style="color: #7D94A4;"></i>
+											<i class="icon-control-pause text-active" style="color: #7D94A4;"></i>
+										</a>
+										<div class="clear text-ellipsis">
+											<span>E.T.M</span>
+											<span class="text-muted"> -- 04:35</span>
+										</div>
+									</li>
+									<li class="list-group-item dk">
+										<div class="pull-right m-l">
+											<a href="#" class="m-r-sm"><i class="icon-cloud-download" style="color: #7D94A4;"></i></a>
+											<a href="#" class="m-r-sm"><i class="icon-plus" style="color: #7D94A4;"></i></a>
+											<a href="#"><i class="icon-close" style="color: #7D94A4;"></i></a>
+										</div>
+										<a href="#" class="jp-play-me m-r-sm pull-left">
+											<i class="icon-control-play text" style="color: #7D94A4;"></i>
+											<i class="icon-control-pause text-active" style="color: #7D94A4;"></i>
+										</a>
+										<div class="clear text-ellipsis">
+											<span>E.T.M</span>
+											<span class="text-muted"> -- 04:35</span>
+										</div>
+									</li>
+								</ul>
+							</div>
+
+							<!-- 已购歌曲 -->
+							<div id="purchase" style="display: none;">
+								<ul class="list-group list-group-lg no-radius no-border bg-light m-t-n-xxs m-b-none auto ml-sm-auto" style="width: 1000px; margin: auto;">
+									<li class="list-group-item dk">
+										<div class="pull-right m-l">
+											<a href="#" class="m-r-sm"><i class="icon-cloud-download" style="color: #7D94A4;"></i></a>
+											<a href="#" class="m-r-sm"><i class="icon-plus" style="color: #7D94A4;"></i></a>
+											<a href="#"><i class="icon-close" style="color: #7D94A4;"></i></a>
+										</div>
+										<a href="#" class="jp-play-me m-r-sm pull-left">
+											<i class="icon-control-play text" style="color: #7D94A4;"></i>
+											<i class="icon-control-pause text-active" style="color: #7D94A4;"></i>
+										</a>
+
+										<div class="clear text-ellipsis">
+											<span>E.T.M</span>
+											<span class="text-muted"> -- 04:35</span>
+										</div>
+									</li>
+									<li class="list-group-item dk">
+										<div class="pull-right m-l">
+											<a href="#" class="m-r-sm"><i class="icon-cloud-download" style="color: #7D94A4;"></i></a>
+											<a href="#" class="m-r-sm"><i class="icon-plus" style="color: #7D94A4;"></i></a>
+											<a href="#"><i class="icon-close" style="color: #7D94A4;"></i></a>
+										</div>
+										<a href="#" class="jp-play-me m-r-sm pull-left">
+											<i class="icon-control-play text" style="color: #7D94A4;"></i>
+											<i class="icon-control-pause text-active" style="color: #7D94A4;"></i>
+										</a>
+										<div class="clear text-ellipsis">
+											<span>E.T.M</span>
+											<span class="text-muted"> -- 04:35</span>
+										</div>
+									</li>
+								</ul>
+							</div>
+
+							<!-- 我的歌单 -->
+							<div id="myplaylist" style="display: none;" >
+								<ul class="list-group list-group-lg no-bg auto m-b-none m-t-n-xxs bg-light no-border " style="width: 1000px; margin: auto;">
+									<li class="list-group-item clearfix">
+										<a href="#" class="jp-play-me pull-right m-t-sm m-l text-md">
+											<i class="icon-control-play text" style="color: #8CA1AF;"></i>
+											<i class="icon-control-pause text-active"></i>
+										</a>
+										<a href="play-list-enter.html" class="pull-left thumb-sm m-r">
+											<img src="images/m0.jpg" alt="...">
+										</a>
+										<a class="clear" href="play-list-enter.html">
+											<span class="block text-ellipsis" style="color: #000000;">Little Town</span>
+											<small class="text-muted">by Soph Ashe</small>
+										</a>
+									</li>
+									<li class="list-group-item clearfix">
+										<a href="#" class="jp-play-me pull-right m-t-sm m-l text-md">
+											<i class="icon-control-play text" style="color: #8CA1AF;"></i>
+											<i class="icon-control-pause text-active"></i>
+										</a>
+										<a href="play-list-enter.html" class="pull-left thumb-sm m-r">
+											<img src="images/a1.png" alt="...">
+										</a>
+										<a class="clear" href="play-list-enter.html">
+											<span class="block text-ellipsis" style="color: #000000;">Get lacinia odio sem nec elit</span>
+											<small class="text-muted">by Filex</small>
+										</a>
+									</li>
+								</ul>
+							</div>
 
 
-							</section>
 
 
 						</section>
 
-						<a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
+					</section>
+
+				</aside>
+
+
+			</section>
+
+
+		</section>
+
+
+
+		<a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
 					</section>
 
 				</section>
@@ -176,8 +265,58 @@
 			</section>
 
 		</section>
+	<script type="text/javascript">
+		window.onload = function() {
+			var a = document.getElementById("love");
+			var b = document.getElementById("list");
+			var c = document.getElementById("buy");
+			var d = document.getElementById("user");
+			var a1 = document.getElementById("mylove");
+			var b1 = document.getElementById("myplaylist");
+			var c1 = document.getElementById("purchase");
+			var d1 = document.getElementById("information");
 
-		<script th:src="@{asserts/js/jquery.min.js}"></script>
+			a.onclick = function() {
+				if (a1.style.display == "none") {
+					a1.style.display = "block";
+					b1.style.display = "none";
+					c1.style.display = "none";
+					d1.style.display = "none";
+
+				}
+			}
+			b.onclick = function() {
+				if (b1.style.display == "none") {
+					a1.style.display = "none";
+					b1.style.display = "block";
+					c1.style.display = "none";
+					d1.style.display = "none";
+
+				}
+			}
+			c.onclick = function() {
+				if (c1.style.display == "none") {
+					a1.style.display = "none";
+					b1.style.display = "none";
+					c1.style.display = "block";
+					d1.style.display = "none";
+
+				}
+			}
+			d.onclick = function() {
+				if (d1.style.display == "none") {
+					a1.style.display = "none";
+					b1.style.display = "none";
+					c1.style.display = "none";
+					d1.style.display = "block";
+
+				}
+			}
+		}
+	</script>
+
+
+	<script th:src="@{asserts/js/jquery.min.js}"></script>
 		<!-- Bootstrap -->
 		<script th:src="@{asserts/js/bootstrap.js}"></script>
 		<!-- App -->
