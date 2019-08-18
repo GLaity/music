@@ -5,23 +5,23 @@
 		<title></title>
 		<meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-		<link rel="stylesheet" th:href="@{./asserts/js/jPlayer/jplayer.flat.css}" type="text/css" />
-		<link rel="stylesheet" th:href="@{./asserts/css/bootstrap.css}" type="text/css" />
-		<link rel="stylesheet" th:href="@{./asserts/css/animate.css}" type="text/css" />
-		<link rel="stylesheet" th:href="@{./asserts/css/font-awesome.min.css}" type="text/css" />
-		<link rel="stylesheet" th:href="@{./asserts/css/simple-line-icons.css}" type="text/css" />
-		<link rel="stylesheet" th:href="@{./asserts/css/font.css}" type="text/css" />
-		<link rel="stylesheet" th:href="@{./asserts/css/app.css}" type="text/css" />
+		<link rel="stylesheet" th:href="@{/asserts/js/jPlayer/jplayer.flat.css}" type="text/css" />
+		<link rel="stylesheet" th:href="@{/asserts/css/bootstrap.css}" type="text/css" />
+		<link rel="stylesheet" th:href="@{/asserts/css/animate.css}" type="text/css" />
+		<link rel="stylesheet" th:href="@{/asserts/css/font-awesome.min.css}" type="text/css" />
+		<link rel="stylesheet" th:href="@{/asserts/css/simple-line-icons.css}" type="text/css" />
+		<link rel="stylesheet" th:href="@{/asserts/css/font.css}" type="text/css" />
+		<link rel="stylesheet" th:href="@{/asserts/css/app.css}" type="text/css" />
 
-		<script th:src="@{asserts/js/ie/html5shiv.js}" src="asserts/js/ie/html5shiv.js"></script>
-		<script th:src="@{asserts/js/ie/respond.min.js}" src="asserts/js/ie/respond.min.js"></script>
-		<script th:src="@{asserts/js/ie/excanvas.js}" src="asserts/js/ie/excanvas.js"></script>
+		<script th:src="@{/asserts/js/ie/html5shiv.js}" src="/asserts/js/ie/html5shiv.js"></script>
+		<script th:src="@{/asserts/js/ie/respond.min.js}" src="/asserts/js/ie/respond.min.js"></script>
+		<script th:src="@{/asserts/js/ie/excanvas.js}" src="/asserts/js/ie/excanvas.js"></script>
 		<!--src用于替换当前元素，href用于在当前文档和引用资源之间确立联系-->
-		<script th:src="@{asserts/js/jquery.min.js}" src="js/jquery.min.js"></script>
-		<script th:src="@{asserts/js/bootstrap.js}" src="js/bootstrap.js"></script>
-		<script th:src="@{asserts/js/app.js}" src="js/app.js"></script>
-		<script th:src="@{asserts/js/slimscroll/jquery.slimscroll.min.js}" src="js/slimscroll/jquery.slimscroll.min.js"></script>
-		<script th:src="@{asserts/js/app.plugin.js}" src="js/app.plugin.js"></script>
+		<script th:src="@{/asserts/js/jquery.min.js}" src="/asserts/js/jquery.min.js"></script>
+		<script th:src="@{/asserts/js/bootstrap.js}" src="/asserts/js/bootstrap.js"></script>
+		<script th:src="@{/asserts/js/app.js}" src="/asserts/js/app.js"></script>
+		<script th:src="@{/asserts/js/slimscroll/jquery.slimscroll.min.js}" src="/asserts/js/slimscroll/jquery.slimscroll.min.js"></script>
+		<script th:src="@{/asserts/js/app.plugin.js}" src="/asserts/js/app.plugin.js"></script>
 		<!--[endif]-->
 	</head>
 	<body>
@@ -56,7 +56,7 @@
 								</div>
 								<div class="center text-center m-t-n">
 									<!--播放-->
-									<a href="#"><i class="icon-control-play i-2x"></i></a>
+									<a onclick="addmusic(1)" href="#"><i class="icon-control-play i-2x"></i></a>
 								</div>
 								<div class="bottom padder m-b-sm">
 									<!--加入歌单-->
@@ -610,7 +610,7 @@
 						<a href="#" class="list-group-item clearfix">
 							<span class="pull-right h2 text-muted m-l">3</span>
 							<span class="pull-left thumb-sm avatar m-r">
-                            <img th:src="@{asserts/images/a6.png}" alt="...">
+                            <img th:src="@{/asserts/images/a6.png}" alt="...">
                           </span>
 							<span class="clear">
                             <span>Aliquam sollicitudin venenatis</span>
@@ -620,7 +620,7 @@
 						<a href="#" class="list-group-item clearfix">
 							<span class="pull-right h2 text-muted m-l">4</span>
 							<span class="pull-left thumb-sm avatar m-r">
-                            <img th:src="@{asserts/images/a7.png}" alt="...">
+                            <img th:src="@{/asserts/images/a7.png}" alt="...">
                           </span>
 							<span class="clear">
                             <span>Aliquam sollicitudin venenatis ipsum</span>
@@ -630,7 +630,7 @@
 						<a href="#" class="list-group-item clearfix">
 							<span class="pull-right h2 text-muted m-l">5</span>
 							<span class="pull-left thumb-sm avatar m-r">
-                            <img th:src="@{asserts/images/a8.png}" alt="...">
+                            <img th:src="@{/asserts/images/a8.png}" alt="...">
                           </span>
 							<span class="clear">
                             <span>Vestibulum ullamcorper</span>
@@ -661,4 +661,11 @@
 		</section>
 	</section>
 	</body>
+	<script type="text/javascript">
+		function addmusic(json) {
+			window.parent.document.getElementById('hidInp').value = json;
+			window.parent.document.getElementById('addTab').click();
+		}
+	</script>
+
 </html>

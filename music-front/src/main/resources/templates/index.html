@@ -5,23 +5,23 @@
     <title>Musik | Web Application</title>
     <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <link rel="stylesheet" th:href="@{./asserts/js/jPlayer/jplayer.flat.css}" type="text/css" />
-    <link rel="stylesheet" th:href="@{./asserts/css/bootstrap.css}" type="text/css" />
-    <link rel="stylesheet" th:href="@{./asserts/css/animate.css}" type="text/css" />
-    <link rel="stylesheet" th:href="@{./asserts/css/font-awesome.min.css}" type="text/css" />
-    <link rel="stylesheet" th:href="@{./asserts/css/simple-line-icons.css}" type="text/css" />
-    <link rel="stylesheet" th:href="@{./asserts/css/font.css}" type="text/css" />
-    <link rel="stylesheet" th:href="@{./asserts/css/app.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{/asserts/js/jPlayer/jplayer.flat.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{/asserts/css/bootstrap.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{/asserts/css/animate.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{/asserts/css/font-awesome.min.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{/asserts/css/simple-line-icons.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{/asserts/css/font.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{/asserts/css/app.css}" type="text/css" />
 
-    <script th:src="@{asserts/js/ie/html5shiv.js}" src="asserts/js/ie/html5shiv.js"></script>
-    <script th:src="@{asserts/js/ie/respond.min.js}" src="asserts/js/ie/respond.min.js"></script>
-    <script th:src="@{asserts/js/ie/excanvas.js}" src="asserts/js/ie/excanvas.js"></script>
-     <!--src用于替换当前元素，href用于在当前文档和引用资源之间确立联系-->
-    <script th:src="@{asserts/js/jquery.min.js}" src="js/jquery.min.js"></script>
-    <script th:src="@{asserts/js/bootstrap.js}" src="js/bootstrap.js"></script>
-    <script th:src="@{asserts/js/app.js}" src="js/app.js"></script>
-    <script th:src="@{asserts/js/slimscroll/jquery.slimscroll.min.js}" src="js/slimscroll/jquery.slimscroll.min.js"></script>
-    <script th:src="@{asserts/js/app.plugin.js}" src="js/app.plugin.js"></script>
+    <script th:src="@{/asserts/js/ie/html5shiv.js}" src="/asserts/js/ie/html5shiv.js"></script>
+    <script th:src="@{/asserts/js/ie/respond.min.js}" src="/asserts/js/ie/respond.min.js"></script>
+    <script th:src="@{/asserts/js/ie/excanvas.js}" src="/asserts/js/ie/excanvas.js"></script>
+    <!--src用于替换当前元素，href用于在当前文档和引用资源之间确立联系-->
+    <script th:src="@{/asserts/js/jquery.min.js}" src="/asserts/js/jquery.min.js"></script>
+    <script th:src="@{/asserts/js/bootstrap.js}" src="/asserts/js/bootstrap.js"></script>
+    <script th:src="@{/asserts/js/app.js}" src="/asserts/js/app.js"></script>
+    <script th:src="@{/asserts/js/slimscroll/jquery.slimscroll.min.js}" src="/asserts/js/slimscroll/jquery.slimscroll.min.js"></script>
+    <script th:src="@{/asserts/js/app.plugin.js}" src="/asserts/js/app.plugin.js"></script>
     <!--[endif]-->
 </head>
 <body class="">
@@ -34,7 +34,7 @@
             <a href="javascript:;" onclick="myIndex();" class="navbar-brand text-lt">
                 <!--myIndex()  $('#mainUI').attr('src',"/main");   onclick 属性由元素上的鼠标点击触发。-->
                 <i class="icon-earphones"></i>
-                <img th:src="@{asserts/imageslogo.png}" alt="." class="hide">
+<!--                <img th:src="@{asserts/imageslogo.png}" alt="." class="hide">-->
                 <span class="hidden-nav-xs m-l-sm">云音乐</span>
             </a>
             <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user">
@@ -72,7 +72,7 @@
                 <li th:if="${session.user} != null" class="dropdown">
                     <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">
                   <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-                    <img th:src="@{asserts/imagesm0.jpg}"  alt="...">
+<!--                    <img th:src="@{asserts/imagesm0.jpg}"  alt="...">-->
                   </span>
                         <!--提示：请使用 <span> 来组合行内元素，以便通过样式来格式化它们。注释：span 没有固定的格式表现。当对它应用样式时，它才会产生视觉上的变化。-->
                         <span th:text="${session.user.userName}">云音乐用户</span> <b class="caret"></b>
@@ -197,11 +197,78 @@
              
                              <!--music start-->
                              <!--<iframe id="UI" style="width: 100%;height: 100%;" frameborder="no" marginwidth="0" marginheight="0"></iframe>-->
-                             <div style="width: 100%;position: fixed;bottom: 0;height: 60px;">
-                                 <iframe id="musicUI" style="width: 95%;" frameborder="no"></iframe>
-                             </div>
-                
-            
+<!--                             <div style="width: 100%;position: fixed;bottom: 0;height: 60px;">-->
+<!--                                 <iframe id="musicUI" style="width: 95%;" frameborder="no"></iframe>-->
+<!--                             </div>-->
+                  <footer class="footer bg-dark">
+                      <div id="jp_container_N">
+                          <div class="jp-type-playlist">
+                              <div id="jplayer_N" class="jp-jplayer hide"></div>
+                              <div class="jp-gui">
+                                  <div class="jp-video-play hide">
+                                      <a class="jp-video-play-icon">播放</a>
+                                  </div>
+                                  <div class="jp-interface">
+                                      <div class="jp-controls">
+                                          <div><a class="jp-previous"><i class="icon-control-rewind i-lg"></i></a></div>
+                                          <div>
+                                              <a class="jp-play"><i class="icon-control-play i-2x"></i></a>
+                                              <a class="jp-pause hid"><i class="icon-control-pause i-2x"></i></a>
+                                          </div>
+                                          <div><a class="jp-next"><i class="icon-control-forward i-lg"></i></a></div>
+                                          <div class="hide"><a class="jp-stop"><i class="fa fa-stop"></i></a></div>
+                                          <div><a class="" data-toggle="dropdown" data-target="#playlist"><i class="icon-list"></i></a></div>
+                                          <div class="jp-progress hidden-xs">
+                                              <div class="jp-seek-bar dk">
+                                                  <div class="jp-play-bar bg-info">
+                                                  </div>
+                                                  <div class="jp-title text-lt">
+                                                      <ul>
+                                                          <li></li>
+                                                      </ul>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="hidden-xs hidden-sm jp-current-time text-xs text-muted"></div>
+                                          <div class="hidden-xs hidden-sm jp-duration text-xs text-muted"></div>
+                                          <div class="hidden-xs hidden-sm">
+                                              <a class="jp-mute" title="静音"><i class="icon-volume-2"></i></a>
+                                              <a class="jp-unmute hid" title="恢复音量"><i class="icon-volume-off"></i></a>
+                                          </div>
+                                          <div class="hidden-xs hidden-sm jp-volume">
+                                              <div class="jp-volume-bar dk">
+                                                  <div class="jp-volume-bar-value lter"></div>
+                                              </div>
+                                          </div>
+                                          <div>
+                                              <a class="jp-shuffle" title="随机播放"><i class="icon-shuffle text-muted"></i></a>
+                                              <a class="jp-shuffle-off hid" title="列表循环"><i class="icon-shuffle text-lt"></i></a>
+                                          </div>
+                                          <div>
+                                              <a class="jp-repeat" title="单曲循环"><i class="icon-loop text-muted"></i></a>
+                                              <a class="jp-repeat-off hid" title="列表循环"><i class="icon-loop text-lt"></i></a>
+                                          </div>
+                                          <div class="hide">
+                                              <a class="jp-full-screen" title="full screen"><i class="fa fa-expand"></i></a>
+                                              <a class="jp-restore-screen" title="restore screen"><i class="fa fa-compress text-lt"></i></a>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="jp-playlist dropup" id="playlist">
+                                  <ul class="dropdown-menu aside-xl dker">
+                                      <!-- The method Playlist.displayPlaylist() uses this unordered list -->
+                                      <li class="list-group-item"></li>
+                                  </ul>
+                              </div>
+
+                          </div>
+                      </div>
+                  </footer>
+                  
+                  <input type="text" id="hidInp" value="hidtext" style="opacity:0;">
+                  <a href="javascript:void(0);" id="addTab" onclick="addmusic()" style="opacity:0;"></a>
+                  
               </section>
             </section>
            
@@ -213,9 +280,10 @@
   </section>
 
   <script type="text/javascript">
-$(function () {
+      
+   $(function () {
       //加载首页时初始化音乐播放器  attr() 方法设置或返回被选元素的属性值。
-      $('#musicUI').attr('src','/iframemusic');
+      // $('#musicUI').attr('src','/iframemusic');
       //加载首页时初始化内容页
       $('#mainUI').attr('src','/iframemain');
   });
@@ -336,7 +404,15 @@ $(function () {
       window.history.pushState(null, null, '/#/index');
   }
 
+  function addmusic() {
+
+
+
+  }
 
 </script>
 </body>
+<script th:src="@{/asserts/js/jPlayer/jquery.jplayer.min.js}" src="/asserts/js/jPlayer/jquery.jplayer.min.js" type="text/javascript"></script>
+<script th:src="@{/asserts/js/jPlayer/add-on/jplayer.playlist.min.js}" src="/asserts/js/jPlayer/add-on/jplayer.playlist.min.js" type="text/javascript"></script>
+<script th:src="@{/asserts/js/jPlayer/demo.js}" src="/asserts/js/jPlayer/demo.js" type="text/javascript"></script>
 </html>

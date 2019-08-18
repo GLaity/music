@@ -20,5 +20,5 @@ target/
 Thumbs.db
 *.yaml
 *.music-resources
-
+*.content
 
