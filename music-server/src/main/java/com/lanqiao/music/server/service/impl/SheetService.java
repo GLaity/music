@@ -16,26 +16,86 @@ public class SheetService implements ISheetService {
     @Autowired
     private SheetMapper sheetMapper;
     @Override
-    public List<Sheet> searchAll() {
+    public void addInitSheet(Integer uid) {
+
+    }
+
+    @Override
+    public void addMySheet(Sheet sheet) {
+
+    }
+
+    @Override
+    public void addOtherSheet(Integer uid, Integer sid) {
+
+    }
+
+    @Override
+    public void removeOtherSheet(Integer uid, Integer sid) {
+
+    }
+
+    @Override
+    public void modifySheet(Sheet sheet) {
+
+    }
+
+    @Override
+    public void addMusicIntoSheet(Integer mid, Integer sid) {
+
+    }
+
+    @Override
+    public void removeMusicFromSheet(Integer mid, Integer sid) {
+
+    }
+
+    @Override
+    public Sheet findSheetBySid(Integer sid) {
+        return null;
+    }
+
+    @Override
+    public List<Music> findMyCollectedMusic(Integer uid) {
+        return null;
+    }
+
+    @Override
+    public List<Music> findMyBoughtMusic(Integer uid) {
+        return null;
+    }
+
+    @Override
+    public List<Sheet> fingMyCreatSheet(Integer uid) {
+        return null;
+    }
+
+    @Override
+    public List<Sheet> fingMyCollectionSheet(Integer uid) {
+        return null;
+    }
+
+    @Override
+    public List<Sheet> findAllSheet() {
         return sheetMapper.searchAll();
     }
 
-    @Override
-    public int searchId(String sname) {
-        return sheetMapper.searchId(sname);
-    }
-
-    @Override
-    public void initSheet(Sheet sheet,User user ,Integer type) {
-//        List<Music>musicList=sheet.getMusicList();
-        sheetMapper.insertSheet(sheet);
-       Integer sid =sheetMapper.searchId(sheet.getSname());
-       sheet.setSid(sid);
-       sheetMapper.insertSheetUser(sheet.getSid(),user.getUid(),sheet.getSname(),type);
-    }
-
-    @Override
-    public Sheet updateSheet(Sheet sheet) {
-        return null;
-    }
+//    @Override
+//    public List<Sheet> searchAll() {
+//        return sheetMapper.searchAll();
+//    }
+//
+//    @Override
+//    public int searchId(String sname) {
+//        return sheetMapper.searchId(sname);
+//    }
+//
+//    @Override
+//    public void initSheet(Sheet sheet,User user ,Integer type) {
+////        List<Music>musicList=sheet.getMusicList();
+//        sheetMapper.insertSheet(sheet);
+//       Integer sid =sheetMapper.searchId(sheet.getSname());
+//       sheet.setSid(sid);
+//       sheetMapper.insertSheetUser(sheet.getSid(),user.getUid(),sheet.getSname(),type);
+//    }
 }

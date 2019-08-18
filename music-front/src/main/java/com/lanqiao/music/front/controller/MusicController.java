@@ -14,13 +14,22 @@ public class MusicController {
     @Reference
     private IMusicService iMusicService;
 
+//
+//    @RequestMapping("/music")
+//    public String findAllMusic(Model model){
+//        List<Music> musicList = iMusicService.queryAllMusic();
+//        model.addAttribute("musicList",musicList);
+//        return "musicplay";
+//    }
+
+//    @Reference
+//    private ISheetService iSheetService;
     @RequestMapping("/music")
     public String findAllMusic(Model model){
         List<Music> musicList = iMusicService.queryAllMusic();
         model.addAttribute("musicList",musicList);
         return "musicplay";
     }
-
 //    @RequestMapping("/userSheet")
 //    public String findAllSheetByUser(@ModelAttribute("user") User user,Model model){
 //        List<Sheet> userSheet = iSheetService.search(user);

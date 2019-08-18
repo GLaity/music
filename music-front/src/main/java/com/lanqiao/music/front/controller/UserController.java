@@ -6,10 +6,10 @@ import com.lanqiao.music.server.service.IBoughtService;
 import com.lanqiao.music.server.service.IUserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 @SessionAttributes(value = {"user"}, types = {User.class})
@@ -26,9 +26,19 @@ public class UserController {
     }
 
     @RequestMapping("/tologin")
-        public String toLogin(){
-        return "signin";
-        }
+    public String tologin(){
+        return "login";    }
+
+    @RequestMapping("/toregister")
+    public String toregister(){
+        return "register";
+    }
+
+    @RequestMapping("/topersonal")
+    public String topersonal(){
+        return "personal";
+    }
+
 
     @RequestMapping("/login")
     public String loginCheck(String uname, String upwd, Model model){
@@ -37,17 +47,15 @@ public class UserController {
             model.addAttribute("user",user);
             return "index";
         } else {
-            return "singin";
+            return "login";
         }
     }
 
     @RequestMapping("/money")
-    public String rechargeMoney(@ModelAttribute("user") User user,Double money, Model model){
+    public String rechargeMoney(User user,Double money){
         iUserService.addBalance(user,money);
         iBoughtService.addBought(user.getUid(),"充值",money);
-        model.addAttribute("user",user);
-        model.addAttribute("msg","充值成功:"+money);
-        return "index";
+        return "personal";
     }
     @RequestMapping("/vip")
     public String vip(@ModelAttribute("user") User user, Integer mouth, Model model){
@@ -80,6 +88,17 @@ public class UserController {
         user.setUbalance(0.0);
         iUserService.register(user);
         return "login";
+    }
+    @RequestMapping("/out")
+    public String out(HttpSession session){
+            session.removeAttribute("user");
+        return "login";
+    }
+
+    @RequestMapping("/save")
+    public String save(User user){
+        iUserService.modifyUser(user);
+        return "personal";
     }
 
 }
