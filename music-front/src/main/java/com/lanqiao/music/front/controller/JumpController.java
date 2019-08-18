@@ -14,7 +14,7 @@ public class JumpController {
     }
     @RequestMapping("/iframemusic")
     public String iframemusic(){
-        return "music";
+        return "songs";
     }
     @RequestMapping("/iframecollection")
     public String iframecollection(){

@@ -1,11 +1,9 @@
 package com.lanqiao.music.front;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.lanqiao.music.server.pojo.User;
-import com.lanqiao.music.server.service.IUserService;
+import com.lanqiao.music.server.frontservice.IUserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -19,11 +17,7 @@ import java.util.Date;
 public class MusicFrontApplicationTests {
     @Reference
     private IUserService iUserService;
-    @Test
-    public void contextLoads() {
-//        System.out.println();
-//        System.out.println(iUserService.login("李四","123456"));
-    }
+
     @Test
     public  void subMonth() throws ParseException {
         Date date = new Date();

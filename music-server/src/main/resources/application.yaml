@@ -1,7 +1,7 @@
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
-  mapper-locations: classpath*:com/lanqiao/music/server/dao/impl/*.xml
+  mapper-locations: classpath*:com/lanqiao/songs/server/dao/impl/*.xml
 spring:
   thymeleaf:
     cache: false
@@ -43,6 +43,6 @@ dubbo:
   registry:
     address: zookeeper://123.57.52.37:2181
   scan:
-    base-packages: com.lanqiao.music.server.service
+    base-packages: com.lanqiao.songs.server.service
 server:
   port: 8001

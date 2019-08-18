@@ -10,11 +10,11 @@ import java.util.List;
 @Mapper
 public interface MusicMapper {
     //添加音乐
-//    void insertMusic(Music music);
+//    void insertMusic(Music songs);
 //    //根据音乐ID删除音乐
 //    void deleteMusicByMId(Integer mid);
 //    //更新音乐
-//    void updateMusic(Music music);
+//    void updateMusic(Music songs);
     //查询所有音乐
     List<Music> selectMusicAll();
     //根据id查询音乐
