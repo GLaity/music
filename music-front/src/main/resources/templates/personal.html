@@ -14,7 +14,7 @@
 	<link rel="stylesheet" th:href="@{./asserts/css/app.css}" type="text/css" />
 	<style>
 		a{color: #EAF6F9;}
-		a:hover{color: white;}
+		a:hover{color: #159253;}
 		table>tbody>tr>td{border: 0px;}
 	</style>
 	<!--[if lt IE 9]>
@@ -33,10 +33,11 @@
 					<section class="scrollable mar">
 <!--						style="background-color: #545a5f"-->
 <!--						<div class="wrapper" style="background-image: url(static/asserts/images/bg1.jpg) ; no-repeat :1px  1px">-->
-						<div class="wrapper" style="background-color: #545a5f">
-							<div class="text-center m-b m-t">
-								<a href="#" class="thumb-lg">
-									<img src="./asserts/images/a0.png" class="img-circle">
+						<div class="wrapper" style="height:300px;">
+							<img th:src="@{asserts/images/bg2.jpg}" class="img-full"/>
+							<div class="text-center m-b m-t imgass" style="width: 30%;height: 30%;position: absolute;top: 50px;left: 35%">
+								<a href="#" class="thumb-lg" style="width: 150px;height: 150px">
+									<img th:src="@{asserts/images/a0.png}" class="img-circle img-full">
 								</a>
 								<div>
 									<div class="h3 m-t-xs m-b-xs"><span style="color: whitesmoke;" th:text="${user.getUname()}">John.Smith</span></div>
