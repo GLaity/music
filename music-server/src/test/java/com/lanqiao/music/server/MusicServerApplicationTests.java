@@ -1,6 +1,7 @@
 package com.lanqiao.music.server;
 
 import com.lanqiao.music.server.dao.BoughtMapper;
+import com.lanqiao.music.server.pojo.User;
 import com.lanqiao.music.server.service.IBoughtService;
 import com.lanqiao.music.server.service.ISheetService;
 import com.lanqiao.music.server.service.IUserService;
@@ -22,7 +23,13 @@ public class MusicServerApplicationTests {
 
     @Test
     public void contextLoads() {
-        System.out.println(iSheetService.findMyBoughtMusic(3));
+//        User user = new User();
+//        user.setUname("shazi");
+//        user.setUpwd("111");
+//        user.setUbalance(0.0);
+//        iUserService.register(user);
+//        System.out.println(user.getUid());
+//        System.out.println(iSheetService.findMyBoughtMusic(3));
 //        System.out.println(iUserService.findUserByUid(1));
     }
 

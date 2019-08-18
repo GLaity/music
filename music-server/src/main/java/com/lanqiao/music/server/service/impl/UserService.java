@@ -4,6 +4,7 @@ import com.alibaba.dubbo.config.annotation.Service;
 import com.lanqiao.music.server.dao.BoughtMapper;
 import com.lanqiao.music.server.dao.UserMapper;
 import com.lanqiao.music.server.pojo.User;
+import com.lanqiao.music.server.service.ISheetService;
 import com.lanqiao.music.server.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,6 +22,8 @@ public class UserService implements IUserService {
 
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private ISheetService iSheetService;
 
     @Override
     public User login(String uname, String upwd) {
@@ -52,6 +55,7 @@ public class UserService implements IUserService {
     @Override
     public void register(User user) {
         userMapper.insertUser(user);
+        iSheetService.addInitSheet(user.getUid());
     }
 
     @Override
