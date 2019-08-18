@@ -6,6 +6,7 @@ import com.lanqiao.music.server.frontservice.IBoughtService;
 import com.lanqiao.music.server.frontservice.IUserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -39,6 +40,10 @@ public class UserController {
     }
 
 
+    @RequestMapping("/tomoney")
+    public String tomoney(){
+        return "recharge";
+    }
     @RequestMapping("/login")
     public String loginCheck(String uname, String upwd, Model model){
         User user = iUserService.login(uname,upwd);

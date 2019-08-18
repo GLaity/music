@@ -1,9 +1,12 @@
 package com.lanqiao.music.front.controller;
 
+import com.lanqiao.music.server.pojo.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
+@SessionAttributes(value = {"user"}, types = {User.class})
 public class JumpController {
     @RequestMapping("/iframemain")
     public String iframemain(){

@@ -26,161 +26,159 @@
 </head>
 <body class="">
   <section class="vbox">
-    <header th:fragment="header" class="bg-white-only header header-md navbar navbar-fixed-top-xs">
-        <div class="navbar-header aside bg-info nav-xs">
-            <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html">
-                <i class="icon-list"></i>
-            </a>
-            <a href="javascript:;" onclick="myIndex();" class="navbar-brand text-lt">
-                <!--myIndex()  $('#mainUI').attr('src',"/main");   onclick 属性由元素上的鼠标点击触发。-->
-                <i class="icon-earphones"></i>
-<!--                <img th:src="@{asserts/imageslogo.png}" alt="." class="hide">-->
-                <span class="hidden-nav-xs m-l-sm">云音乐</span>
-            </a>
-            <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user">
-                <i class="icon-settings"></i>
-            </a>
-        </div>
-        <ul class="nav navbar-nav hidden-xs">
-        <li>
-            <a href="#nav,.navbar-header" data-toggle="class:nav-xs,nav-xs" class="text-muted">
-                <i class="fa fa-indent text"></i>
-                <!--<i> 标签显示斜体文本效果。-->
-                <i class="fa fa-dedent text-active"></i>
-            </a>
-        </li>
-    </ul>
-        <!--onsubmit 属性在提交表单时触发-->
-        <form action="#" onsubmit="return searchMusic()" class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs" role="search">
-            <div class="form-group">
-                <div class="input-group">
-                <span class="input-group-btn">
-                  <button type="submit" class="btn btn-sm bg-white btn-icon rounded"><i class="fa fa-search"></i></button>
-                </span>
-                    <input type="text" id="searchText" class="form-control input-sm no-border rounded" placeholder="发现好时光...">
-                </div>
-            </div>
-        </form>
-        <div class="navbar-right ">
-            <ul class="nav navbar-nav m-n hidden-xs nav-user user">
-    
-                <li th:if="${session.user } == null" class="hidden-xs">
-                    <a href="signin.html" class="dropdown-toggle lt"> 登陆&nbsp;&nbsp;|&nbsp;&nbsp;注册 </a>
-                </li>
-                <!--<li> 标签定义列表项目-->
-    
-                <li th:if="${session.user} != null" class="dropdown">
-                    <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">
-                  <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-<!--                    <img th:src="@{asserts/imagesm0.jpg}"  alt="...">-->
-                  </span>
-                        <!--提示：请使用 <span> 来组合行内元素，以便通过样式来格式化它们。注释：span 没有固定的格式表现。当对它应用样式时，它才会产生视觉上的变化。-->
-                        <span th:text="${session.user.userName}">云音乐用户</span> <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu animated fadeInRight">
-                        <li>
-                            <!--在开发中经常使用href=＂javascript：；＂使得<a>标签失效不跳转，而使用绑定的方法进行跳转-->
-                            <a href="javascript:;" onclick="changeMainUI('/iframepersonal', '个人中心')">个人中心</a>
-                        </li>
-                        <li>
-                            <span class="arrow top"></span>
-                            <a href="#">用户设置</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="/user/logout">注销</a>
-                        </li>
-                    </ul>
-                </li>
-    
-            </ul>
-        </div>
-    </header>
+      <header class="bg-white-only header header-md navbar navbar-fixed-top-xs" >
+          <div class="navbar-header aside bg-info nav-xs">
+              <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html">
+                  <i class="icon-list"></i>
+              </a>
+              <a href="index.html" class="navbar-brand text-lt"><!--点击返回主页面-->
+                  <i class="icon-earphones"></i>
+                  <img src="asserts/images/logo.png" alt="." class="hide">
+                  <span class="hidden-nav-xs m-l-sm">音乐</span>
+              </a>
+              <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user">
+                  <i class="icon-settings"></i>
+              </a>
+          </div>      <ul class="nav navbar-nav hidden-xs">
+          <li>
+              <a href="#nav,.navbar-header" data-toggle="class:nav-xs,nav-xs" class="text-muted">
+                  <i class="fa fa-indent text"></i>
+                  <i class="fa fa-dedent text-active"></i>
+              </a>
+          </li>
+      </ul>
+          <form class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs" role="search">
+              <div class="form-group">
+                  <div class="input-group">
+            <span class="input-group-btn">
+              <button type="submit" class="btn btn-sm bg-white btn-icon rounded"><i class="fa fa-search"></i></button>
+            </span>
+                      <input type="text" class="form-control input-sm no-border rounded" placeholder="搜索歌曲 MV 歌单 歌手 用户">
+                  </div>
+              </div>
+          </form>
+          <div class="navbar-right ">
+              <!--          未登录-->
+              <form action="/tologin" th:unless="${user}">
+                  <ul class="nav navbar-nav m-n hidden-xs nav-user user">
+                      <li class="dropdown">
+                          <input type="submit" value="请登录"class="btn btn-primary btn-default">
+                      </li>
+                  </ul>
+              </form>
+              <!--          登陆-->
+              <form th:if="${user}">
+                  <ul class="nav navbar-nav m-n hidden-xs nav-user user">
+
+
+                      <li class="dropdown">
+                          <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">
+                        <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+                            <img src="asserts/images/a0.png" alt="...">
+                        </span>
+                              <!-- 用户名位置 -->
+                              <span th:text="${user.getUname()}"></span><b class="caret"></b>
+                          </a>
+                          <ul class="dropdown-menu animated fadeInRight">
+                              <li>
+                                  <span class="arrow top"></span>
+                                  <a href="#">设置</a>
+                              </li>
+                              <li>
+
+                                  <a href="javascript:;"onclick="changeMainUI('/iframepersonal','个人中心')">个人中心</a>
+                              </li>
+
+                              <li>
+                                  <a href="docs.html">帮助</a>
+                              </li>
+                              <li class="divider"></li>
+                              <li>
+                                  <a href="/out" data-toggle="ajaxModal" >切换账户</a>
+                              </li>
+                          </ul>
+                      </li>
+                  </ul>
+              </form>
+          </div>
+      </header>
     <section>
       <section class="hbox stretch">
         <!-- .aside -->
-        <aside class="bg-black dk nav-xs aside hidden-print" id="nav">          
+        <aside class="bg-black dk nav-xs aside hidden-print" id="nav">
           <section class="vbox">
-            <section class="w-f-md scrollable">
-              <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-railOpacity="0.2">
-                
+              <section class="w-f-md scrollable">
+                  <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-railOpacity="0.2">
+                      <!-- nav -->
+                      <nav class="nav-primary hidden-xs">
+                          <ul class="nav bg clearfix">
+                              <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
+                                  发现
+                              </li>
+                              <li>
+                                  <a href="index.html">
+                                      <i class="icon-disc icon text-success"></i>
+                                      <span class="font-bold">推荐</span>
+                                  </a>
+                              </li>
+                              <li>
+                                  <a href="genres.html">
+                                      <i class="icon-music-tone-alt icon text-info"></i>
+                                      <span class="font-bold">曲库</span>
+                                  </a>
+                              </li>
+                              <li>
+                                  <a href="play-list.html" data-target="#content" data-el="#bjax-el" data-replace="true">
+                                      <i class="icon-social-youtube icon  text-primary"></i>
+                                      <span class="font-bold">歌单</span>
+                                  </a>
+                              </li>
+                              <li>
+                                  <a href="video.html">
+                                      <i class="icon-drawer icon text-primary-lter"></i>
+                                      <b class="badge bg-primary pull-right">6</b>
+                                      <span class="font-bold">电台</span>
+                                  </a>
+                              </li>
+                              <li>
+                                  <a href="myplaylist.html">
+                                      <i class="icon-list icon  text-info-dker"></i>
+                                      <span class="font-bold">我的歌单</span>
+                                  </a>
+                              </li>
+
+                              <li class="m-b hidden-nav-xs"></li>
+                          </ul>
+
+                          <ul class="nav text-sm">
+                              <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
+                                  <span class="pull-right"><a href="#"><i class="icon-plus i-lg"></i></a></span>
+                                  Playlist
+                              </li>
+                              <li>
+                                  <a href="#">
+                                      <i class="icon-music-tone icon"></i>
+                                      <span>Hip-Pop</span>
+                                  </a>
+                              </li>
+                              <li>
+                                  <a href="#">
+                                      <i class="icon-playlist icon text-success-lter"></i>
+                                      <b class="badge bg-success dker pull-right">9</b>
+                                      <span>Jazz</span>
+                                  </a>
+                              </li>
+                          </ul>
+                      </nav>
+                      <!-- / nav -->
+                  </div>
 
 
-                <!-- nav -->                 
-                <nav class="nav-primary hidden-xs">
-                  <ul class="nav bg clearfix">
-                    <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
-                      发现
-                    </li>
-                    <li>
-                      <a href="javascript:;" onclick="changeMainUI('/iframemain', '推荐')">
-                        <i class="icon-disc icon text-success"></i>
-                        <span class="font-bold">推荐</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="javascript:;" onclick="changeMainUI('/iframegenres', '曲库')">
-                        <i class="icon-music-tone-alt icon text-info"></i>
-                        <span class="font-bold">曲库</span>
-                      </a>
-                    </li>
-					<li>
-					  <a href="javascript:;" onclick="changeMainUI('/iframeplay-list','歌单')" data-target="#content" data-el="#bjax-el" data-replace="true">
-					    <i class="icon-social-youtube icon  text-primary"></i>
-					    <span class="font-bold">歌单</span>
-					  </a>
-					</li>
-                    <li>
-                      <a href="javascript:;" onclick="changeMainUI('/iframevideo','电台')">
-                        <i class="icon-drawer icon text-primary-lter"></i>
-                        <b class="badge bg-primary pull-right">6</b>
-                        <span class="font-bold">电台</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="javascript:;" onclick="changeMainUI('/iframemyplaylist','我的歌单')">
-                        <i class="icon-list icon  text-info-dker"></i>
-                        <span class="font-bold">我的歌单</span>
-                      </a>
-                    </li>
-                   
-                    <li class="m-b hidden-nav-xs"></li>
-                  </ul>
-                  
-                  <ul class="nav text-sm">
-                    <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
-                      <span class="pull-right"><a href="#"><i class="icon-plus i-lg"></i></a></span>
-                      Playlist
-                    </li>
-					<li>
-					  <a href="javascript:;" onclick="changeMainUI('/iframecollection','我的收藏')">
-					    <i class="icon-heart icon"></i>
-					    <span>我的收藏</span>
-					  </a>
-					</li>
-                    <li>
-                      <a href="#">
-                        <i class="icon-music-tone icon"></i>
-                        <span>Hip-Pop</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="icon-playlist icon text-success-lter"></i>
-                        <b class="badge bg-success dker pull-right">9</b>
-                        <span>Jazz</span>
-                      </a>
-                    </li>
-                  </ul>
-                </nav>
-                <!-- / nav -->
-              </div>
-            </section>
+              </section>
 			<!---->
-            
-            <footer class="footer hidden-xs no-padder text-center-nav-xs">
 
-                         </footer>
+            <footer class="footer hidden-xs no-padder text-center-nav-xs">
+            </footer>
           </section>
         </aside>
         <!-- /.aside -->
@@ -265,10 +263,10 @@
                           </div>
                       </div>
                   </footer>
-                  
+
                   <input type="text" id="hidInp" value="hidtext" style="opacity:0;">
                   <a href="javascript:void(0);" id="addTab" onclick="addmusic()" style="opacity:0;"></a>
-                  
+
               </section>
             </section>
            
@@ -280,7 +278,7 @@
   </section>
 
   <script type="text/javascript">
-      
+
    $(function () {
       //加载首页时初始化音乐播放器  attr() 方法设置或返回被选元素的属性值。
       // $('#musicUI').attr('src','/iframemusic');
@@ -404,11 +402,6 @@
       window.history.pushState(null, null, '/#/index');
   }
 
-  function addmusic() {
-
-
-
-  }
 
 </script>
 </body>
