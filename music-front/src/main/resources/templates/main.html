@@ -67,13 +67,13 @@
 								</div>
 							</div>
 							<!--歌曲图片-->
-							<a href="#"><img th:src="@{asserts/images/p1.jpg}" alt="" class="r r-2x img-full"><!----></a>
+							<a href="#"><img th:src="@{content/songs/1/爱情的花样.jpg}" alt="" class="r r-2x img-full"><!----></a>
 						</div>
 						<div class="padder-v">
 							<!--歌曲名称-->
-							<a href="#" class="text-ellipsis">Tempered Song</a>
+							<a href="#" class="text-ellipsis">爱情的花样</a>
 							<!--歌手-->
-							<a href="#" class="text-ellipsis text-xs text-muted">Miaow</a>
+							<a href="#" class="text-ellipsis text-xs text-muted">孙燕姿</a>
 						</div>
 					</div>
 				</div>
@@ -91,7 +91,7 @@
 									<i class="fa fa-star-o text-muted"></i>
 								</div>
 								<div class="center text-center m-t-n">
-									<a href="#" data-toggle="class">
+									<a href="#" data-toggle="class" onclick="addmusic(2)">
 										<i class="icon-control-play i-2x text"></i>
 										<i class="icon-control-pause i-2x text-active"></i>
 									</a>
@@ -107,11 +107,11 @@
 									</a>
 								</div>
 							</div>
-							<a href="#"><img th:src="@{asserts/images/p2.jpg}" alt="" class="r r-2x img-full"></a>
+							<a href="#"><img th:src="@{content/songs/2/安宁.jpg}" alt="" class="r r-2x img-full"></a>
 						</div>
 						<div class="padder-v">
-							<a href="#" class="text-ellipsis">Vivamus vel tincidunt libero</a>
-							<a href="#" class="text-ellipsis text-xs text-muted">Lauren Taylor</a>
+							<a href="#" class="text-ellipsis">安宁</a>
+							<a href="#" class="text-ellipsis text-xs text-muted">孙燕姿</a>
 						</div>
 					</div>
 				</div>
@@ -142,8 +142,8 @@
 							<a href="#"><img th:src="@{asserts/images/p3.jpg}" alt="" class="r r-2x img-full"></a>
 						</div>
 						<div class="padder-v">
-							<a href="#" class="text-ellipsis">Morbi id neque quam liquam sollicitudin</a>
-							<a href="#" class="text-ellipsis text-xs text-muted">Allen JH</a>
+							<a href="#" class="text-ellipsis">丑八怪</a>
+							<a href="#" class="text-ellipsis text-xs text-muted">薛之谦</a>
 						</div>
 					</div>
 				</div>
@@ -159,7 +159,7 @@
 									<i class="fa fa-star-o text-muted"></i>
 								</div>
 								<div class="center text-center m-t-n">
-									<a href="#"><i class="icon-control-play i-2x"></i></a>
+									<a href="#"  onclick="addmusic(4)"><i class="icon-control-play i-2x"></i></a>
 								</div>
 								<div class="bottom padder m-b-sm">
 									<a href="#" class="pull-right">
@@ -178,8 +178,8 @@
 							<a href="#"><img th:src="@{asserts/images/p4.jpg}" alt="" class="r r-2x img-full"></a>
 						</div>
 						<div class="padder-v">
-							<a href="#" class="text-ellipsis">Tincidunt libero</a>
-							<a href="#" class="text-ellipsis text-xs text-muted">Amanda Conlan</a>
+							<a href="#" class="text-ellipsis">凉凉</a>
+							<a href="#" class="text-ellipsis text-xs text-muted">张碧晨</a>
 						</div>
 					</div>
 				</div>
@@ -196,7 +196,7 @@
 									<i class="fa fa-star-o text-muted"></i>
 								</div>
 								<div class="center text-center m-t-n">
-									<a href="#"><i class="icon-control-play i-2x"></i></a>
+									<a href="#"  onclick="addmusic(5)"><i class="icon-control-play i-2x"></i></a>
 								</div>
 								<div class="bottom padder m-b-sm">
 									<a href="#" class="pull-right">
@@ -210,8 +210,8 @@
 							<a href="#"><img th:src="@{asserts/images/p5.jpg}" alt="" class="r r-2x img-full"></a>
 						</div>
 						<div class="padder-v">
-							<a href="#" class="text-ellipsis">Fermentum diam</a>
-							<a href="#" class="text-ellipsis text-xs text-muted">Nisa Colen</a>
+							<a href="#" class="text-ellipsis">有点甜</a>
+							<a href="#" class="text-ellipsis text-xs text-muted">汪苏泷</a>
 						</div>
 					</div>
 				</div>
@@ -230,7 +230,7 @@
 									<i class="fa fa-star-o text-muted"></i>
 								</div>
 								<div class="center text-center m-t-n">
-									<a href="#"><i class="icon-control-play i-2x"></i></a>
+									<a href="#" onclick="addmusic(6)"><i class="icon-control-play i-2x"></i></a>
 								</div>
 								<div class="bottom padder m-b-sm">
 									<a href="#" class="pull-right">
@@ -244,8 +244,8 @@
 							<a href="#"><img th:src="@{asserts/images/p6.jpg}" alt="" class="r r-2x img-full"></a>
 						</div>
 						<div class="padder-v">
-							<a href="#" class="text-ellipsis">Habitant</a>
-							<a href="#" class="text-ellipsis text-xs text-muted">Dan Doorack</a>
+							<a href="#" class="text-ellipsis">暧昧</a>
+							<a href="#" class="text-ellipsis text-xs text-muted">薛之谦</a>
 						</div>
 					</div>
 				</div>
@@ -262,7 +262,7 @@
 									<i class="fa fa-star-o text-muted"></i>
 								</div>
 								<div class="center text-center m-t-n">
-									<a href="#"><i class="icon-control-play i-2x"></i></a>
+									<a href="#"  onclick="addmusic(7)"><i class="icon-control-play i-2x"></i></a>
 								</div>
 								<div class="bottom padder m-b-sm">
 									<a href="#" class="pull-right">
@@ -279,8 +279,8 @@
 							<a href="#"><img th:src="@{asserts/images/p7.jpg}" alt="" class="r r-2x img-full"></a>
 						</div>
 						<div class="padder-v">
-							<a href="#" class="text-ellipsis">Vivamus vel tincidunt libero</a>
-							<a href="#" class="text-ellipsis text-xs text-muted">Ligula H</a>
+							<a href="#" class="text-ellipsis">初学者</a>
+							<a href="#" class="text-ellipsis text-xs text-muted">薛之谦</a>
 						</div>
 					</div>
 				</div>
@@ -296,7 +296,7 @@
 									<i class="fa fa-star-o text-muted"></i>
 								</div>
 								<div class="center text-center m-t-n">
-									<a href="#"><i class="icon-control-play i-2x"></i></a>
+									<a href="#" onclick="addmusic(8)"><i class="icon-control-play i-2x"></i></a>
 								</div>
 								<div class="bottom padder m-b-sm">
 									<a href="#" class="pull-right">
@@ -310,8 +310,8 @@
 							<a href="#"><img th:src="@{asserts/images/p8.jpg}" alt="" class="r r-2x img-full"></a>
 						</div>
 						<div class="padder-v">
-							<a href="#" class="text-ellipsis">Aliquam sollicitudin venenati</a>
-							<a href="#" class="text-ellipsis text-xs text-muted">James East</a>
+							<a href="#" class="text-ellipsis">动物世界</a>
+							<a href="#" class="text-ellipsis text-xs text-muted">薛之谦</a>
 						</div>
 					</div>
 				</div>
@@ -328,7 +328,7 @@
 									<i class="fa fa-star-o text-muted"></i>
 								</div>
 								<div class="center text-center m-t-n">
-									<a href="#"><i class="icon-control-play i-2x"></i></a>
+									<a href="#"  onclick="addmusic(9)"><i class="icon-control-play i-2x"></i></a>
 								</div>
 								<div class="bottom padder m-b-sm">
 									<a href="#" class="pull-right">
@@ -342,8 +342,8 @@
 							<a href="#"><img th:src="@{asserts/images/p9.jpg}" alt="" class="r r-2x img-full"></a>
 						</div>
 						<div class="padder-v">
-							<a href="#" class="text-ellipsis">Lementum ligula vitae</a>
-							<a href="#" class="text-ellipsis text-xs text-muted">Lauren Taylor</a>
+							<a href="#" class="text-ellipsis">方圆几里</a>
+							<a href="#" class="text-ellipsis text-xs text-muted">薛之谦</a>
 						</div>
 					</div>
 				</div>
@@ -359,7 +359,7 @@
 									<i class="fa fa-star-o text-muted"></i>
 								</div>
 								<div class="center text-center m-t-n">
-									<a href="#" data-toggle="class" class="active">
+									<a href="#" data-toggle="class" class="active"  onclick="addmusic(10)">
 										<i class="icon-control-play i-2x text"></i>
 										<i class="icon-control-pause i-2x text-active"></i>
 									</a>
@@ -378,8 +378,8 @@
 							<a href="#"><img th:src="@{asserts/images/p10.jpg}" alt="" class="r r-2x img-full"></a>
 						</div>
 						<div class="padder-v">
-							<a href="#" class="text-ellipsis">Egestas dui nec fermentum </a>
-							<a href="#" class="text-ellipsis text-xs text-muted">Chris Fox</a>
+							<a href="#" class="text-ellipsis">刚刚好</a>
+							<a href="#" class="text-ellipsis text-xs text-muted">薛之谦</a>
 						</div>
 					</div>
 				</div>
@@ -396,7 +396,7 @@
 									<i class="fa fa-star-o text-muted"></i>
 								</div>
 								<div class="center text-center m-t-n">
-									<a href="#"><i class="icon-control-play i-2x"></i></a>
+									<a href="#" onclick="addmusic(11)"><i class="icon-control-play i-2x"></i></a>
 								</div>
 								<div class="bottom padder m-b-sm">
 									<a href="#" class="pull-right">
@@ -410,8 +410,8 @@
 							<a href="#"><img th:src="@{asserts/images/p11.jpg}" alt="" class="r r-2x img-full"></a>
 						</div>
 						<div class="padder-v">
-							<a href="#" class="text-ellipsis">Aliquam sollicitudin venenatis ipsum</a>
-							<a href="#" class="text-ellipsis text-xs text-muted">Jack Jason</a>
+							<a href="#" class="text-ellipsis">蜀御风</a>
+							<a href="#" class="text-ellipsis text-xs text-muted">君撷</a>
 						</div>
 					</div>
 				</div>
@@ -427,7 +427,7 @@
 									<i class="fa fa-star-o text-muted"></i>
 								</div>
 								<div class="center text-center m-t-n">
-									<a href="#"><i class="icon-control-play i-2x"></i></a>
+									<a href="#" onclick="addmusic(12)"><i class="icon-control-play i-2x"></i></a>
 								</div>
 								<div class="bottom padder m-b-sm">
 									<a href="#" class="pull-right">
@@ -441,8 +441,8 @@
 							<a href="#"><img th:src="@{asserts/images/p12.jpg}" alt="" class="r r-2x img-full"></a>
 						</div>
 						<div class="padder-v">
-							<a href="#" class="text-ellipsis">Vestibulum ullamcorper</a>
-							<a href="#" class="text-ellipsis text-xs text-muted">MM &amp; DD</a>
+							<a href="#" class="text-ellipsis">东风破</a>
+							<a href="#" class="text-ellipsis text-xs text-muted">周杰伦</a>
 						</div>
 					</div>
 				</div>
