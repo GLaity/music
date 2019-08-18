@@ -1,25 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lanqiao.music.server.dao.SheetMapper">
-    <select id="searchAll" resultType="com.lanqiao.music.server.pojo.Sheet">
-        select * from sheet
-    </select>
-    <select id="searchId" resultType="integer" parameterType="string">
-        select sid from sheet where sname=#{sname}
-    </select>
+    <resultMap id="sheetMap" type="com.lanqiao.music.server.pojo.Sheet">
+        <id property="sid" column="sid"/>
+        <result property="ssum" column="ssum"/>
+        <result property="sname" column="sname"/>
+        <result property="scontext" column="scontext"/>
+        <result property="sdate" column="sdate"/>
+        <collection property="musicList" ofType="com.lanqiao.music.server.pojo.Music" select="selectMusicForSheet" column="sid"/>
+    </resultMap>
     <insert id="insertSheet" parameterType="com.lanqiao.music.server.pojo.Sheet">
-        insert sheet(ssum,sname,scontext,sdate) values (0,#{sname},#{scontext},date(NOW()))
+        insert into sheet (ssum, sname, scontext, sdate)
+        values (#{ssum}, #{sname}, #{scontext}, NOW());
         <selectKey resultType="int" keyColumn="sid" keyProperty="sid" order="AFTER">
-            select @@identity
+            select LAST_INSERT_ID()
         </selectKey>
+        insert into sheet_user (sid, sname, uid, type)
+        values (#{sid}, #{sname}, #{uid}, #(type));
     </insert>
-    <insert id="insertSheetUser" parameterType="map">
-        insert sheet_music (sid,sname,uid,type) values (#{sid},#{sname},#{uid},#{type})
-    </insert>
-    <insert id="insertSheetMusic" parameterType="map">
-        insert sheet_music(sid,mid) values (#{sid},#{mid})
-    </insert>
-    <update id="updateSheet" parameterType="com.lanqiao.music.server.pojo.Sheet">
-        update sheet set ssum=#{ssum},sname=#{sname},scontext=#{scontext} where sid=#{sid}
+    <update id="updateSheet">
+        update sheet
+        <set>
+            <if test="ssum != null and ssum != ''">
+                ssum = #{ssum},
+            </if>
+            <if test="sname != null and sname != ''">
+                sname = #{sname},
+            </if>
+            <if test="scontext != null and scontext != ''">
+                scontext = #{scontext},
+            </if>
+            <if test="sdate != null">
+                sdate = #{sdate},
+            </if>
+        </set>
+        where sid = #{sid}
     </update>
+    <select id="selectSheetBySid" resultMap="sheetMap">
+        select * from sheet where sid = #{sid};
+    </select>
+    <select id="selectAllSheet" resultMap="sheetMap">
+        select * from sheet;
+    </select>
+    <select id="selectSheetByUserType" resultMap="sheetMap">
+        select * from sheet
+        where sid in (
+            select sid from sheet_user
+            where uid = #{uid} and type = #{type}
+            )
+    </select>
+    <select id="selectMusicForSheet" resultType="com.lanqiao.music.server.pojo.Music" parameterType="int">
+        select * from music
+        where mid in (
+            select mid from sheet_music
+            where sid = #{sid}
+            )
+    </select>
+    <insert id="insertMusicIntoSheet">
+        insert into sheet_music (sid, mid)
+            value (#{sid},#{mid})
+    </insert>
+    <delete id="deleteMusicFormSheet">
+        delete from sheet_music
+        where sid = #{sid} and mid = #{mid};
+    </delete>
+    <insert id="insertSheetIntoUser">
+        insert into sheet_user (sid, uid, type, sname)
+        values (#{sid}, #{uid}, 2, (select sname from sheet where sid = #{sid}));
+    </insert>
+    <delete id="deleteSheetFromUser">
+        delete from sheet_user
+        where sid = #{sid} and uid = #{uid} and type = 2;
+    </delete>
+
 </mapper>

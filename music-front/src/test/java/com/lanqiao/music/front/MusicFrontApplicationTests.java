@@ -42,9 +42,7 @@ public class MusicFrontApplicationTests {
         User user =new User();
         user.setUid(3);
         user.setUname("abc");
-        iSheetService.initSheet(sheet,user,1);
-        System.out.println(iSheetService.searchAll());
-//        System.out.println(iSheetService.searchAll("test"));
+       System.out.println(iSheetService.findAllSheet().size());
     }
     @Test
     public  void subMonth() throws ParseException {

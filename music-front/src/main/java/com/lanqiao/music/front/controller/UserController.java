@@ -38,7 +38,8 @@ public class UserController {
     public String topersonal(){
         return "personal";
     }
-
+    @RequestMapping("/toplaylist")
+    public String toplaylist(){return "plat-list";}
 
     @RequestMapping("/login")
     public String loginCheck(String uname, String upwd, Model model){

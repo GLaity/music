@@ -1,5 +1,6 @@
 package com.lanqiao.music.server.dao;
 
+import com.lanqiao.music.server.pojo.Music;
 import com.lanqiao.music.server.pojo.Sheet;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -10,11 +11,19 @@ import java.util.List;
 @Repository
 @Mapper
 public interface SheetMapper {
-    List<Sheet> searchAll();
-    int searchId(String sname);
-    public void insertSheet(Sheet sheet);
-    public void insertSheetUser(@Param("sid") Integer sid, @Param("uid") Integer uid, @Param("sname") String sname, @Param("type") Integer type);
-    public void insertSheetMusic(@Param("sid") Integer sid,@Param("mid") Integer mid);
-    //修改歌单
-    public Sheet updateSheet(Sheet sheet);
+    void insertSheet(Sheet sheet);
+    void updateSheet(Sheet sheet);
+    Sheet selectSheetBySid(Integer sid);
+    List<Sheet> selectAllSheet();
+    List<Sheet> selectSheetByUserType(@Param("uid") Integer uid,
+                                      @Param("type") Integer type);
+    List<Music> selectMusicForSheet(@Param("sid")Integer sid);
+    void insertMusicIntoSheet(@Param("sid") Integer sid,
+                              @Param("mid") Integer mid);
+    void deleteMusicFormSheet(@Param("sid") Integer sid,
+                              @Param("mid") Integer mid);
+    void insertSheetIntoUser(@Param("uid") Integer uid,
+                             @Param("sid") Integer sid);
+    void deleteSheetFromUser(@Param("uid") Integer uid,
+                             @Param("sid") Integer sid);
 }
