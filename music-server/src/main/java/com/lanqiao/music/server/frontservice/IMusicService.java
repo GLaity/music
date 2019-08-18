@@ -1,9 +1,10 @@
-package com.lanqiao.music.server.service;
+package com.lanqiao.music.server.frontservice;
 
 import com.lanqiao.music.server.pojo.Music;
 import com.lanqiao.music.server.pojo.Sort;
 
 import java.util.List;
+
 
 public interface IMusicService {
     List<Music> queryAllMusic();

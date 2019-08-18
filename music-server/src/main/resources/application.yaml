@@ -43,6 +43,6 @@ dubbo:
   registry:
     address: zookeeper://123.57.52.37:2181
   scan:
-    base-packages: com.lanqiao.music.server.service
+    base-packages: com.lanqiao.music.server.frontservice
 server:
   port: 8001

@@ -5,7 +5,7 @@ dubbo:
   registry:
     address: zookeeper://123.57.52.37:2181
   scan:
-    base-packages: com.lanqiao.music.server.service
+    base-packages: com.lanqiao.music.server.frontservice
 spring:
   mvc:
     date-format: yyyy-MM-dd HH:mm:ss

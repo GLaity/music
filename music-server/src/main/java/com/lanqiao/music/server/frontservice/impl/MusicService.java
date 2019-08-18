@@ -1,10 +1,10 @@
-package com.lanqiao.music.server.service.impl;
+package com.lanqiao.music.server.frontservice.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
 import com.lanqiao.music.server.dao.MusicMapper;
+import com.lanqiao.music.server.frontservice.IMusicService;
 import com.lanqiao.music.server.pojo.Music;
 import com.lanqiao.music.server.pojo.Sort;
-import com.lanqiao.music.server.service.IMusicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
