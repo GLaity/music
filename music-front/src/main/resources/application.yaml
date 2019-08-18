@@ -1,7 +1,11 @@
 dubbo:
   application:
     name: front
+    qos-port: 33333
   registry:
     address: zookeeper://123.57.52.37:2181
   scan:
     base-packages: com.lanqiao.music.server.service
+spring:
+  mvc:
+    date-format: yyyy-MM-dd HH:mm:ss

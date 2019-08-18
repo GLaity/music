@@ -74,8 +74,9 @@ public class UserService implements IUserService {
     //充值金额
     @Override
     public void addBalance(User user,Double money) {
-        Double d = user.getUbalance()+money;
-        user.setUbalance(d);
+//        Double d = user.getUbalance()+money;
+//        user.setUbalance(d);
+        user.setUbalance((user.getUbalance()+money));
         userMapper.updateUser(user);
     }
     //减少余额
