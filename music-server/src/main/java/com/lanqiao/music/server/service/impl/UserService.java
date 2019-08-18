@@ -17,23 +17,31 @@ public class UserService implements IUserService {
     private UserMapper userMapper;
 
     @Override
-    public User login(String uname, String upwd) {
-        User user = userMapper.selectUserByUname(uname);
-        if (user == null){
-            return null;
-        } else {
-            if (user.getUpwd().equals(upwd)){
-                return user;
-            } else {
-                return null;
-            }
-        }
-    }
-
-    @Override
     public List<User> getAll() {
         List<User> users =userMapper.selectAll();
         return users;
     }
+
+    @Override
+    public void deleteUserById(Integer id) {
+        userMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public void updateUserByPrimaryKeySelective(User user) {
+        userMapper.updateByPrimaryKeySelective(user);
+    }
+
+    @Override
+    public void saveUserSelective(User user) {
+        userMapper.insertSelective(user);
+    }
+
+    @Override
+    public User getUserById(Integer id) {
+
+        return userMapper.selectByPrimaryKey(id);
+    }
+
 
 }

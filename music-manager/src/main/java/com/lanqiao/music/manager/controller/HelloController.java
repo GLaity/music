@@ -1,13 +1,19 @@
 package com.lanqiao.music.manager.controller;
 
+import com.alibaba.dubbo.config.annotation.Reference;
+import com.lanqiao.music.server.pojo.Music;
+import com.lanqiao.music.server.service.IMusicService;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
-@EnableAutoConfiguration
 public class HelloController {
+
+
 
     @RequestMapping("/welcome")
     public String welcome(){
@@ -29,9 +35,9 @@ public class HelloController {
         return "comment-list";
     }
 
-    @RequestMapping("/admin-list")
+    @RequestMapping("/admin-add")
     public String adminList(){
-        return "admin-list";
+        return "admin-add";
     }
 
     @RequestMapping("/admin-vip-list")
@@ -48,5 +54,7 @@ public class HelloController {
     public String radioList(){
         return "radio-list";
     }
+
+
 
 }

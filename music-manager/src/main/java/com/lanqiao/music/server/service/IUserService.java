@@ -1,12 +1,19 @@
 package com.lanqiao.music.server.service;
 
-import org.springframework.stereotype.Service;
+import com.lanqiao.music.server.pojo.User;
 
 import java.util.List;
 
-@Service
 public interface IUserService {
-    Integer login(String uname, String upwd);
 
     List<User> getAll();
+
+    void deleteUserById(Integer id);
+
+    void updateUserByPrimaryKeySelective(User user);
+
+    void saveUserSelective(User user);
+
+    User getUserById(Integer id);
+
 }

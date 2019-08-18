@@ -9,6 +9,13 @@ import com.lanqiao.music.server.pojo.User;
 public interface IUserService {
 
     List<User> getAll();
-    User login(String uname, String upwd);
+
+    void deleteUserById(Integer id);
+
+    void updateUserByPrimaryKeySelective(User user);
+
+    void saveUserSelective(User user);
+
+    User getUserById(Integer id);
 
 }

@@ -18,19 +18,6 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class MusicServerApplicationTests {
-    @Autowired
-    private SheetMapper sheetMapper;
-    @Autowired
-    private UserMapper userMapper;
 
-    @Test
-    public void contextLoads() throws SQLException {
-//        System.out.println("-----------");
-//        List<Sheet> sheets =sheetMapper.searchAll();
-//        System.out.println(sheets);
-        User user = userMapper.selectByPrimaryKey(1);
-        System.out.println(user);
-
-    }
 
 }

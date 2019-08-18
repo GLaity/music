@@ -22,11 +22,13 @@ public class Login {
             return "login";
         }
         if(username.equals("admin") && password.equals("123456") ){
-            return "redirect:/user/list";
+//            return "redirect:/user/list";
+            return "index";
         }
         req.setAttribute("prompt","用户名或密码错误");
         return "login";
 
     }
+
 
 }
