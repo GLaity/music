@@ -1,6 +1,14 @@
 server:
   port: 8080
-spring:
-  mvc:
-    servlet:
-      path: /
+dubbo:
+  application:
+    name: manager
+  registry:
+    address: zookeeper://123.57.52.37:2181
+  scan:
+    base-packages: com.lanqiao.music.server.service
+  protocol:
+    host: 192.168.0.112
+    name: dubbo
+    id: dubbo
+

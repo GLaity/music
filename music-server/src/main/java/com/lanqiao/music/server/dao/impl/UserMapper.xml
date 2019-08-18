@@ -1,7 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-        <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lanqiao.music.server.dao.UserMapper">
-<select id="selectUserByUname" parameterType="string" resultType="com.lanqiao.music.server.pojo.User">
+    <resultMap id="userMap" type="com.lanqiao.music.server.pojo.User">
+        <id property="uid" column="uid"/>
+        <result property="uname" column="uname"/>
+        <result property="upwd" column="upwd"/>
+        <result property="ubalance" column="ubalance"/>
+        <result property="udate" column="udate"/>
+        <result property="vdate" column="vdate"/>
+        <result property="usex" column="usex"/>
+        <result property="utel" column="utel"/>
+        <association property="uCollectionMusic" javaType="com.lanqiao.music.server.pojo.Sheet" select="selectCollectionMusic" column="uid"/>
+        <association property="uBuyMusic" javaType="com.lanqiao.music.server.pojo.Sheet" select="selectBuyMusic" column="uid"/>
+        <collection property="uCreateSheet" ofType="com.lanqiao.music.server.pojo.Sheet" select="selectCreateSheet" column="uid"/>
+        <collection property="uCollectionSheet" ofType="com.lanqiao.music.server.pojo.Sheet" select="selectCollectionSheet" column="uid"/>
+    </resultMap>
+    <insert id="insertUser" parameterType="com.lanqiao.music.server.pojo.User">
+        insert into user (uname, upwd, ubalance,udate)
+        values (#{uname}, #{uname}, #{ubalance}, #{udate})
+        <selectKey resultType="int" keyColumn="uid" keyProperty="uid" order="AFTER">
+            select LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+    <update id="updateUser" parameterType="com.lanqiao.music.server.pojo.User">
+        update user
+        <set>
+            <if test="uname != null and uname != ''">
+                uname = #{uname},
+            </if>
+            <if test="upwd != null and upwd != ''">
+                upwd = #{upwd},
+            </if>
+            <if test="ubalance != null and ubalance != ''">
+                ubalance = #{ubalance},
+            </if>
+            <if test="udate != null and udate != ''">
+                udate = #{udate},
+            </if>
+            <if test="vdate != null and vdate != ''">
+                vdate = #{vdate},
+            </if>
+            <if test="usex != null and usex != ''">
+                usex = #{usex},
+            </if>
+            <if test="utel != null and utel != ''">
+                utel = #{utel},
+            </if>
+        </set>
+        where uid = #{uid}
+    </update>
+    <select id="selectUserByUname" parameterType="string" resultMap="userMap">
         select * from user where uname = #{uname};
     </select>
 </mapper>

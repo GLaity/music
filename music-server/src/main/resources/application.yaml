@@ -8,10 +8,14 @@ spring:
   mvc:
     date-format: yyyy-MM-dd
   datasource:
-    url: jdbc:mysql://123.57.52.37:3306/music?serverTimezone=UTC
+#    url: jdbc:mysql://123.57.52.37:3306/music?serverTimezone=UTC
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    username: 'root'
+#    password: 'Root@2019'
+    url: jdbc:mysql://localhost:3306/music?serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: 'root'
-    password: 'Root@2019'
+    password: 'root'
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       # \u4E0B\u9762\u4E3A\u8FDE\u63A5\u6C60\u7684\u8865\u5145\u8BBE\u7F6E\uFF0C\u5E94\u7528\u5230\u4E0A\u9762\u6240\u6709\u6570\u636E\u6E90\u4E2D
@@ -60,7 +64,7 @@ dubbo:
   scan:
     base-packages: com.lanqiao.music.server.service
   protocol:
-    host: 192.168.0.115
+    host: 192.168.1.20
     name: dubbo
     id: dubbo
 server:
