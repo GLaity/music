@@ -63,13 +63,13 @@
     </select>
     <select id="selectMusicByMId" parameterType="int" resultMap="musicMap">
         select
-        <include refid="base_sql"></include>
+        <include refid="base_sql"/>
         from music
         where mid=#{mid}
     </select>
     <select id="selectMusicByLikeName" parameterType="string" resultMap="musicMap">
         select
-        <include refid="base_sql"></include>
+        <include refid="base_sql"/>
         from music
         where mname like  '%' #{mname} '%'
     </select>
