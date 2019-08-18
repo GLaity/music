@@ -22,7 +22,7 @@
 <title>品牌管理</title>
 </head>
 <body>
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 产品管理 <span class="c-gray en">&gt;</span> 品牌管理 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 音乐管理 <span class="c-gray en">&gt;</span> 音乐管理 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
 	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a></span> <span class="r">共有数据：<strong th:text="${size}"></strong> 条</span> </div>
 	<div class="mt-20">
@@ -50,7 +50,17 @@
 					<td th:text="${music.mprice}"></td>
 					<td th:text="${#dates.format(music.mdate,'yyyy-MM-dd')}"></td>
 					<td class="td-status"><span class="label radius">已停用</span></td>
-					<td class="td-manage"><a style="text-decoration:none" onClick="admin_start(this,'10001')" href="javascript:;" title="启用"><i class="Hui-iconfont">&#xe615;</i></a> <a title="编辑" th:href="@{/music/select.do/}+${music.mid}" onclick="admin_edit('管理员编辑','admin-add.html','2','800','500')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" th:href="@{/music/delete.do/}+${music.mid}" onclick="admin_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+					<td class="td-manage">
+						<a style="text-decoration:none" onClick="admin_start(this,'10001')" href="javascript:;" title="启用">
+							<i class="Hui-iconfont">&#xe615;</i>
+						</a>
+						<a title="编辑" th:href="@{/music/select.do/}+${music.mid}" onclick="admin_edit('管理员编辑','admin-add.html','2','800','500')" class="ml-5" style="text-decoration:none">
+							<i class="Hui-iconfont">&#xe6df;</i>
+						</a>
+						<a title="删除" th:href="@{/music/delete.do/}+${music.mid}" onclick="admin_del(this,'1')" class="ml-5" style="text-decoration:none">
+							<i class="Hui-iconfont">&#xe6e2;</i>
+						</a>
+					</td>
 				</tr>
 			</tbody>
 		</table>

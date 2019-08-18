@@ -2,6 +2,7 @@ package com.lanqiao.music.manager;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.lanqiao.music.server.pojo.Music;
+import com.lanqiao.music.server.service.IBoughtService;
 import com.lanqiao.music.server.service.IMusicService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,13 +17,13 @@ import java.util.List;
 public class MusicManagerApplicationTests {
 
     @Reference
-    private IMusicService musicService;
+    private IBoughtService boughtService;
 
     @Test
     public void contextLoads() {
 
-        Music music = musicService.getOneMusic(1);
-        System.out.println(music);
+        String user = boughtService.getUserNameByUid(1);
+        System.out.println(user);
     }
 
 }

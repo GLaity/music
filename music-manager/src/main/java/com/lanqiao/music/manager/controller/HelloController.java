@@ -32,11 +32,6 @@ public class HelloController {
         return "music-upload";
     }
 
-    @RequestMapping("/comment-list")
-    public String commentList(){
-        return "comment-list";
-    }
-
     @RequestMapping("/admin-list")
     public String adminList(){
         return "admin-list";
@@ -55,15 +50,6 @@ public class HelloController {
     @RequestMapping("/radio-list")
     public String radioList(){
         return "radio-list";
-    }
-
-    @RequestMapping("/music")
-    public String radioList1(ModelMap map){
-        List<Music> musicList = musicService.getAllMusic();
-        String size = String.valueOf(musicList.size());
-        map.addAttribute("size",size);
-        map.addAttribute("musicList",musicList);
-        return "music";
     }
 
 }

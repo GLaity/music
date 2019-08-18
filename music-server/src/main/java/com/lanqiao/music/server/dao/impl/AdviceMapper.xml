@@ -24,4 +24,16 @@
     <select id="selectAdviceByMusic" parameterType="int" resultMap="adviceMap">
         select * from advice where mid = #{mid}
     </select>
+    <select id="selectAllAdvice" resultMap="adviceMap">
+        select * from advice
+    </select>
+    <select id="selectUserNameByUid" parameterType="int" resultType="string">
+        select uname from user where uid = #{uid}
+    </select>
+    <select id="selectMusicNameByMid" parameterType="int" resultType="string">
+        select mname from music where mid = #{mid}
+    </select>
+    <delete id="deleteAdvice" parameterType="int">
+        delete from advice where aid=#{aid}
+    </delete>
 </mapper>
