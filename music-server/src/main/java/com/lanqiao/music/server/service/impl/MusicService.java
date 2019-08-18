@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
+@Service
 public class MusicService implements IMusicService {
     @Autowired
     private MusicMapper musicMapper;
