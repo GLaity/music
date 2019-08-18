@@ -13,4 +13,33 @@ public class JumpController {
     public String iframemusic(){
         return "music";
     }
+    @RequestMapping("/iframecollection")
+    public String iframecollection(){
+        return "collection";
+    }
+    @RequestMapping("/iframegenres")
+    public String iframegenres(){
+        return "genres";
+    }
+    @RequestMapping("/iframeplay-list")
+    public String iframeplaylist(){
+        return "play-list";
+    }
+    @RequestMapping("/iframemyplaylist")
+    public String iframemyplaylist(){
+        return "myplaylist";
+    }
+    @RequestMapping("/iframesearch")
+    public String iframesearch(){
+        return "search";
+    }
+    @RequestMapping("/iframevideo")
+    public String iframevideo(){
+        return "video";
+    }
+    @RequestMapping("/iframepersonal")
+    public String iframepersonal(){
+        return "personal";
+    }
+
 }

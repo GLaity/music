@@ -34,7 +34,7 @@
             <a href="javascript:;" onclick="myIndex();" class="navbar-brand text-lt">
                 <!--myIndex()  $('#mainUI').attr('src',"/main");   onclick 属性由元素上的鼠标点击触发。-->
                 <i class="icon-earphones"></i>
-                <img src="/images/logo.png" alt="." class="hide">
+                <img th:src="@{asserts/imageslogo.png}" alt="." class="hide">
                 <span class="hidden-nav-xs m-l-sm">云音乐</span>
             </a>
             <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user">
@@ -72,7 +72,7 @@
                 <li th:if="${session.user} != null" class="dropdown">
                     <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">
                   <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-                    <img src="/images/m0.jpg" th:src="${session.user.userImage}" alt="...">
+                    <img th:src="@{asserts/imagesm0.jpg}"  alt="...">
                   </span>
                         <!--提示：请使用 <span> 来组合行内元素，以便通过样式来格式化它们。注释：span 没有固定的格式表现。当对它应用样式时，它才会产生视觉上的变化。-->
                         <span th:text="${session.user.userName}">云音乐用户</span> <b class="caret"></b>
@@ -80,7 +80,7 @@
                     <ul class="dropdown-menu animated fadeInRight">
                         <li>
                             <!--在开发中经常使用href=＂javascript：；＂使得<a>标签失效不跳转，而使用绑定的方法进行跳转-->
-                            <a href="javascript:;" onclick="changeMainUI('personal.html', '个人中心')">个人中心</a>
+                            <a href="javascript:;" onclick="changeMainUI('/iframepersonal', '个人中心')">个人中心</a>
                         </li>
                         <li>
                             <span class="arrow top"></span>
@@ -113,32 +113,32 @@
                       发现
                     </li>
                     <li>
-                      <a href="javascript:;" onclick="changeMainUI('main.html', '推荐')">
+                      <a href="javascript:;" onclick="changeMainUI('/iframemain', '推荐')">
                         <i class="icon-disc icon text-success"></i>
                         <span class="font-bold">推荐</span>
                       </a>
                     </li>
                     <li>
-                      <a href="javascript:;" onclick="changeMainUI('genres.html', '曲库')">
+                      <a href="javascript:;" onclick="changeMainUI('/iframegenres', '曲库')">
                         <i class="icon-music-tone-alt icon text-info"></i>
                         <span class="font-bold">曲库</span>
                       </a>
                     </li>
 					<li>
-					  <a href="javascript:;" onclick="changeMainUI('play-list.html','歌单')" data-target="#content" data-el="#bjax-el" data-replace="true">
+					  <a href="javascript:;" onclick="changeMainUI('/iframeplay-list','歌单')" data-target="#content" data-el="#bjax-el" data-replace="true">
 					    <i class="icon-social-youtube icon  text-primary"></i>
 					    <span class="font-bold">歌单</span>
 					  </a>
 					</li>
                     <li>
-                      <a href="javascript:;" onclick="changeMainUI('video.html','电台')">
+                      <a href="javascript:;" onclick="changeMainUI('/iframevideo','电台')">
                         <i class="icon-drawer icon text-primary-lter"></i>
                         <b class="badge bg-primary pull-right">6</b>
                         <span class="font-bold">电台</span>
                       </a>
                     </li>
                     <li>
-                      <a href="javascript:;" onclick="changeMainUI('myplaylist.html','我的歌单')">
+                      <a href="javascript:;" onclick="changeMainUI('/iframemyplaylist','我的歌单')">
                         <i class="icon-list icon  text-info-dker"></i>
                         <span class="font-bold">我的歌单</span>
                       </a>
@@ -153,7 +153,7 @@
                       Playlist
                     </li>
 					<li>
-					  <a href="javascript:;" onclick="changeMainUI('collection.html','我的收藏')">
+					  <a href="javascript:;" onclick="changeMainUI('/iframecollection','我的收藏')">
 					    <i class="icon-heart icon"></i>
 					    <span>我的收藏</span>
 					  </a>
@@ -190,15 +190,15 @@
               <section class="vbox">
              <!--iframe化内容页-->
                              <!--iframe 元素会创建包含另外一个文档的内联框架（即行内框架）。-->
-                             <section>123
-                                 <iframe src="/iframemain" style="width:100%;height: 100%;" frameborder="no"></iframe>
+                             <section>
+                                 <iframe id="mainUI" style="width:100%;height: 100%;" frameborder="no"></iframe>
                              </section>
              
              
                              <!--music start-->
                              <!--<iframe id="UI" style="width: 100%;height: 100%;" frameborder="no" marginwidth="0" marginheight="0"></iframe>-->
                              <div style="width: 100%;position: fixed;bottom: 0;height: 60px;">
-                                 <iframe src="" style="width: 95%;" frameborder="no"></iframe>
+                                 <iframe id="musicUI" style="width: 95%;" frameborder="no"></iframe>
                              </div>
                 
             
@@ -215,9 +215,9 @@
   <script type="text/javascript">
 $(function () {
       //加载首页时初始化音乐播放器  attr() 方法设置或返回被选元素的属性值。
-      $('#musicUI').attr('src','music.html');
+      $('#musicUI').attr('src','/iframemusic');
       //加载首页时初始化内容页
-      $('#mainUI').attr('src','main.html');
+      $('#mainUI').attr('src','/iframemain');
   });
 
   //点击播放音乐

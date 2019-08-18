@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" class="app">
+<html lang="en" class="app" xmlns:th="http://www.thymeleaf.org">
 <head>  
   <meta charset="utf-8" />
   <title>Musik | Web Application</title>
   <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <link rel="stylesheet" href="js/jPlayer/jplayer.flat.css" type="text/css" />
-  <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
-  <link rel="stylesheet" href="css/animate.css" type="text/css" />
-  <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
-  <link rel="stylesheet" href="css/simple-line-icons.css" type="text/css" />
-  <link rel="stylesheet" href="css/font.css" type="text/css" />
-  <link rel="stylesheet" href="css/app.css" type="text/css" />  
-    <!--[if lt IE 9]>
-    <script src="js/ie/html5shiv.js"></script>
-    <script src="js/ie/respond.min.js"></script>
-    <script src="js/ie/excanvas.js"></script>
+  <link rel="stylesheet" th:href="@{./asserts/js/jPlayer/jplayer.flat.css}" type="text/css" />
+  <link rel="stylesheet" th:href="@{./asserts/css/bootstrap.css}" type="text/css" />
+  <link rel="stylesheet" th:href="@{./asserts/css/animate.css}" type="text/css" />
+  <link rel="stylesheet" th:href="@{./asserts/css/font-awesome.min.css}" type="text/css" />
+  <link rel="stylesheet" th:href="@{./asserts/css/simple-line-icons.css}" type="text/css" />
+  <link rel="stylesheet" th:href="@{./asserts/css/font.css}" type="text/css" />
+  <link rel="stylesheet" th:href="@{./asserts/css/app.css}" type="text/css" />
+
+  <script th:src="@{asserts/jjs/ie/html5shiv.js}" src="asserts/js/ie/html5shiv.js"></script>
+  <script th:src="@{asserts/js/ie/respond.min.js}" src="asserts/js/ie/respond.min.js"></script>
+  <script th:src="@{asserts/js/ie/excanvas.js}" src="asserts/js/ie/excanvas.js"></script>
   <![endif]-->
 </head>
 <body class="">
@@ -34,7 +34,7 @@
                           <a href="play-list-enter.html"><i class="fa fa-play-circle i-2x" ></i></a>
                         </div>
                       </div>
-                      <a href="play-list-enter.html"><img src="images/m40.jpg" alt="" class="r r-2x img-full"></a>
+                      <a href="play-list-enter.html"><img th:src="@{asserts/images/m40.jpg}" alt="" class="r r-2x img-full"></a>
                     </div>
                     <div class="padder-v">
                       <a href="play-list-enter.html" class="text-ellipsis">Tempered Song</a>
@@ -50,7 +50,7 @@
                           <a href="video-detail.html"><i class="fa fa-play-circle i-2x"></i></a>
                         </div>
                       </div>
-                      <a href="video-detail.html"><img src="images/m41.jpg" alt="" class="r r-2x img-full"></a>
+                      <a href="video-detail.html"><img th:src="@{asserts/images/m41.jpg}" alt="" class="r r-2x img-full"></a>
                     </div>
                     <div class="padder-v">
                       <a href="video-detail.html" class="text-ellipsis">Morbi id neque quam</a>
@@ -66,7 +66,7 @@
                           <a href="video-detail.html"><i class="fa fa-play-circle i-2x"></i></a>
                         </div>
                       </div>
-                      <a href="video-detail.html"><img src="images/m42.jpg" alt="" class="r r-2x img-full"></a>
+                      <a href="video-detail.html"><img th:src="@{asserts/images/m42.jpg}" alt="" class="r r-2x img-full"></a>
                     </div>
                     <div class="padder-v">
                       <a href="video-detail.html" class="text-ellipsis">Aliquam sollicitudin venenatis ipsum</a>
@@ -82,7 +82,7 @@
                           <a href="video-detail.html"><i class="fa fa-play-circle i-2x"></i></a>
                         </div>
                       </div>
-                      <a href="video-detail.html"><img src="images/m43.jpg" alt="" class="r r-2x img-full"></a>
+                      <a href="video-detail.html"><img th:src="@{asserts/images/m43.jpg}" alt="" class="r r-2x img-full"></a>
                     </div>
                     <div class="padder-v">
                       <a href="video-detail.html" class="text-ellipsis">Citudin venenatis ipsum ac</a>
@@ -98,7 +98,7 @@
                           <a href="video-detail.html"><i class="fa fa-play-circle i-2x"></i></a>
                         </div>
                       </div>
-                      <a href="video-detail.html"><img src="images/m44.jpg" alt="" class="r r-2x img-full"></a>
+                      <a href="video-detail.html"><img th:src="@{asserts/images/m44.jpg}" alt="" class="r r-2x img-full"></a>
                     </div>
                     <div class="padder-v">
                       <a href="video-detail.html" class="text-ellipsis">Vestibulum ullamcorper sodales nisi</a>
@@ -114,7 +114,7 @@
                           <a href="video-detail.html"><i class="fa fa-play-circle i-2x"></i></a>
                         </div>
                       </div>
-                      <a href="video-detail.html"><img src="images/m40.jpg" alt="" class="r r-2x img-full"></a>
+                      <a href="video-detail.html"><img th:src="@{asserts/images/m40.jpg}" alt="" class="r r-2x img-full"></a>
                     </div>
                     <div class="padder-v">
                       <a href="video-detail.html" class="text-ellipsis">Mauris convallis mauris at</a>
@@ -130,7 +130,7 @@
                           <a href="video-detail.html"><i class="fa fa-play-circle i-2x"></i></a>
                         </div>
                       </div>
-                      <a href="video-detail.html"><img src="images/m45.jpg" alt="" class="r r-2x img-full"></a>
+                      <a href="video-detail.html"><img th:src="@{asserts/images/m45.jpg}" alt="" class="r r-2x img-full"></a>
                     </div>
                     <div class="padder-v">
                       <a href="video-detail.html" class="text-ellipsis">Sodales nisi nec condimentum</a>
@@ -146,7 +146,7 @@
                           <a href="video-detail.html"><i class="fa fa-play-circle i-2x"></i></a>
                         </div>
                       </div>
-                      <a href="video-detail.html"><img src="images/m44.jpg" alt="" class="r r-2x img-full"></a>
+                      <a href="video-detail.html"><img th:src="@{asserts/images/m44.jpg}" alt="" class="r r-2x img-full"></a>
                     </div>
                     <div class="padder-v">
                       <a href="video-detail.html" class="text-ellipsis">Nisi nec condimentum</a>
@@ -162,7 +162,7 @@
                           <a href="video-detail.html"><i class="fa fa-play-circle i-2x"></i></a>
                         </div>
                       </div>
-                      <a href="video-detail.html"><img src="images/m43.jpg" alt="" class="r r-2x img-full"></a>
+                      <a href="video-detail.html"><img th:src="@{asserts/images/m43.jpg}" alt="" class="r r-2x img-full"></a>
                     </div>
                     <div class="padder-v">
                       <a href="video-detail.html" class="text-ellipsis">Phasellus at ultricies nequ</a>
@@ -178,7 +178,7 @@
                           <a href="video-detail.html"><i class="fa fa-play-circle i-2x"></i></a>
                         </div>
                       </div>
-                      <a href="video-detail.html"><img src="images/m42.jpg" alt="" class="r r-2x img-full"></a>
+                      <a href="video-detail.html"><img th:src="@{asserts/images/m42.jpg}" alt="" class="r r-2x img-full"></a>
                     </div>
                     <div class="padder-v">
                       <a href="video-detail.html" class="text-ellipsis">Quis malesuada augue</a>
@@ -194,7 +194,7 @@
                           <a href="video-detail.html"><i class="fa fa-play-circle i-2x"></i></a>
                         </div>
                       </div>
-                      <a href="video-detail.html"><img src="images/m41.jpg" alt="" class="r r-2x img-full"></a>
+                      <a href="video-detail.html"><img th:src="@{asserts/images/m41.jpg}" alt="" class="r r-2x img-full"></a>
                     </div>
                     <div class="padder-v">
                       <a href="video-detail.html" class="text-ellipsis">Ipsum ac feugiat</a>
@@ -210,7 +210,7 @@
                           <a href="video-detail.html"><i class="fa fa-play-circle i-2x"></i></a>
                         </div>
                       </div>
-                      <a href="video-detail.html"><img src="images/m40.jpg" alt="" class="r r-2x img-full"></a>
+                      <a href="video-detail.html"><img th:src="@{asserts/images/m40.jpg}" alt="" class="r r-2x img-full"></a>
                     </div>
                     <div class="padder-v">
                       <a href="video-detail.html" class="text-ellipsis">Ullamcorper sodales nisi nec condimentu</a>
@@ -241,16 +241,11 @@
       </section>
     </section>    
   </section>
-  <script src="js/jquery.min.js"></script>
-  <!-- Bootstrap -->
-  <script src="js/bootstrap.js"></script>
-  <!-- App -->
-  <script src="js/app.js"></script>  
-  <script src="js/slimscroll/jquery.slimscroll.min.js"></script>
-    <script src="js/app.plugin.js"></script>
-  <script type="text/javascript" src="js/jPlayer/jquery.jplayer.min.js"></script>
-  <script type="text/javascript" src="js/jPlayer/add-on/jplayer.playlist.min.js"></script>
-  <script type="text/javascript" src="js/jPlayer/demo.js"></script>
+          <script th:src="@{asserts/js/jquery.min.js}" src="js/jquery.min.js"></script>
+          <script th:src="@{asserts/js/bootstrap.js}" src="js/bootstrap.js"></script>
+          <script th:src="@{asserts/js/app.js}" src="js/app.js"></script>
+          <script th:src="@{asserts/js/slimscroll/jquery.slimscroll.min.js}" src="js/slimscroll/jquery.slimscroll.min.js"></script>
+          <script th:src="@{asserts/js/app.plugin.js}" src="js/app.plugin.js"></script>
 
 </body>
 </html>
