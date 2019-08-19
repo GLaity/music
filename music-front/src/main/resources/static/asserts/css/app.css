@@ -3914,3 +3914,12 @@ fieldset[disabled] .i-checks input + i:before {
     height: 65%;
   }
 }
+.imgass{
+  width: 30%;
+  height: 30%;
+  position: absolute;
+  top:50px;
+  left: 35%;
+
+
+}

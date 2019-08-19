@@ -45,5 +45,10 @@ public class JumpController {
     public String playlistenter(){
         return "play-list-enter";
     }
+    @RequestMapping("/playmusic")
+    public String playmusic(){
+        return "playmusic";
+    }
+
 
 }

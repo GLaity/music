@@ -1420,7 +1420,7 @@ th {
   padding: 8px;
   line-height: 1.42857143;
   vertical-align: top;
-  border-top: 1px solid #ddd;
+  border-top: 0px solid #ddd;
 }
 .table > thead > tr > th {
   vertical-align: bottom;
@@ -4612,6 +4612,7 @@ a.thumbnail.active {
   margin-bottom: -1px;
   background-color: #fff;
   border: 1px solid #ddd;
+	border-left:none;border-right:none;
 }
 .list-group-item:first-child {
   border-top-left-radius: 4px;
