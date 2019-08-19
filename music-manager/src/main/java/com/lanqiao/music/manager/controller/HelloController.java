@@ -1,14 +1,10 @@
 package com.lanqiao.music.manager.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.lanqiao.music.server.pojo.Music;
 import com.lanqiao.music.server.service.IMusicService;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @EnableAutoConfiguration
@@ -51,5 +47,7 @@ public class HelloController {
     public String radioList(){
         return "radio-list";
     }
+
+
 
 }
