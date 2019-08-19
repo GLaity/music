@@ -20,7 +20,7 @@
 
     <dependencies>
 <!--        <dependency>-->
-<!--            <artifactId>music-server</artifactId>-->
+<!--            <artifactId>songs-server</artifactId>-->
 <!--            <groupId>com.lanqiao</groupId>-->
 <!--            <version>0.0.1-SNAPSHOT</version>-->
 <!--        </dependency>-->

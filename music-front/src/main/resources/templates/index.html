@@ -12,11 +12,10 @@
     <link rel="stylesheet" th:href="@{./asserts/css/simple-line-icons.css}" type="text/css" />
     <link rel="stylesheet" th:href="@{./asserts/css/font.css}" type="text/css" />
     <link rel="stylesheet" th:href="@{./asserts/css/app.css}" type="text/css" />
-
     <script th:src="@{asserts/js/ie/html5shiv.js}" src="asserts/js/ie/html5shiv.js"></script>
     <script th:src="@{asserts/js/ie/respond.min.js}" src="asserts/js/ie/respond.min.js"></script>
     <script th:src="@{asserts/js/ie/excanvas.js}" src="asserts/js/ie/excanvas.js"></script>
-     <!--src用于替换当前元素，href用于在当前文档和引用资源之间确立联系-->
+    <!--src用于替换当前元素，href用于在当前文档和引用资源之间确立联系-->
     <script th:src="@{asserts/js/jquery.min.js}" src="js/jquery.min.js"></script>
     <script th:src="@{asserts/js/bootstrap.js}" src="js/bootstrap.js"></script>
     <script th:src="@{asserts/js/app.js}" src="js/app.js"></script>
@@ -25,317 +24,380 @@
     <!--[endif]-->
 </head>
 <body class="">
-  <section class="vbox">
-    <header th:fragment="header" class="bg-white-only header header-md navbar navbar-fixed-top-xs">
+<section class="vbox">
+    <header class="bg-white-only header header-md navbar navbar-fixed-top-xs" >
         <div class="navbar-header aside bg-info nav-xs">
             <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html">
                 <i class="icon-list"></i>
             </a>
-            <a href="#"  class="navbar-brand text-lt">
-                <!--myIndex()  $('#mainUI').attr('src',"/main");   onclick 属性由元素上的鼠标点击触发。-->
+            <a href="/iframemain" class="navbar-brand text-lt"><!--点击返回主页面-->
                 <i class="icon-earphones"></i>
-                <img th:src="@{asserts/imageslogo.png}" alt="." class="hide">
-                <span class="hidden-nav-xs m-l-sm">云音乐</span>
+                <img src="asserts/images/logo.png" alt="." class="hide">
+                <span class="hidden-nav-xs m-l-sm">音乐</span>
             </a>
             <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user">
                 <i class="icon-settings"></i>
             </a>
-        </div>
-        <ul class="nav navbar-nav hidden-xs">
+        </div>      <ul class="nav navbar-nav hidden-xs">
         <li>
             <a href="#nav,.navbar-header" data-toggle="class:nav-xs,nav-xs" class="text-muted">
                 <i class="fa fa-indent text"></i>
-                <!--<i> 标签显示斜体文本效果。-->
                 <i class="fa fa-dedent text-active"></i>
             </a>
         </li>
     </ul>
-        <!--onsubmit 属性在提交表单时触发-->
-        <form action="#" onsubmit="return searchMusic()" class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs" role="search">
+        <form class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs" role="search">
             <div class="form-group">
                 <div class="input-group">
-                <span class="input-group-btn">
-                  <button type="submit" class="btn btn-sm bg-white btn-icon rounded"><i class="fa fa-search"></i></button>
-                </span>
-                    <input type="text" id="searchText" class="form-control input-sm no-border rounded" placeholder="发现好时光...">
+            <span class="input-group-btn">
+              <button type="submit" class="btn btn-sm bg-white btn-icon rounded"><i class="fa fa-search"></i></button>
+            </span>
+                    <input type="text" class="form-control input-sm no-border rounded" placeholder="搜索歌曲 MV 歌单 歌手 用户">
                 </div>
             </div>
         </form>
         <div class="navbar-right ">
-            <ul class="nav navbar-nav m-n hidden-xs nav-user user">
-    
-                <li th:if="${session.user } == null" class="hidden-xs">
-                    <a href="signin.html" class="dropdown-toggle lt"> 登陆&nbsp;&nbsp;|&nbsp;&nbsp;注册 </a>
-                </li>
-                <!--<li> 标签定义列表项目-->
-    
-                <li th:if="${session.user} != null" class="dropdown">
-                    <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">
-                  <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-                    <img th:src="@{asserts/imagesm0.jpg}"  alt="...">
-                  </span>
-                        <!--提示：请使用 <span> 来组合行内元素，以便通过样式来格式化它们。注释：span 没有固定的格式表现。当对它应用样式时，它才会产生视觉上的变化。-->
-                        <span th:text="${session.user.userName}">云音乐用户</span> <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu animated fadeInRight">
-                        <li>
-                            <!--在开发中经常使用href=＂javascript：；＂使得<a>标签失效不跳转，而使用绑定的方法进行跳转-->
-                            <a href="javascript:;" onclick="changeMainUI('/iframepersonal', '个人中心')">个人中心</a>
-                        </li>
-                        <li>
-                            <span class="arrow top"></span>
-                            <a href="#">用户设置</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="/user/logout">注销</a>
-                        </li>
-                    </ul>
-                </li>
-    
-            </ul>
+            <!--          未登录-->
+            <form action="/tologin" th:unless="${user}">
+                <ul class="nav navbar-nav m-n hidden-xs nav-user user">
+                    <li class="dropdown">
+                        <input type="submit" value="登录"class="btn">
+                    </li>
+                </ul>
+            </form>
+            <!--          登陆-->
+            <form th:if="${user}">
+                <ul class="nav navbar-nav m-n hidden-xs nav-user user">
+
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">
+                        <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+                            <img src="asserts/images/a0.png" alt="...">
+                        </span>
+                            <!-- 用户名位置 -->
+                            <span th:text="${user.getUname()}"></span><b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu animated fadeInRight">
+                            <li>
+                                <span class="arrow top"></span>
+                                <a href="#">设置</a>
+                            </li>
+                            <li>
+
+                                <a href="javascript:;"onclick="changeMainUI('/iframepersonal','个人中心')">个人中心</a>
+                            </li>
+
+                            <li>
+                                <a href="docs.html">帮助</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="/out" data-toggle="ajaxModal" >切换账户</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </form>
         </div>
     </header>
     <section>
-      <section class="hbox stretch">
-        <!-- .aside -->
-        <aside class="bg-black dk nav-xs aside hidden-print" id="nav">          
-          <section class="vbox">
-            <section class="w-f-md scrollable">
-              <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-railOpacity="0.2">
-                
+        <section class="hbox stretch">
+            <!-- .aside -->
+            <aside class="bg-black dk nav-xs aside hidden-print" id="nav">
+                <section class="vbox">
+                    <section class="w-f-md scrollable">
+                        <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-railOpacity="0.2">
+                            <!-- nav -->
+                            <nav class="nav-primary hidden-xs">
+                                <ul class="nav bg clearfix">
+                                    <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
+                                        发现
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;" onclick="changeMainUI('/iframemain', '推荐')">
+                                            <i class="icon-disc icon text-success"></i>
+                                            <span class="font-bold">推荐</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;" onclick="changeMainUI('/iframegenres', '曲库')">
+                                            <i class="icon-music-tone-alt icon text-info"></i>
+                                            <span class="font-bold">曲库</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;" onclick="changeMainUI('/iframeplay-list','歌单')" data-target="#content" data-el="#bjax-el" data-replace="true">
+                                            <i class="icon-social-youtube icon  text-primary"></i>
+                                            <span class="font-bold">歌单</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;" onclick="changeMainUI('/iframevideo','电台')">
+                                            <i class="icon-drawer icon text-primary-lter"></i>
+                                            <b class="badge bg-primary pull-right">6</b>
+                                            <span class="font-bold">电台</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;" onclick="changeMainUI('/iframemyplaylist','我的歌单')">
+                                            <i class="icon-list icon  text-info-dker"></i>
+                                            <span class="font-bold">我的歌单</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="m-b hidden-nav-xs"></li>
+                                </ul>
+
+                                <ul class="nav text-sm">
+                                    <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
+                                        <span class="pull-right"><a href="#"><i class="icon-plus i-lg"></i></a></span>
+                                        Playlist
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;" onclick="changeMainUI('/iframecollection','我的收藏')">
+                                            <i class="icon-heart icon"></i>
+                                            <span>我的收藏</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="icon-music-tone icon"></i>
+                                            <span>Hip-Pop</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="icon-playlist icon text-success-lter"></i>
+                                            <b class="badge bg-success dker pull-right">9</b>
+                                            <span>Jazz</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <!-- / nav -->
+                        </div>
 
 
-                <!-- nav -->                 
-                <nav class="nav-primary hidden-xs">
-                  <ul class="nav bg clearfix">
-                    <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
-                      发现
-                    </li>
-                    <li>
-                      <a href="javascript:;" onclick="changeMainUI('/iframemain', '推荐')">
-                        <i class="icon-disc icon text-success"></i>
-                        <span class="font-bold">推荐</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="javascript:;" onclick="changeMainUI('/iframegenres', '曲库')">
-                        <i class="icon-music-tone-alt icon text-info"></i>
-                        <span class="font-bold">曲库</span>
-                      </a>
-                    </li>
-					<li>
-					  <a href="javascript:;" onclick="changeMainUI('/iframeplay-list','歌单')" data-target="#content" data-el="#bjax-el" data-replace="true">
-					    <i class="icon-social-youtube icon  text-primary"></i>
-					    <span class="font-bold">歌单</span>
-					  </a>
-					</li>
-                    <li>
-                      <a href="javascript:;" onclick="changeMainUI('/iframevideo','电台')">
-                        <i class="icon-drawer icon text-primary-lter"></i>
-                        <b class="badge bg-primary pull-right">6</b>
-                        <span class="font-bold">电台</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="javascript:;" onclick="changeMainUI('/iframemyplaylist','我的歌单')">
-                        <i class="icon-list icon  text-info-dker"></i>
-                        <span class="font-bold">我的歌单</span>
-                      </a>
-                    </li>
-                   
-                    <li class="m-b hidden-nav-xs"></li>
-                  </ul>
-                  
-                  <ul class="nav text-sm">
-                    <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
-                      <span class="pull-right"><a href="#"><i class="icon-plus i-lg"></i></a></span>
-                      Playlist
-                    </li>
-					<li>
-					  <a href="javascript:;" onclick="changeMainUI('/iframecollection','我的收藏')">
-					    <i class="icon-heart icon"></i>
-					    <span>我的收藏</span>
-					  </a>
-					</li>
-                    <li>
-                      <a href="#">
-                        <i class="icon-music-tone icon"></i>
-                        <span>Hip-Pop</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="icon-playlist icon text-success-lter"></i>
-                        <b class="badge bg-success dker pull-right">9</b>
-                        <span>Jazz</span>
-                      </a>
-                    </li>
-                  </ul>
-                </nav>
-                <!-- / nav -->
-              </div>
+                    </section>
+                    <!---->
+
+                    <footer class="footer hidden-xs no-padder text-center-nav-xs">
+                    </footer>
+                </section>
+            </aside>
+            <!-- /.aside -->
+            <section id="content">
+                <section class="hbox stretch">
+                    <section>
+                        <section class="vbox">
+                            <!--iframe化内容页-->
+                            <!--iframe 元素会创建包含另外一个文档的内联框架（即行内框架）。-->
+                            <section>
+                                <iframe id="mainUI" style="width:100%;height: 100%;" frameborder="no"></iframe>
+                            </section>
+
+                            <footer class="footer bg-dark">
+                                <div id="jp_container_N">
+                                    <div class="jp-type-playlist">
+                                        <div id="jplayer_N" class="jp-jplayer hide"></div>
+                                        <div class="jp-gui">
+                                            <div class="jp-video-play hide">
+                                                <a class="jp-video-play-icon">播放</a>
+                                            </div>
+                                            <div class="jp-interface">
+                                                <div class="jp-controls">
+                                                    <div><a class="jp-previous"><i class="icon-control-rewind i-lg"></i></a></div>
+                                                    <div>
+                                                        <a class="jp-play"><i class="icon-control-play i-2x"></i></a>
+                                                        <a class="jp-pause hid"><i class="icon-control-pause i-2x"></i></a>
+                                                    </div>
+                                                    <div><a class="jp-next"><i class="icon-control-forward i-lg"></i></a></div>
+                                                    <div class="hide"><a class="jp-stop"><i class="fa fa-stop"></i></a></div>
+                                                    <div><a class="" data-toggle="dropdown" data-target="#playlist"><i class="icon-list"></i></a></div>
+                                                    <div class="jp-progress hidden-xs">
+                                                        <div class="jp-seek-bar dk">
+                                                            <div class="jp-play-bar bg-info">
+                                                            </div>
+                                                            <div class="jp-title text-lt">
+                                                                <ul>
+                                                                    <li></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="hidden-xs hidden-sm jp-current-time text-xs text-muted"></div>
+                                                    <div class="hidden-xs hidden-sm jp-duration text-xs text-muted"></div>
+                                                    <div class="hidden-xs hidden-sm">
+                                                        <a class="jp-mute" title="静音"><i class="icon-volume-2"></i></a>
+                                                        <a class="jp-unmute hid" title="恢复音量"><i class="icon-volume-off"></i></a>
+                                                    </div>
+                                                    <div class="hidden-xs hidden-sm jp-volume">
+                                                        <div class="jp-volume-bar dk">
+                                                            <div class="jp-volume-bar-value lter"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <a class="jp-shuffle" title="随机播放"><i class="icon-shuffle text-muted"></i></a>
+                                                        <a class="jp-shuffle-off hid" title="列表循环"><i class="icon-shuffle text-lt"></i></a>
+                                                    </div>
+                                                    <div>
+                                                        <a class="jp-repeat" title="单曲循环"><i class="icon-loop text-muted"></i></a>
+                                                        <a class="jp-repeat-off hid" title="列表循环"><i class="icon-loop text-lt"></i></a>
+                                                    </div>
+                                                    <div class="hide">
+                                                        <a class="jp-full-screen" title="full screen"><i class="fa fa-expand"></i></a>
+                                                        <a class="jp-restore-screen" title="restore screen"><i class="fa fa-compress text-lt"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="jp-playlist dropup" id="playlist">
+                                            <ul class="dropdown-menu aside-xl dker">
+                                                <!-- The method Playlist.displayPlaylist() uses this unordered list -->
+                                                <li class="list-group-item"></li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </footer>
+                        </section>
+
+                    </section>
+
+                </section>
+                <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
             </section>
-			<!---->
-            
-            <footer class="footer hidden-xs no-padder text-center-nav-xs">
-
-                         </footer>
-          </section>
-        </aside>
-        <!-- /.aside -->
-        <section id="content">
-          <section class="hbox stretch">
-            <section>
-              <section class="vbox">
-             <!--iframe化内容页-->
-                             <!--iframe 元素会创建包含另外一个文档的内联框架（即行内框架）。-->
-                             <section>
-                                 <iframe id="mainUI" style="width:100%;height: 100%;" frameborder="no"></iframe>
-                             </section>
-             
-             
-                             <!--music start-->
-                             <!--<iframe id="UI" style="width: 100%;height: 100%;" frameborder="no" marginwidth="0" marginheight="0"></iframe>-->
-
-                  <div style="width: 100%;position: fixed;bottom: 0;height: 60px;" >
-                      <iframe id="musicUI" style="width: 95%;" frameborder="no"></iframe>
-                  </div>
-            
-              </section>
-
-            </section>
-
-          </section>
-          <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
         </section>
-      </section>
-    </section>    
-  </section>
+    </section>
+</section>
+<script th:src="@{asserts/js/jPlayer/jquery.jplayer.min.js}" type="text/javascript" src="js/jPlayer/jquery.jplayer.min.js"></script>
+<script th:src="@{asserts/js/jPlayer/add-on/jplayer.playlist.min.js}" type="text/javascript" src="js/jPlayer/add-on/jplayer.playlist.min.js"></script>
+<script th:src="@{asserts/js/jPlayer/demo.js}" type="text/javascript" src="js/jPlayer/demo.js"></script>
+<script type="text/javascript">
+    $(function () {
+        //加载首页时初始化音乐播放器  attr() 方法设置或返回被选元素的属性值。
+        $('#musicUI').attr('src','/iframemusic');
+        //加载首页时初始化内容页
+        $('#mainUI').attr('src','/iframemain');
+    });
 
-  <script type="text/javascript">
-$(function () {
-      //加载首页时初始化音乐播放器  attr() 方法设置或返回被选元素的属性值。
-      $('#musicUI').attr('src','/iframemusic');
-      //加载首页时初始化内容页
-      $('#mainUI').attr('src','/iframemain');
-  });
+    //点击播放音乐
+    function playMusic(id) {
+        // 通过在后台与服务器进行少量数据交换，Ajax 可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。
+        $.ajax({
+            // 要求为String类型的参数，请求方式（post或get）默认为get。注意其他http请求方法，例如put和delete也可以使用，但仅部分浏览器支持。
+            type: "POST",
+            // 要求为String类型的参数，（默认为当前页地址）发送请求的地址
+            url: "/music/playMusic",
+            // 要求为Object或String类型的参数，发送到服务器的数据。如果已经不是字符串，将自动转换为字符串格
+            // 式。get请求中将附加在url后。防止这种自动转换，可以查看processData选项。对象必须为key/value格
+            // 式，例如{foo1:"bar1",foo2:"bar2"}转换为&foo1=bar1&foo2=bar2。如果是数组，JQuery将自动为不同
+            // 值对应同一个名称。例如{foo:["bar1","bar2"]}转换为&foo=bar1&foo=bar2。
+            data: {'id':id},
+            //  要求为Function类型的参数，请求成功后调用的回调函数，有两个参数。
+            // (1)由服务器返回，并根据dataType参数进行处理后的数据。
+            // (2)描述状态的字符串。
+            // function(data, textStatus){
+            //     data可能是xmlDoc、jsonObj、html、text等等
+            //     this;  调用本次ajax请求时传递的options参数
+            success: function(data){
+                //parent.changeParentUI(data,'/#/songs/playMusic'+data);
+                parent.changeMusic('/music');
+                //跳转到歌曲详情页面
+                parent.changeMainUI('/music/musicInfo/'+id, data);
+            }
+        });
+    }
 
-  //点击播放音乐
-  function playMusic(id) {
-      // 通过在后台与服务器进行少量数据交换，Ajax 可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。
-      $.ajax({
-          // 要求为String类型的参数，请求方式（post或get）默认为get。注意其他http请求方法，例如put和delete也可以使用，但仅部分浏览器支持。
-          type: "POST",
-          // 要求为String类型的参数，（默认为当前页地址）发送请求的地址
-          url: "/music/playMusic",
-      // 要求为Object或String类型的参数，发送到服务器的数据。如果已经不是字符串，将自动转换为字符串格
-      // 式。get请求中将附加在url后。防止这种自动转换，可以查看processData选项。对象必须为key/value格
-      // 式，例如{foo1:"bar1",foo2:"bar2"}转换为&foo1=bar1&foo2=bar2。如果是数组，JQuery将自动为不同
-      // 值对应同一个名称。例如{foo:["bar1","bar2"]}转换为&foo=bar1&foo=bar2。
-          data: {'id':id},
-         //  要求为Function类型的参数，请求成功后调用的回调函数，有两个参数。
-         // (1)由服务器返回，并根据dataType参数进行处理后的数据。
-         // (2)描述状态的字符串。
-         // function(data, textStatus){
-         //     data可能是xmlDoc、jsonObj、html、text等等
-         //     this;  调用本次ajax请求时传递的options参数
-          success: function(data){
-              //parent.changeParentUI(data,'/#/music/playMusic'+data);
-              parent.changeMusic('/music');
-              //跳转到歌曲详情页面
-              parent.changeMainUI('/music/musicInfo/'+id, data);
-          }
-      });
-  }
+    function changeMusic(url) {
+        $('#musicUI').attr('src',url);
+    }
 
-  function changeMusic(url) {
-      $('#musicUI').attr('src',url);
-  }
+    //通过url改变父窗口内容
+    function changeMainUI(url,title) {
+        $('#mainUI').attr('src',url);
+        document.title = title;
+        window.history.pushState(null, null, '/#'+url);
+    }
 
-  //通过url改变父窗口内容
-  function changeMainUI(url,title) {
-      $('#mainUI').attr('src',url);
-      document.title = title;
-      window.history.pushState(null, null, '/#'+url);
-  }
+    //  //通过url改变父窗口内容
+    //  function changeParentUI(title,state) {
+    //
+    //      document.title = title;
+    //      window.history.pushState(null, null, state);
+    //  }
 
-//  //通过url改变父窗口内容
-//  function changeParentUI(title,state) {
-//
-//      document.title = title;
-//      window.history.pushState(null, null, state);
-//  }
+    //搜索歌曲功能[
+    function searchMusic() {
+        var searchText = $("#searchText").val();
+        if ("" !== searchText) {
+            //发送ajax，进行异步搜索
+            $.ajax({
+                type:'POST',
+                url:'/music/searchMusic',
+                data:{'searchText':searchText},
+                success:function (result) {
+                    if (result) {
+                        //页面跳转
+                        changeMainUI("/searchResult","搜索结果");
+                    } else {
+                        alert("没有搜索到【 "+searchText+" 】相关的歌曲~");
+                    }
+                }
+            });
+        } else {
+            alert("请输入搜索内容~");
+        }
 
-  //搜索歌曲功能[
-  function searchMusic() {
-      var searchText = $("#searchText").val();
-      if ("" !== searchText) {
-          //发送ajax，进行异步搜索
-          $.ajax({
-              type:'POST',
-              url:'/music/searchMusic',
-              data:{'searchText':searchText},
-              success:function (result) {
-                  if (result) {
-                      //页面跳转
-                      changeMainUI("/searchResult","搜索结果");
-                  } else {
-                      alert("没有搜索到【 "+searchText+" 】相关的歌曲~");
-                  }
-              }
-          });
-      } else {
-          alert("请输入搜索内容~");
-      }
+        return false;
+    }
 
-      return false;
-  }
+    function getSongs() {
+        //发送ajax，进行异步搜索
+        $.ajax({
+            type:'POST',
+            url:'/getAllSongs',
+            success:function (result) {
+                if (result) {
+                    //页面跳转
+                    changeMainUI("/allSongs","音乐列表");
+                } else {
+                    alert("获取音乐列表失败！");
+                }
+            }
+        });
 
-  function getSongs() {
-      //发送ajax，进行异步搜索
-      $.ajax({
-          type:'POST',
-          url:'/getAllSongs',
-          success:function (result) {
-              if (result) {
-                  //页面跳转
-                  changeMainUI("/allSongs","音乐列表");
-              } else {
-                  alert("获取音乐列表失败！");
-              }
-          }
-      });
+        return false;
+    }
+    function getComments() {
+        //发送ajax，进行异步搜索
+        $.ajax({
+            type:'POST',
+            url:'/getAllComments',
+            success:function (result) {
+                if (result) {
+                    //页面跳转
+                    changeMainUI("/allComments","所有评论");
+                } else {
+                    alert("获取评论列表失败！");
+                }
+            }
+        });
 
-  return false;
-  }
-  function getComments() {
-      //发送ajax，进行异步搜索
-      $.ajax({
-          type:'POST',
-          url:'/getAllComments',
-          success:function (result) {
-              if (result) {
-                  //页面跳转
-                  changeMainUI("/allComments","所有评论");
-              } else {
-                  alert("获取评论列表失败！");
-              }
-          }
-      });
+        return false;
+    }
 
-      return false;
-  }
-  
-  function downloadMessage() {
-      alert("只有登陆后才可以下载歌曲哦~");
-  }
-  
-  function myIndex() {
-      $('#mainUI').attr('src',"/main");
-      document.title = "发现好音乐";
-      window.history.pushState(null, null, '/#/index');
-  }
+    function downloadMessage() {
+        alert("只有登陆后才可以下载歌曲哦~");
+    }
+
+    function myIndex() {
+        $('#mainUI').attr('src',"/main");
+        document.title = "发现好音乐";
+        window.history.pushState(null, null, '/#/index');
+    }
 
 
 </script>

@@ -37,7 +37,8 @@
                 <span class="pull-right text-sm" th:text="${sheet.getScontext()}"></span>
                 <span class="h2 font-thin" th:text="${userName}"></span><br/>
                 <span class="h2 font-thin" th:text="${sheet.getSname()}"></span>
-                <button class="btn btn-info pull-right" value="收藏歌单" >收藏歌单</button>
+                  <button class="btn btn-info pull-right " value="收藏歌单" th:onclick="'javascript:addSheet(\''+${sheet.getSid()}+'\')'" id="add" >收藏歌单</button>
+<!--                th:if="${sheet.getType()==1}"-->
               </div>
               <img  th:src="@{/music/}+${sheet.getMusicList().get(0).getMid()}+@{/picutre.jpg}" alt="..."  class="img-full" style="width: 100%;height:500px">
             </div>
@@ -139,5 +140,19 @@
 <script th:src="@{/asserts/js/app.js}" src="/asserts/js/app.js"></script>
 <script th:src="@{/asserts/js/slimscroll/jquery.slimscroll.min.js}" src="/asserts/js/slimscroll/jquery.slimscroll.min.js"></script>
 <script th:src="@{/asserts/js/app.plugin.js}" src="/asserts/s/app.plugin.js"></script>
+  <script type="text/javascript">
+
+          function addSheet(id){
+            $.ajax({
+              type:"get",
+              url:"/addSheet/"+id,
+              success:function (data) {
+                alert(data.msg);
+                window.location.reload();
+              }
+            })
+
+          }
+  </script>
 </body>
 </html>

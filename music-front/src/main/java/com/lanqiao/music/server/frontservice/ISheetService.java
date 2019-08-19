@@ -1,8 +1,7 @@
-package com.lanqiao.music.server.service;
+package com.lanqiao.music.server.frontservice;
 
 import com.lanqiao.music.server.pojo.Music;
 import com.lanqiao.music.server.pojo.Sheet;
-import com.lanqiao.music.server.pojo.User;
 
 import java.util.List;
 

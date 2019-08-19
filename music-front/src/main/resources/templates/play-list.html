@@ -48,11 +48,11 @@
                                           </div> -->
                                           <div class="center text-center m-t-n">
                                               <!--播放-->
-                                              <a th:href="@{/playlistent/}+${sheet.getSid()}"><i class="icon-control-play i-2x"></i></a>
+                                              <a href="#"><i class="icon-control-play i-2x"></i></a>
                                           </div>
                                           <div class="bottom padder m-b-sm">
                                               <!--收藏歌单-->
-                                              <a href="#" class="pull-right active" data-toggle="class">
+                                              <a href="#" class="pull-right active" data-toggle="class" th:onclick="'javascript:addSheet(\''+${sheet.getSid()}+'\')'">
                                                   <i class="fa fa-heart-o text"></i>
                                                   <i class="fa fa-heart text-active text-danger"></i>
                                               </a>
@@ -63,13 +63,13 @@
                                           </div>
                                       </div>
                                       <!--歌单图片-->
-                                      <a href="#"><img th:src="@{/music/}+${sheet.getMusicList().get(0).getMid()}+@{/picutre.jpg}" alt="" class="r r-2x " style="width: 100%;height: 300px"></a>
+                                      <a th:href="@{/playlistent/}+${sheet.getSid()}"><img th:src="@{/music/}+${sheet.getMusicList().get(0).getMid()}+@{/picutre.jpg}" alt="" class="r r-2x " style="width: 100%;height: 300px"></a>
 <!--                                      <img th:src="music/${sheet.getMusicList().get(0).getMid()}/picture.jpg">-->
 <!--                                      <a href="#"><img th:src="@{music/'${mid}'/'${mname}'.jpg}" alt="" class="r r-2x img-full"></a>-->
                                   </div>
                                   <div class="padder-v">
                                       <!--歌单名字-->
-                                      <a href="#" class="text-ellipsis text-xs text-muted" th:text="${sheet.getSname()}"></a>
+                                      <a th:href="@{/playlistent/}+${sheet.getSid()}" class="text-ellipsis text-xs text-muted" th:text="${sheet.getSname()}"></a>
                                   </div>
                               </div>
                           </div>
@@ -87,7 +87,16 @@
         <script th:src="@{/asserts/js/slimscroll/jquery.slimscroll.min.js}" src="/asserts/js/slimscroll/jquery.slimscroll.min.js"></script>
         <script th:src="@{/asserts/js/app.plugin.js}" src="/asserts/js/app.plugin.js"></script>
         <script type="text/javascript">
-
+            function addSheet(id){
+                $.ajax({
+                    type:"get",
+                    url:"/addSheet/"+id,
+                    success:function (data) {
+                        alert(data.msg);
+                        window.location.reload();
+                    }
+                })
+            }
         </script>
 </body>
 </html>
