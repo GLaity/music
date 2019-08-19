@@ -17,6 +17,8 @@ public interface UserMapper {
     int insertSelective(User user);
     //主键查找
     User selectByPrimaryKey(Integer uid);
+
+
     //遍历用户
     List<User> selectAll();
     //主键查找动态更新

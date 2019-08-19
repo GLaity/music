@@ -13,4 +13,8 @@ public interface AdviceMapper {
     Advice selectAdviceByAid(Integer aid);
     List<Advice> selectAdviceByUser(Integer uid);
     List<Advice> selectAdviceByMusic(Integer mid);
+    List<Advice> selectAllAdvice();
+    String selectUserNameByUid(Integer uid);
+    String selectMusicNameByMid(Integer mid);
+    void deleteAdvice(Integer aid);
 }

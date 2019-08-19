@@ -57,7 +57,7 @@
 			<dt><i class="Hui-iconfont">&#xe620;</i> 音乐管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="/music-manage" data-title="音乐管理" href="javascript:void(0)">音乐管理</a></li>
+					<li><a data-href="/music/list.do" data-title="音乐管理" href="javascript:void(0)">音乐管理</a></li>
 					<li><a data-href="/music-upload" data-title="音乐上传" href="javascript:void(0)">音乐上传</a></li>
 			</ul>
 		</dd>
@@ -66,7 +66,7 @@
 			<dt><i class="Hui-iconfont">&#xe622;</i> 评论管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="/comment-list" data-title="评论列表" href="javascript:void(0)">评论列表</a></li>
+					<li><a data-href="/advice/list.do" data-title="评论列表" href="javascript:void(0)">评论列表</a></li>
 			</ul>
 		</dd>
 	</dl>
@@ -83,7 +83,7 @@
 			<dt><i class="Hui-iconfont">&#xe61a;</i> 交易管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="/buy-list" data-title="交易列表" href="javascript:void(0)">交易列表</a></li>
+					<li><a data-href="/bought/list.do" data-title="交易列表" href="javascript:void(0)">交易列表</a></li>
 				</ul>
 			</dd>
 		</dl>
@@ -133,21 +133,21 @@
 <!--请在下方写此页面业务相关的脚本-->
 <script type="text/javascript" src="lib/jquery.contextmenu/jquery.contextmenu.r2.js"></script>
 <script type="text/javascript">
-$(function(){
+// $(function(){
 	/*$("#min_title_list li").contextMenu('Huiadminmenu', {
 		bindings: {
 			'closethis': function(t) {
 				console.log(t);
 				if(t.find("i")){
 					t.find("i").trigger("click");
-				}		
+				}
 			},
 			'closeall': function(t) {
 				alert('Trigger was '+t.id+'\nAction was Email');
 			},
 		}
 	});*/
-});
+// });
 /*个人信息*/
 function myselfinfo(){
 	layer.open({

@@ -4,8 +4,23 @@
     <select id="selectMusicAll" parameterType="string" resultType="com.lanqiao.music.server.pojo.Music">
         select * from music;
     </select>
+    <select id="selectOneMusic" parameterType="int" resultType="com.lanqiao.music.server.pojo.Music">
+        select * from music where mid = #{mid}
+    </select>
     <insert id="insertMusic" parameterType="map">
         insert into music(mname,msinger,mcontext,malbum,mlevel,mtheme,mstyle,mlanguage,mprice,mloc,mdate)
         values(#{mname},#{msinger},#{mcontext},#{malbum},#{mlevel},#{mtheme},#{mstyle},#{mlanguage},#{mprice},#{mloc},#{mdate})
     </insert>
+    <delete id="deleteMusicByMId" parameterType="int">
+        delete from music where mid = #{mid}
+    </delete>
+    <delete id="deleteRadioMusic" parameterType="int">
+        delete from radio_music where mid = #{mid}
+    </delete>
+    <delete id="deleteSheetMusic" parameterType="int">
+        delete from sheet_music where mid = #{mid}
+    </delete>
+    <update id="updateMusic" parameterType="com.lanqiao.music.server.pojo.Music">
+        update music set mname=#{mname},msinger=#{msinger},mcontext=#{mcontext},malbum=#{malbum},mlevel=#{mlevel},mtheme=#{mtheme},mstyle=#{mstyle},mlanguage=#{mlanguage},mprice=#{mprice},mloc=#{mloc},mdate=#{mdate} where mid=#{mid}
+    </update>
 </mapper>

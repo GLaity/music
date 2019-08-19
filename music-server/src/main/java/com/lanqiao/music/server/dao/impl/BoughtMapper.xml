@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lanqiao.music.server.dao.BoughtMapper">
-
+    <select id="selectAllBought" resultType="com.lanqiao.music.server.pojo.Bought">
+        select * from bought
+    </select>
+    <select id="selectUserNameByUid" parameterType="int" resultType="string">
+        select uname from user where uid = #{uid}
+    </select>
+    <delete id="deleteBought" parameterType="int">
+        delete from bought where bid=#{bid}
+    </delete>
 </mapper>

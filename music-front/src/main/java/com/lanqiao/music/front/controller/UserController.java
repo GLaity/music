@@ -22,12 +22,12 @@ public class UserController {
 
     @RequestMapping("/login")
     public String loginCheck(String uname, String upwd, Model model){
-        User user = iUserService.login(uname,upwd);
-        if (user != null){
-            model.addAttribute("user",user);
-            return "index";
-        } else {
+//        User user = iUserService.login(uname,upwd);
+//        if (user != null){
+//            model.addAttribute("user",user);
+//            return "index";
+//        } else {
             return "login";
-        }
+//        }
     }
 }

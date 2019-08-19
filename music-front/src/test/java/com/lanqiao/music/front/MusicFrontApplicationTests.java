@@ -2,7 +2,6 @@ package com.lanqiao.music.front;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.lanqiao.music.server.pojo.User;
-import com.lanqiao.music.server.service.IUserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

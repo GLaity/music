@@ -13,7 +13,8 @@ import java.util.List;
 @Controller
 public class HelloController {
 
-
+    @Reference
+    private IMusicService musicService;
 
     @RequestMapping("/welcome")
     public String welcome(){
@@ -29,6 +30,7 @@ public class HelloController {
     public String musicUpload(){
         return "music-upload";
     }
+
 
     @RequestMapping("/comment-list")
     public String commentList(){
@@ -54,7 +56,5 @@ public class HelloController {
     public String radioList(){
         return "radio-list";
     }
-
-
 
 }

@@ -29,7 +29,7 @@ public class Music implements Serializable {
     //音乐价格
     private Double mprice;
     //音乐路径
-    private Date mloc;
+    private String mloc;
     //发行时间
     private Date mdate;
 
