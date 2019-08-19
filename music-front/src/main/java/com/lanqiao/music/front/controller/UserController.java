@@ -126,6 +126,23 @@ public class UserController {
         iUserService.modifyUser(user);
         return "personal";
     }
+
+
+    @RequestMapping("/updatePwd")
+    public String updatePwd(String uname,String upwd,String newpwd,Model model,HttpSession session){
+        User user = iUserService.login(uname,upwd);
+        String msg="";
+        if (user != null){
+            user.setUpwd(newpwd);
+            iUserService.modifyUser(user);
+            msg = "密码修改成功";
+        }else{
+            msg = "原密码错误，请重新更改！";
+        }
+        model.addAttribute("msg",msg);
+        System.out.println(uname+"-------------"+upwd);
+        return "index";
+    }
     //增加一个月
     public  Date subMonth(Date date,Integer mouth){
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
