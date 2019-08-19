@@ -41,5 +41,9 @@ public class JumpController {
     public String iframepersonal(){
         return "personal";
     }
+    @RequestMapping("/playlistenty")
+    public String playlistenter(){
+        return "play-list-enter";
+    }
 
 }
