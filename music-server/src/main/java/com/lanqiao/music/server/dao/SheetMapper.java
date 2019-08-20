@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Set;
 
 @Repository
 @Mapper
@@ -17,7 +18,7 @@ public interface SheetMapper {
     Sheet selectSheetBySid(Integer sid);
     List<Sheet> selectAllSheet();
     Integer selectBySid(@Param("sid") Integer sid);
-    List<Sheet>selectSheetByType(@Param("type") Integer type);
+    List<Sheet> selectSheetByType(@Param("type") Integer type);
     List<Sheet> selectSheetByUserType(@Param("uid") Integer uid,
                                       @Param("type") Integer type);
     List<Music> selectMusicForSheet(@Param("sid")Integer sid);

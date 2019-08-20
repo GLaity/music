@@ -33,12 +33,23 @@
                           <span class="bar5 a2 dker"></span>
                         </span>
               </div>
-              <div class="bottom gd bg-info wrapper-lg">
+              <div class="bottom gd bg-info wrapper-lg" th:unless="${user}">
                 <span class="pull-right text-sm" th:text="${sheet.getScontext()}"></span>
-                <span class="h2 font-thin" th:text="${userName}"></span><br/>
+                <span class="h2 font-thin" th:text="${user.getUname()}"></span><br/>
                 <span class="h2 font-thin" th:text="${sheet.getSname()}"></span>
-                <button class="btn btn-info pull-right" value="收藏歌单" >收藏歌单</button>
+                <button class="btn btn-info pull-right" value="收藏歌单" id="tishi">收藏歌单</button>
               </div>
+              
+              <div class="bottom gd bg-info wrapper-lg" th:if="${user}">
+                <span class="pull-right text-sm" th:text="${sheet.getScontext()}"></span>
+                <span class="h2 font-thin" th:text="${user.getUname()}"></span><br/>
+                <span class="h2 font-thin" th:text="${sheet.getSname()}"></span>
+                <button class="btn btn-info pull-right" value="收藏歌单" onclick = "window.location.href = '/read.do?_method=collection&bookId=${bookBasic.getBook_Id()}&userId=${sessionScope.user.getUser_Id()}'">收藏歌单</button>
+                <button class="btn btn-info pull-right" value="收藏歌单" th:href="'@{/playlistent/}'+${sheet.getSid()}">收藏歌单</button>
+
+              </div>
+
+
               <img  th:src="@{/content/songs/}+${sheet.getMusicList().get(0).getMid()}+@{/}+${sheet.getMusicList().get(0).getMname()}+@{.jpg}" alt="..."  class="img-full" style="width: 100%;height:500px">
             </div>
             <div th:each="music:${sheet.getMusicList()}">
@@ -50,7 +61,7 @@
                     <a href="#" class="m-r-sm"><i class="icon-plus"></i></a>
                     <a href="#"><i class="icon-close"></i></a>
                   </div>
-                  <a href="#" class="jp-play-me m-r-sm pull-left">
+                  <a href="#"  th:onclick="'javascript:addmusic(\''+${sheet.getMusicList().get(0).getMid()}+'\')'"class="jp-play-me m-r-sm pull-left">
                     <i class="icon-control-play text"></i>
                     <i class="icon-control-pause text-active"></i>
                   </a>
@@ -139,5 +150,16 @@
 <script th:src="@{/asserts/js/app.js}" src="/asserts/js/app.js"></script>
 <script th:src="@{/asserts/js/slimscroll/jquery.slimscroll.min.js}" src="/asserts/js/slimscroll/jquery.slimscroll.min.js"></script>
 <script th:src="@{/asserts/js/app.plugin.js}" src="/asserts/s/app.plugin.js"></script>
+<script type="text/javascript">
+  function addmusic(json) {
+    window.parent.document.getElementById('hidInp').value = json;
+    window.parent.document.getElementById('addTab').click();
+  }
+  $(function () {
+    $("#tishi").click(function () {
+      alert("请登录！");
+    })
+  })
+</script>
 </body>
 </html>

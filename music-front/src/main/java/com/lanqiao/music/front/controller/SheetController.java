@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class SheetController {
@@ -24,25 +25,36 @@ public class SheetController {
     @RequestMapping("/iframeplay-list")
     public String iframeplaylist(ModelMap map){
         List<Sheet> sheetList=iSheetService.findAllPublicSheet();
-        System.out.println(sheetList.get(0).getMusicList().get(0).getMid());
         map.addAttribute("sheets",sheetList);
 //        return "play-list-enter";
         return "play-list";
     }
     @RequestMapping("/playlistent/{sid}")
-    public String Iplaylistenter(ModelMap map, @PathVariable Integer sid)
-    {
+    public String Iplaylistenter(ModelMap map, @PathVariable Integer sid) {
         Sheet sheet =iSheetService.findSheetBySid(sid);
         List<Music> musicList=sheet.getMusicList();
         Integer uid =iSheetService.findUser(sid);
         Integer mid =musicList.get(0).getMid();
         String mname=musicList.get(0).getMname();
-        User user=iUserService.findUserByUid(uid);
+        User user=iUserService.getCreateSheet(uid);
+        System.out.println(user.getUCollectionSheet());
+        int flag = 0;
+        if(user.getUCollectionSheet()==null){
+            iSheetService.addOtherSheet(user.getUid(),sid);
+        }else{
+            Set<Sheet> sheetList = user.getUCollectionSheet();
+            for(Sheet sheeta : sheetList){
+                if(sheeta.getSid()== sid){
+                    flag = 1;
+                    break;
+                }
+            }
+        }
         map.addAttribute("sheet",sheet);
-        map.addAttribute("userName",user.getUname());
+        map.addAttribute("user",user);
         map.addAttribute("mid",mid);
         map.addAttribute("mname",mname);
+        map.addAttribute("flag",flag);
         return "play-list-enter";
     }
-
 }

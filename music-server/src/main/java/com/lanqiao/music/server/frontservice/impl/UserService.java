@@ -3,6 +3,7 @@ package com.lanqiao.music.server.frontservice.impl;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.lanqiao.music.server.dao.UserMapper;
 import com.lanqiao.music.server.frontservice.ISheetService;
+import com.lanqiao.music.server.pojo.Sheet;
 import com.lanqiao.music.server.pojo.User;
 import com.lanqiao.music.server.frontservice.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Set;
 
 
 @Component
@@ -97,6 +99,15 @@ public class UserService implements IUserService {
 ////        }
 ////        user.setUbalance((user.getUbalance()-(mouth*10.0)));
         userMapper.updateUser(user);
+    }
+//获取自建歌单和收藏歌单 type=12
+    @Override
+    public User getCreateSheet(Integer uid) {
+        User user = userMapper.selectUserByUid(uid);
+        Set<Sheet> sheetSet = userMapper.selectCollectionSheet(uid);
+        sheetSet.addAll(userMapper.selectCreateSheet(uid));
+        user.setUCollectionSheet(sheetSet);
+        return user;
     }
 
     //增加一个月
