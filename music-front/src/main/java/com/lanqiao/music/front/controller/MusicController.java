@@ -1,9 +1,11 @@
 package com.lanqiao.music.front.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.lanqiao.music.server.frontservice.ISheetService;
 import com.lanqiao.music.server.pojo.Music;
 import com.lanqiao.music.server.pojo.MusicJson;
 import com.lanqiao.music.server.frontservice.IMusicService;
+import com.lanqiao.music.server.pojo.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -78,4 +80,5 @@ public class MusicController {
         session.setAttribute("musicJsons",musicJsons);
         return musicJsons;
     }
+
 }

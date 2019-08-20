@@ -41,6 +41,7 @@ $(document).ready(function(){
       songsList = JSON.parse(json);
       initJPlayer(songsList);
       window.location.reload();
+
     });
   });
 });

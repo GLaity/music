@@ -17,11 +17,7 @@ import java.util.Date;
 public class MusicFrontApplicationTests {
     @Reference
     private IUserService iUserService;
-    @Test
-    public void contextLoads() {
-//        System.out.println();
-//        System.out.println(iUserService.login("李四","123456"));
-    }
+
     @Test
     public  void subMonth() throws ParseException {
         Date date = new Date();

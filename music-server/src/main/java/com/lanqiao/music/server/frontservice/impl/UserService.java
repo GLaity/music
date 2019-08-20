@@ -2,8 +2,8 @@ package com.lanqiao.music.server.frontservice.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
 import com.lanqiao.music.server.dao.UserMapper;
-import com.lanqiao.music.server.pojo.User;
 import com.lanqiao.music.server.frontservice.ISheetService;
+import com.lanqiao.music.server.pojo.User;
 import com.lanqiao.music.server.frontservice.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -76,8 +76,9 @@ public class UserService implements IUserService {
     //充值金额
     @Override
     public void addBalance(User user,Double money) {
-        Double d = user.getUbalance()+money;
-        user.setUbalance(d);
+//        Double d = user.getUbalance()+money;
+//        user.setUbalance(d);
+        user.setUbalance((user.getUbalance()+money));
         userMapper.updateUser(user);
     }
     //减少余额
@@ -89,12 +90,12 @@ public class UserService implements IUserService {
     //充值会员
     @Override
     public void rechargeVip(User user, Integer mouth) {
-        if(user.getVdate()!=null){
-            user.setVdate(subMonth(user.getVdate(),mouth));
-        }else {
-            user.setVdate(subMonth(new Date(),mouth));
-        }
-        user.setUbalance((user.getUbalance()-(mouth*10.0)));
+//        if(user.getVdate()!=null){
+////            user.setVdate(subMonth(user.getVdate(),mouth));
+////        }else {
+////            user.setVdate(subMonth(new Date(),mouth));
+////        }
+////        user.setUbalance((user.getUbalance()-(mouth*10.0)));
         userMapper.updateUser(user);
     }
 

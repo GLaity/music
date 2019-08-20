@@ -5,94 +5,111 @@
   <title>Musik | Web Application</title>
   <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <link rel="stylesheet" th:href="@{./asserts/js/jPlayer/jplayer.flat.css}" type="text/css" />
-  <link rel="stylesheet" th:href="@{./asserts/css/bootstrap.css}" type="text/css" />
-  <link rel="stylesheet" th:href="@{./asserts/css/animate.css}" type="text/css" />
-  <link rel="stylesheet" th:href="@{./asserts/css/font-awesome.min.css}" type="text/css" />
-  <link rel="stylesheet" th:href="@{./asserts/css/simple-line-icons.css}" type="text/css" />
-  <link rel="stylesheet" th:href="@{./asserts/css/font.css}" type="text/css" />
-  <link rel="stylesheet" th:href="@{./asserts/css/app.css}" type="text/css" />
-
-  <script th:src="@{asserts/js/ie/html5shiv.js}" src="asserts/js/ie/html5shiv.js"></script>
-  <script th:src="@{asserts/js/ie/respond.min.js}" src="asserts/js/ie/respond.min.js"></script>
-  <script th:src="@{asserts/js/ie/excanvas.js}" src="asserts/js/ie/excanvas.js"></script>
-  <![endif]-->
+  <link rel="stylesheet" href="./asserts/js/jPlayer/jplayer.flat.css" type="text/css" />
+  <link rel="stylesheet" href="./asserts/css/bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="./asserts/css/animate.css" type="text/css" />
+  <link rel="stylesheet" href="./asserts/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="./asserts/css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="./asserts/css/font.css" type="text/css" />
+  <link rel="stylesheet" href="./asserts/css/app.css" type="text/css" />
+    <!--[if lt IE 9]>
+    <script src="./asserts/js/ie/html5shiv.js"></script>
+    <script src="./asserts/js/ie/respond.min.js"></script>
+    <script src="./asserts/js/ie/excanvas.js"></script>
+    <![endif]-->
 </head>
 <body class="">
- 
-          <section class="hbox stretch">
-            <section>
-              <section class="vbox">
-                <section class="scrollable padder-lg w-f-md" id="bjax-target">
-					<!--刷新-->
-                  <a href="#" class="pull-right text-muted m-t-lg" data-toggle="class:fa-spin" ><i class="icon-refresh i-lg  inline" id="refresh"></i></a>
-                  <h2 class="font-thin m-b">搜索结果 <span class="musicbar animate inline m-l-sm" style="width:20px;height:20px">
+
+<section class="hbox stretch">
+  <section>
+    <section class="vbox">
+      <section class="scrollable padder-lg w-f-md" id="bjax-target">
+        <!--刷新-->
+        <a href="#" class="pull-right text-muted m-t-lg" data-toggle="class:fa-spin" ><i class="icon-refresh i-lg  inline" id="refresh"></i></a>
+        <h2 class="font-thin m-b">搜索结果 <span class="musicbar animate inline m-l-sm" style="width:20px;height:20px">
                     <span class="bar1 a1 bg-primary lter"></span>
                     <span class="bar2 a2 bg-info lt"></span>
                     <span class="bar3 a3 bg-success"></span>
                     <span class="bar4 a4 bg-warning dk"></span>
                     <span class="bar5 a5 bg-danger dker"></span>
                   </span></h2>
-                  <div class="row row-sm">
-					  <!--推荐歌曲-->
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                      <div class="item">
-                        <div class="pos-rlt">
-                          <div class="bottom">
-							  <!--歌曲时长-->
-                            <span class="badge bg-info m-l-sm m-b-sm">03:20</span>
-                          </div>
-                          <div class="item-overlay opacity r r-2x bg-black">
-							  <!--星级-->
-                            <div class="text-info padder m-t-sm text-sm">
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star-o text-muted"></i>
-                            </div>
-                            <div class="center text-center m-t-n">
-								<!--播放-->
-                              <a href="#"><i class="icon-control-play i-2x"></i></a>
-                            </div>
-                            <div class="bottom padder m-b-sm">
-								<!--加入歌单-->
-                              <a href="#" class="pull-right">
-                                <i class="fa fa-heart-o"></i>
-                              </a>
-							  <!--收藏或好评-->
-                              <a href="#">
-                                <i class="fa fa-plus-circle"></i>
-                              </a>
-                            </div>
-                          </div>
-						  <!--歌曲图片-->
-                          <a href="#"><img th:src="@{images/p1.jpg}" alt="" class="r r-2x img-full"><!----></a>
-                        </div>
-                        <div class="padder-v">
-							<!--歌曲名称-->
-                          <a href="#" class="text-ellipsis">Tempered Song</a>
-						  <!--歌手-->
-                          <a href="#" class="text-ellipsis text-xs text-muted">Miaow</a>
-                        </div>
-                      </div>
-                    </div>
-					<!--推荐歌曲-->
+        <div class="row row-sm">
+          <!--推荐歌曲-->
+          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+            <div class="item">
+              <div class="pos-rlt">
+                <div class="bottom">
+                  <!--歌曲时长-->
+                  <span class="badge bg-info m-l-sm m-b-sm">03:20</span>
+                </div>
+                <div class="item-overlay opacity r r-2x bg-black">
+                  <!--星级-->
+                  <div class="text-info padder m-t-sm text-sm">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o text-muted"></i>
                   </div>
-                
-                </section>
-              
-              </section>
-            </section>
+                  <div class="center text-center m-t-n">
+                    <!--播放-->
+                    <a href="#"><i class="icon-control-play i-2x"></i></a>
+                  </div>
+                  <div class="bottom padder m-b-sm">
+                    <!--加入歌单-->
+                    <a href="#" class="pull-right">
+                      <i class="fa fa-heart-o"></i>
+                    </a>
+                    <!--收藏或好评-->
+                    <a href="#">
+                      <i class="fa fa-plus-circle"></i>
+                    </a>
+                  </div>
+                </div>
+                <!--歌曲图片-->
+                <a href="#"><img th:src="@{images/p1.jpg}" alt="" class="r r-2x img-full"><!----></a>
+              </div>
+              <div class="padder-v">
+                <!--歌曲名称-->
+                <a href="#" class="text-ellipsis">Tempered Song</a>
+                <!--歌手-->
+                <a href="#" class="text-ellipsis text-xs text-muted">Miaow</a>
+              </div>
+            </div>
+          </div>
+          <!--推荐歌曲-->
+        </div>
 
-          </section>
-          <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
+      </section>
 
-          <script th:src="@{asserts/js/jquery.min.js}" src="js/jquery.min.js"></script>
-          <script th:src="@{asserts/js/bootstrap.js}" src="js/bootstrap.js"></script>
-          <script th:src="@{asserts/js/app.js}" src="js/app.js"></script>
-          <script th:src="@{asserts/js/slimscroll/jquery.slimscroll.min.js}" src="js/slimscroll/jquery.slimscroll.min.js"></script>
-          <script th:src="@{asserts/js/app.plugin.js}" src="js/app.plugin.js"></script>
+    </section>
+  </section>
+  <!-- side content -->
+  <!-- <aside class="aside-md bg-light dk" id="sidebar">
+    <section class="vbox animated fadeInRight">
+      <footer class="footer footer-md bg-black">
+        <form class="" role="search">
+          <div class="form-group clearfix m-b-none">
+            <div class="input-group m-t m-b">
+              <span class="input-group-btn">
+                <button type="submit" class="btn btn-sm bg-empty text-muted btn-icon"><i class="fa fa-search"></i></button>
+              </span>
+              <input type="text" class="form-control input-sm text-white bg-empty b-b b-dark no-border" placeholder="Search members">
+            </div>
+          </div>
+        </form>
+      </footer>
+    </section>
+  </aside> -->
+  <!-- / side content -->
+</section>
+<a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
+
+<script th:src="@{asserts/js/jquery.min.js}" src="js/jquery.min.js"></script>
+<script th:src="@{asserts/js/bootstrap.js}" src="js/bootstrap.js"></script>
+<script th:src="@{asserts/js/app.js}" src="js/app.js"></script>
+<script th:src="@{asserts/js/slimscroll/jquery.slimscroll.min.js}" src="js/slimscroll/jquery.slimscroll.min.js"></script>
+<script th:src="@{asserts/js/app.plugin.js}" src="js/app.plugin.js"></script>
 
 </body>
 </html>

@@ -9,9 +9,9 @@ public interface IUserService {
     void modifyUser(User user);
     User findUserByName(String uname);
     //充值消费money
-    void addBalance(User user, Double money);
-    void reduceBalance(User user, Double money);
+    void addBalance(User user,Double money);
+    void reduceBalance(User user,Double money);
     //充值会员
-    void rechargeVip(User user, Integer mouth);
+    void rechargeVip(User user,Integer mouth);
 
 }

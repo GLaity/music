@@ -5,116 +5,116 @@
 		<title>Musik | Web Application</title>
 		<meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-		<link rel="stylesheet" href="js/jPlayer/jplayer.flat.css" type="text/css" />
-		<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
-		<link rel="stylesheet" href="css/animate.css" type="text/css" />
-		<link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
-		<link rel="stylesheet" href="css/simple-line-icons.css" type="text/css" />
-		<link rel="stylesheet" href="css/font.css" type="text/css" />
-		<link rel="stylesheet" href="css/app.css" type="text/css" />
-		<link rel="stylesheet" type="text/css" href="css/amazeui.min.css" />
-		<link rel="stylesheet" type="text/css" href="css/main.css" />
+		<link rel="stylesheet" href="./asserts/js/jPlayer/jplayer.flat.css" type="text/css" />
+		<link rel="stylesheet" href="./asserts/css/bootstrap.css" type="text/css" />
+		<link rel="stylesheet" href="./asserts/css/animate.css" type="text/css" />
+		<link rel="stylesheet" href="./asserts/css/font-awesome.min.css" type="text/css" />
+		<link rel="stylesheet" href="./asserts/css/simple-line-icons.css" type="text/css" />
+		<link rel="stylesheet" href="./asserts/css/font.css" type="text/css" />
+		<link rel="stylesheet" href="./asserts/css/app.css" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="./asserts/css/amazeui.min.css" />
+		<link rel="stylesheet" type="text/css" href="./asserts/css/main.css" />
 		<!--[if lt IE 9]>
-    <script src="js/ie/html5shiv.js"></script>
-    <script src="js/ie/respond.min.js"></script>
-    <script src="js/ie/excanvas.js"></script>
-  <![endif]-->
+		<script src="./asserts/js/ie/html5shiv.js"></script>
+		<script src="./asserts/js/ie/respond.min.js"></script>
+		<script src="./asserts/js/ie/excanvas.js"></script>
+		<![endif]-->
 	</head>
 	<body class="">
-
-
 						<section class="vbox">
 							<section class="scrollable">
 								<section class="hbox stretch">
 									<aside class="aside-lg bg-light lter b-r">
 										<section class="vbox">
-                                            <div class="pay">
-                                                <!--主内容开始编辑-->
-                                                <div class="tr_recharge">
-                                                    <div class="tr_rechtext">
-                                                        <p class="te_retit"><img src="./asserts/images/coin.png" alt="" />会员中心</p>
-                                                        <p>1.可以使用余额购买单曲、充值会员。</p>
-                                                        <p>2.折扣、优惠、活动等你来发现。</p>
-                                                    </div>
-                                                    <form action="" class="am-form" id="doc-vld-msg">
-                                                        <div class="tr_rechbox">
-                                                            <div class="tr_rechhead">
-                                                                <img src="./asserts/images/ys_head2.jpg" />
-                                                                <p>充值帐号：
-                                                                    <a>王凯</a>
-                                                                </p>
-                                                                <div class="tr_rechheadcion">
-                                                                    <img src="./asserts/images/coin.png" alt="" />
-                                                                    <span>当前余额：<span>1000元</span></span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="tr_rechli am-form-group">
-                                                                <ul class="ui-choose am-form-group" id="uc_01">
-                                                                    <li>
-                                                                        <label class="am-radio-inline">
-                                                                            <input type="radio" value="" name="docVlGender" required data-validation-message="请选择一项充值额度"> 10元 <br />一个月
+											<div class="pay">
+												<!--主内容开始编辑-->
+												<div class="tr_recharge">
+													<div class="tr_rechtext">
+														<p class="te_retit"><img src="./asserts/images/coin.png" alt="" />会员中心</p>
+														<p>1.可以使用余额购买单曲、充值会员。</p>
+														<p>2.折扣、优惠、活动等你来发现。</p>
+													</div>
+													<form action="/vip" class="am-form" id="doc-vld-msg">
+														<div class="tr_rechbox">
+															<div class="tr_rechhead">
+																<img src="./asserts/images/ys_head2.jpg" />
+																<p>充值帐号：
+																	<a th:text="${user.getUname()}"></a>
+																</p>
+																<div class="tr_rechheadcion">
+																	<img src="./asserts/images/coin.png" alt="" />
+																	<span>当前余额：<span th:text="'￥'+${user.getUbalance()}"></span></span>
+																</div>
+															</div>
+															<div class="tr_rechli am-form-group">
+																<ul class="ui-choose am-form-group" id="uc_01">
+																	<li>
+																		<label class="am-radio-inline">
+																			<input type="radio" value="" name="docVlGender" required data-validation-message="请选择一项充值额度"> 10元 <br />一个月
+																			
+																		</label>
+																	</li>
+																	<li>
+																		<label class="am-radio-inline">
+																			<input type="radio" name="docVlGender" data-validation-message="请选择一项充值额度"> 30元 <br /> 三个月
+																		</label>
+																	</li>
 
-                                                                        </label>
-                                                                    </li>
-                                                                    <li>
-                                                                        <label class="am-radio-inline">
-                                                                            <input type="radio" name="docVlGender" data-validation-message="请选择一项充值额度"> 30元 <br /> 三个月
-                                                                        </label>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <label class="am-radio-inline">
-                                                                            <input type="radio" name="docVlGender" data-validation-message="请选择一项充值额度"> 50元 <br /> 六个月
-                                                                        </label>
-                                                                    </li>
-                                                                    <li>
-                                                                        <label class="am-radio-inline">
-                                                                            <input type="radio" name="docVlGender" data-validation-message="请选择一项充值额度"> 自定义
-                                                                        </label>
-                                                                    </li>
-                                                                </ul>
-                                                                <!--<span>1招兵币=1元 10元起充</span>-->
-                                                            </div>
-                                                            <div class="tr_rechoth am-form-group">
-                                                                <span>自定义月份：</span>
-                                                                <input type="number" min="1" max="100" value="10.00元" class="othbox" data-validation-message="充值月份范围：1-100元" />
-                                                                <!--<p>充值金额范围：10-10000元</p>-->
-                                                            </div><br />
-                                                            <div class="tr_rechcho am-form-group">
-                                                                <span>充值方式：</span>
-                                                                <label class="am-radio">
-                                                                    <input type="radio" name="radio1" value="" data-am-ucheck required data-validation-message="请选择一种充值方式"><img
-                                                                        src="./asserts/images/wechatpay.png" />
-                                                                </label>
-                                                                <label class="am-radio" style="margin-right:30px;">
-                                                                    <input type="radio" name="radio1" value="" data-am-ucheck data-validation-message="请选择一种充值方式"><img src="./asserts/images/zfbpay.png" />
-                                                                </label>
-                                                                <label class="am-radio" style="margin-right:60px;">
-                                                                    <input type="radio" name="radio1" value="" data-am-ucheck data-validation-message="请选择一种充值方式"><img src="./asserts/images/yu_e.png" />
-                                                                </label>
-                                                            </div>
-                                                            <div class="tr_rechnum">
-                                                                <span>应付金额：</span>
-                                                                <p class="rechnum">0.00元</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="tr_paybox">
-                                                            <input type="submit" value="确认支付" class="tr_pay am-btn" />
-                                                            <span>温馨提示：遇到问题请拨打联系电话。</span>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
+																	<li>
+																		<label class="am-radio-inline">
+																			<input type="radio" name="docVlGender" data-validation-message="请选择一项充值额度"> 50元 <br /> 六个月
+																		</label>
+																	</li>
+																	<li>
+																		<label class="am-radio-inline">
+																			<input type="radio" name="docVlGender" data-validation-message="请选择一项充值额度"> 自定义
+																		</label>
+																	</li>
+																</ul>
+																<!--<span>1招兵币=1元 10元起充</span>-->
+															</div>
+															<div class="tr_rechoth am-form-group">
+																<span>自定义月份：</span>
+																<input type="number" min="1" max="100" value="10.00元" class="othbox" data-validation-message="充值月份范围：1-100元" />
+																<!--<p>充值金额范围：10-10000元</p>-->
+															</div><br />
+															<div class="tr_rechcho am-form-group">
+																<span>充值方式：</span>
+																<label class="am-radio">
+																	<input type="radio" name="radio1" value="" data-am-ucheck required data-validation-message="请选择一种充值方式"><img
+																	 src="./asserts/images/wechatpay.png" />
+																</label>
+																<label class="am-radio" style="margin-right:30px;">
+																	<input type="radio" name="radio1" value="" data-am-ucheck data-validation-message="请选择一种充值方式"><img src="./asserts/images/zfbpay.png" />
+																</label>
+																<label class="am-radio" style="margin-right:60px;">
+																	<input type="radio" name="radio1" value="" data-am-ucheck data-validation-message="请选择一种充值方式"><img src="./asserts/images/yu_e.png" />
+																</label>
+															<div class="tr_rechnum">
+															</div>
+															<span>应付金额：</span>
+																<p class="rechnum">0.00元</p>
+																<input id="rechtext" name="mouth" type="hidden" value=""/>
+															</div>
+														</div>
+														<div class="tr_paybox">
+															<input type="submit" value="确认支付" class="tr_pay am-btn"/>
+															<span>温馨提示：遇到问题请拨打联系电话。</span>
+														</div>
+													</form>
+												</div>
+											</div>
+											<div style="height: 60px"></div>
 										</section>
 									</aside>
 								</section>
 							</section>
 						</section>
-					</section>
 
-					<script type="text/javascript" src="js/jquery.min.js"></script>
-					<script type="text/javascript" src="js/amazeui.min.js"></script>
-					<script type="text/javascript" src="js/ui-choose.js"></script>
+
+					<script type="text/javascript" src="./asserts/js/jquery.min.js"></script>
+					<script type="text/javascript" src="./asserts/js/amazeui.min.js"></script>
+					<script type="text/javascript" src="./asserts/js/ui-choose.js"></script>
 
 					<script type="text/javascript">
 						// 将所有.ui-choose实例化
@@ -132,26 +132,31 @@
 								$('.tr_rechoth').show();
 								$('.tr_rechoth').find("input").attr('required', 'true')
 								$('.rechnum').text('10.00元');
+								$('#rechtext').val(1);
 							})
 							$('#uc_01 li:eq(0)').click(function() {
 								$('.tr_rechoth').hide();
 								$('.rechnum').text('10.00元');
+								$('#rechtext').val(1);
 								$('.othbox').val('');
 							})
 							$('#uc_01 li:eq(1)').click(function() {
 								$('.tr_rechoth').hide();
 								$('.rechnum').text('30.00元');
+								$('#rechtext').val(3);
 								$('.othbox').val('');
 							})
 							$('#uc_01 li:eq(2)').click(function() {
 								$('.tr_rechoth').hide();
 								$('.rechnum').text('50.00元');
+								$('#rechtext').val(5);
 								$('.othbox').val('');
 							})
 							$(document).ready(function() {
 								$('.othbox').on('input propertychange', function() {
 									var num = $(this).val();
 									$('.rechnum').html(num*10 + ".00元");
+									$('#rechtext').val(num);
 								});
 							});
 						})
@@ -176,18 +181,20 @@
 								}
 							});
 						});
+
+
 					</script>
-					<script src="js/jquery.min.js"></script>
+					<script src="./asserts/js/jquery.min.js"></script>
 					<!-- Bootstrap -->
-					<script src="js/bootstrap.js"></script>
+					<script src="./asserts/js/bootstrap.js"></script>
 					<!-- App -->
-					<script src="js/app.js"></script>
-					<script src="js/slimscroll/jquery.slimscroll.min.js"></script>
-					<script src="js/charts/easypiechart/jquery.easy-pie-chart.js"></script>
-					<script src="js/app.plugin.js"></script>
-					<script type="text/javascript" src="js/jPlayer/jquery.jplayer.min.js"></script>
-					<script type="text/javascript" src="js/jPlayer/add-on/jplayer.playlist.min.js"></script>
-					<script type="text/javascript" src="js/jPlayer/demo.js"></script>
+					<script src="./asserts/js/app.js"></script>
+					<script src="./asserts/js/slimscroll/jquery.slimscroll.min.js"></script>
+					<script src="./asserts/js/charts/easypiechart/jquery.easy-pie-chart.js"></script>
+					<script src="./asserts/js/app.plugin.js"></script>
+					<script type="text/javascript" src="./asserts/js/jPlayer/jquery.jplayer.min.js"></script>
+					<script type="text/javascript" src="./asserts/js/jPlayer/add-on/jplayer.playlist.min.js"></script>
+					<script type="text/javascript" src="./asserts/js/jPlayer/demo.js"></script>
 	</body>
 
 </html>
