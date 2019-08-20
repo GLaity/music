@@ -32,4 +32,8 @@ public interface ISheetService {
     List<Sheet> fingMyCollectionSheet(Integer uid);
     //查询所有歌单
     List<Sheet> findAllSheet();
+    //查询所有共有歌单
+    List<Sheet>findAllPublicSheet();
+    //根据歌单id查看uid
+    Integer findUser(Integer sid);
 }
