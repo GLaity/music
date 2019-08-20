@@ -24,13 +24,17 @@ public class JumpController {
 
     @RequestMapping("/iframemain")
     public String iframemain(Model model){
-        List<Music> musicList1 = iMusicService.queryAllMusic();
-
-        List<Music> musicList=new ArrayList<>();
+        List<Music> music = iMusicService.queryAllMusic();
+        List<Music> musicList1=new ArrayList<>();
+        List<Music> musicList2 = new ArrayList<>();
         for(int i = 0; i<12;i++){
-            musicList.add(musicList1.get(i));
+            musicList1.add(music.get(i));
         }
-        model.addAttribute("musicList",musicList);
+        for(int i = 12; i<24;i++){
+            musicList2.add(music.get(i));
+        }
+        model.addAttribute("musicList1",musicList1);
+        model.addAttribute("musicList2",musicList2);
         return "main";
     }
     @RequestMapping("/iframemusic")
