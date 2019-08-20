@@ -81,4 +81,10 @@ public class MusicController {
         return musicJsons;
     }
 
+    @RequestMapping("/search")
+    public String searchMusic(String searchText, Model model){
+        List<Music> musicList = iMusicService.queryMusicByLikename(searchText);
+        model.addAttribute("musicList",musicList);
+        return "index";
+    }
 }

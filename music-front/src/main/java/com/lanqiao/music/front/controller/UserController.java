@@ -24,7 +24,8 @@ public class UserController {
     private IBoughtService iBoughtService;
 
     @RequestMapping("/")
-    public String init(){
+    public String init(Model model){
+        model.addAttribute("iframeSrc","/iframemain");
         return "index";
     }
 
