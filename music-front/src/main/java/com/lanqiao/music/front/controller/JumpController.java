@@ -8,6 +8,7 @@ import com.lanqiao.music.server.pojo.Sheet;
 import com.lanqiao.music.server.pojo.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -55,8 +56,10 @@ public class JumpController {
     public String iframemyplaylist(){
         return "myplaylist";
     }
-    @RequestMapping("/iframesearch")
-    public String iframesearch(){
+    @RequestMapping("/iframesearch/{text}")
+    public String iframesearch(@PathVariable String text, Model model){
+        List<Music> searchList = iMusicService.queryMusicByLikename(text);
+        model.addAttribute("searchList",searchList);
         return "search";
     }
     @RequestMapping("/iframevideo")
@@ -71,5 +74,4 @@ public class JumpController {
         model.addAttribute("sheetList",sheetList);
         return "personal";
     }
-
 }

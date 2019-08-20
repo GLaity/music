@@ -71,7 +71,7 @@
         select
         <include refid="base_sql"/>
         from music
-        where mname like  '%' #{mname} '%'
+        where mname like  CONCAT('%',#{mname},'%')
     </select>
     <select id="selectMusicByCondition" resultMap="musicMap">
         select * from music
