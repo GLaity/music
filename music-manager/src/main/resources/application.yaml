@@ -1,5 +1,6 @@
 server:
   port: 8080
+
 dubbo:
   application:
     name: manager
@@ -8,7 +9,13 @@ dubbo:
   scan:
     base-packages: com.lanqiao.music.server.service
   protocol:
-    host: 192.168.0.112
+    host: 192.168.0.147
     name: dubbo
     id: dubbo
+
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10485760
 

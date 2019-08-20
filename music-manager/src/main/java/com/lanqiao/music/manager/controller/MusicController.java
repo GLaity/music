@@ -29,9 +29,12 @@ public class MusicController {
 
     @RequestMapping("/list.do")
     public String musicList(ModelMap map){
+//        PageHelper.startPage(pageNum,5);
         List<Music> musicList = musicService.getAllMusic();
-        String size = String.valueOf(musicList.size());
-        map.addAttribute("size",size);
+//        PageInfo<Music> page = new PageInfo<>(musicList);
+
+        map.addAttribute("size",musicList.size());
+//        map.addAttribute("page",page);
         map.addAttribute("musicList",musicList);
         return "music-manage";
     }
@@ -80,6 +83,7 @@ public class MusicController {
                     uploadDir.mkdirs();
                 }
                 newFile = new File(uploadDir,originalFilename);
+                System.out.println(originalFilename);
                 img.transferTo(newFile);
             }else {
                 mv.setViewName("redirect:/404.html");

@@ -52,4 +52,7 @@
     <select id="selectUserByUname" parameterType="string" resultMap="userMap">
         select * from user where uname = #{uname};
     </select>
+    <select id="selectUserByUid" parameterType="string" resultMap="userMap">
+        select * from user where uname = #{uname};
+    </select>
 </mapper>

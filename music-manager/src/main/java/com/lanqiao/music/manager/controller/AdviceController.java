@@ -50,7 +50,9 @@ public class AdviceController {
     public Object deleteMusic(@PathVariable Integer aid){
         Map<String,Object> map = new HashMap<>();
         adviceService.removeAdvice(aid);
-        map.put("msg","已删除！");
+        List<Advice> adviceList = adviceService.getAllAdvice();
+        map.put("count",adviceList.size());
+        map.put("msg","删除成功！");
         return map;
     }
 }

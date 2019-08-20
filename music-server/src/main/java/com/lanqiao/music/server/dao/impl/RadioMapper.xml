@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lanqiao.music.server.dao.RadioMapper">
-
+    <select id="selectAllRadio" resultType="com.lanqiao.music.server.pojo.Radio">
+        select * from radio
+    </select>
+    <select id="selectMusicByRid" resultType="com.lanqiao.music.server.pojo.Music">
+        select m.* from music m , radio_music rm where rm.rid = #{rid} and m.mid = rm.mid
+    </select>
+    <select id="selectRadioByAttr">
+        select * from radio
+        <where>
+            <if test="rname == #{rname}">
+                and rname like '%'#{rname}'%'
+            </if>
+            <if test="rcontext == #{rcontext}">
+                and rcontext like '%'#{rcontext}'%'
+            </if>
+            <if test="rsum == #{rsum}">
+                and rsum like '%'#{rsum}'%'
+            </if>
+        </where>
+    </select>
 </mapper>

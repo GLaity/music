@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lanqiao.music.server.dao.MusicMapper">
-    <select id="selectMusicAll" parameterType="string" resultType="com.lanqiao.music.server.pojo.Music">
+    <select id="selectMusicAll" resultType="com.lanqiao.music.server.pojo.Music">
         select * from music;
     </select>
     <select id="selectOneMusic" parameterType="int" resultType="com.lanqiao.music.server.pojo.Music">
