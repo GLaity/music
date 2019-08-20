@@ -1,23 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lanqiao.music.server.dao.MusicMapper">
+    <resultMap id="musicMap" type="com.lanqiao.music.server.pojo.Music">
+        <id column="mid" property="mid"/>
+        <result column="mname" property="mname"/>
+        <result column="msinger" property="msinger"/>
+        <result column="mcontext" property="mcontext"/>
+        <result column="malbum" property="malbum"/>
+        <result column="mlevel" property="mlevel"/>
+        <result column="mtheme" property="mtheme"/>
+        <result column="mstyle" property="mstyle"/>
+        <result column="mlanguage" property="mlanguage"/>
+        <result column="mprice" property="mprice"/>
+        <result column="mloc" property="mloc"/>
+        <result column="mdate" property="mdate"/>
+    </resultMap>
     <sql id="base_sql">
-        mname,msinger,mcontext,malbum,mlevel,mtheme,mstyle,mlanguage,mprice,mloc,mdate
+        mid,mname,msinger,mcontext,malbum,mlevel,mtheme,mstyle,mlanguage,mprice,mloc,mdate
     </sql>
-    <select id="selectMusicAll" parameterType="string" resultType="com.lanqiao.music.server.pojo.Music">
+    <insert id="insertMusic" parameterType="com.lanqiao.music.server.pojo.Music">
+        insert into music (mname, msinger, mcontext, malbum, mlevel, mtheme, mstyle, mlanguage, mprice, mloc, mdate)
+        values (#{mname},#{msinger},#{mcontext},#{malbum},#{mlevel},#{mtheme},#{mstyle},#{mlanguage},#{mprice},#{mloc},NOW());
+    </insert>
+    <update id="updateMusic" parameterType="com.lanqiao.music.server.pojo.Music">
+        update music
+        <set>
+            <if test="mname != null and mname != ''">
+                mname = #{mname},
+            </if>
+            <if test="msinger != null and msinger != ''">
+                msinger = #{msinger},
+            </if>
+            <if test="mcontext != null and mcontext != ''">
+                mcontext = #{mcontext},
+            </if>
+            <if test="malbum != null">
+                malbum = #{malbum},
+            </if>
+            <if test="mlevel != null">
+                mlevel = #{mlevel},
+            </if>
+            <if test="mtheme != null">
+                mtheme = #{mtheme},
+            </if>
+            <if test="mstyle != null">
+                mstyle = #{mstyle},
+            </if>
+            <if test="mlanguage != null">
+                mlanguage = #{mlanguage},
+            </if>
+            <if test="mprice != null">
+                mprice = #{mprice},
+            </if>
+        </set>
+        where mid = #{mid}
+    </update>
+    <delete id="deleteMusicByMId" parameterType="int">
+        delete from music where mid = #{mid};
+    </delete>
+    <select id="selectMusicAll" parameterType="string" resultMap="musicMap">
         select * from music;
     </select>
-    <select id="selectMusicByMId" parameterType="int" resultType="com.lanqiao.music.server.pojo.Music">
+    <select id="selectMusicByMId" parameterType="int" resultMap="musicMap">
         select
-        <include refid="base_sql"></include>
+        <include refid="base_sql"/>
         from music
         where mid=#{mid}
     </select>
-    <select id="selectMusicByLikeName" parameterType="string" resultType="com.lanqiao.music.server.pojo.Music">
+    <select id="selectMusicByLikeName" parameterType="string" resultMap="musicMap">
         select
-        <include refid="base_sql"></include>
+        <include refid="base_sql"/>
         from music
         where mname like  '%' #{mname} '%'
     </select>
-
+    <select id="selectMusicByCondition" resultMap="musicMap">
+        select * from music
+        <where>
+            <if test="mname != null and mname != ''">
+                and mname = #{mname}
+            </if>
+            <if test="msinger != null and msinger != ''">
+                and msinger = #{msinger}
+            </if>
+            <if test="mlevel != null">
+                and mlevel = #{mlevel}
+            </if>
+            <if test="mtheme != null">
+                and mtheme = #{mtheme}
+            </if>
+            <if test="mstyle != null">
+                and mstyle = #{mstyle}
+            </if>
+            <if test="mlanguage != null">
+                and mlanguage = #{mlanguage}
+            </if>
+            <if test="mprice != null">
+                and mprice = #{mprice}
+            </if>
+        </where>
+    </select>
+    <select id="selectSortByType" resultType="com.lanqiao.music.server.pojo.Sort">
+        select *
+        from sort
+        where typyid = #{type};
+    </select>
 </mapper>

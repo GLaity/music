@@ -13,5 +13,7 @@ public interface IUserService {
     void reduceBalance(User user,Double money);
     //充值会员
     void rechargeVip(User user,Integer mouth);
+    //选择用户创建歌单
+    User getCreateSheet(Integer uid);
 
 }

@@ -23,6 +23,11 @@
     <script th:src="@{asserts/js/slimscroll/jquery.slimscroll.min.js}" src="js/slimscroll/jquery.slimscroll.min.js"></script>
     <script th:src="@{asserts/js/app.plugin.js}" src="js/app.plugin.js"></script>
     <!--[endif]-->
+    <style type="text/css">
+        .modal-backdrop{
+            z-index: 999;
+        }
+    </style>
 </head>
 <body class="">
 <section class="vbox">
@@ -57,20 +62,20 @@
                 </div>
             </div>
         </form>
-        <div class="navbar-right ">
-            <!--          未登录-->
-            <form action="/tologin" th:unless="${user}">
+        <!--          未登录-->
+        <div class="navbar-right " th:unless="${user}">
+            <form action="/tologin">
                 <ul class="nav navbar-nav m-n hidden-xs nav-user user">
                     <li class="dropdown">
                         <input type="submit" value="登录"class="btn">
                     </li>
                 </ul>
             </form>
-            <!--          登陆-->
-            <form th:if="${user}">
+        </div>
+        <!--          登陆-->
+        <div  class="navbar-right " th:if="${user}">
+            <div>
                 <ul class="nav navbar-nav m-n hidden-xs nav-user user">
-
-
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">
                         <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
@@ -82,15 +87,14 @@
                         <ul class="dropdown-menu animated fadeInRight">
                             <li>
                                 <span class="arrow top"></span>
-                                <a href="#">设置</a>
+                                <a href="#" data-toggle="modal"  data-target="#updatePwd">修改密码</a>
                             </li>
                             <li>
-
                                 <a href="javascript:;"onclick="changeMainUI('/iframepersonal','个人中心')">个人中心</a>
                             </li>
 
                             <li>
-                                <a href="docs.html">帮助</a>
+                                <a href="#">帮助</a>
                             </li>
                             <li class="divider"></li>
                             <li>
@@ -99,10 +103,53 @@
                         </ul>
                     </li>
                 </ul>
-            </form>
+            </div>
+            <div class="modal fade" id="updatePwd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-th-background="false">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="updatePw">修改密码</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form th:action="@{'/updatePwd'}" method="post" role="form">
+                                <div class="form-group">
+                                    <label>用户名</label>
+                                    <input name="uname" type="text" class="form-control" th:value="${user.getUname()}">
+                                </div>
+                                <div class="form-group">
+                                    <label>原密码</label>
+                                    <input name="upwd" type="password" class="form-control" placeholder="" >
+                                </div>
+                                <div class="form-group">
+                                    <label>新密码</label>
+                                    <input name="newpwd" type="password" class="form-control" placeholder="">
+                                </div>
+
+                                <button type="submit" class="btn btn-primary" id="updateread">确认修改</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            </form>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal -->
+            </div>
+            <script type="text/javascript">
+                $(function() {
+                    $('#updateread').on("click", function () {
+                        $('#secondmodal').modal();
+                    });
+                });
+            </script>
+            <div class="modal fade" id="secondmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="form-group">
+                    <label>修改结果</label>
+                    <input name="" type="password" class="form-control" placeholder=""th:text="${msg}">
+                </div>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
         </div>
     </header>
-    <section>
+     <section>
         <section class="hbox stretch">
             <!-- .aside -->
             <aside class="bg-black dk nav-xs aside hidden-print" id="nav">
@@ -140,41 +187,40 @@
                                             <span class="font-bold">电台</span>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="javascript:;" onclick="changeMainUI('/iframemyplaylist','我的歌单')">
-                                            <i class="icon-list icon  text-info-dker"></i>
-                                            <span class="font-bold">我的歌单</span>
-                                        </a>
-                                    </li>
-
                                     <li class="m-b hidden-nav-xs"></li>
                                 </ul>
+<!--登陆与未登录-->           <ul class="nav text-sm" th:if="${user}">
+                                <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
+                                    <span class="pull-right"><a href="#"><i class="icon-plus i-lg"></i></a></span>
+                                    我的
+                                </li>
+                                <li>
+                                    <a href="javascript:;" onclick="changeMainUI('/iframecollection','我的收藏')">
+                                        <i class="icon-heart icon"></i>
+                                        <span>我的收藏</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" onclick="changeMainUI('/iframemyplaylist','我的购买')">
+                                        <i class="icon-list icon  text-info-dker"></i>
+                                        <span class="font-bold">我的购买</span>
+                                    </a>
+                                </li>
+<!--                                <li>-->
+<!--                                    <a href="#">-->
+<!--                                        <i class="icon-music-tone icon"></i>-->
+<!--                                        <span>Hip-Pop</span>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="#">-->
+<!--                                        <i class="icon-playlist icon text-success-lter"></i>-->
+<!--                                        <b class="badge bg-success dker pull-right">9</b>-->
+<!--                                        <span>Jazz</span>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+                            </ul>
 
-                                <ul class="nav text-sm">
-                                    <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
-                                        <span class="pull-right"><a href="#"><i class="icon-plus i-lg"></i></a></span>
-                                        Playlist
-                                    </li>
-                                    <li>
-                                        <a href="javascript:;" onclick="changeMainUI('/iframecollection','我的收藏')">
-                                            <i class="icon-heart icon"></i>
-                                            <span>我的收藏</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="icon-music-tone icon"></i>
-                                            <span>Hip-Pop</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="icon-playlist icon text-success-lter"></i>
-                                            <b class="badge bg-success dker pull-right">9</b>
-                                            <span>Jazz</span>
-                                        </a>
-                                    </li>
-                                </ul>
                             </nav>
                             <!-- / nav -->
                         </div>
@@ -259,10 +305,12 @@
                                                 <li class="list-group-item"></li>
                                             </ul>
                                         </div>
-
                                     </div>
                                 </div>
                             </footer>
+
+                            <input type="text" id="hidInp" value="hidtext" style="opacity:0;">
+                            <a href="javascript:void(0);" id="addTab" onclick="addmusic()" style="opacity:0;"></a>
                         </section>
 
                     </section>

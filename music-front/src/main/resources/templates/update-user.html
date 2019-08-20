@@ -3,20 +3,20 @@
 <head>  
 	  <meta charset="utf-8" />
 	  <title>Musik | Web Application</title>
-	  <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
-	  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-	  <link rel="stylesheet" href="./asserts/js/jPlayer/jplayer.flat.css" type="text/css" />
-	  <link rel="stylesheet" href="./asserts/css/bootstrap.css" type="text/css" />
-	  <link rel="stylesheet" href="./asserts/css/animate.css" type="text/css" />
-	  <link rel="stylesheet" href="./asserts/css/font-awesome.min.css" type="text/css" />
-	  <link rel="stylesheet" href="./asserts/css/simple-line-icons.css" type="text/css" />
-	  <link rel="stylesheet" href="./asserts/css/font.css" type="text/css" />
-	  <link rel="stylesheet" href="./asserts/css/app.css" type="text/css" />  
-	    <!--[if lt IE 9]>
-	    <script src="./asserts/js/ie/html5shiv.js"></script>
-	    <script src="./asserts/js/ie/respond.min.js"></script>
-	    <script src="./asserts/js/ie/excanvas.js"></script>
-	  <![endif]-->
+	<meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<link rel="stylesheet" th:href="@{./asserts/js/jPlayer/jplayer.flat.css}" type="text/css" />
+	<link rel="stylesheet" th:href="@{./asserts/css/bootstrap.css}" type="text/css" />
+	<link rel="stylesheet" th:href="@{./asserts/css/animate.css}" type="text/css" />
+	<link rel="stylesheet" th:href="@{./asserts/css/font-awesome.min.css}" type="text/css" />
+	<link rel="stylesheet" th:href="@{./asserts/css/simple-line-icons.css}" type="text/css" />
+	<link rel="stylesheet" th:href="@{./asserts/css/font.css}" type="text/css" />
+	<link rel="stylesheet" th:href="@{./asserts/css/app.css}" type="text/css" />
+
+	<script th:src="@{asserts/js/ie/html5shiv.js}" src="asserts/js/ie/html5shiv.js"></script>
+	<script th:src="@{asserts/js/ie/respond.min.js}" src="asserts/js/ie/respond.min.js"></script>
+	<script th:src="@{asserts/js/ie/excanvas.js}" src="asserts/js/ie/excanvas.js"></script>
+
 	</head>
 	<body class="">
 	  <section class="vbox">
@@ -27,7 +27,7 @@
 	        </a>
 	        <a href="index.html" class="navbar-brand text-lt"><!--点击返回主页面-->
 	          <i class="icon-earphones"></i>
-	          <img src="asserts/images/logo.png" alt="." class="hide">
+	          <img th:src="@{asserts/images/logo.png}" alt="." class="hide">
 	          <span class="hidden-nav-xs m-l-sm">音乐</span>
 	        </a>
 	        <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user">
@@ -67,7 +67,7 @@
 	                <div class="list-group list-group-alt">
 	                  <a href="#" class="media list-group-item">
 	                    <span class="pull-left thumb-sm">
-	                      <img src="asserts/images/a0.png" alt="..." class="img-circle">
+	                      <img th:src="@{asserts/images/a0.png}" alt="..." class="img-circle">
 	                    </span>
 	                    <span class="media-body block m-b-none">
 	                      欢迎注册音乐网站<br>
@@ -91,7 +91,7 @@
 	          <li class="dropdown">
 	            <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">
 	              <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-	                <img src="asserts/images/a0.png" alt="...">
+	                <img th:src="@{asserts/images/a0.png}" alt="...">
 	              </span>
 								<!-- 用户名位置 -->
 	              John.Smith <b class="caret"></b>
@@ -203,7 +203,7 @@
 	                 <!-- <div class="dropdown dropup wrapper-sm clearfix">
 	                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 	                      <span class="thumb-sm avatar pull-left m-l-xs">                        
-	                        <img src="./asserts/asserts/images/a3.png" class="dker" alt="...">
+	                        <img src="./asserts/asserts/images/a3.png}" class="dker" alt="...">
 	                        <i class="on b-black"></i>
 	                      </span>
 	                      <span class="hidden-nav-xs clear">
@@ -236,8 +236,8 @@
 	                        <a href="modal.lockme.html" data-toggle="ajaxModal" >登出</a>
 	                      </li>
 	                    </ul>
-	                  </div>
-	                </div>  -->          </footer>
+	                  </div>-->
+				  </div>        </footer>
 	          </section>
 	        </aside>
 	        <!-- /.aside -->
@@ -286,17 +286,11 @@
 		  </section>
 		</section>
 		  </section>
-	  <script src="./asserts/js/jquery.min.js"></script>
-	  <!-- Bootstrap -->
-	  <script src="./asserts/js/bootstrap.js"></script>
-	  <!-- App -->
-	  <script src="./asserts/js/app.js"></script>
-	  <script src="./asserts/js/slimscroll/jquery.slimscroll.min.js"></script>
-	  <script src="./asserts/js/charts/easypiechart/jquery.easy-pie-chart.js"></script>
-	  <script src="./asserts/js/app.plugin.js"></script>
-	  <script type="text/javascript" src="./asserts/js/jPlayer/jquery.jplayer.min.js"></script>
-	  <script type="text/javascript" src="./asserts/js/jPlayer/add-on/jplayer.playlist.min.js"></script>
-	  <script type="text/javascript" src="./asserts/js/jPlayer/demo.js"></script>
+	  <script th:src="@{asserts/js/jquery.min.js}" src="js/jquery.min.js"></script>
+	  <script th:src="@{asserts/js/bootstrap.js}" src="js/bootstrap.js"></script>
+	  <script th:src="@{asserts/js/app.js}" src="js/app.js"></script>
+	  <script th:src="@{asserts/js/slimscroll/jquery.slimscroll.min.js}" src="js/slimscroll/jquery.slimscroll.min.js"></script>
+	  <script th:src="@{asserts/js/app.plugin.js}" src="js/app.plugin.js"></script>
 	</body>
 
 </html>
