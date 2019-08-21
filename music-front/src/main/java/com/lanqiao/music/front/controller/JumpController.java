@@ -10,9 +10,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 @Controller
@@ -93,8 +97,12 @@ public class JumpController {
     public String iframemyplaylist(){
         return "myplaylist";
     }
-    @RequestMapping("/iframesearch")
-    public String iframesearch(){
+    @RequestMapping("/iframesearch/{text}")
+    public String iframesearch(@PathVariable String text, Model model){
+        List<Music> searchNameList = iMusicService.queryMusicByLikename(text);
+        model.addAttribute("searchNameList",searchNameList);
+        List<Music> searchSingerList = iMusicService.queryMusicByCondition(null,text,null,null,null,null,null);
+        model.addAttribute("searchSingerList",searchSingerList);
         return "search";
     }
     @RequestMapping("/iframevideo")
@@ -112,5 +120,19 @@ public class JumpController {
         model.addAttribute("musicList",musicList);
         model.addAttribute("sheetList",sheetList);
         return "personal";
+    }
+    @RequestMapping("/iframeinfo/{id}")
+    public String iframeinfo(HttpSession session, @PathVariable Integer id){
+        Music music = iMusicService.queryMusicByMId(id);
+        List<Music> musics = (List<Music>) session.getAttribute("musics");
+        if (musics == null){
+            musics = new LinkedList<>();
+        }
+        if (musics.contains(music)){
+            musics.remove(music);
+        }
+        musics.add(music);
+        session.setAttribute("musics",musics);
+        return "musicplay";
     }
 }

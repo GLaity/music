@@ -40,13 +40,21 @@ $(document).ready(function(){
       json = JSON.stringify(data);
       songsList = JSON.parse(json);
       initJPlayer(songsList);
-      window.location.reload();
-
     });
   });
-});
 
-function initJPlayer(songsList){
+  $("#jplayer_N").jPlayer({
+    ready: function () {
+      $(this).jPlayer("setMedia",songsList).jPlayer("play")//自动播放
+    },
+    swfPath: "js/jPlayer",
+    supplied: "webmv, ogv, m4v, oga, mp3",
+
+    smoothPlayBar: true,
+    keyEnabled: true,
+    audioFullScreen: false
+  }).jPlayer("repeat");//自动播放 自动循环
+
   myPlaylist = new jPlayerPlaylist({
     jPlayer: "#jplayer_N",
     cssSelectorAncestor: "#jp_container_N"
@@ -61,6 +69,15 @@ function initJPlayer(songsList){
     keyEnabled: true,
     audioFullScreen: false
   });
+});
+
+function initJPlayer(songsList){
+  myPlaylist.setPlaylist(songsList);
+  $("#jplayer_N").jPlayer("clearMedia");
+
+  $("#jplayer_N").jPlayer("load");
+  $("#jplayer_N").jPlayer("play");
+
   $(document).on($.jPlayer.event.pause, myPlaylist.cssSelector.jPlayer,  function(){
     $('.musicbar').removeClass('animate');
     $('.jp-play-me').removeClass('active');

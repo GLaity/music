@@ -9,6 +9,7 @@ import java.util.List;
 public interface IMusicService {
     List<Music> queryAllMusic();
     Music queryMusicByMId(Integer mid);
+    List<Music> queryMusicByLikename(String likeName);
     List<Music> queryMusicByCondition(String mname,
                                       String msinger,
                                       Integer mlevel,

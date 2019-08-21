@@ -28,6 +28,11 @@ public class MusicService implements IMusicService {
     }
 
     @Override
+    public List<Music> queryMusicByLikename(String likeName) {
+        return musicMapper.selectMusicByLikeName(likeName);
+    }
+
+    @Override
     public List<Music> queryMusicByCondition(String mname, String msinger, Integer mlevel, String mtheme, String mstyle, String mlanguage, Integer mprice) {
         return musicMapper.selectMusicByCondition(mname, msinger, mlevel, mtheme, mstyle, mlanguage, mprice);
     }
