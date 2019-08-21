@@ -25,7 +25,7 @@ public class UserController {
 
     @RequestMapping("/")
     public String init(Model model){
-        model.addAttribute("iframeSrc","/iframemain");
+//        model.addAttribute("iframeSrc","/iframemain");
         return "index";
     }
 
