@@ -15,7 +15,10 @@
         <selectKey resultType="int" keyColumn="sid" keyProperty="sid" order="AFTER">
             select LAST_INSERT_ID()
         </selectKey>
-        insert into sheet_user(sid, sname, uid,type)
+    </insert>
+
+    <insert id="insertSheetUser" parameterType="com.lanqiao.music.server.pojo.Sheet">
+         insert into sheet_user(sid, sname, uid,type)
         values (#{sid}, #{sname}, #{uid}, #{type});
     </insert>
     <update id="updateSheet">

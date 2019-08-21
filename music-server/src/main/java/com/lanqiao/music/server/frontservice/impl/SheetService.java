@@ -15,22 +15,26 @@ import java.util.List;
 public class SheetService implements ISheetService {
     @Autowired
     private SheetMapper sheetMapper;
+
+
     @Override
     public void addInitSheet(Integer uid) {
         Sheet sheet1 = new Sheet();
         sheet1.setScontext("默认收藏歌单");
-        sheet1.setSname(uid.toString());
+        sheet1.setSname("收藏歌单");
         sheet1.setSsum(0);
         sheet1.setType(0);
         sheet1.setUid(uid);
         Sheet sheet2 = new Sheet();
         sheet2.setScontext("默认购买歌单");
-        sheet2.setSname(uid.toString());
+        sheet2.setSname("购买歌单");
         sheet2.setSsum(0);
         sheet2.setType(3);
         sheet2.setUid(uid);
         sheetMapper.insertSheet(sheet1);
         sheetMapper.insertSheet(sheet2);
+        sheetMapper.insertSheetUser(sheet1);
+        sheetMapper.insertSheetUser(sheet2);
     }
 
     @Override
