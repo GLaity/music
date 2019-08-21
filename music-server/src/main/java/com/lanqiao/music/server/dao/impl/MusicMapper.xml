@@ -77,10 +77,10 @@
         select * from music
         <where>
             <if test="mname != null and mname != ''">
-                and mname = #{mname}
+                and mname like  CONCAT('%',#{mname},'%')
             </if>
             <if test="msinger != null and msinger != ''">
-                and msinger = #{msinger}
+                and msinger like  CONCAT('%',#{msinger},'%')
             </if>
             <if test="mlevel != null">
                 and mlevel = #{mlevel}

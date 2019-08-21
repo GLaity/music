@@ -58,8 +58,10 @@ public class JumpController {
     }
     @RequestMapping("/iframesearch/{text}")
     public String iframesearch(@PathVariable String text, Model model){
-        List<Music> searchList = iMusicService.queryMusicByLikename(text);
-        model.addAttribute("searchList",searchList);
+        List<Music> searchNameList = iMusicService.queryMusicByLikename(text);
+        model.addAttribute("searchNameList",searchNameList);
+        List<Music> searchSingerList = iMusicService.queryMusicByCondition(null,text,null,null,null,null,null);
+        model.addAttribute("searchSingerList",searchSingerList);
         return "search";
     }
     @RequestMapping("/iframevideo")
