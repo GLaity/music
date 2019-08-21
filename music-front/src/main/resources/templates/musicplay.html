@@ -6,18 +6,18 @@
         <meta name="description" content="sync lyric with HTML5 audio tag">
         <meta name="author" content="Wayou">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>sync lyric with HTML5 audio tag</title>
-        <link rel="stylesheet" href="styles/style.css">
+        <title>歌词详情</title>
+        <link rel="stylesheet" href="/styles/style.css">
     </head>
     <body>
         <div class="wrapper">
             <div id="player">
-                <audio controls id="audio" src="./content/songs/2/music.mp3">!Audio Not Support :(</audio>
+                <audio controls id="audio" src="/content/songs/1/爱情的花样.mp3">!Audio Not Support :(</audio>
             </div>
             <div id="playlist">
                 <ol>
-					<li th:each="songs:${musicList}">
-                        <a href="javascript:void(0);" th:attr="data-name=${songs.getMloc()}" th:text="${songs.getMname()}"></a>
+					<li >
+                        <a href="javascript:void(0);" th:attr="data-name=${music.getMid()}+@{/}+${music.getMname()}" th:text="${music.getMname()}"></a>
                     </li>
 <!--                    <li>-->
 <!--                        <a href="javascript:void(0);" data-name="abc" th:text="abc"></a>-->
@@ -30,6 +30,17 @@
                 </div>
             </div>
         </div>
-        <script src="scripts/selected.js"></script>
+        <script src="/scripts/selected.js"></script>
+        <script type="text/javascript">
+            function aud_play() {
+                document.getElementById("audio").play();
+            }
+            function aud_pause() {
+                document.getElementById("audio").pause();
+            }
+            function download() {
+                document.getElementById("audio").progress();
+            }
+        </script>
     </body>
 </html>

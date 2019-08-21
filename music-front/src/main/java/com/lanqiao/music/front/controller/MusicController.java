@@ -50,15 +50,15 @@ public class MusicController {
         List<MusicJson> musicJsons = (List<MusicJson>) session.getAttribute("musicJsons");
         if (musicJsons == null) {
 
-            Music music = iMusicService.queryMusicByMId(3);
-            MusicJson musicJson = new MusicJson();
-            musicJson.setTitle(music.getMname());
-            musicJson.setArtist(music.getMsinger());
-            musicJson.setMp3(music.getMloc());
-            musicJson.setPoster("");
+//            Music music = iMusicService.queryMusicByMId(3);
+//            MusicJson musicJson = new MusicJson();
+//            musicJson.setTitle(music.getMname());
+//            musicJson.setArtist(music.getMsinger());
+//            musicJson.setMp3(music.getMloc());
+//            musicJson.setPoster("");
 
             musicJsons = new LinkedList<>();
-            musicJsons.add(musicJson);
+//            musicJsons.add(musicJson);
             session.setAttribute("musicJsons",musicJsons);
         }
         return musicJsons;

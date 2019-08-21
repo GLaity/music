@@ -53,7 +53,7 @@ $(document).ready(function(){
     smoothPlayBar: true,
     keyEnabled: true,
     audioFullScreen: false
-  }).jPlayer("play").jPlayer("repeat");//自动播放 自动循环
+  }).jPlayer("repeat");//自动播放 自动循环
 
   myPlaylist = new jPlayerPlaylist({
     jPlayer: "#jplayer_N",

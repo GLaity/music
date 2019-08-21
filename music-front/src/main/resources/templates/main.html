@@ -48,7 +48,7 @@
 					<div class="item">
 						<div class="pos-rlt">
 							<div class="item-overlay opacity r r-2x bg-black">
-								<div class="center text-center m-t-n">
+								<div class="center text-center m-t-n" >
 									<!--播放-->
 									<a th:onclick="'javascript:addmusic(\''+${music.getMid()}+'\')'" href="#"><i class="icon-control-play i-2x"></i></a>
 								</div>
@@ -70,7 +70,7 @@
 						</div>
 						<div class="padder-v">
 							<!--歌曲名称-->
-							<a href="#" class="text-ellipsis" th:text="${music.getMname()}"></a>
+							<a href="#" class="text-ellipsis" th:text="${music.getMname()}"  th:onclick="'javascript:enterinfo(\''+${music.getMid()}+'\')'"></a>
 							<!--歌手-->
 							<a href="#" class="text-ellipsis text-xs text-muted"th:text="${music.getMsinger()}"></a>
 						</div>
@@ -92,8 +92,9 @@
 									<a href="#"><img th:src="@{content/songs/} + ${music.getMid()}+@{/}+${music.getMname()}+@{.jpg}" alt="" style="width:100%;height: 200px"class="r r-2x img-full"></a>
 								</div>
 								<div class="padder-v">
-									<a href="#" class="text-ellipsis"th:text="${music.getMname()}"></a>
+									<a href="#" class="text-ellipsis"th:text="${music.getMname()}" th:onclick="'javascript:enterinfo(\''+${music.getMid()}+'\')'"></a>
 									<a href="#" class="text-ellipsis text-xs text-muted" th:text="${music.getMsinger()}"></a>
+									<a target="_blank" id="info"></a>
 								</div>
 							</div>
 						</div>
@@ -140,6 +141,11 @@
 		function addmusic(json) {
 			window.parent.document.getElementById('hidInp').value = json;
 			window.parent.document.getElementById('addTab').click();
+		}
+		function enterinfo(id) {
+			// window.parent.document.getElementById('mainUI').src = "/iframeinfo/"+id;
+			document.getElementById("info").href = "/iframeinfo/"+id;
+			document.getElementById("info").click();
 		}
 	</script>
 

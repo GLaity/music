@@ -76,4 +76,10 @@ public class JumpController {
         model.addAttribute("sheetList",sheetList);
         return "personal";
     }
+    @RequestMapping("/iframeinfo/{id}")
+    public String iframeinfo(Model model, @PathVariable Integer id){
+        Music music = iMusicService.queryMusicByMId(id);
+        model.addAttribute("music",music);
+        return "musicplay";
+    }
 }

@@ -27,6 +27,7 @@ public class UserController {
     public String init(Model model){
 //        model.addAttribute("iframeSrc","/iframemain");
         return "index";
+
     }
 
     @RequestMapping("/tologin")
