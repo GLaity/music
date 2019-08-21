@@ -16,7 +16,7 @@
             select LAST_INSERT_ID()
         </selectKey>
         insert into sheet_user (sid, sname, uid, type)
-        values (#{sid}, #{sname}, #{uid}, #(type));
+        values (#{sid}, #{sname}, #{uid}, #{type});
     </insert>
     <update id="updateSheet">
         update sheet
