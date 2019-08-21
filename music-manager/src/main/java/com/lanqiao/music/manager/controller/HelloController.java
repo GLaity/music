@@ -1,14 +1,15 @@
 package com.lanqiao.music.manager.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.lanqiao.music.server.pojo.Music;
 import com.lanqiao.music.server.service.IMusicService;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Controller
 public class HelloController {
@@ -17,7 +18,11 @@ public class HelloController {
     private IMusicService musicService;
 
     @RequestMapping("/welcome")
-    public String welcome(){
+    public String welcome(HttpServletRequest req){
+
+        SimpleDateFormat t = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String time = t.format(new Date());
+        req.setAttribute("time",time);
         return "welcome";
     }
 
@@ -56,5 +61,7 @@ public class HelloController {
     public String radioList(){
         return "radio-list";
     }
+
+
 
 }

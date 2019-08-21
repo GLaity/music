@@ -6,6 +6,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
+	<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <link rel="Bookmark" href="/favicon.ico" >
 <link rel="Shortcut Icon" href="/favicon.ico" />
 <!--[if lt IE 9]>
@@ -18,7 +26,7 @@
 	<link rel="stylesheet" type="text/css" href="/h-ui.admin/skin/default/skin.css" th:href="@{/h-ui.admin/skin/default/skin.css}" id="skin" />
 	<link rel="stylesheet" type="text/css" href="/h-ui.admin/css/style.css" th:href="@{/h-ui.admin/css/style.css}" />
 <!--[if IE 6]>
-<script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script type="text/javascript" src="/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
 <title>用户列表</title>
@@ -26,52 +34,82 @@
 <body>
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span>用户管理 <span class="c-gray en">&gt;</span> 管理员列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
-	<div class="text-c"> 日期范围：
-		<input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}' })" id="datemin" class="input-text Wdate" style="width:120px;">
-		-
-		<input type="text" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'datemin\')}',maxDate:'%y-%M-%d' })" id="datemax" class="input-text Wdate" style="width:120px;">
-		<input type="text" class="input-text" style="width:250px" placeholder="输入用户名称" id="" name="">
-		<button type="submit" class="btn btn-success" id="11" name=""><i class="Hui-iconfont">&#xe665;</i> 搜用户</button>
+	<div class="text-c">
+			<form action="/user/search" method="post">
+				日期范围：
+				<input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}' })" id="datemin" class="input-text Wdate" style="width:120px;"  th:name="mindate">
+				-
+				<input type="text" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'datemin\')}',maxDate:'%y-%M-%d' })" id="datemax" class="input-text Wdate" style="width:120px;"  th:name="maxdate">
+<!--				<input type="text" class="input-text" style="width:250px" placeholder="输入用户名称" id="" name="">-->
+				<input type="submit" class="btn btn-success" th:value="搜用户"/>
+			</form>
+<!--			<input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}' })" id="datemin" class="input-text Wdate" style="width:120px;"  th:name="mindate">-->
+<!--			- -->
+<!--			<input type="text" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'datemin\')}',maxDate:'%y-%M-%d' })" id="datemax" class="input-text Wdate" style="width:120px;"  th:name="maxdate">-->
+<!--			<input type="text" class="input-text" style="width:250px" placeholder="输入用户名称" id="" name="">-->
+<!--		<button type="submit" class="btn btn-success" id="11" name=""><i class="Hui-iconfont">&#xe665;</i> 搜用户</button>-->
+
 	</div>
-	<div class="cl pd-5 bg-1 bk-gray mt-20">
+    <form action="/user/deleteAll" >
+        <div class="cl pd-5 bg-1 bk-gray mt-20">
 		<span class="l">
-		<a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>
+		<a href="javascript:;" onclick="datadel()" class="btn btn-danger radius">
+            <i class="Hui-iconfont">&#xe6e2;</i> <input style="border-style: hidden" type="submit" class="btn-danger radius" th:value="批量删除"></a>
 		<a href="/admin-add" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加用户</a>
 		</span>
-		<span class="r">共有数据：<strong th:text="${size}"></strong> 条</span>
-	</div>
-	<table class="table table-border table-bordered table-bg">
-		<thead>
-			<tr>
-				<th scope="col" colspan="9"><b>用户列表</b></th>
-			</tr>
-			<tr class="text-c" >
-				<th width="25"><input type="checkbox" name="" value=""></th>
-				<th width="150">用户名</th>
-				<th width="50">性别</th>
-				<th width="80">账户余额</th>
-				<th width="130">注册日期</th>
-				<th width="130">会员到期时间</th>
-				<th width="150">联系方式</th>
-				<th  colspan="2">操作</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr class="text-c"  th:each="user:${users}">
-				<td><input type="checkbox" value="2" name=""></td>
-				<td th:text="${user.uname}"></td>
-				<td th:text="${user.usex == 1?'男':'女'}"></td>
-				<td th:text="${user.ubalance}"></td>
-				<td th:text="${user.udate}"></td>
-				<td th:text="${user.vdate}"></td>
-				<td th:text="${user.utel}"></td>
-				<td><a th:href="@{/user/update/}+${user.uid}" class="ml-5" style="text-decoration:none">修改</a> </td>
-				<td><a th:href="@{/user/delete/}+${user.uid}">删除</a></td>
-			</tr>
-		</tbody>
-	</table>
+            <span class="r">共有数据：<strong th:text="${size}"></strong> 条</span>
+        </div>
+        <table class="table table-border table-bordered table-bg">
+            <thead>
+            <tr>
+                <th scope="col" colspan="9"><b>用户列表</b></th>
+            </tr>
+            <tr class="text-c" >
+                <th width="50px"><input type="checkbox"  name=""></th>
+                <th width="150px">用户名</th>
+                <th width="80px">性别</th>
+                <th width="120px">账户余额</th>
+                <th width="150px">注册日期</th>
+                <th width="150px">会员到期时间</th>
+                <th width="200px">联系方式</th>
+                <th  colspan="2">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="text-c"  th:each="user:${users}">
+                <td><input type="checkbox" th:value="${user.uid}" name="checkbox"></td>
+                <td th:text="${user.uname}"></td>
+                <td th:text="${user.usex == 1?'男':'女'}"></td>
+                <td th:text="${user.ubalance}"></td>
+                <td th:text="${#dates.format(user.udate,'yyyy-MM-dd')}"></td>
+                <td th:text="${#dates.format(user.vdate,'yyyy-MM-dd')}"></td>
+                <td th:text="${user.utel}"></td>
+                <td><a th:href="@{/user/update/}+${user.uid}" class="ml-5" style="text-decoration:none">修改</a> </td>
+                <td><a th:href="@{/user/delete/}+${user.uid}">删除</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
 
+	<nav aria-label="Page navigation" style="margin-right: 0px">
+		<ul class="pagination" style="float: right">
+			<li>
 
+				<a th:if="${num-1}!=0"  th:href="@{/user/list/}+${num-1}" aria-label="Previous">
+					<span aria-hidden="true">&laquo;</span>
+				</a>
+			</li>
+
+			<li th:if="${a>1}" class="aa"  th:each="num:${count}" >
+				<a  th:href="@{/user/list/}+${num}" th:text="${num}" ></a>
+			</li>
+			<li>
+				<a th:if="${num+1} <= ${a}"  th:href="@{/user/list/}+${num+1}" aria-label="Next">
+					<span aria-hidden="true">&raquo;</span>
+				</a>
+			</li>
+		</ul>
+	</nav>
 </div>
 
 <!--_footer 作为公共模版分离出去-->
@@ -84,14 +122,35 @@
 <script type="text/javascript" src="/lib/My97DatePicker/4.8/WdatePicker.js"></script>
 <script type="text/javascript" src="/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="/lib/laypage/1.2/laypage.js"></script>
+<!--<script type="text/javascript">-->
+<!--	$(function(){-->
+<!--		$("#11").click(function () {-->
+<!--			alert($("#datemin").val());-->
+<!--			$.ajax({-->
+<!--				type:'post',-->
+<!--				url:"/user/search",-->
+<!--				data:{-->
+<!--					mindate: $("#datemin").val(),-->
+<!--					maxdate: $("#datemax").val()-->
+<!--				},-->
+<!--				success:function (data) {-->
+<!--					alert(data);-->
+<!--					window.location = "admin-search.html";-->
+<!--				}-->
+<!--			});-->
+<!--		});-->
+<!--	});-->
+<!--</script>-->
 <script type="text/javascript">
-	$(function(){
-		$("#11").click(function () {
-			alert($("#datemin").val());
-		});
-	});
+    function change(obj) {
+        $(obj).css("background-color","blue");
+    }
+    // $(function () {
+    //
+    //     $(".aa").css("background-color","blue");
+    //     alert("jfksjdkjd");
+    // });
 </script>
-
 
 </body>
 </html>

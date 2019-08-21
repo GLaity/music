@@ -1,10 +1,12 @@
 package com.lanqiao.music.server.pojo;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
-import java.sql.Date;
+
+import java.util.Date;
 import java.util.Set;
 
 @Data
@@ -19,9 +21,11 @@ public class User implements Serializable {
 //    账户余额
     private Double ubalance;
 //    用户注册时间
+
     private Date udate;
 //    会员到期时间
 //    字段为空为非会员，每次登陆检查会员是否过期，过期则提示充值并清空字段
+
     private Date vdate;
 //    用户性别(0为女，1为男)
     private Integer usex;

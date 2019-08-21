@@ -7,7 +7,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-@Data
 @Component
 //歌单
 public class Sheet implements Serializable {
@@ -84,5 +83,15 @@ public class Sheet implements Serializable {
         this.musicList = musicList;
     }
 
-
+    @Override
+    public String toString() {
+        return "Sheet{" +
+                "sid=" + sid +
+                ", ssum=" + ssum +
+                ", sname='" + sname + '\'' +
+                ", scontext='" + scontext + '\'' +
+                ", sdate=" + sdate +
+                ", musicList=" + musicList +
+                '}';
+    }
 }

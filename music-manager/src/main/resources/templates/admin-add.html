@@ -25,10 +25,10 @@
 </head>
 <body>
 <article class="page-container">
-	<div class="row cl" >
-		<label class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3" th:text="${user!=null}?'修改':'添加'">添加</label>
+	<div  class="row cl" >
+		<label class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3" style="font-size: 25px;color: green;margin-left: 195px" th:text="${user!=null}?'修改':'添加'">添加</label>
 	</div>
-	<form action="/user/save"  method="get" class="form form-horizontal" id="form-admin-add">
+	<form th:action="@{/user/save}"  method="get" class="form form-horizontal" id="form-admin-add">
 		<input type="hidden"  th:if="${user!=null}"/>
 		<input type="hidden" name="uid" th:if="${user!=null}" th:value="${user.uid}">
 		<div class="row cl">
@@ -71,9 +71,15 @@
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>创建时间：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input name="udate" type="text"  th:value="${user!=null}?${user.udate}">
+                <input name="udate" type="date"  th:value="${user!=null}?${#dates.format(user.udate,'yyyy-MM-dd')}"  >
             </div>
         </div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>创建时间：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input name="vdate" type="date"  th:value="${user!=null}?${#dates.format(user.vdate,'yyyy-MM-dd')}">
+			</div>
+		</div>
 		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
 				<input class="btn btn-primary radius" type="submit" value="保存&nbsp;&nbsp;">
