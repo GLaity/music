@@ -36,4 +36,6 @@ public interface ISheetService {
     List<Sheet>findAllPublicSheet();
     //根据歌单id查看uid
     Integer findUser(Integer sid);
+    //根据歌单id查找作者
+    Integer getAuthorId(Integer sid);
 }

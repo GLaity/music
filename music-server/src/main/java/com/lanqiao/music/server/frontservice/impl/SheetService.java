@@ -104,4 +104,9 @@ public class SheetService implements ISheetService {
         return sheetMapper.selectBySid(sid);
     }
 
+    @Override
+    public Integer getAuthorId(Integer sid) {
+        return sheetMapper.selectAuthorBySid(sid);
+    }
+
 }

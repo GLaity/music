@@ -1,5 +1,6 @@
 package com.lanqiao.music.server;
 
+import com.lanqiao.music.server.frontservice.IUserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,6 +11,5 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class MusicServerApplicationTests {
     @Test
     public void contextLoads() {
-
     }
 }

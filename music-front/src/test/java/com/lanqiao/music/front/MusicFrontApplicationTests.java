@@ -16,29 +16,15 @@ import java.util.Date;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class MusicFrontApplicationTests {
-    @Reference
-    private IUserService iUserService;
-    @Reference
-    private ISheetService iSheetService;
+//    @Reference
+//    private IUserService iUserService;
+//    @Reference
+//    private ISheetService iSheetService;
 
     @Test
-    public  void subMonth() throws ParseException {
-//        Integer creatUid=iSheetService.findUser(11);
-//        System.out.println(creatUid);
-//        System.out.println(iUserService.getCreateSheet(5));
-//        System.out.println(iUserService.getCreateSheet(1));
-//        Date date = new Date();
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//        Calendar rightNow = Calendar.getInstance();
-//        rightNow.setTime(date);
-//        Integer a=2;
-//        rightNow.add(Calendar.MONTH, a);
-//        Date dt1 = rightNow.getTime();
-//        String reStr = sdf.format(dt1);
-//        Date d = sdf.parse(reStr);
-//        System.out.println(reStr);
-//        System.out.println(d);
-//        return d;
+        public  void subMonth() throws ParseException {
+
+
     }
 
 }
