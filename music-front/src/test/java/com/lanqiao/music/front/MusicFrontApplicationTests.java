@@ -1,6 +1,7 @@
 package com.lanqiao.music.front;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.lanqiao.music.server.frontservice.ISheetService;
 import com.lanqiao.music.server.frontservice.IUserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,10 +18,15 @@ import java.util.Date;
 public class MusicFrontApplicationTests {
     @Reference
     private IUserService iUserService;
+    @Reference
+    private ISheetService iSheetService;
 
     @Test
     public  void subMonth() throws ParseException {
-        System.out.println(iUserService.getCreateSheet(5));
+//        Integer creatUid=iSheetService.findUser(11);
+//        System.out.println(creatUid);
+//        System.out.println(iUserService.getCreateSheet(5));
+//        System.out.println(iUserService.getCreateSheet(1));
 //        Date date = new Date();
 //        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 //        Calendar rightNow = Calendar.getInstance();
