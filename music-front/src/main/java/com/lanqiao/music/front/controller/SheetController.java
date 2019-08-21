@@ -15,11 +15,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,10 +39,12 @@ public class SheetController {
         User user=(User) session.getAttribute("user");
         map.addAttribute("sheets",sheetList);
         map.addAttribute("user",user);
+//        return "play-list-enter";
         return "play-list";
     }
     @RequestMapping("/playlistent/{sid}")
     public String Iplaylistenter(ModelMap map, @PathVariable Integer sid, HttpSession session) {
+//        System.out.println("sid" + sid);
         Integer creatUid=iSheetService.getAuthorId(sid);
         User creatUser=iUserService.findUserByUid(creatUid);
         Sheet sheet =iSheetService.findSheetBySid(sid);
@@ -86,6 +87,7 @@ public class SheetController {
         }
         return map;
     }
+
     @RequestMapping(value = "/removeSheet/{sid}",method = RequestMethod.GET)
     @ResponseBody
     public Map<String,String> removeSheet(HttpSession session, @PathVariable Integer sid){
@@ -132,5 +134,10 @@ public class SheetController {
         map.put("msg","歌曲添加成功");
         return map;
     }
-
+//
+//        User user=(User) session.getAttribute("user");
+//
+//
+//        return map;
+//    }
 }

@@ -1,46 +1,46 @@
 <!DOCTYPE html>
 <html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="description" content="sync lyric with HTML5 audio tag">
-        <meta name="author" content="Wayou">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>歌词详情</title>
-        <link rel="stylesheet" href="/styles/style.css">
-    </head>
-    <body>
-        <div class="wrapper">
-            <div id="player">
-                <audio controls id="audio" src="/content/songs/1/爱情的花样.mp3">!Audio Not Support :(</audio>
-            </div>
-            <div id="playlist">
-                <ol>
-					<li th:each="music:${session.musics}">
-                        <a href="javascript:void(0);" th:attr="data-name=${music.getMid()}+@{/}+${music.getMname()}" th:text="${music.getMname()}"></a>
-                    </li>
-<!--                    <li th:each="music:${session.musics}">-->
-<!--                        <a href="javascript:void(0);" data-name="1/爱情的花样" th:text="abc"></a>-->
-<!--                    </li>-->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="sync lyric with HTML5 audio tag">
+    <meta name="author" content="Wayou">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>歌词详情</title>
+    <link rel="stylesheet" th:href="@{/styles/style.css}">
+</head>
+<body>
+<div class="wrapper">
+    <div id="player">
+        <audio controls id="audio" th:src="@{/content/songs/1/爱情的花样.mp3}">!Audio Not Support :(</audio>
+    </div>
+    <div id="playlist">
+        <ol>
+            <li th:each="music:${session.musics}">
+                <a href="javascript:void(0);" th:attr="data-name=${music.getMid()}+@{/}+${music.getMname()}" th:text="${music.getMname()}"></a>
+            </li>
+            <!--                    <li th:each="music:${session.musics}">-->
+            <!--                        <a href="javascript:void(0);" data-name="1/爱情的花样" th:text="abc"></a>-->
+            <!--                    </li>-->
 
-                </ol>
-            </div>
-            <div id="lyricWrapper">
-                <div id="lyricContainer">
-                </div>
-            </div>
+        </ol>
+    </div>
+    <div id="lyricWrapper">
+        <div id="lyricContainer">
         </div>
-        <script src="/scripts/selected.js"></script>
-        <script type="text/javascript">
-            function aud_play() {
-                document.getElementById("audio").play();
-            }
-            function aud_pause() {
-                document.getElementById("audio").pause();
-            }
-            function download() {
-                document.getElementById("audio").progress();
-            }
-        </script>
-    </body>
+    </div>
+</div>
+<script th:src="@{/scripts/selected.js}"></script>
+<script type="text/javascript">
+    function aud_play() {
+        document.getElementById("audio").play();
+    }
+    function aud_pause() {
+        document.getElementById("audio").pause();
+    }
+    function download() {
+        document.getElementById("audio").progress();
+    }
+</script>
+</body>
 </html>
