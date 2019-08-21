@@ -76,7 +76,7 @@ public class UserManager {
     @RequestMapping("delete/{id}")
     public String deleteUserById(@PathVariable int id){
         iUserService.deleteUserById(id);
-        return  "redirect:/user/list";
+        return  "redirect:/user/list/1";
 
     }
 
