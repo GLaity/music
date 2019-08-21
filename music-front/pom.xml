@@ -20,6 +20,11 @@
 
     <dependencies>
 <!--        <dependency>-->
+<!--            <artifactId>songs-server</artifactId>-->
+<!--            <groupId>com.lanqiao</groupId>-->
+<!--            <version>0.0.1-SNAPSHOT</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
 <!--            <groupId>org.springframework.boot</groupId>-->
 <!--            <artifactId>spring-boot-starter-security</artifactId>-->
 <!--        </dependency>-->
