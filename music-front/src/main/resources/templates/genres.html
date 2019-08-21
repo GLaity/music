@@ -167,21 +167,20 @@
       url:"/iframegenre/"+sortid,
       success:function (data) {
           $("#musicid").empty();
-          var json = JSON.parse(data);
-          for (var i = 0; i < json.length; i++){
+          for (var i = 0; i < data.length; i++){
             $("#musicid").append("<div class=\"col-xs-6 col-sm-4 col-md-3 col-lg-2\">\n" +
                     "                          <div class=\"item\">\n" +
                     "                            <div class=\"pos-rlt\">\n" +
                     "                              <div class=\"item-overlay opacity r r-2x bg-black\">\n" +
                     "                                <div class=\"center text-center m-t-n\">\n" +
-                    "                                  <a th:onclick=\'addmusic("+json[i].mid+")\'><i class=\"fa fa-play-circle i-2x\"></i></a>\n" +
+                    "                                  <a onclick=\'addmusic("+data[i].mid+")\'><i class=\"fa fa-play-circle i-2x\"></i></a>\n" +
                     "                                </div>\n" +
                     "                              </div>\n" +
-                    "                              <a href=\"#\"><img th:src=\"content/songs/"+json[i].mid+"/"+json[i].mname+"}.jpg\" alt=\"\" class=\"r r-2x img-full\" style=\"width: 100%;height: 200px\"></a>\n" +
+                    "                              <a href=\"#\"><img src=\"content/songs/"+data[i].mid+"/"+data[i].mname+".jpg\" alt=\"\" class=\"r r-2x img-full\" style=\"width: 100%;height: 200px\"></a>\n" +
                     "                            </div>\n" +
                     "                            <div class=\"padder-v\">\n" +
-                    "                              <a href=\"#\" data-bjax data-target=\"#bjax-target\" data-el=\"#bjax-el\" data-replace=\"true\" class=\"text-ellipsis\" th:text=\'"+json[i].mname+"\'></a>\n" +
-                    "                              <a href=\"#\" data-bjax data-target=\"#bjax-target\" data-el=\"#bjax-el\" data-replace=\"true\" class=\"text-ellipsis text-xs text-muted\" th:text=\'"+json[i].msinger+"\'></a>\n" +
+                    "                              <a href=\"#\" data-bjax data-target=\"#bjax-target\" data-el=\"#bjax-el\" data-replace=\"true\" class=\"text-ellipsis\">"+data[i].mname+"</a>\n" +
+                    "                              <a href=\"#\" data-bjax data-target=\"#bjax-target\" data-el=\"#bjax-el\" data-replace=\"true\" class=\"text-ellipsis text-xs text-muted\" >"+data[i].msinger+"</a>\n" +
                     "                            </div>\n" +
                     "                          </div>\n" +
                     "                        </div>");
