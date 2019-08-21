@@ -15,4 +15,5 @@ public interface IUserService {
     void rechargeVip(User user,Integer mouth);
     User getCreateSheet(Integer uid);
 
+
 }
