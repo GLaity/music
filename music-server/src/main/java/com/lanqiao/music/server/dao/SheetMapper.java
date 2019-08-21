@@ -14,6 +14,7 @@ import java.util.Set;
 @Mapper
 public interface SheetMapper {
     void insertSheet(Sheet sheet);
+    void insertSheetUser(Sheet sheet);
     void updateSheet(Sheet sheet);
     Sheet selectSheetBySid(Integer sid);
     List<Sheet> selectAllSheet();

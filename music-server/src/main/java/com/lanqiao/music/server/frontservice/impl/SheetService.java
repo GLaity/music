@@ -31,6 +31,8 @@ public class SheetService implements ISheetService {
         sheet2.setUid(uid);
         sheetMapper.insertSheet(sheet1);
         sheetMapper.insertSheet(sheet2);
+        sheetMapper.insertSheetUser(sheet1);
+        sheetMapper.insertSheetUser(sheet2);
     }
 
     @Override
