@@ -104,4 +104,10 @@
         from sort
         where typyid = #{type};
     </select>
+
+    <select id="selectBySortId" resultType="com.lanqiao.music.server.pojo.Sort">
+        select sortname
+        from sort
+        where sortid = #{sortid};
+    </select>
 </mapper>

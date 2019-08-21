@@ -50,7 +50,6 @@ public class JumpController {
     }
     @RequestMapping("/iframegenres")
     public String iframegenres(Model model){
-        iMusicService.queryMusicCondition(1,"");
         model.addAttribute("allmusic", iMusicService.queryAllMusic());
         model.addAttribute("theme",  iMusicService.queryTheme());
         model.addAttribute("style",  iMusicService.queryStyle());
@@ -58,17 +57,36 @@ public class JumpController {
         return "genres";
     }
 
-    @RequestMapping(value = "/iframegenre/{sortid}")
+    @RequestMapping(value = "/iframegenre3/{sortid}")
     @ResponseBody
-    public List<Music> sortname(Model model, @PathVariable Integer sortid ){
-        System.out.println(sortid);
-        List<Music> allmusic = iMusicService.queryMusicCondition(3,"情歌");
-        System.out.println(allmusic);
+    public List<Music> sortname3(Model model, @PathVariable Integer sortid ){
+        System.out.println(" sortname3" + sortid);
+        List<Music> allmusic = iMusicService.queryMusicCondition(3,sortid);
         model.addAttribute("theme",  iMusicService.queryTheme());
-        model.addAttribute("style",  iMusicService.queryStyle());
-        model.addAttribute("language",  iMusicService.queryLanguage());
         return allmusic;
     }
+    @RequestMapping(value = "/iframegenre2/{sortid}")
+    @ResponseBody
+    public List<Music> sortname2(Model model, @PathVariable Integer sortid ){
+        System.out.println(" sortname2" + sortid);
+        List<Music> allmusic = iMusicService.queryMusicCondition(2,sortid);
+        model.addAttribute("style",  iMusicService.queryStyle());
+
+        return allmusic;
+}
+    @RequestMapping(value = "/iframegenre1/{sortid}")
+    @ResponseBody
+    public List<Music> sortname1(Model model, @PathVariable Integer sortid ){
+        System.out.println(" sortname1" + sortid);
+        List<Music> allmusic = iMusicService.queryMusicCondition(1,sortid);
+        model.addAttribute("language",  iMusicService.queryLanguage());
+
+        return allmusic;
+    }
+
+
+
+
 
 
     @RequestMapping("/iframemyplaylist")

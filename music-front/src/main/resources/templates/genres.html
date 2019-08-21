@@ -16,7 +16,13 @@
   <script  th:src="@{asserts/js/ie/html5shiv.js}" src="asserts/asserts/js/ie/html5shiv.js"></script>
   <script th:src="@{asserts/js/ie/respond.min.js}" src="asserts/asserts/js/ie/respond.min.js"></script>
   <script th:src="@{asserts/js/ie/excanvas.js}" src="asserts/asserts/js/ie/excanvas.js"></script>
+<style type="text/css">
+  .box{
+    width: 200px;
+    height: auto;
 
+  }
+</style>
 </head>
 <body class="">
 
@@ -27,26 +33,12 @@
       <aside class="aside bg-light dk" id="sidebar">
                   <section class="vbox animated fadeInUp">
                     <section class="scrollable hover">
-<!--                      <div class="list-group no-radius no-border no-bg m-t-n-xxs m-b-none auto">-->
-<!--                        <a href="genres.html" class="list-group-item active">-->
-<!--                          全部歌曲-->
-<!--                        </a>-->
-<!--                        <a href="genres.html" class="list-group-item">-->
-<!--                          主题-->
-<!--                        </a>-->
-<!--                        <a href="genres.html" class="list-group-item">-->
-<!--                          流派-->
-<!--                        </a>-->
-<!--                        <a href="genres.html" class="list-group-item">-->
-<!--                          语种-->
-<!--                        </a>-->
-<!--                      </div>-->
 
                       <div class="container box">
                         <div class="panel-group">
                           <div class="panel panel-default">
                             <div class="panel-heading">
-                              <h4 class="panel-title   active">
+                              <h4 class="panel-title">
                                 <a href="/allmusic" data-toggle="collapse" data-parent="#accordion">全部歌曲</a>
                               </h4>
                             </div>
@@ -54,17 +46,14 @@
                           <div class="panel panel-default">
                             <div class="panel-heading">
                               <h4 class="panel-title" >
-                                <a href="#" data-toggle="collapse" data-parent="#accordion" name="theme">主题</a>
+                                <a href="#ding" data-toggle="collapse" data-parent="#accordion" name="theme">主题</a>
                               </h4>
                             </div>
                             <div id="ding" class="panel-collapse collapse in">
                               <div class="panel-body">
                                 <ul class="nav">
                                   <li th:each="themes:${theme}">
-<!--                                    <a th:href="@{/iframegenres/}+${themes.getSortname()}" th:text="${themes.getSortname()}"></a>-->
-                                      <a href="#" onclick="querySheet(16)" th:text="${themes.getSortname()}"></a>
-
-<!--                                    <a th:onclick="'javascript:querySheet(\''+${themes.getSortname()}+'\')'" th:text="${themes.getSortname()}"></a>-->
+                                      <a href="#" th:onclick="'javascript:querySheet3(\''+${themes.getSortid()}+'\')'" th:text="${themes.getSortname()}"></a>
                                   </li>
                                 </ul>
                               </div>
@@ -80,7 +69,7 @@
                               <div class="panel-body">
                                 <ul class="nav">
                                   <li th:each="styles:${style}">
-                                    <a href="#" th:text="${styles.getSortname()}"></a>
+                                    <a href="#" th:onclick="'javascript:querySheet2(\''+${styles.getSortid()}+'\')'"th:text="${styles.getSortname()}"></a>
                                   </li>
                                 </ul>
                               </div>
@@ -96,7 +85,7 @@
                               <div class="panel-body">
                                 <ul class="nav">
                                   <li th:each="languages:${language}">
-                                    <a href="#" th:text="${languages.getSortname()}"></a>
+                                    <a href="#"th:onclick="'javascript:querySheet1(\''+${languages.getSortid()}+'\')'"th:text="${languages.getSortname()}"></a>
                                   </li>
                                 </ul>
                               </div>
@@ -161,10 +150,10 @@
     window.parent.document.getElementById('hidInp').value = json;
     window.parent.document.getElementById('addTab').click();
   }
-  function querySheet(sortid){
+  function querySheet3(sortid){
     $.ajax({
       type:"get",
-      url:"/iframegenre/"+sortid,
+      url:"/iframegenre3/"+sortid,
       success:function (data) {
           $("#musicid").empty();
           for (var i = 0; i < data.length; i++){
@@ -187,6 +176,61 @@
           }}
     });
   }
+  function querySheet2(sortid){
+    $.ajax({
+      type:"get",
+      url:"/iframegenre2/"+sortid,
+      success:function (data) {
+        $("#musicid").empty();
+        for (var i = 0; i < data.length; i++){
+          $("#musicid").append("<div class=\"col-xs-6 col-sm-4 col-md-3 col-lg-2\">\n" +
+                  "                          <div class=\"item\">\n" +
+                  "                            <div class=\"pos-rlt\">\n" +
+                  "                              <div class=\"item-overlay opacity r r-2x bg-black\">\n" +
+                  "                                <div class=\"center text-center m-t-n\">\n" +
+                  "                                  <a onclick=\'addmusic("+data[i].mid+")\'><i class=\"fa fa-play-circle i-2x\"></i></a>\n" +
+                  "                                </div>\n" +
+                  "                              </div>\n" +
+                  "                              <a href=\"#\"><img src=\"content/songs/"+data[i].mid+"/"+data[i].mname+".jpg\" alt=\"\" class=\"r r-2x img-full\" style=\"width: 100%;height: 200px\"></a>\n" +
+                  "                            </div>\n" +
+                  "                            <div class=\"padder-v\">\n" +
+                  "                              <a href=\"#\" data-bjax data-target=\"#bjax-target\" data-el=\"#bjax-el\" data-replace=\"true\" class=\"text-ellipsis\">"+data[i].mname+"</a>\n" +
+                  "                              <a href=\"#\" data-bjax data-target=\"#bjax-target\" data-el=\"#bjax-el\" data-replace=\"true\" class=\"text-ellipsis text-xs text-muted\" >"+data[i].msinger+"</a>\n" +
+                  "                            </div>\n" +
+                  "                          </div>\n" +
+                  "                        </div>");
+        }}
+    });
+  }
+  function querySheet1(sortid){
+    $.ajax({
+      type:"get",
+      url:"/iframegenre1/"+sortid,
+      success:function (data) {
+        $("#musicid").empty();
+        for (var i = 0; i < data.length; i++){
+          $("#musicid").append("<div class=\"col-xs-6 col-sm-4 col-md-3 col-lg-2\">\n" +
+                  "                          <div class=\"item\">\n" +
+                  "                            <div class=\"pos-rlt\">\n" +
+                  "                              <div class=\"item-overlay opacity r r-2x bg-black\">\n" +
+                  "                                <div class=\"center text-center m-t-n\">\n" +
+                  "                                  <a onclick=\'addmusic("+data[i].mid+")\'><i class=\"fa fa-play-circle i-2x\"></i></a>\n" +
+                  "                                </div>\n" +
+                  "                              </div>\n" +
+                  "                              <a href=\"#\"><img src=\"content/songs/"+data[i].mid+"/"+data[i].mname+".jpg\" alt=\"\" class=\"r r-2x img-full\" style=\"width: 100%;height: 200px\"></a>\n" +
+                  "                            </div>\n" +
+                  "                            <div class=\"padder-v\">\n" +
+                  "                              <a href=\"#\" data-bjax data-target=\"#bjax-target\" data-el=\"#bjax-el\" data-replace=\"true\" class=\"text-ellipsis\">"+data[i].mname+"</a>\n" +
+                  "                              <a href=\"#\" data-bjax data-target=\"#bjax-target\" data-el=\"#bjax-el\" data-replace=\"true\" class=\"text-ellipsis text-xs text-muted\" >"+data[i].msinger+"</a>\n" +
+                  "                            </div>\n" +
+                  "                          </div>\n" +
+                  "                        </div>");
+        }}
+    });
+  }
+
+
+
 </script>
 
 </body>

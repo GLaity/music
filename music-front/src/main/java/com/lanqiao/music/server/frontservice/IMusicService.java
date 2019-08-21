@@ -19,5 +19,5 @@ public interface IMusicService {
     List<Sort> queryTheme();
     List<Sort> queryStyle();
     List<Sort> queryLanguage();
-    List<Music> queryMusicCondition(Integer type,String condition);
+    List<Music> queryMusicCondition(Integer type,Integer sortid);
 }

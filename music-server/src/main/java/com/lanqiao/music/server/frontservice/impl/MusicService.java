@@ -47,19 +47,21 @@ public class MusicService implements IMusicService {
         return musicMapper.selectSortByType(1);
     }
     @Override
-    public List<Music> queryMusicCondition(Integer type,String condition) {
+    public List<Music> queryMusicCondition(Integer type,Integer sortid) {
         List<Music> musicList = new ArrayList<>();
+//        System.out.println(musicMapper.selectBySortId(1).getSortname());
         switch (type){
             case 3:
-                musicList = musicMapper.selectMusicByCondition(null,null,null,condition,null,null,null);
+                musicList = musicMapper.selectMusicByCondition(null,null,null,musicMapper.selectBySortId(sortid).getSortname(),null,null,null);
                 break;
             case 2:
-                musicList = musicMapper.selectMusicByCondition(null,null,null,null,condition,null,null);
+                musicList = musicMapper.selectMusicByCondition(null,null,null,null,musicMapper.selectBySortId(sortid).getSortname(),null,null);
                 break;
             case 1:
-                musicList = musicMapper.selectMusicByCondition(null,null,null,null,null,condition,null);
+                musicList = musicMapper.selectMusicByCondition(null,null,null,null,null,musicMapper.selectBySortId(sortid).getSortname(),null);
                 break;
         }
+//        System.out.println(musicList.size());
         return musicList;
     }
 }

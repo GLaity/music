@@ -4,6 +4,7 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.lanqiao.music.server.frontservice.IMusicService;
 import com.lanqiao.music.server.frontservice.ISheetService;
 import com.lanqiao.music.server.frontservice.IUserService;
+import com.lanqiao.music.server.pojo.Music;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,6 +14,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -27,8 +29,8 @@ public class MusicFrontApplicationTests {
     @Test
     public  void subMonth() throws ParseException {
 //        System.out.println(iMusicService.queryTheme());
-        System.out.println(iMusicService.queryMusicCondition(1,"英语").size());
-        System.out.println(iMusicService.queryMusicCondition(3,"情歌").size());
+        List<Music> allmusic = iMusicService.queryMusicCondition(3,16);
+        System.out.println(allmusic.size());
 //        Integer creatUid=iSheetService.findUser(11);
 //        System.out.println(creatUid);
 //        System.out.println(iUserService.getCreateSheet(5));

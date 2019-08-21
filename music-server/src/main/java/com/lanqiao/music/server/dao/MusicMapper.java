@@ -31,6 +31,6 @@ public interface MusicMapper {
                                        @Param("mlanguage")String mlanguage,
                                        @Param("mprice")Integer mprice);
     List<Sort> selectSortByType(Integer type);
-
+    Sort selectBySortId(Integer sortid);
 
 }
