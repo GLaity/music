@@ -23,7 +23,8 @@ Selected.prototype = {
         var that = this,
             allSongs = this.playlist.children[0].children,
             currentSong, randomSong;
-        this.currentIndex = Math.floor(Math.random() * allSongs.length);
+        this.currentIndex = 0;
+            // Math.floor(Math.random() * allSongs.length);
         currentSong = allSongs[this.currentIndex];
         randomSong = currentSong.children[0].getAttribute('data-name');
         //handle playlist

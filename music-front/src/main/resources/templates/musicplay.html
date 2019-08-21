@@ -16,11 +16,11 @@
             </div>
             <div id="playlist">
                 <ol>
-					<li >
+					<li th:each="music:${session.musics}">
                         <a href="javascript:void(0);" th:attr="data-name=${music.getMid()}+@{/}+${music.getMname()}" th:text="${music.getMname()}"></a>
                     </li>
-<!--                    <li>-->
-<!--                        <a href="javascript:void(0);" data-name="abc" th:text="abc"></a>-->
+<!--                    <li th:each="music:${session.musics}">-->
+<!--                        <a href="javascript:void(0);" data-name="1/爱情的花样" th:text="abc"></a>-->
 <!--                    </li>-->
 
                 </ol>
