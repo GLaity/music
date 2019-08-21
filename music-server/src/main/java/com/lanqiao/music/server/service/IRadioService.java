@@ -11,6 +11,6 @@ public interface IRadioService {
     //查询某个电台中的所有歌曲
     List<Music> getMusicByRid(Integer rid);
     //按条件搜索
-    List<Radio> findRadioByAttr(String attr,Object key);
+    List<Radio> findRadioByAttr(String attr,String key);
 
 }

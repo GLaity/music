@@ -28,48 +28,48 @@
 <link href="/lib/webuploader/0.1.5/webuploader.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 产品管理 <span class="c-gray en">&gt;</span> 品牌管理 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 产品管理 <span class="c-gray en">&gt;</span> 品牌管理 </nav>
 <div class="page-container" th:each="music:${musicList}">
 	<form action="/music/update.do" enctype="multipart/form-data" method="post" class="form form-horizontal" id="form-article-add">
 		<input type="hidden" name="mid" th:value="${music.mid}">
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>歌名：</label>
+			<label class="form-label col-xs-4 col-sm-2">歌名：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input th:value="${music.mname}" type="text" class="input-text" name="mname">
+				<input th:value="${music.mname}" style="width:200px;" type="text" class="input-text" name="mname">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">歌手：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input th:value="${music.msinger}" type="text" class="input-text" name="msinger">
+				<input th:value="${music.msinger}" style="width:200px;" type="text" class="input-text" name="msinger">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">简介：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input th:value="${music.mcontext}" type="text" class="input-text" name="mcontext">
+				<input th:value="${music.mcontext}" style="width:200px;" type="text" class="input-text" name="mcontext">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">专辑名：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input th:value="${music.malbum}" type="text" class="input-text" name="malbum">
+				<input th:value="${music.malbum}" style="width:200px;" type="text" class="input-text" name="malbum">
 			</div>
 		</div>
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>歌曲等级：</label>
-			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
-				<select name="mlevel" class="select">
+			<label class="form-label col-xs-4 col-sm-2">歌曲等级：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<select name="mlevel" class="select" style="width:200px;">
 					<option th:value="${music.mlevel}"  th:text="${music.mlevel}"></option>
-					<option value="1">1</option>
-					<option value="2">2</option>
+					<option value="1">所有用户可听|登陆后可下载</option>
+					<option value="2">购买或会员可听可下载</option>
 				</select>
 			</span> </div>
 		</div>
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>主题：</label>
-			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
-				<select name="mtheme" class="select">
+			<label class="form-label col-xs-4 col-sm-2">主题：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<select name="mtheme" class="select" style="width:200px;">
 					<option th:value="${music.mtheme}" th:text="${music.mtheme}"></option>
 					<option value="情歌">情歌</option>
 					<option value="古风">古风</option>
@@ -78,9 +78,9 @@
 				</span> </div>
 		</div>
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>流派：</label>
-			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
-				<select name="mstyle" class="select">
+			<label class="form-label col-xs-4 col-sm-2">流派：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<select name="mstyle" class="select" style="width:200px;">
 					<option th:value="${music.mstyle}" th:text="${music.mstyle}"></option>
 					<option value="流行">流行</option>
 					<option value="电子">电子</option>
@@ -89,9 +89,9 @@
 				</span> </div>
 		</div>
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>语种：</label>
-			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
-				<select name="mlanguage" class="select">
+			<label class="form-label col-xs-4 col-sm-2">语种：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<select name="mlanguage" class="select" style="width:200px;">
 					<option th:value="${music.mlanguage}" th:text="${music.mlanguage}"></option>
 					<option value="国语">国语</option>
 					<option value="英语">英语</option>
@@ -102,7 +102,7 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">价格：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input th:value="${music.mprice}" type="text" name="mprice" class="input-text">
+				<input th:value="${music.mprice}" style="width:200px;" type="text" name="mprice" class="input-text">
 			</div>
 		</div>
 		<div class="row cl">
@@ -115,7 +115,7 @@
 		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
 				<button onClick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="Hui-iconfont">&#xe632;</i> 保存并提交</button>
-				<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+				<a onClick="layer_close();" class="btn btn-default radius" type="button" href="/music/list.do/1">&nbsp;&nbsp;返回&nbsp;&nbsp;</a>
 			</div>
 		</div>
 	</form>

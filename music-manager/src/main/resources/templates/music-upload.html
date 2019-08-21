@@ -32,43 +32,43 @@
 <div class="page-container">
 	<form action="/music/upload.do" enctype="multipart/form-data" method="post" class="form form-horizontal" id="form-article-add">
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>歌名：</label>
+			<label class="form-label col-xs-4 col-sm-2">歌名：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" name="mname">
+				<input type="text" class="input-text" name="mname" style="width:200px;">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">歌手：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" name="msinger">
+				<input type="text" class="input-text" name="msinger" style="width:200px;">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">简介：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" name="mcontext">
+				<input type="text" class="input-text" name="mcontext" style="width:200px;">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">专辑名：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" name="malbum">
+				<input type="text" class="input-text" name="malbum" style="width:200px;">
 			</div>
 		</div>
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>歌曲等级：</label>
-			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
-				<select name="mlevel" class="select">
+			<label class="form-label col-xs-4 col-sm-2">歌曲等级：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<select name="mlevel" class="select" style="width:200px;">
 					<option value="0">请选择</option>
-					<option value="1">1</option>
-					<option value="2">2</option>
+					<option value="1">所有用户可听|登陆后可下载</option>
+					<option value="2">购买或会员可听可下载</option>
 				</select>
 			</span> </div>
 		</div>
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>主题：</label>
-			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
-				<select name="mtheme" class="select">
+			<label class="form-label col-xs-4 col-sm-2">主题：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<select name="mtheme" class="select" style="width:200px;">
 					<option value="0">请选择</option>
 					<option value="情歌">情歌</option>
 					<option value="古风">古风</option>
@@ -77,9 +77,9 @@
 				</span> </div>
 		</div>
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>流派：</label>
-			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
-				<select name="mstyle" class="select">
+			<label class="form-label col-xs-4 col-sm-2">流派：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<select name="mstyle" class="select" style="width:200px;">
 					<option value="0">请选择</option>
 					<option value="流行">流行</option>
 					<option value="电子">电子</option>
@@ -88,9 +88,9 @@
 				</span> </div>
 		</div>
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>语种：</label>
-			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
-				<select name="mlanguage" class="select">
+			<label class="form-label col-xs-4 col-sm-2">语种：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<select name="mlanguage" class="select" style="width:200px;">
 					<option value="0">请选择</option>
 					<option value="国语">国语</option>
 					<option value="英语">英语</option>
@@ -101,38 +101,38 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">价格：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" name="mprice" class="input-text">
+				<input type="text" name="mprice" class="input-text" style="width:200px;">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">日期：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="date" name="mdate" placeholder="" class="input-text" style="width:200px;">
+				<input type="date" name="mdate" class="input-text" style="width:200px;">
 			</div>
 		</div>
 		<input type="hidden" name="mloc" value="a">
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">封面：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="file" name="img1" placeholder="请选择图片" class="input-text">
+				<input type="file" name="img1" placeholder="请选择图片" class="input-text" style="width:200px;">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">歌词：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="file" name="img2" placeholder="请选择文件" class="input-text">
+				<input type="file" name="img2" placeholder="请选择文件" class="input-text" style="width:200px;">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">音乐：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="file" name="img3" placeholder="请选择音乐" class="input-text">
+				<input type="file" name="img3" placeholder="请选择音乐" class="input-text" style="width:200px;">
 			</div>
 		</div>
 		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
 				<button onClick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="Hui-iconfont">&#xe632;</i> 保存并提交</button>
-				<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+<!--				<button class="btn btn-default radius" type="button">&nbsp;&nbsp;返回&nbsp;&nbsp;</button>-->
 			</div>
 		</div>
 	</form>

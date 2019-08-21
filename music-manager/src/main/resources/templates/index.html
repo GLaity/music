@@ -57,7 +57,7 @@
 			<dt><i class="Hui-iconfont">&#xe620;</i> 音乐管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="/music/list.do" data-title="音乐管理" href="javascript:void(0)">音乐管理</a></li>
+					<li><a data-href="/music/list.do/1" data-title="音乐管理" href="javascript:void(0)">音乐管理</a></li>
 					<li><a data-href="/music-upload" data-title="音乐上传" href="javascript:void(0)">音乐上传</a></li>
 			</ul>
 		</dd>
@@ -66,7 +66,7 @@
 			<dt><i class="Hui-iconfont">&#xe622;</i> 评论管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="/advice/list.do" data-title="评论列表" href="javascript:void(0)">评论列表</a></li>
+					<li><a data-href="/advice/list.do/1" data-title="评论列表" href="javascript:void(0)">评论列表</a></li>
 			</ul>
 		</dd>
 	</dl>
@@ -75,7 +75,6 @@
 			<dd>
 				<ul>
 					<li><a data-href="/admin-list" data-title="用户列表" href="javascript:void(0)">用户列表</a></li>
-					<li><a data-href="/admin-vip-list" data-title="会员列表" href="javascript:void(0)">会员列表</a></li>
 			</ul>
 		</dd>
 	</dl>
@@ -83,18 +82,18 @@
 			<dt><i class="Hui-iconfont">&#xe61a;</i> 交易管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="/bought/list.do" data-title="交易列表" href="javascript:void(0)">交易列表</a></li>
+					<li><a data-href="/bought/list.do/1" data-title="交易列表" href="javascript:void(0)">交易列表</a></li>
 				</ul>
 			</dd>
 		</dl>
-		<dl id="menu-system">
-			<dt><i class="Hui-iconfont">&#xe62e;</i> 电台管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-			<dd>
-				<ul>
-					<li><a data-href="/radio/list.do" data-title="电台列表" href="javascript:void(0)">电台列表</a></li>
-				</ul>
-			</dd>
-		</dl>
+<!--		<dl id="menu-system">-->
+<!--			<dt><i class="Hui-iconfont">&#xe62e;</i> 电台管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>-->
+<!--			<dd>-->
+<!--				<ul>-->
+<!--					<li><a data-href="/radio/list.do" data-title="电台列表" href="javascript:void(0)">电台列表</a></li>-->
+<!--				</ul>-->
+<!--			</dd>-->
+<!--		</dl>-->
 </div>
 </aside>
 <div class="dislpayArrow hidden-xs"><a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a></div>
@@ -103,10 +102,12 @@
 		<div class="Hui-tabNav-wp">
 			<ul id="min_title_list" class="acrossTab cl">
 				<li class="active">
-					<span title="我的桌面" data-href="/welcome">我的桌面</span>
-					<em></em></li>
+					<i class="Hui-iconfont">&#xe67f;</i><span title="我的桌面" data-href="/welcome">我的桌面</span>
+				</li>
 		</ul>
-	</div>
+			<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a>
+
+		</div>
 		<div class="Hui-tabNav-more btn-group">
 			<a id="js-tabNav-prev" class="btn radius btn-default size-S" href="javascript:;"><i class="Hui-iconfont">&#xe6d4;</i></a><a id="js-tabNav-next" class="btn radius btn-default size-S" href="javascript:;"><i class="Hui-iconfont">&#xe6d7;</i></a></div>
 </div>

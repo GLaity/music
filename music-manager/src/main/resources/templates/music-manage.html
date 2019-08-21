@@ -6,7 +6,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
-<!--[if lt IE 9]>
+	<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<!--[if lt IE 9]>
 <script type="text/javascript" src="/lib/html5shiv.js"></script>
 <script type="text/javascript" src="/lib/respond.min.js"></script>
 <![endif]-->
@@ -22,49 +30,64 @@
 <title>品牌管理</title>
 </head>
 <body>
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 音乐管理 <span class="c-gray en">&gt;</span> 音乐管理 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
-<div class="page-container">
-	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a></span> <span class="r">共有数据：<strong th:text="${size}"></strong> 条</span> </div>
-	<div class="mt-20">
-		<table class="table table-border table-bordered table-bg">
-			<thead>
-				<tr class="text-c">
-					<th width="25"><input type="checkbox" name="" value=""></th>
-					<th width="30">歌名</th>
-					<th width="30">歌手</th>
-					<th width="30">专辑名</th>
-					<th width="30">歌曲等级</th>
-					<th width="30">音乐价格</th>
-					<th width="200">发行时间</th>
-					<th width="30">发布状态</th>
-					<th width="30">操作</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="music:${musicList}" class="text-c">
-					<td><input name="" type="checkbox" value=""></td>
-					<td th:text="${music.mname}"></td>
-					<td th:text="${music.msinger}"></td>
-					<td th:text="${music.malbum}"></td>
-					<td th:text="${music.mlevel}"></td>
-					<td th:text="${music.mprice}"></td>
-					<td th:text="${#dates.format(music.mdate,'yyyy-MM-dd')}"></td>
-					<td class="td-status"><span class="label radius">已停用</span></td>
-					<td class="td-manage">
-						<a style="text-decoration:none" onClick="admin_start(this,'10001')" href="javascript:;" title="启用">
-							<i class="Hui-iconfont">&#xe615;</i>
-						</a>
-						<a title="编辑" th:href="@{/music/select.do/}+${music.mid}" onclick="admin_edit('管理员编辑','admin-add.html','2','800','500')" class="ml-5" style="text-decoration:none">
-							<i class="Hui-iconfont">&#xe6df;</i>
-						</a>
-						<a title="删除" th:href="@{/music/delete.do/}+${music.mid}" onclick="admin_del(this,'1')" class="ml-5" style="text-decoration:none">
-							<i class="Hui-iconfont">&#xe6e2;</i>
-						</a>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+<div class="page-container"  style="margin-top: -33px;">
+	<form id="form1" action="/music/selectdel.do"  style="display: none">
+	<div style="margin-top: 30px" class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> <input style="border-style: hidden" type="button" onclick="select_del()" class="btn-danger radius" th:value="批量删除"></a></span> <span class="r">共有数据：<strong id="count" th:text="${size}"></strong> 条</span> </div>
+	<table class="table table-border table-bordered table-bg">
+		<thead>
+			<tr>
+				<th scope="col" colspan="9" style="text-align: right;padding-right: 30px">&nbsp; &nbsp; 第 &nbsp;&nbsp;<span th:text="${num}"></span>&nbsp;&nbsp;  页</th>
+			</tr>
+			<tr class="text-c">
+				<th width="25"><input type="checkbox" name="" value=""></th>
+				<th width="40">歌名</th>
+				<th width="40">歌手</th>
+				<th width="40">专辑名</th>
+				<th width="40">歌曲等级</th>
+				<th width="40">音乐价格</th>
+				<th width="40">发行时间</th>
+				<th width="40">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="music:${musicList}" class="text-c">
+				<td><input type="checkbox" th:value="${music.mid}" name="checkbox" ></td>
+				<td th:text="${music.mname}"></td>
+				<td th:text="${music.msinger}"></td>
+				<td th:text="${music.malbum}"></td>
+				<td th:text="${music.mlevel}"></td>
+				<td th:text="${music.mprice}"></td>
+				<td th:text="${#dates.format(music.mdate,'yyyy-MM-dd')}"></td>
+				<td class="td-manage">
+					<a title="编辑" th:href="@{/music/select.do/}+${music.mid}" onclick="admin_edit('管理员编辑','admin-add.html','2','800','500')" class="ml-5" style="text-decoration:none">
+						<i class="Hui-iconfont">&#xe6df;</i>
+					</a>
+					<a title="删除" th:onclick="|javascript:admin_del(this,${music.mid})|" class="ml-5" style="text-decoration:none">
+						<i class="Hui-iconfont">&#xe6e2;</i>
+					</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<nav aria-label="Page navigation" style="margin-right: 0px">
+		<ul class="pagination" style="float: right">
+			<li>
+				<a th:if="${num-1}!=0"  th:href="@{/music/list.do/}+${num-1}" aria-label="Previous">
+					<span aria-hidden="true">&laquo;</span>
+				</a>
+			</li>
+			<li  th:if="${size > 10}" th:each="num:${count}">
+				<a th:href="@{/music/list.do/}+${num}" th:text="${num}" ></a>
+			</li>
+			<li>
+				<a th:if="${num+1} <= ${size/10+1}"  th:href="@{/music/list.do/}+${num+1}" aria-label="Next">
+					<span aria-hidden="true">&raquo;</span>
+				</a>
+			</li>
+		</ul>
+	</nav>
+	</form>
+
 </div>
 <!--_footer 作为公共模版分离出去-->
 <script type="text/javascript" src="/lib/jquery/1.9.1/jquery.min.js"></script>
@@ -77,65 +100,54 @@
 <script type="text/javascript" src="/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="/lib/laypage/1.2/laypage.js"></script>
 <script type="text/javascript">
-	/*
-	参数解释：
-	title	标题
-	url		请求的url
-	id		需要操作的数据id
-	w		弹出层宽度（缺省调默认值）
-	h		弹出层高度（缺省调默认值）
-*/
-	/*管理员-增加*/
-	function admin_add(title,url,w,h){
-		layer_show(title,url,w,h);
+
+	function select_del() {
+
+		if(confirm('确实要删除吗?')) {
+			$("#form1").submit();
+		}else {
+			return false;
+		}
 	}
+
 	/*管理员-删除*/
-	function admin_del(obj,id){
-		layer.confirm('确认要删除吗？',function(index){
+	function admin_del(obj,mid){
+
+		if(confirm('确实要删除吗?')) {
 			$.ajax({
-				type: 'POST',
-				url: '',
-				dataType: 'json',
-				success: function(data){
+				url:"/music/delete.do/"+mid,
+				type:"GET",
+				dataType:"json",
+				success:function (data) {
 					$(obj).parents("tr").remove();
-					layer.msg('已删除!',{icon:1,time:1000});
-				},
-				error:function(data) {
-					console.log(data.msg);
-				},
-			});
-		});
+					$("#count").text(data.count);
+					setTimeout(function () {
+						alert(data.msg);
+					},500);
+				}
+			})
+		}
+
+
+
+		// layer.confirm('确认要删除吗？',function(index){
+		// 	$.ajax({
+		// 		type: 'POST',
+		// 		url: '',
+		// 		dataType: 'json',
+		// 		success: function(data){
+		// 			$(obj).parents("tr").remove();
+		// 			layer.msg('已删除!',{icon:1,time:1000});
+		// 		},
+		// 		error:function(data) {
+		// 			console.log(data.msg);
+		// 		},
+		// 	});
+		// });
 	}
-
-	/*管理员-编辑*/
-	function admin_edit(title,url,id,w,h){
-		layer_show(title,url,w,h);
-	}
-	/*管理员-停用*/
-	function admin_stop(obj,id){
-		layer.confirm('确认要停用吗？',function(index){
-			//此处请求后台程序，下方是成功后的前台处理……
-
-			$(obj).parents("tr").find(".td-manage").prepend('<a onClick="admin_start(this,id)" href="javascript:;" title="启用" style="text-decoration:none"><i class="Hui-iconfont">&#xe615;</i></a>');
-			$(obj).parents("tr").find(".td-status").html('<span class="label label-default radius">已禁用</span>');
-			$(obj).remove();
-			layer.msg('已停用!',{icon: 5,time:1000});
-		});
-	}
-
-	/*管理员-启用*/
-	function admin_start(obj,id){
-		layer.confirm('确认要启用吗？',function(index){
-			//此处请求后台程序，下方是成功后的前台处理……
-
-
-			$(obj).parents("tr").find(".td-manage").prepend('<a onClick="admin_stop(this,id)" href="javascript:;" title="停用" style="text-decoration:none"><i class="Hui-iconfont">&#xe631;</i></a>');
-			$(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已启用</span>');
-			$(obj).remove();
-			layer.msg('已启用!', {icon: 6,time:1000});
-		});
-	}
-
+	$(document).ready(function () {
+		$("form").fadeIn(1200);
+	})
 </script>
 </body>
 </html>

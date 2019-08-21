@@ -8,6 +8,7 @@ import com.lanqiao.music.server.service.IRadioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -28,7 +29,19 @@ public class RadioSevice implements IRadioService {
     }
 
     @Override
-    public List<Radio> findRadioByAttr(String attr,Object key) {
-        return radioMapper.selectRadioByAttr(attr,key);
+    public List<Radio> findRadioByAttr(String attr,String key) {
+        List<Radio> radioList=new ArrayList<>();
+        switch (attr){
+            case "1":
+                radioList = radioMapper.selectRadioByAttr(key,null,null);
+                break;
+            case "2":
+                radioList = radioMapper.selectRadioByAttr(null,key,null);
+                break;
+            case "3":
+                radioList = radioMapper.selectRadioByAttr(null,null,key);
+                break;
+        }
+        return radioList;
     }
 }

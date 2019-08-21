@@ -7,17 +7,17 @@
     <select id="selectMusicByRid" resultType="com.lanqiao.music.server.pojo.Music">
         select m.* from music m , radio_music rm where rm.rid = #{rid} and m.mid = rm.mid
     </select>
-    <select id="selectRadioByAttr">
+    <select id="selectRadioByAttr" resultType="com.lanqiao.music.server.pojo.Radio">
         select * from radio
         <where>
-            <if test="rname == #{rname}">
-                and rname like '%'#{rname}'%'
+            <if test="rname!=null and rname!=''">
+                and rname like '%' #{rname} '%'
             </if>
-            <if test="rcontext == #{rcontext}">
-                and rcontext like '%'#{rcontext}'%'
+            <if test="rcontext!=null and rcontext!=''">
+                and rcontext = #{rcontext}
             </if>
-            <if test="rsum == #{rsum}">
-                and rsum like '%'#{rsum}'%'
+            <if test="rsum!=null and rsum!=''">
+                and rsum like '%' #{rsum} '%'
             </if>
         </where>
     </select>

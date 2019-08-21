@@ -2,8 +2,10 @@ package com.lanqiao.music.manager;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.lanqiao.music.server.pojo.Music;
+import com.lanqiao.music.server.service.IAdviceService;
 import com.lanqiao.music.server.service.IBoughtService;
 import com.lanqiao.music.server.service.IMusicService;
+import com.lanqiao.music.server.service.IRadioService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +19,11 @@ import java.util.List;
 public class MusicManagerApplicationTests {
 
     @Reference
-    private IBoughtService boughtService;
+    private IRadioService radioService;
 
     @Test
     public void contextLoads() {
-
-        String user = boughtService.getUserNameByUid(1);
-        System.out.println(user);
+        System.out.println(radioService.findRadioByAttr("1","1"));
     }
 
 }

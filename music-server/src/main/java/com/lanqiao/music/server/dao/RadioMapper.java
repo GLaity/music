@@ -4,6 +4,7 @@ package com.lanqiao.music.server.dao;
 import com.lanqiao.music.server.pojo.Music;
 import com.lanqiao.music.server.pojo.Radio;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -16,6 +17,10 @@ public interface RadioMapper {
     //查询某个电台中的所有歌曲
     List<Music> selectMusicByRid(Integer rid);
     //按条件搜索
-    List<Radio> selectRadioByAttr(String attr,Object key);
+//    List<Radio> selectRadioByAttr(String attr,Object key);
 
+    List<Radio> selectRadioByAttr(@Param("rname")String rname,
+                                  @Param("rcontext") String rcontext,
+                                  @Param("rsum") String rsum
+                                  );
 }
