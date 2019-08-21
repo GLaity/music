@@ -14,6 +14,7 @@ import java.util.Set;
 @Mapper
 public interface SheetMapper {
     void insertSheet(Sheet sheet);
+    void insertSheetUser(Sheet sheet);
     void updateSheet(Sheet sheet);
     Sheet selectSheetBySid(Integer sid);
     List<Sheet> selectAllSheet();
@@ -31,4 +32,5 @@ public interface SheetMapper {
     void deleteSheetFromUser(@Param("uid") Integer uid,
                              @Param("sid") Integer sid);
     Integer selectAuthorBySid(Integer sid);
+
 }

@@ -29,12 +29,10 @@ public class SheetController {
         User user=(User) session.getAttribute("user");
         map.addAttribute("sheets",sheetList);
         map.addAttribute("user",user);
-//        return "play-list-enter";
         return "play-list";
     }
     @RequestMapping("/playlistent/{sid}")
     public String Iplaylistenter(ModelMap map, @PathVariable Integer sid, HttpSession session) {
-//        System.out.println("sid" + sid);
         Integer creatUid=iSheetService.getAuthorId(sid);
         User creatUser=iUserService.findUserByUid(creatUid);
         Sheet sheet =iSheetService.findSheetBySid(sid);
@@ -75,11 +73,8 @@ public class SheetController {
             iSheetService.addOtherSheet(uid,sid);
             map.put("msg","歌单添加成功");
         }
-
-
         return map;
     }
-
     @RequestMapping(value = "/removeSheet/{sid}",method = RequestMethod.GET)
     @ResponseBody
     public Map<String,String> removeSheet(HttpSession session, @PathVariable Integer sid){
