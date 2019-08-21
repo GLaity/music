@@ -31,4 +31,6 @@ public interface SheetMapper {
                              @Param("sid") Integer sid);
     void deleteSheetFromUser(@Param("uid") Integer uid,
                              @Param("sid") Integer sid);
+    Integer selectAuthorBySid(Integer sid);
+
 }

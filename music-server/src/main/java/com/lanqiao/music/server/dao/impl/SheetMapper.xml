@@ -18,7 +18,7 @@
     </insert>
 
     <insert id="insertSheetUser" parameterType="com.lanqiao.music.server.pojo.Sheet">
-        insert into sheet_user(sid, sname, uid,type)
+         insert into sheet_user(sid, sname, uid,type)
         values (#{sid}, #{sname}, #{uid}, #{type});
     </insert>
     <update id="updateSheet">
@@ -41,6 +41,9 @@
     </update>
     <select id="selectSheetBySid" resultMap="sheetMap">
         select * from sheet where sid = #{sid};
+    </select>
+    <select id="selectAuthorBySid" parameterType="integer" resultType="integer">
+        select uid from sheet_user where sid = #{sid} and type = 1;
     </select>
     <select id="selectAllSheet" resultMap="sheetMap">
         select * from sheet;

@@ -35,17 +35,18 @@
               </div>
               <div class="bottom gd bg-info wrapper-lg" th:unless="${user}">
                 <span class="pull-right text-sm" th:text="${sheet.getScontext()}"></span>
-                <span class="h2 font-thin" th:text="${user.getUname()}"></span><br/>
+                <span class="h2 font-thin" th:text="${creatUserName}"></span><br/>
                 <span class="h2 font-thin" th:text="${sheet.getSname()}"></span>
-                <button class="btn btn-info pull-right" value="收藏歌单" id="tishi">收藏歌单</button>
+                <button class="btn btn-info pull-right" value="" id="tishi">歌单</button>
               </div>
               
               <div class="bottom gd bg-info wrapper-lg" th:if="${user}">
                 <span class="pull-right text-sm" th:text="${sheet.getScontext()}"></span>
-                <span class="h2 font-thin" th:text="${user.getUname()}"></span><br/>
+                <span class="h2 font-thin" th:text="${creatUserName}"></span><br/>
                 <span class="h2 font-thin" th:text="${sheet.getSname()}"></span>
-                <button class="btn btn-info pull-right" value="收藏歌单" onclick = "window.location.href = '/read.do?_method=collection&bookId=${bookBasic.getBook_Id()}&userId=${sessionScope.user.getUser_Id()}'">收藏歌单</button>
-                <button class="btn btn-info pull-right" value="收藏歌单" th:href="'@{/playlistent/}'+${sheet.getSid()}">收藏歌单</button>
+
+                <button th:if="${flag eq 1}" class="btn btn-info pull-right" value="已收藏" th:onclick="'javascript:removeSheet(\''+${sheet.getSid()}+'\')'">已收藏</button>
+                <button th:if="${flag eq 0}" class="btn btn-info pull-right" value="收藏歌单" th:onclick="'javascript:addSheet(\''+${sheet.getSid()}+'\')'">收藏歌单</button>
 
               </div>
 
@@ -160,6 +161,28 @@
       alert("请登录！");
     })
   })
+    function addSheet(id){
+        $.ajax({
+            type:"get",
+            url:"/addSheet/"+id,
+            success:function (data) {
+                alert(data.msg);
+                window.location.reload();
+            }
+        })
+    }
+    function removeSheet(id) {
+      if (confirm('确实要取消收藏?')) {
+        $.ajax({
+          url:"/removeSheet/"+id,
+          type: "get",
+          success:function (data) {
+            alert(data.msg);
+            window.location.reload();
+          }
+        })
+      }
+    }
 </script>
 </body>
 </html>
