@@ -12,7 +12,14 @@
   <link rel="stylesheet" th:href="@{/asserts/css/simple-line-icons.css}" type="text/css" />
   <link rel="stylesheet" th:href="@{/asserts/css/font.css}" type="text/css" />
   <link rel="stylesheet" th:href="@{/asserts/css/app.css}" type="text/css" />
-
+  <style type="text/css">
+    .pop {  display: none;  width: 200px; min-height: 200px;  max-height: 300px;  height:200px;  position: absolute;  top: 40%;  left: 80%;    padding: 25px;  z-index: 130;  border-radius: 8px;  background-color: #0D1215;  box-shadow: 0 3px 18px rgba(100, 0, 0, .5);  }
+    .pop-foot{  height:20px;    width:100%;    text-align:center; }
+    .pop-cancel, .pop-ok {    margin:15px 5px;  border: none;  border-radius: 5px;  background-color: #337AB7;  color: #fff;  cursor:pointer;  }
+    .pop-cancel {  background-color: #FFF;  border:1px #CECECE solid;  color: #000;  }
+    .pop-content{  height: 100px;  }
+    .bgPop{  display: none;  position: absolute;  z-index: 129;  left: 0;  top: 0;  width: 100%;  height: 100%;  background: rgba(0,0,0,.2);  }
+  </style>
 </head>
 <body class="">
 
@@ -57,10 +64,13 @@
               <ul class="list-group list-group-lg no-radius no-border no-bg m-t-n-xxs m-b-none auto">
                 <li class="list-group-item">
                   <div class="pull-right m-l">
-
-                    <a href="#" class="m-r-sm"><i class="icon-cloud-download"></i></a>
-                    <a href="#" class="m-r-sm"><i class="icon-plus"></i></a>
-                    <a href="#"><i class="icon-close"></i></a>
+                    <div th:if="${user}">
+                      <a href="#" class="m-r-sm" th:href="@{'/musicDownload/'+${music.getMid()}}"><i class="icon-cloud-download"></i></a>
+                      <a href="javascript:void(0)" class="m-r-sm " th:onclick="'javascript:popShow(\''+${music.getMid()}+'\')'"><i class="icon-plus"></i></a>
+                    </div>
+                    <div th:unless="${user}">
+                      <!--                      <a href="#" class="m-r-sm" onclick="parent.downloadMessage()"><i class="icon-cloud-download"></i></a>-->
+                    </div>
                   </div>
                   <a href="#"  th:onclick="'javascript:addmusic(\''+${sheet.getMusicList().get(0).getMid()}+'\')'"class="jp-play-me m-r-sm pull-left">
                     <i class="icon-control-play text"></i>
@@ -71,6 +81,19 @@
                   </div>
                 </li>
               </ul>
+            </div>
+            <div class="bgPop">
+              <!--弹出框-->
+              <div class="pop" >
+                <div class="pop-content">
+                  <ul style="list-style-type:none;">
+                    <li ><input type="button"  th:value="${user.getUCollectionMusic().getSname()}" th:onclick="'javascript:addMusicToSheet(\''+${user.getUCollectionMusic().getSid()}+'\')'" class="bg-black"></li>
+                  </ul>
+                </div>
+                <div class="pop-foot">
+                  <input type="button" value="确定" class=" pop-close btn btn-dark"/>
+                </div>
+              </div>
             </div>
           </section>
         </section>
@@ -152,6 +175,11 @@
 <script th:src="@{/asserts/js/slimscroll/jquery.slimscroll.min.js}" src="/asserts/js/slimscroll/jquery.slimscroll.min.js"></script>
 <script th:src="@{/asserts/js/app.plugin.js}" src="/asserts/s/app.plugin.js"></script>
 <script type="text/javascript">
+  $(document).ready(function () {
+    $('.pop-close').click(function () {
+      $('.bgPop,.pop').hide();
+    });
+  })
   function addmusic(json) {
     window.parent.document.getElementById('hidInp').value = json;
     window.parent.document.getElementById('addTab').click();
@@ -183,6 +211,23 @@
         })
       }
     }
+  var id;
+  function popShow(mid) {
+    id=mid;
+    $('.bgPop,.pop').show();
+  }
+  function addMusicToSheet(sid) {
+    if (confirm('确定要收藏这首歌吗？')) {
+      $.ajax({
+        type: "get",
+        url: "/addMusicToSheet/" + id + "/" + sid,
+        success: function (data) {
+          alert(data.msg);
+          window.location.reload();
+        }
+      })
+    }
+  }
 </script>
 </body>
 </html>

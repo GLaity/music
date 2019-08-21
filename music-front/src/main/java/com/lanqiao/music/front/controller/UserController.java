@@ -24,8 +24,10 @@ public class UserController {
     private IBoughtService iBoughtService;
 
     @RequestMapping("/")
-    public String init(){
+    public String init(Model model){
+//        model.addAttribute("iframeSrc","/iframemain");
         return "index";
+
     }
 
     @RequestMapping("/tologin")
@@ -142,7 +144,6 @@ public class UserController {
             msg = "原密码错误，请重新更改！";
         }
         model.addAttribute("msg",msg);
-        System.out.println(uname+"-------------"+upwd);
         return "index";
     }
     //增加一个月
