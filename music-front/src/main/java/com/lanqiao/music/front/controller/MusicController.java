@@ -73,14 +73,23 @@ public class MusicController {
         musicJson.setMp3(music.getMloc());
         musicJson.setPoster("");
         List<MusicJson> musicJsons = (List<MusicJson>) session.getAttribute("musicJsons");
+        List<Music> musics = (List<Music>) session.getAttribute("musics");
+        if (musics == null){
+            musics = new LinkedList<>();
+        }
         if (musicJsons != null) {
             //添加元素到栈顶
             if (musicJsons.contains(musicJson)){
                 musicJsons.remove(musicJson);
             }
+            if (musics.contains(music)){
+                musics.remove(music);
+            }
             musicJsons.add(0,musicJson);
+            musics.add(0,music);
         }
         session.setAttribute("musicJsons",musicJsons);
+        session.setAttribute("musics",musics);
         return musicJsons;
     }
 
