@@ -27,6 +27,8 @@ $(document).ready(function(){
   // ];
   // initJPlayer(songsList);
 
+
+
   $.get("/getMusic", function(data){
       json = JSON.stringify(data);
       songsList = JSON.parse(json);
@@ -47,6 +49,12 @@ $(document).ready(function(){
 });
 
 function initJPlayer(songsList){
+  // $.jPlayer("clean");
+  // $.jPlayer("setMedia",songsList);
+  // $.jPlayer("load");
+  // $.jPlayer("play");
+  // myPlaylist.setPlaylist(songsList);
+  $("#jplayer_N").jPlayer("clearMedia");
   myPlaylist = new jPlayerPlaylist({
     jPlayer: "#jplayer_N",
     cssSelectorAncestor: "#jp_container_N"
@@ -61,6 +69,9 @@ function initJPlayer(songsList){
     keyEnabled: true,
     audioFullScreen: false
   });
+  // $("#jplayer_N").jPlayer("load");
+  // $("#jplayer_N").jPlayer("play");
+
   $(document).on($.jPlayer.event.pause, myPlaylist.cssSelector.jPlayer,  function(){
     $('.musicbar').removeClass('animate');
     $('.jp-play-me').removeClass('active');

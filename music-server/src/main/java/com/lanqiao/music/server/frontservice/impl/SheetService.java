@@ -4,19 +4,17 @@ import com.alibaba.dubbo.config.annotation.Service;
 import com.lanqiao.music.server.dao.SheetMapper;
 import com.lanqiao.music.server.pojo.Music;
 import com.lanqiao.music.server.pojo.Sheet;
+import com.lanqiao.music.server.pojo.User;
 import com.lanqiao.music.server.frontservice.ISheetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-
 @Component
 @Service
 public class SheetService implements ISheetService {
-
     @Autowired
     private SheetMapper sheetMapper;
-
     @Override
     public void addInitSheet(Integer uid) {
         Sheet sheet1 = new Sheet();
@@ -43,7 +41,7 @@ public class SheetService implements ISheetService {
 
     @Override
     public void addOtherSheet(Integer uid, Integer sid) {
-        sheetMapper.insertSheetIntoUser(uid, sid);
+        sheetMapper.insertSheetIntoUser(uid,sid);
     }
 
     @Override
@@ -95,4 +93,15 @@ public class SheetService implements ISheetService {
     public List<Sheet> findAllSheet() {
         return sheetMapper.selectAllSheet();
     }
+
+    @Override
+    public List<Sheet> findAllPublicSheet() {
+        return sheetMapper.selectSheetByType(1);
+    }
+
+    @Override
+    public Integer findUser(Integer sid) {
+        return sheetMapper.selectBySid(sid);
+    }
+
 }

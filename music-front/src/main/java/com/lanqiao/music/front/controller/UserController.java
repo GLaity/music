@@ -57,6 +57,8 @@ public class UserController {
     //冲会员
 
 
+    @RequestMapping("/toplaylist")
+    public String toplaylist(){return "plat-list";}
 
     @RequestMapping("/login")
     public String loginCheck(String uname, String upwd, Model model){

@@ -75,6 +75,9 @@ public class MusicController {
         List<MusicJson> musicJsons = (List<MusicJson>) session.getAttribute("musicJsons");
         if (musicJsons != null) {
             //添加元素到栈顶
+            if (musicJsons.contains(musicJson)){
+                musicJsons.remove(musicJson);
+            }
             musicJsons.add(0,musicJson);
         }
         session.setAttribute("musicJsons",musicJsons);
