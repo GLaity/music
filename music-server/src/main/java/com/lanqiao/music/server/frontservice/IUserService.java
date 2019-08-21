@@ -1,9 +1,6 @@
 package com.lanqiao.music.server.frontservice;
 
-import com.lanqiao.music.server.pojo.Sheet;
 import com.lanqiao.music.server.pojo.User;
-
-import java.util.Set;
 
 public interface IUserService {
     User login(String uname, String upwd);
@@ -16,7 +13,5 @@ public interface IUserService {
     void reduceBalance(User user,Double money);
     //充值会员
     void rechargeVip(User user,Integer mouth);
-    //选择用户创建歌单
     User getCreateSheet(Integer uid);
-
 }

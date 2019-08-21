@@ -100,13 +100,17 @@ public class UserService implements IUserService {
 ////        user.setUbalance((user.getUbalance()-(mouth*10.0)));
         userMapper.updateUser(user);
     }
-
+//获取自建歌单和收藏歌单 type=12
     @Override
     public User getCreateSheet(Integer uid) {
         User user = userMapper.selectUserByUid(uid);
-        user.setUCollectionSheet(userMapper.selectCreateSheet(uid));
+        Set<Sheet> sheetSet = userMapper.selectCollectionSheet(uid);
+        sheetSet.addAll(userMapper.selectCreateSheet(uid));
+        user.setUCollectionSheet(sheetSet);
         return user;
     }
+
+
 
     //增加一个月
     public  Date subMonth(Date date,Integer mouth){

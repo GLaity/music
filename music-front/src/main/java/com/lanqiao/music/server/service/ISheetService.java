@@ -1,4 +1,4 @@
-package com.lanqiao.music.server.frontservice;
+package com.lanqiao.music.server.service;
 
 import com.lanqiao.music.server.pojo.Music;
 import com.lanqiao.music.server.pojo.Sheet;

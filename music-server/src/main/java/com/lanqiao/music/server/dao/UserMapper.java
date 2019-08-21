@@ -17,4 +17,5 @@ public interface UserMapper {
     //会员到期清空会员数据
     void updateUserVipByUId(Integer uid);
     Set<Sheet> selectCreateSheet(Integer uid);
+    Set<Sheet> selectCollectionSheet(Integer uid);
 }

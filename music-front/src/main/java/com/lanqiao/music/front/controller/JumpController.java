@@ -51,10 +51,6 @@ public class JumpController {
     public String iframegenres(){
         return "genres";
     }
-    @RequestMapping("/iframeplay-list")
-    public String iframeplaylist(){
-        return "play-list";
-    }
     @RequestMapping("/iframemyplaylist")
     public String iframemyplaylist(){
         return "myplaylist";
