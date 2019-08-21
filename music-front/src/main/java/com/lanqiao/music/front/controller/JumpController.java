@@ -8,9 +8,10 @@ import com.lanqiao.music.server.pojo.Sheet;
 import com.lanqiao.music.server.pojo.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,9 +49,28 @@ public class JumpController {
         return "collection";
     }
     @RequestMapping("/iframegenres")
-    public String iframegenres(){
+    public String iframegenres(Model model){
+        iMusicService.queryMusicCondition(1,"");
+        model.addAttribute("allmusic", iMusicService.queryAllMusic());
+        model.addAttribute("theme",  iMusicService.queryTheme());
+        model.addAttribute("style",  iMusicService.queryStyle());
+        model.addAttribute("language",  iMusicService.queryLanguage());
         return "genres";
     }
+
+    @RequestMapping(value = "/iframegenre/{sortid}")
+    @ResponseBody
+    public List<Music> sortname(Model model, @PathVariable Integer sortid ){
+        System.out.println(sortid);
+        List<Music> allmusic = iMusicService.queryMusicCondition(3,"情歌");
+        System.out.println(allmusic);
+        model.addAttribute("theme",  iMusicService.queryTheme());
+        model.addAttribute("style",  iMusicService.queryStyle());
+        model.addAttribute("language",  iMusicService.queryLanguage());
+        return allmusic;
+    }
+
+
     @RequestMapping("/iframemyplaylist")
     public String iframemyplaylist(){
         return "myplaylist";
@@ -60,7 +80,11 @@ public class JumpController {
         return "search";
     }
     @RequestMapping("/iframevideo")
-    public String iframevideo(){
+    public String iframevideo(ModelMap map, HttpSession session){
+        List<Sheet> sheetList=iSheetService.findAllPublicSheet();
+        User user=(User) session.getAttribute("user");
+        map.addAttribute("sheets",sheetList);
+        map.addAttribute("user",user);
         return "video";
     }
     @RequestMapping("/iframepersonal")
@@ -71,5 +95,4 @@ public class JumpController {
         model.addAttribute("sheetList",sheetList);
         return "personal";
     }
-
 }

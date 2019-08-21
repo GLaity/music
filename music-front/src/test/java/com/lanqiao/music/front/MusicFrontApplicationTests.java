@@ -1,6 +1,7 @@
 package com.lanqiao.music.front;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.lanqiao.music.server.frontservice.IMusicService;
 import com.lanqiao.music.server.frontservice.ISheetService;
 import com.lanqiao.music.server.frontservice.IUserService;
 import org.junit.Test;
@@ -20,9 +21,14 @@ public class MusicFrontApplicationTests {
     private IUserService iUserService;
     @Reference
     private ISheetService iSheetService;
+    @Reference
+    private IMusicService iMusicService;
 
     @Test
     public  void subMonth() throws ParseException {
+//        System.out.println(iMusicService.queryTheme());
+        System.out.println(iMusicService.queryMusicCondition(1,"英语").size());
+        System.out.println(iMusicService.queryMusicCondition(3,"情歌").size());
 //        Integer creatUid=iSheetService.findUser(11);
 //        System.out.println(creatUid);
 //        System.out.println(iUserService.getCreateSheet(5));

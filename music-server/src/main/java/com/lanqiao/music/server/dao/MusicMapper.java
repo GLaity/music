@@ -26,9 +26,11 @@ public interface MusicMapper {
     List<Music> selectMusicByCondition(@Param("mname")String mname,
                                        @Param("msinger")String msinger,
                                        @Param("mlevel")Integer mlevel,
-                                       @Param("mtheme")Integer mtheme,
-                                       @Param("mstyle")Integer mstyle,
-                                       @Param("mlanguage")Integer mlanguage,
+                                       @Param("mtheme")String mtheme,
+                                       @Param("mstyle")String mstyle,
+                                       @Param("mlanguage")String mlanguage,
                                        @Param("mprice")Integer mprice);
     List<Sort> selectSortByType(Integer type);
+
+
 }
