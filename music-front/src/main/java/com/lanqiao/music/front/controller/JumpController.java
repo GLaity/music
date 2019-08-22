@@ -8,6 +8,8 @@ import com.lanqiao.music.server.pojo.Sheet;
 import com.lanqiao.music.server.pojo.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -51,9 +53,46 @@ public class JumpController {
         return "collection";
     }
     @RequestMapping("/iframegenres")
-    public String iframegenres(){
+    public String iframegenres(Model model){
+        model.addAttribute("allmusic", iMusicService.queryAllMusic());
+        model.addAttribute("theme",  iMusicService.queryTheme());
+        model.addAttribute("style",  iMusicService.queryStyle());
+        model.addAttribute("language",  iMusicService.queryLanguage());
         return "genres";
     }
+
+    @RequestMapping(value = "/iframegenre3/{sortid}")
+    @ResponseBody
+    public List<Music> sortname3(Model model, @PathVariable Integer sortid ){
+        System.out.println(" sortname3" + sortid);
+        List<Music> allmusic = iMusicService.queryMusicCondition(3,sortid);
+        model.addAttribute("theme",  iMusicService.queryTheme());
+        return allmusic;
+    }
+    @RequestMapping(value = "/iframegenre2/{sortid}")
+    @ResponseBody
+    public List<Music> sortname2(Model model, @PathVariable Integer sortid ){
+        System.out.println(" sortname2" + sortid);
+        List<Music> allmusic = iMusicService.queryMusicCondition(2,sortid);
+        model.addAttribute("style",  iMusicService.queryStyle());
+
+        return allmusic;
+}
+    @RequestMapping(value = "/iframegenre1/{sortid}")
+    @ResponseBody
+    public List<Music> sortname1(Model model, @PathVariable Integer sortid ){
+        System.out.println(" sortname1" + sortid);
+        List<Music> allmusic = iMusicService.queryMusicCondition(1,sortid);
+        model.addAttribute("language",  iMusicService.queryLanguage());
+
+        return allmusic;
+    }
+
+
+
+
+
+
     @RequestMapping("/iframemyplaylist")
     public String iframemyplaylist(){
         return "myplaylist";
@@ -68,7 +107,11 @@ public class JumpController {
         return "search";
     }
     @RequestMapping("/iframevideo")
-    public String iframevideo(){
+    public String iframevideo(ModelMap map, HttpSession session){
+        List<Sheet> sheetList=iSheetService.findAllPublicSheet();
+        User user=(User) session.getAttribute("user");
+        map.addAttribute("sheets",sheetList);
+        map.addAttribute("user",user);
         return "video";
     }
     @RequestMapping("/iframepersonal")

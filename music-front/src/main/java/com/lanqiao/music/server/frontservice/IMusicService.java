@@ -13,11 +13,12 @@ public interface IMusicService {
     List<Music> queryMusicByCondition(String mname,
                                       String msinger,
                                       Integer mlevel,
-                                      Integer mtheme,
-                                      Integer mstyle,
-                                      Integer mlanguage,
+                                      String mtheme,
+                                      String mstyle,
+                                      String mlanguage,
                                       Integer mprice);
     List<Sort> queryTheme();
     List<Sort> queryStyle();
     List<Sort> queryLanguage();
+    List<Music> queryMusicCondition(Integer type,Integer sortid);
 }

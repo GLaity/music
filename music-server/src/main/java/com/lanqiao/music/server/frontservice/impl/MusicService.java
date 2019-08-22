@@ -8,6 +8,7 @@ import com.lanqiao.music.server.pojo.Sort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -32,7 +33,7 @@ public class MusicService implements IMusicService {
     }
 
     @Override
-    public List<Music> queryMusicByCondition(String mname, String msinger, Integer mlevel, Integer mtheme, Integer mstyle, Integer mlanguage, Integer mprice) {
+    public List<Music> queryMusicByCondition(String mname, String msinger, Integer mlevel, String mtheme, String mstyle, String mlanguage, Integer mprice) {
         return musicMapper.selectMusicByCondition(mname, msinger, mlevel, mtheme, mstyle, mlanguage, mprice);
     }
 
@@ -49,5 +50,23 @@ public class MusicService implements IMusicService {
     @Override
     public List<Sort> queryLanguage() {
         return musicMapper.selectSortByType(1);
+    }
+    @Override
+    public List<Music> queryMusicCondition(Integer type,Integer sortid) {
+        List<Music> musicList = new ArrayList<>();
+//        System.out.println(musicMapper.selectBySortId(1).getSortname());
+        switch (type){
+            case 3:
+                musicList = musicMapper.selectMusicByCondition(null,null,null,musicMapper.selectBySortId(sortid).getSortname(),null,null,null);
+                break;
+            case 2:
+                musicList = musicMapper.selectMusicByCondition(null,null,null,null,musicMapper.selectBySortId(sortid).getSortname(),null,null);
+                break;
+            case 1:
+                musicList = musicMapper.selectMusicByCondition(null,null,null,null,null,musicMapper.selectBySortId(sortid).getSortname(),null);
+                break;
+        }
+//        System.out.println(musicList.size());
+        return musicList;
     }
 }
